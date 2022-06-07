@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Start of DAILY -->
+	<!-- Start of daily 7.30am - 7.30pm -->
+	<record id="scdsgso18_7am" model="salary.package">
+	    <field name="name">SCDSGSO18</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgso213_7am" model="salary.package">
+	    <field name="name">SCDSGSO213</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgso323_7am" model="salary.package">
+	    <field name="name">SCDSGSO323</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgss1_7am" model="salary.package">
+	    <field name="name">SCDSGSS1</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">57.69</field>
+	    <field name="ot">47.20</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgsso1_7am" model="salary.package">
+	    <field name="name">SCDSGSSO1</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">50.00</field>
+	    <field name="ot">40.90</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of daily 7.30am - 7.30pm -->
+	<!-- Start of daily 8.00am - 8.00pm -->
+	<record id="scdsgso18_8am" model="salary.package">
+	    <field name="name">SCDSGSO18</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgso213_8am" model="salary.package">
+	    <field name="name">SCDSGSO213</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgso323_8am" model="salary.package">
+	    <field name="name">SCDSGSO323</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgss1_8am" model="salary.package">
+	    <field name="name">SCDSGSS1</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">57.69</field>
+	    <field name="ot">47.20</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgsso1_8am" model="salary.package">
+	    <field name="name">SCDSGSSO1</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">50.00</field>
+	    <field name="ot">40.90</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of daily 8.00am - 8.00pm -->
+	<!-- Start of daily 7.30pm - 7.30am -->
+	<record id="scdsgso18_7pm" model="salary.package">
+	    <field name="name">SCDSGSO18</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgso213_7pm" model="salary.package">
+	    <field name="name">SCDSGSO213</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgso323_7pm" model="salary.package">
+	    <field name="name">SCDSGSO323</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgss1_7pm" model="salary.package">
+	    <field name="name">SCDSGSS1</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">57.69</field>
+	    <field name="ot">47.20</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgsso1_7pm" model="salary.package">
+	    <field name="name">SCDSGSSO1</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">50.00</field>
+	    <field name="ot">40.90</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of daily 7.30pm - 7.30am -->
+	<!-- Start of daily 8.00pm - 8.00am -->
+	<record id="scdsgso18_8pm" model="salary.package">
+	    <field name="name">SCDSGSO18</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgso213_8pm" model="salary.package">
+	    <field name="name">SCDSGSO213</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgso323_8pm" model="salary.package">
+	    <field name="name">SCDSGSO323</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">42.30</field>
+	    <field name="ot">34.60</field>
+	    <field name="mvc">8.10</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgss1_8pm" model="salary.package">
+	    <field name="name">SCDSGSS1</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">57.69</field>
+	    <field name="ot">47.20</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scdsgsso1_8pm" model="salary.package">
+	    <field name="name">SCDSGSSO1</field>
+	    <field name="type_of_package">daily</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">50.00</field>
+	    <field name="ot">40.90</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of daily 8.00pm - 8.00am -->
+	<!-- End of DAILY -->
+	<!-- Start of MONTHLY MY -->
+	<!-- Start of monthly 7.30am - 7.30pm -->
+	<record id="scmmyso2145_7am" model="salary.package">
+	    <field name="name">SCMMYSO2145</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">800.00</field>
+	    <field name="ot">655.00</field>
+	    <field name="mvc">145.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyso2145p_7am" model="salary.package">
+	    <field name="name">SCMMYSO2145P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">800.00</field>
+	    <field name="ot">655.00</field>
+	    <field name="mvc">145.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyss2365_7am" model="salary.package">
+	    <field name="name">SCMMYSS2365</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">900.00</field>
+	    <field name="ot">735.00</field>
+	    <field name="mvc">365.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyss2365p_7am" model="salary.package">
+	    <field name="name">SCMMYSS2365P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">900.00</field>
+	    <field name="ot">735.00</field>
+	    <field name="mvc">365.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysso2255_7am" model="salary.package">
+	    <field name="name">SCMMYSSO2255</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">850.00</field>
+	    <field name="ot">695.00</field>
+	    <field name="mvc">255.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysso2255p_7am" model="salary.package">
+	    <field name="name">SCMMYSSO2255P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">850.00</field>
+	    <field name="ot">695.00</field>
+	    <field name="mvc">255.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of monthly 7.30am - 7.30pm -->
+	<!-- Start of monthly 8.00am - 8.00pm -->
+	<record id="scmmyso2145_8am" model="salary.package">
+	    <field name="name">SCMMYSO2145</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">800.00</field>
+	    <field name="ot">655.00</field>
+	    <field name="mvc">145.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyso2145p_8am" model="salary.package">
+	    <field name="name">SCMMYSO2145P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">800.00</field>
+	    <field name="ot">655.00</field>
+	    <field name="mvc">145.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyss2365_8am" model="salary.package">
+	    <field name="name">SCMMYSS2365</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">900.00</field>
+	    <field name="ot">735.00</field>
+	    <field name="mvc">365.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyss2365p_8am" model="salary.package">
+	    <field name="name">SCMMYSS2365P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">900.00</field>
+	    <field name="ot">735.00</field>
+	    <field name="mvc">365.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysso2255_8am" model="salary.package">
+	    <field name="name">SCMMYSSO2255</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">850.00</field>
+	    <field name="ot">695.00</field>
+	    <field name="mvc">255.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysso2255p_8am" model="salary.package">
+	    <field name="name">SCMMYSSO2255P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">850.00</field>
+	    <field name="ot">695.00</field>
+	    <field name="mvc">255.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- Start Saudi Site Package -->
+	<record id="scmsgso1800_7am" model="salary.package">
+	    <field name="name">SCMSGSO1800</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am600pm</field>
+	    <field name="basic_salary">1175.00</field>
+	    <field name="ot">425.00</field>
+	    <field name="mvc">200.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of Saudi Site Package -->
+	<!-- End of monthly 8.00am - 8.00pm -->
+	<!-- Start of monthly 7.30pm - 7.30am -->
+	<record id="scmmyso145_7pm" model="salary.package">
+	    <field name="name">SCMMYSO145</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">800.00</field>
+	    <field name="ot">655.00</field>
+	    <field name="mvc">145.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyso145p_7pm" model="salary.package">
+	    <field name="name">SCMMYSO145P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">800.00</field>
+	    <field name="ot">655.00</field>
+	    <field name="mvc">145.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyss1265_7pm" model="salary.package">
+	    <field name="name">SCMMYSS1265</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">900.00</field>
+	    <field name="ot">735.00</field>
+	    <field name="mvc">365.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyss1265p_7pm" model="salary.package">
+	    <field name="name">SCMMYSS1265P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">900.00</field>
+	    <field name="ot">735.00</field>
+	    <field name="mvc">365.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysso1155_7pm" model="salary.package">
+	    <field name="name">SCMMYSSO1155</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">850.00</field>
+	    <field name="ot">695.00</field>
+	    <field name="mvc">255.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysso1155p_7pm" model="salary.package">
+	    <field name="name">SCMMYSSO1155P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">850.00</field>
+	    <field name="ot">695.00</field>
+	    <field name="mvc">255.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of monthly 7.30pm - 7.30am -->
+	<!-- Start of monthly 8.00pm - 8.00am -->
+	<record id="scmmyso145_8pm" model="salary.package">
+	    <field name="name">SCMMYSO145</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">800.00</field>
+	    <field name="ot">655.00</field>
+	    <field name="mvc">145.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyso145p_8pm" model="salary.package">
+	    <field name="name">SCMMYSO145P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">800.00</field>
+	    <field name="ot">655.00</field>
+	    <field name="mvc">145.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyss1265_8pm" model="salary.package">
+	    <field name="name">SCMMYSS1265</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">900.00</field>
+	    <field name="ot">735.00</field>
+	    <field name="mvc">365.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmyss1265p_8pm" model="salary.package">
+	    <field name="name">SCMMYSS1265P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">900.00</field>
+	    <field name="ot">735.00</field>
+	    <field name="mvc">365.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysso1155_8pm" model="salary.package">
+	    <field name="name">SCMMYSSO1155</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">850.00</field>
+	    <field name="ot">695.00</field>
+	    <field name="mvc">255.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysso1155p_8pm" model="salary.package">
+	    <field name="name">SCMMYSSO1155P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">850.00</field>
+	    <field name="ot">695.00</field>
+	    <field name="mvc">255.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of daily 8.00am - 8.00pm -->
+	<!-- End of MONTHLY MY -->
+	<!-- Start of MONTHLY SG-->
+	<!-- Start of monthly 7.30am - 7.30pm -->
+	<record id="scmsgso2100_7am" model="salary.package">
+	    <field name="name">SCMSGSO2100</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">1100.00</field>
+	    <field name="ot">900.00</field>
+	    <field name="mvc">100.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgso2100p_7am" model="salary.package">
+	    <field name="name">SCMSGSO2100P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">1100.00</field>
+	    <field name="ot">900.00</field>
+	    <field name="mvc">100.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss1_7am" model="salary.package">
+	    <field name="name">SCMSGSS1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">1500.00</field>
+	    <field name="ot">1200.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss1p_7am" model="salary.package">
+	    <field name="name">SCMSGSS1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">1500.00</field>
+	    <field name="ot">1200.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss01_7am" model="salary.package">
+	    <field name="name">SCMSGSSO1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">1300.00</field>
+	    <field name="ot">1050.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss01p_7am" model="salary.package">
+	    <field name="name">SCMSGSSO1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">1300.00</field>
+	    <field name="ot">1050.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysss1_7am" model="salary.package">
+	    <field name="name">SCMSGSSS1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">1760.00</field>
+	    <field name="ot">1440.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysss1p_7am" model="salary.package">
+	    <field name="name">SCMSGSSS1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730am730pm</field>
+	    <field name="basic_salary">1760.00</field>
+	    <field name="ot">1440.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of monthly 7.30am - 7.30pm -->
+	<!-- Start of monthly 7.30am - 7.30pm -->
+	<record id="scmsgso2100_7pm" model="salary.package">
+	    <field name="name">SCMSGSO2100</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">1100.00</field>
+	    <field name="ot">900.00</field>
+	    <field name="mvc">100.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgso2100p_7pm" model="salary.package">
+	    <field name="name">SCMSGSO2100P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">1100.00</field>
+	    <field name="ot">900.00</field>
+	    <field name="mvc">100.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss1_7pm" model="salary.package">
+	    <field name="name">SCMSGSS1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">1500.00</field>
+	    <field name="ot">1200.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss1p_7pm" model="salary.package">
+	    <field name="name">SCMSGSS1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">1500.00</field>
+	    <field name="ot">1200.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss01_7pm" model="salary.package">
+	    <field name="name">SCMSGSSO1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">1300.00</field>
+	    <field name="ot">1050.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss01p_7pm" model="salary.package">
+	    <field name="name">SCMSGSSO1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">1300.00</field>
+	    <field name="ot">1050.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysss1_7pm" model="salary.package">
+	    <field name="name">SCMSGSSS1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">1760.00</field>
+	    <field name="ot">1440.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgsss1p_7pm" model="salary.package">
+	    <field name="name">SCMSGSSS1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">730pm730am</field>
+	    <field name="basic_salary">1760.00</field>
+	    <field name="ot">1440.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of monthly 7.30pm - 7.30am -->
+	<!-- Start of monthly 8.00am - 8.00pm -->
+	<record id="scmsgso2100_8am" model="salary.package">
+	    <field name="name">SCMSGSO2100</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">1100.00</field>
+	    <field name="ot">900.00</field>
+	    <field name="mvc">100.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgso2100p_8am" model="salary.package">
+	    <field name="name">SCMSGSO2100P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">1100.00</field>
+	    <field name="ot">900.00</field>
+	    <field name="mvc">100.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss1_8am" model="salary.package">
+	    <field name="name">SCMSGSS1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">1500.00</field>
+	    <field name="ot">1200.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss1p_8am" model="salary.package">
+	    <field name="name">SCMSGSS1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">1500.00</field>
+	    <field name="ot">1200.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss01_8am" model="salary.package">
+	    <field name="name">SCMSGSSO1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">1300.00</field>
+	    <field name="ot">1050.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss01p_8am" model="salary.package">
+	    <field name="name">SCMSGSSO1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">1300.00</field>
+	    <field name="ot">1050.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgsss1_8am" model="salary.package">
+	    <field name="name">SCMSGSSS1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">1760.00</field>
+	    <field name="ot">1440.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgsss1p_8am" model="salary.package">
+	    <field name="name">SCMSGSSS1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800am800pm</field>
+	    <field name="basic_salary">1760.00</field>
+	    <field name="ot">1440.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of monthly 8am - 8pm -->
+	<!-- Start of monthly 8pm - 8am -->
+	<record id="scmsgso2100_8pm" model="salary.package">
+	    <field name="name">SCMSGSO2100</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">1100.00</field>
+	    <field name="ot">900.00</field>
+	    <field name="mvc">100.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgso2100p_8pm" model="salary.package">
+	    <field name="name">SCMSGSO2100P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">1100.00</field>
+	    <field name="ot">900.00</field>
+	    <field name="mvc">100.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss1_8pm" model="salary.package">
+	    <field name="name">SCMSGSS1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">1500.00</field>
+	    <field name="ot">1200.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss1p_8pm" model="salary.package">
+	    <field name="name">SCMSGSS1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">1500.00</field>
+	    <field name="ot">1200.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss01_8pm" model="salary.package">
+	    <field name="name">SCMSGSSO1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">1300.00</field>
+	    <field name="ot">1050.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmsgss01p_8pm" model="salary.package">
+	    <field name="name">SCMSGSSO1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">1300.00</field>
+	    <field name="ot">1050.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysss1_8pm" model="salary.package">
+	    <field name="name">SCMSGSSS1</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">1760.00</field>
+	    <field name="ot">1440.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">0.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<record id="scmmysss1p_8pm" model="salary.package">
+	    <field name="name">SCMSGSSS1P</field>
+	    <field name="type_of_package">monthly</field>
+	    <field name="time">800pm800am</field>
+	    <field name="basic_salary">1760.00</field>
+	    <field name="ot">1440.00</field>
+	    <field name="mvc">0.00</field>
+	    <field name="pis">150.00</field>
+	    <field name="awbr">0.00</field>
+	</record>
+	<!-- End of monthly 8.00pm - 8.00am -->
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

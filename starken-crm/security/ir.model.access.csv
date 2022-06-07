@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_starken_crm_partner_type,starken_crm.partner.type,model_starken_crm_partner_type,,1,1,1,1
+access_starken_crm_product_class,starken_crm.product.class,model_starken_crm_product_class,,1,1,1,1
+access_starken_crm_product_group,starken_crm.product.group,model_starken_crm_product_group,,1,1,1,1
+access_starken_crm_lead_products_group,starken_crm.lead.products,model_starken_crm_lead_products,,1,1,1,1
+access_starken_crm_lead_category_group,starken_crm.lead.category,model_starken_crm_lead_category,,1,1,1,1
+access_starken_crm_volume_uom,starken_crm.volume.uom,model_starken_crm_volume_uom,,1,1,1,1
+access_starken_crm_mssql_track,starken_crm.mssql.track,model_starken_crm_mssql_track,,1,1,1,1
+access_starken_delivery_zone,starken_crm.delivery.zone,model_delivery_zone,,1,1,1,1
+access_starken_block_pricing_policy,starken_crm.block.pricing.policy,model_block_pricing_policy,,1,1,1,1
+access_starken_accessories_pricing_policy, starken_crm.accessories.pricing.policy,model_accessories_pricing_policy,,1,1,1,1
+access_starken_panel_pricing_policy, starken_crm.panel.pricing.policy,model_panel_pricing_policy,,1,1,1,1
+access_sale_order_to_approve_users, starken_crm.sale.order.user.toapprove,model_sale_order_user_toapprove,,1,1,1,1

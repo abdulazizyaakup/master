@@ -1,0 +1,26 @@
+<odoo>
+	<record id="partner_type_arc" model="starken_crm.partner.type">
+        <field name="name">Architects</field>
+    </record>
+    <record id="partner_type_ces" model="starken_crm.partner.type">
+        <field name="name">Consultant Engineers</field>
+    </record>
+    <record id="partner_type_ctrctrs" model="starken_crm.partner.type">
+        <field name="name">Contractors</field>
+    </record>
+    <record id="partner_type_devs" model="starken_crm.partner.type">
+        <field name="name">Developers</field>
+    </record>
+    <record id="partner_type_pm" model="starken_crm.partner.type">
+        <field name="name">Project Managers</field>
+    </record>
+    <record id="partner_type_qs" model="starken_crm.partner.type">
+        <field name="name">Quantity Surveyors</field>
+    </record>
+    <record id="partner_type_sbcapls" model="starken_crm.partner.type">
+        <field name="name">Subcons/Applicators</field>
+    </record>
+    <record id="partner_type_trdhouse" model="starken_crm.partner.type">
+        <field name="name">Trading Houses</field>
+    </record>
+</odoo>

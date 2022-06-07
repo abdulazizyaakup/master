@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="preferred_site1" model="preferred.site">
+        <field name="name">Condominium</field>
+    </record>
+    <record id="preferred_site2" model="preferred.site">
+        <field name="name">Factory</field>
+    </record>
+    <record id="preferred_site3" model="preferred.site">
+        <field name="name">Club / Bar</field>
+    </record>
+    <record id="preferred_site4" model="preferred.site">
+        <field name="name">Office</field>
+    </record>
+    <record id="preferred_site5" model="preferred.site">
+        <field name="name">Light Industrial</field>
+    </record>
+    <record id="preferred_site6" model="preferred.site">
+        <field name="name">Events</field>
+    </record>
+    <record id="preferred_site7" model="preferred.site">
+        <field name="name">School</field>
+    </record>
+    <record id="preferred_site8" model="preferred.site">
+        <field name="name">Showroom</field>
+    </record>
+    <record id="preferred_site9" model="preferred.site">
+        <field name="name">Hotel / Resort</field>
+    </record>
+    <record id="preferred_site10" model="preferred.site">
+        <field name="name">Shopping Centre</field>
+    </record>
+
+</odoo>

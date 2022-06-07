@@ -1,0 +1,11 @@
+<odoo>
+	<record id="base.state_my_kul" model="res.country.state">
+        <field name="name">Wilayah Persekutuan</field>
+        <field name="code">WP</field>
+    </record>
+    <!-- DELETE EXISTING DEFAULT STATES -->
+    <!-- IT IS IMPERATIVE THAT NO MODELS ARE USING THESE STATES ON UPGRADE 
+         FAILURE TO DO SO RESULTS IN FOREIGN KEY EXCEPTION-->
+    <!-- <delete id="base.state_my_pjy" model="res.country.state"/> -->
+    <!-- <delete id="base.state_my_lbn" model="res.country.state"/> -->
+</odoo>

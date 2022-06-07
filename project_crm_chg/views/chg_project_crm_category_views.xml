@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- <record id="crm_project_category_search" model="ir.ui.view">
+      <field name="name">Project Category - Search</field>
+      <field name="model">project.crm</field>
+      <field name="arch" type="xml">
+          <search string="Project Search">
+              <field name="name"/>
+          </search>
+      </field>
+  </record> -->
+
+  <record id="crm_project_category_tree" model="ir.ui.view">
+      <field name="name">project.crm.category.tree</field>
+      <field name="model">project.crm.category</field>
+      <field name="arch" type="xml">
+          <tree string="Projects">
+              <field name="name"/>
+              <field name="parent_id"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="crm_project_category_form" model="ir.ui.view">
+      <field name="name">project.crm.category.form</field>
+      <field name="model">project.crm.category</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+          <form string="Project Category">
+              <sheet>
+                  <group>
+                      <group>
+                          <field name="name"/>
+                          <field name="parent_id"/>
+                      </group>
+                      <group>
+                          <field name="category_notes"/>
+                      </group>
+                  </group>
+              </sheet>
+              <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+              </div>
+          </form>
+      </field>
+  </record>
+
+  <record id="crm_project_category_action" model="ir.actions.act_window">
+      <field name="name">Project Category</field>
+      <field name="res_model">project.crm.category</field>
+      <field name="view_id" ref="crm_project_category_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set a new project category
+        </p>
+      </field>
+  </record>
+
+  <menuitem
+      id="crm_menu_project_category"
+      name="Project Category"
+      parent="crm_menu_project"
+      action="crm_project_category_action"
+      sequence="2" groups="sales_team.group_sale_manager"/>
+
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="drymix-crm.list">
+      <field name="name">drymix-crm list</field>
+      <field name="model">drymix-crm.drymix-crm</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="drymix-crm.action_window">
+      <field name="name">drymix-crm window</field>
+      <field name="res_model">drymix-crm.drymix-crm</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="drymix-crm.action_server">
+      <field name="name">drymix-crm server</field>
+      <field name="model_id" ref="model_drymix-crm_drymix-crm"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="drymix-crm" id="drymix-crm.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="drymix-crm.menu_1" parent="drymix-crm.menu_root"/>
+    <menuitem name="Menu 2" id="drymix-crm.menu_2" parent="drymix-crm.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="drymix-crm.menu_1_list" parent="drymix-crm.menu_1"
+              action="drymix-crm.action_window"/>
+    <menuitem name="Server to list" id="drymix-crm" parent="drymix-crm.menu_2"
+              action="drymix-crm.action_server"/>
+-->
+  </data>
+</odoo>

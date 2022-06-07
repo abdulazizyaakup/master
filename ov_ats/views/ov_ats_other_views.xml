@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+    <!-- Salary Package -->
+    <record model="ir.ui.view" id="ov_salary_package_form_view">
+        <field name="name">salary.package.form</field>
+        <field name="model">salary.package</field>
+        <field name="arch" type="xml">
+            <form string="Salary Package">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="type_of_package"/>
+                            <field name="time"/>
+                        </group>
+                        <group>
+                            <field name="basic_salary" widget="monetary"/>
+                            <field name="ot" widget="monetary"/>
+                            <field name="mvc" widget="monetary"/>
+                            <field name="pis" widget="monetary"/>
+                            <field name="awbr" widget="monetary"/>
+                            <!-- <field name="gross_salary" widget="monetary"/> -->
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="ov_salary_package_tree_view">
+        <field name="name">salary.package.tree</field>
+        <field name="model">salary.package</field>
+        <field name="arch" type="xml">
+            <tree string="Salary Package">
+                <field name="name"/>
+                <field name="type_of_package"/>
+                <field name="time"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_ov_salarypackage" model="ir.actions.act_window">
+        <field name="name">Salary Package</field>
+        <field name="res_model">salary.package</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="ov_hr_salarypackage" name="Salary Package" parent="hr.menu_human_resources_configuration" action="action_ov_salarypackage" groups="hr.group_hr_manager"/>
+        <!-- Salary Package -->
+        <!-- Races -->
+        <record model="ir.ui.view" id="ov_applicant_races_form_view">
+            <field name="name">applicant.races.form</field>
+            <field name="model">applicant.races</field>
+            <field name="arch" type="xml">
+                <form string="Race">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_applicant_races_tree_view">
+            <field name="name">applicant.races.tree</field>
+            <field name="model">applicant.races</field>
+            <field name="arch" type="xml">
+                <tree string="Races">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_applicant_races" model="ir.actions.act_window">
+            <field name="name">Races</field>
+            <field name="res_model">applicant.races</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_applicant_races" name="Races" parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_applicant_races" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+        <record model="ir.ui.view" id="ov_callpref_site_form_view">
+            <field name="name">callpref.site.form</field>
+            <field name="model">callpref.site</field>
+            <field name="arch" type="xml">
+                <form string="Preferred Type of Work Site">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_callpref_site_tree_view">
+            <field name="name">callpref.site.tree</field>
+            <field name="model">callpref.site</field>
+            <field name="arch" type="xml">
+                <tree string="Preferred Type of Work Site">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_callpref_site" model="ir.actions.act_window">
+            <field name="name">Preferred Type of Work Site</field>
+            <field name="res_model">callpref.site</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_callpref_site" name="Preferred Type of Work Site" parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_callpref_site" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+        <record model="ir.ui.view" id="ov_uploaded_file_form_view">
+            <field name="name">uploaded.file.form</field>
+            <field name="model">uploaded.file</field>
+            <field name="arch" type="xml">
+                <form string="Uploaded Files">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="title" class="oe_edit_only"/>
+                            <h1><field name="title"/></h1>
+                            
+                        </div>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="filetype"/>
+                            <field name="file" filename="name"/>
+                            <field name="applicant_id" invisible="0"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_uploaded_file_tree_view">
+            <field name="name">uploaded.file.tree</field>
+            <field name="model">uploaded.file</field>
+            <field name="arch" type="xml">
+                <tree string="Uploaded Files">
+                    <field name="title"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="filetype"/>
+                    <field name="file" widget="binary" filename="title"/>
+                    <field name="applicant_id" invisible="0"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_ov_uploaded_file" model="ir.actions.act_window">
+            <field name="name">Uploaded Files</field>
+            <field name="res_model">uploaded.file</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_uploaded_file" name="Uploaded Files" parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_uploaded_file" groups="hr_recruitment.group_hr_recruitment_user"/>
+        <!-- Races -->
+        <!--  Days Available -->
+<!--         <record model="ir.ui.view" id="ov_daysavail_form_view">
+            <field name="name">days.available.form</field>
+            <field name="model">days.available</field>
+            <field name="arch" type="xml">
+                <form string="Days Available">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_daysavail_tree_view">
+            <field name="name">days.available.tree</field>
+            <field name="model">days.available</field>
+            <field name="arch" type="xml">
+                <tree string="Days Available">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_daysavail" model="ir.actions.act_window">
+            <field name="name">Days Available</field>
+            <field name="res_model">days.available</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_daysavail" name="Days Available" parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_daysavail" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+        <!-- Days Available -->
+        <!-- Contact Reject Reason -->
+        <record model="ir.ui.view" id="ov_contactreject_reason_form_view">
+            <field name="name">contactreject.reason.form</field>
+            <field name="model">contactreject.reason</field>
+            <field name="arch" type="xml">
+                <form string="Contact Reject Reason">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <field name="applicant_ids" invisible="0">
+                        <tree>
+                          <field name="partner_name"/>
+                        </tree>
+                      </field>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_contactreject_reason_tree_view">
+            <field name="name">contactreject.reason.tree</field>
+            <field name="model">contactreject.reason</field>
+            <field name="arch" type="xml">
+                <tree string="Contact Reject Reason">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_contactreject_reason" model="ir.actions.act_window">
+            <field name="name">Contact Reject Reason</field>
+            <field name="res_model">contactreject.reason</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_contactreject_reason" name="Contact Reject Reason" parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_contactreject_reason" groups="hr_recruitment.group_hr_recruitment_user"/>
+        <!-- Contact Reject Reason -->
+
+        <!-- WSS Reject Reason -->
+        <record model="ir.ui.view" id="ov_wssreject_reason_form_view">
+            <field name="name">wssreject.reason.form</field>
+            <field name="model">wssreject.reason</field>
+            <field name="arch" type="xml">
+                <form string="WSS Reject Reason">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <field name="applicant_ids" invisible="0">
+                        <tree>
+                          <field name="partner_name"/>
+                        </tree>
+                      </field>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_wssreject_reason_tree_view">
+            <field name="name">wssreject.reason.tree</field>
+            <field name="model">wssreject.reason</field>
+            <field name="arch" type="xml">
+                <tree string="WSS Reject Reason">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_wssreject_reason" model="ir.actions.act_window">
+            <field name="name">WSS Reject Reason</field>
+            <field name="res_model">wssreject.reason</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_wssreject_reason" name="WSS Reject Reason" parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_wssreject_reason" groups="hr_recruitment.group_hr_recruitment_user"/>
+        <!-- WSS Reject Reason -->
+
+        <record model="ir.ui.view" id="preferredsuitable_site_form_view">
+            <field name="name">preferredsuitable.site.form</field>
+            <field name="model">preferredsuitable.site</field>
+            <field name="arch" type="xml">
+                <form string="Assessed Suitable For">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <label for="applicant_ids"/>
+                        <field name="applicant_ids"/>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="preferredsuitable_site_tree_view">
+            <field name="name">preferredsuitable.site.tree</field>
+            <field name="model">preferredsuitable.site</field>
+            <field name="arch" type="xml">
+                <tree string="Assessed Suitable For">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_preferredsuitable_site" model="ir.actions.act_window">
+            <field name="name">Assessed Suitable For</field>
+            <field name="res_model">preferredsuitable.site</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_preferredsuitable_site" name="Assessed Suitable For"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_preferredsuitable_site" groups="hr_recruitment.group_hr_recruitment_user"/>
+ -->
+
+        <record model="ir.ui.view" id="driving_license_form_view">
+            <field name="name">driving.license.form</field>
+            <field name="model">driving.license</field>
+            <field name="arch" type="xml">
+                <form string="Driving License">
+                    <sheet>
+                        <group>
+                            <field name="applicant_id"/>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="driving_license_tree_view">
+            <field name="name">driving.license.tree</field>
+            <field name="model">driving.license</field>
+            <field name="arch" type="xml">
+                <tree string="Driving License">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_driving_license" model="ir.actions.act_window">
+            <field name="name">Driving License</field>
+            <field name="res_model">driving.license</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_driving_license" name="Driving License"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_driving_license" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+
+        <record model="ir.ui.view" id="preferred_site_form_view">
+            <field name="name">preferred.site.form</field>
+            <field name="model">preferred.site</field>
+            <field name="arch" type="xml">
+                <form string="Preferred Type of Projects">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <label for="applicant_ids"/>
+                        <field name="applicant_ids"/>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="preferred_site_tree_view">
+            <field name="name">preferred.site.tree</field>
+            <field name="model">preferred.site</field>
+            <field name="arch" type="xml">
+                <tree string="Preferred Type of Projects">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_preferred_site" model="ir.actions.act_window">
+            <field name="name">Preferred Type of Projects</field>
+            <field name="res_model">preferred.site</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_preferred_site" name="Preferred Type of Projects"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_preferred_site" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+
+
+
+        <record model="ir.ui.view" id="iv_assessment_form_view">
+            <field name="name">iv.assessment.form</field>
+            <field name="model">iv.assessment</field>
+            <field name="arch" type="xml">
+                <form string="Interview Assessment">
+                    <sheet>
+                        <group string="Assessment">
+                            <field name="name"/>
+                            <field name="applicant_id"/>
+                            <field name="interviewer"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="personal_grooming" widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                            <group>
+                                <p><b>7</b> - Immaculately dressed and groomed<br/><b>1</b> - Unkempt; Sloppy</p>
+                            </group>
+                            <group>
+                                <field name="personal_expression" widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                            <group>
+                                <p><b>7</b> - Very self-possessed and composed<br/><b>1</b> - Nervous; Embarrassed; Compulsive manners</p>
+                            </group>
+                            <group>
+                                <field name="confidence" widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                            <group>
+                                <p><b>7</b> - Very self-assured<br/><b>1</b> - Shy; Retiring</p>
+                            </group>
+                            <group>
+                                <field name="maturity" widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                            <group>
+                                <p><b>7</b> - Very mature; outstanding personality<br/><b>1</b> - Immature; Unstable; Impulsive</p>
+                            </group>
+                            <group>
+                                <field name="commitment_n_drive" widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                            <group>
+                                <p><b>7</b> - Dedicated to organisation and work, Willing to accept new challenges<br/><b>1</b> -  Uninterested; Listless; Lack of vigour and perserverance</p>
+                            </group>
+                            <group>
+                                <field name="communication_skills" widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                            <group>
+                                <p><b>7</b> - Able to express ideas logically and holds the attention of others<br/><b>1</b> - Finds difficulty in expressing logically and clearly</p>
+                            </group>
+                            <group>
+                                <field name="mental_alertness" widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                            <group>
+                                <p><b>7</b> - Quick and keen mind; Able to grasp ideas<br/><b>1</b> - Dull; Slow to grasp ideas</p>
+                            </group>
+                            <group>
+                                <field name="knowledge_and_skills" widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                            <group>
+                                <p><b>7</b> - Very good knowledge and skills in the context of the position applied for<br/><b>1</b> - Very poor knowledge and skills in the context of the position applied for</p>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="negative_char_ids"/>
+                        </group>
+
+                        <group>
+                            <field name="positive_char_ids"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="strength_identified"/>
+                            </group>
+                            <group>
+                                <field name="possible_weaknesses"/>
+                            </group>
+                            <group>
+                                <field name="other_comments"/>
+                            </group>
+                            <group>
+                                <field name="preferred_site_suitable_ids" widget="many2many_checkboxes" options="{'horizontal': true}"/>
+                                <!-- <field name="iv_assessment_suitable_other" attrs="{'invisible':[('iv_assessment_suitable', '!=', 'others')]}"/> -->
+                            </group>
+                        </group>
+                        
+                        <group string="Recommendation">
+                        <group>
+                            <field name="recommendation" widget="radio" options="{'horizontal': true}"/>
+                            <field name="recommendation_remarks"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="recruiter"/>
+                            </group>
+                            <group>
+                                <field name="recruiter_signature" widget="signature"/>
+                            </group>
+                        </group>
+                    </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="iv_assessment_tree_view">
+            <field name="name">iv.assessment.tree</field>
+            <field name="model">iv.assessment</field>
+            <field name="arch" type="xml">
+                <tree string="Interview Assessment">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_iv_assessment" model="ir.actions.act_window">
+            <field name="name">Interview Assessment</field>
+            <field name="res_model">iv.assessment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_iv_assessment" name="Interview Assessment"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_iv_assessment" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+</odoo>

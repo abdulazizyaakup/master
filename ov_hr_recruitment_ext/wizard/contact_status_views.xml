@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="contact_sub_stage_wizard_form_view">
+        <field name="name">Contact Status</field>
+        <field name="model">applicant.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Applicant Status">
+                <header>
+                <field name="contact_stage" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
+            </header>
+                <sheet>
+                <group>
+                    <field name="applicant_id" readonly="1"/>
+                    <field name="contact_stage"/>
+                    <field name="contact_comment"/>
+                </group>
+                <footer>
+                    <button name="status" type="object"
+                            string="Save" class="oe_highlight"/>
+                    or
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </sheet>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="launch_applicant_status_wizard"
+                name="Applicant Status"
+                src_model="hr.applicant"
+                res_model="applicant.wizard"
+                view_mode="form"
+                target="new"
+                key2="client_action_multi"/>
+</odoo>

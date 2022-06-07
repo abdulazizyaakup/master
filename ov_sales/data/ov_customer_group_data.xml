@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Customer Group -->
+    <record id="customer_group1" model="partner.group">
+        <field name="name">Residential</field>
+        <field eval="'customer'" name="partner_type"/>
+    </record>
+    <record id="customer_group2" model="partner.group">
+        <field name="name">Commercial Building</field>
+        <field eval="'customer'" name="partner_type"/>
+    </record>
+    <record id="customer_group3" model="partner.group">
+        <field name="name">School</field>
+        <field eval="'customer'" name="partner_type"/>
+    </record>
+    <record id="customer_group4" model="partner.group">
+        <field name="name">Mixed Development</field>
+        <field eval="'customer'" name="partner_type"/>
+    </record>
+    <record id="customer_group5" model="partner.group">
+        <field name="name">Government</field>
+        <field eval="'customer'" name="partner_type"/>
+    </record>
+    <record id="customer_group6" model="partner.group">
+        <field name="name">Commercial</field>
+        <field eval="'customer'" name="partner_type"/>
+    </record>
+    <!-- Supplier Group -->
+    <record id="supplier_group7" model="partner.group">
+        <field name="name">Trade</field>
+        <field eval="'supplier'" name="partner_type"/>
+    </record>
+    <record id="supplier_group8" model="partner.group">
+        <field name="name">Non-Trade</field>
+        <field eval="'supplier'" name="partner_type"/>
+    </record>
+    <record id="supplier_group9" model="partner.group">
+        <field name="name">Intercompany</field>
+        <field eval="'supplier'" name="partner_type"/>
+    </record>
+    <record id="supplier_group7" model="partner.group">
+        <field name="name">Local</field>
+        <field eval="'supplier'" name="partner_type"/>
+    </record>
+    <record id="supplier_group8" model="partner.group">
+        <field name="name">Overseas</field>
+        <field eval="'supplier'" name="partner_type"/>
+    </record>
+
+</odoo>

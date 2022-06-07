@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="0">
+
+    <record model="ir.sequence" id="crm_master_project_sequence1">
+        <field name="name">Sequence For BCI Project</field>
+        <field name="code">master.project1</field>
+        <field name="implementation">standard</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">B</field>
+        <field name="padding">6</field>
+        <field eval="2422" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+        <field eval="False" name="company_id"/>
+    </record>
+    <record model="ir.sequence" id="crm_master_project_sequence2">
+        <field name="name">Sequence For Non-BCI Project</field>
+        <field name="code">master.project2</field>
+        <field name="implementation">standard</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">X</field>
+        <field name="padding">6</field>
+        <field eval="768" name="number_next"/>
+        <field eval="1" name="number_increment"/>
+        <field eval="False" name="company_id"/>
+    </record>
+
+</data>
+</odoo>

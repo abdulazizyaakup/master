@@ -1,0 +1,455 @@
+<odoo>
+    <record id='crm_external_layout_addr1' model='ir.ui.view'>
+            <field name="name">crm_external_layout_addr1</field>
+            <field name="type">qweb</field>
+            <field name="arch" type="xml">
+                <t t-name="starken-crm.crm_external_layout_addr1">
+
+                    <t t-set="active_model" t-value="False"/>
+                    <t t-set="active_branch" t-value="False"/>
+
+                    <t t-if="doc">
+                        <!-- Report LetterHead based on Active branch of respective record -->
+                        <t t-set="active_model" t-value="doc._table"/>
+                    </t>
+
+                    <t t-if="not company">
+                        <!-- Multicompany -->
+                        <t t-if="company_id">
+                            <t t-set="company" t-value="company_id"/>
+                        </t>
+                        <t t-elif="o and 'company_id' in o">
+                            <t t-set="company" t-value="o.company_id.sudo()"/>
+                        </t>
+                        <t t-else="else">
+                            <t t-set="company" t-value="res_company"/>
+                        </t>
+                     </t>
+
+                     <t t-esc="company.update_scss()"/>
+
+                        <div t-attf-class="header o_company_#{company.id}_layout first-page">
+                            <div class="row">
+                                <div class="col-5 mb4" name="company_address">
+                                    <span t-esc="company.name"></span> (<span t-esc="company.company_registry"></span>)<br/>
+                                    <span t-esc="company.street"></span><br/>
+                                    <span t-esc="company.street2"></span><br/>
+                                    <span t-esc="company.zip"></span> <span t-esc="company.city"></span><br/>
+                                    <span t-esc="company.state_id.name"></span><br/>
+                                </div>
+                                <div class="col-2 mb4">
+                                </div>
+                                <div class="col-2 mb4" style="text-align:right">
+                                    <span>Phone:</span><br/>
+                                    <span>Fax:</span>
+                                </div>
+                                <div class="col-3 mb4">
+                                    <span t-esc="company.partner_id.phone" /><br/>
+                                    <span t-esc="company.partner_id.fax" />
+                                </div>
+                            </div>
+                        </div>
+                        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                            <t t-raw="0"/>
+                        </div>
+                        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                        </div>
+                </t>
+            </field>
+    </record>
+    <record id='crm_external_layout' model='ir.ui.view'>
+            <field name="name">crm_external_layout</field>
+            <field name="type">qweb</field>
+            <field name="arch" type="xml">
+                <t t-name="starken-crm.crm_external_layout">
+
+                    <t t-set="active_model" t-value="False"/>
+                    <t t-set="active_branch" t-value="False"/>
+
+                    <t t-if="doc">
+                        <!-- Report LetterHead based on Active branch of respective record -->
+                        <t t-set="active_model" t-value="doc._table"/>
+                    </t>
+
+                    <t t-if="not o and doc">
+                        <t t-set="o" t-value="doc"/>
+                        </t>
+                        <t t-if="company_id">
+                        <t t-set="company" t-value="company_id.sudo()"></t>
+                        </t>
+                        <t t-if="o and 'company_id' in o and not company_id">
+                        <t t-set="company" t-value="o.company_id.sudo()"></t>
+                    </t>
+                <div t-attf-class="o_company_#{company.id}_layout header" t-att-style="report_header_style">
+                        <div class="o_background_header">
+                        <div class="float-right">
+                            <h3 class="mt0 text-right" t-field="company.report_header"/>
+                        </div>
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-left" alt="Logo"/>
+
+                        <div class="clearfix mb8"/>
+                        </div>
+                    </div>
+
+                        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                            <t t-raw="0"/>
+                        </div>
+                        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                        </div>
+                </t>
+            </field>
+    </record>
+    <record id='crm_report_document_bypass' model='ir.ui.view'>
+        <field name="name">sales.crm_report_saleorder</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="sale.report_saleorder"/>
+        <field name="arch" type="xml">
+            <xpath expr="//t/t/t/t" position="replace">     
+                <t t-if="doc.state in ['sale','done']">
+                    <t t-if="doc.company_id.name" t-value="Starken AAC Sdn. Bhd.">
+                        <t t-call="starken-crm.crm_report_saleorder_so_document" t-lang="doc.partner_id.lang"/>
+                    </t>
+                </t>
+                <t t-else="else">
+                    <t t-if="doc.company_id.name" t-value="Starken AAC Sdn. Bhd.">
+                        <t t-call="starken-crm.crm_report_saleorder_document" t-lang="doc.partner_id.lang"/>
+                    </t>
+                </t>
+            </xpath>
+        </field>
+    </record>
+    <record id='crm_report_saleorder_document' model='ir.ui.view'>
+        <field name="name">starken-crm.crm_report_saleorder_document</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="starken-crm.crm_report_saleorder_document">
+                <t t-foreach="docs" t-as="doc">
+                <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+                <t t-call="starken-crm.crm_external_layout">
+                <t t-if="doc.company_id.name" t-value="Starken AAC Sdn. Bhd.">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row mt16 mb4">
+                            <div class="col-12 mb-1">
+                                <strong>Our Ref : </strong><u><span t-esc="doc.fl_name"/></u>
+                            </div>
+                        </div>
+                        <div class="row mt8 mb2">
+                            <div class="col-12 mb-1">
+                                <strong>Project ID : </strong><u t-esc="doc.opportunity_id.crm_project_id"/>
+                            </div>
+                        </div>
+                        <div class="row mt8 mb2">
+                            <div class="col-12 mb-1">
+                                <strong>Date : </strong><u t-esc="doc.date_order.strftime('%d/%m/%Y')"/>
+                            </div>
+                        </div>
+
+                        <div class="row mt8 mb2">
+                            <div class="col-12 mb-1">
+                                <strong t-field="doc.partner_id.name"/><br/>
+                                <span t-field="doc.quote_to.street"/><br/>
+                                <span t-field="doc.quote_to.street2"/><br/>
+                                <span t-field="doc.quote_to.street3"/><br/>
+                                <t t-if="(doc.quote_to.zip or doc.quote_to.city) and doc.quote_to.state_id">
+                                    <span t-field="doc.quote_to.zip" />
+                                    <span t-field="doc.quote_to.city"/>,
+                                    <span t-field="doc.quote_to.state_id.name" />
+                                </t>
+                                <t t-else="">
+                                    <span t-field="doc.quote_to.zip" />
+                                    <span t-field="doc.quote_to.city"/>
+                                    <span t-field="doc.quote_to.state_id.name" />
+                                </t>
+
+                            </div>
+                        </div>
+
+                        <div class="row mt8 mb2">
+                            <div class="col-12 mb-1">
+                                <strong>Attn : </strong><u t-esc="doc.attn_to"/>
+                            </div>
+                        </div>
+                        <div class="row mt8 mb2">
+                            <div class="col-12 mb-1">
+                                Dear Sir
+                            </div>
+                        </div>
+                        <div class="row mt8 mb2">
+                            <div class="col-12 mb-1">
+                                <b><u>RE: QUOTATION FOR </u><u style="text-transform: uppercase;" t-esc="doc.project_quoted_name"/></b>
+                            </div>
+                        </div>
+                        <div class="row mt8 mb2">
+                            <div class="col-12 mb-1">
+                                With reference to the above mentioned subject, we are pleased to submit herewith our quotation as follows for your kind consideration.
+                            </div>
+                        </div>
+                        <div class="row mt16 mb0">
+                            <div class="col-12">
+                                <table class="table table-sm o_main_table" style="">
+                                    <thead>
+                                        <tr>
+                                            <th name="th_product_desc" class="text-left">Product Description</th>
+                                            <th name="th_com_str" class="text-left">Compressive Strength</th>
+                                            <th name="th_prc" class="text-left">Price (RM)</th>
+                                            <th name="th_mtr_sq" class="text-center" width="10%">Metre sq./ pallet</th>
+                                            <th name="th_no_pcs" class="text-center" width="10%">No. of pcs/ pallet</th>
+                                            <th name="th_plt_dlv" class="text-center" width="10%">Pallets / delivery</th>
+                                            <th name="th_uom" class="text-left">UOM</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="sale_tbody">
+                                        <t t-set="cix" t-value="0"/>
+                                        <t t-foreach="doc.order_line" t-as="line">
+                                            <tr>
+                                                <td name="td_product_desc" class="text-left"><span t-field="line.name"/></td>
+                                                <td name="td_com_str" class="text-left"><span t-field="line.compressive_strength"/></td>
+                                                <td name="td_prc" class="text-left">
+                                                  <span t-field="line.price_unit"/>
+                                                </td>
+                                                <td name="td_mtr_sq" class="text-center">
+                                                  <t t-if="line.mtr_sq_per_plt"><span t-field="line.mtr_sq_per_plt" /></t>
+                                                </td>
+                                                <td name="td_no_pcs" class="text-center">
+                                                  <t t-if="line.no_pcs_per_plt"><span t-field="line.no_pcs_per_plt" /></t>
+                                                </td>
+                                                <td name="td_plt_dlv" class="text-center">
+                                                  <t t-if="line.plt_per_dlv"><span t-field="line.plt_per_dlv" /></t>
+                                                </td>
+                                                <td name="td_uom" class="text-left">
+                                                  <span t-field="line.product_id.uom_id.name"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt0 mb16" style="page-break-after: always;">
+                            <div class="col-12">
+                                <table class="table table-sm o_main_table">
+                                    <thead>
+                                        <tr>
+                                            <th width="20%"/>
+                                            <th/>
+                                            <th/>
+                                            <th/>
+                                            <th/>
+                                            <th/>
+                                            <th/>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="sale_tbody">
+                                        <tr>
+                                            <td><b>Pricing</b></td>
+                                            <td colspan='6'><span t-esc="doc.pricing_info"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Quantity</b></td>
+                                            <td colspan='6'><span t-esc='doc.quantity_info' /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Payment Terms</b></td>
+                                            <td colspan='6'><span t-esc='doc.payment_term_id.name' /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Odd Size Cutting</b></td>
+                                            <td colspan="6"><span t-esc="doc.odd_size_cutting_info" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Delivery</b></td>
+                                            <td colspan='6'><span t-esc='doc.delivery_info' /></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Validity</b></td>
+                                            <td colspan='6'><span t-esc='doc.validity_info' /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt8 mb8">
+                            <div class="col-12 mb-2">
+                              <span t-field="doc.note"/>
+                            </div>
+                        </div>
+
+                        <div class="row mt8" style="page-break-inside: avoid;">
+                            <div class="col-12">
+                                <div t-if="user.signature" style="all:unset;" name="signature">
+                                  <t t-raw="user.signature"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+            </t>
+            </t>
+        </field>
+    </record>
+    <record id='crm_report_saleorder_so_document' model='ir.ui.view'>
+        <field name="name">starken-crm.crm_report_saleorder_so_document</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="starken-crm.crm_report_saleorder_so_document">
+                <t t-foreach="docs" t-as="doc">
+                <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+                <t t-call="starken-crm.crm_external_layout_addr1">
+                    <style>
+                      .boxed_div {
+                          box-sizing: border-box;
+                          -moz-box-sizing: border-box;
+                          -webkit-box-sizing: border-box;
+                          border: 2px solid;
+                      }
+                      .boxed_texts {
+                        text-align: center;
+                        border: 2px solid;
+                      }
+                      .black_line {
+                        border: 1px solid;
+                      }
+                      .black_thin_line {
+                        border: 1px solid;
+                      }
+                      .bottom-marginless {
+                        margin-bottom: 0;
+                      }
+                    </style>
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <div class="row mt2 mb2">
+                            <div class="col-3 mb-2">
+                                <strong>Sales Order: <span t-esc="doc.fl_name"/></strong>
+                            </div>
+                            <div class="col-6 mb-2 boxed_texts">
+                                <h3>Sales Order Acknowledgment</h3>
+                            </div>
+                            <div class="col-3 mb-2">
+                            </div>
+                        </div>
+                        <div class="row mt2 mb2">
+                            <div class="col-6 boxed_div">
+                                <strong>Sold To: </strong><br/>
+                                <br/>
+                                <span t-esc="doc.partner_id.name"></span><br/>
+                                <span t-esc="doc.partner_id.street"></span><br/>
+                                <t t-if="doc.partner_id.street2"><span t-esc="doc.partner_id.street2"></span><br/></t>
+                                <span t-esc="doc.partner_id.zip"></span> <span t-esc="doc.partner_id.city"></span><br/>
+                                <span t-esc="doc.partner_id.state_id.name"></span><br/>
+                                <br/>
+                                <span>Fax: </span><span t-esc="doc.partner_id.fax"/><br/>
+                                <br/>
+                            </div>
+                            <div class="col-6 boxed_div">
+                                <strong>Ship To: </strong><br/>
+                                <span t-esc="doc.ship_to.phone"/><br/>
+                                <span t-esc="doc.ship_to.name"></span><br/>
+                                <span t-esc="doc.ship_to.street"></span><br/>
+                                <t t-if="doc.ship_to.street2"><span t-esc="doc.ship_to.street2"></span><br/></t>
+                                <span t-esc="doc.ship_to.zip"></span> <span t-esc="doc.ship_to.city"></span><br/>
+                                <span t-esc="doc.ship_to.state_id.name"></span><br/>
+                                <br/>
+                                <span>Fax: </span><span t-esc="doc.ship_to.fax"/><br/>
+                                <br/>
+                            </div>
+                        </div>
+                        <!-- BORDERED-->
+                        <div class="row mt4 mb4">
+                            <div class="col-12 boxed_div">
+                              <div class="row">
+                                <div class="col-4 mb-2">
+                                    <span>Order Date: </span><span t-field="doc.date_order" t-options='{"format": "dd/MM/yyyy"}'></span><br/>
+                                    <span>Need By: </span><span t-field="doc.need_by_date" t-options='{"format": "dd/MM/yyyy"}'/><br/>
+                                    <span>Terms: </span><span t-esc="doc.payment_term_id.name"></span><br/>
+                                </div>
+                                <div class="col-8 mb-2">
+                                    <span>PO Number : </span><span t-esc="doc.po_number"></span><br/>
+                                    <span>Sales Person : </span><span t-esc="doc.user_id.name"></span><br/>
+                                    <span>Ship Via : </span><span t-field="doc.ship_via"></span><br/>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <t t-set="cix" t-value="0"/>
+                        <div class="row mt4 mb4">
+                          <table class="table table-sm o_main_table">
+                            <thead class="boxed_div">
+                                <tr>
+                                    <th name="th_line" class="text-left">Line</th>
+                                    <th name="th_pnumdesc" class="text-left">Part Number/Description</th>
+                                    <th name="th_ordqty" class="text-left">Order Qty</th>
+                                    <th name="th_code" class="text-left">Code</th>
+                                    <th name="th_disc" class="text-left">Disc %</th>
+                                    <th name="th_untprc" class="text-left">Unit Price</th>
+                                    <th name="th_amnt" class="text-left">Amount (RM)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="sale_tbody">
+                                <t t-set="cix" t-value="0"/>
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <t t-set="cix" t-value="cix + 1"/>
+                                    <tr>
+                                        <td name="td_line" class="text-left"><span t-esc="cix"/></td>
+                                        <td name="th_pnumdesc" class="text-left"><span t-field="line.name"/></td>
+                                        <td name="th_ordqty" class="text-left"><span t-field="line.product_uom_qty"/></td>
+                                        <td name="th_code" class="text-left"><span t-field="line.product_uom"/></td>
+                                        <td name="th_disc" class="text-left"></td>
+                                        <td name="th_untprc" class="text-left"><span t-esc="'{:,.4f}'.format(line.price_unit)"/></td>
+                                        <td name="th_amnt" class="text-left"><span t-esc="'{:,.2f}'.format(line.price_total)"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                      </div>
+                      <div class="row mt2">
+                          <div class="col-12">
+                              <b>Remarks: </b><span t-esc="doc.note"></span>
+                          </div>
+                      </div>
+                      <hr class="black_line"/>
+                      <div class="row mt2 mb2">
+                          <div class="col-3 mb-2" style="text-align:center">
+                            <br/>
+                            <div t-if="user.signature" style="all:unset;" name="signature">
+                              <t t-raw="user.signature"/>
+                            </div>
+                            <hr class="black_thin_line"/>
+                            <span>Order By</span>
+                          </div>
+                          <div class="col-3 mb-2" style="text-align:center">
+                            <br/>
+                            <br/>
+                            <hr class="black_thin_line"/>
+                            <span>Approved By</span>
+                          </div>
+                          <div class="col-4 mb-2" style="text-align:right">
+                            <span>Line Total:</span><br/>
+                            <span>Line Miscellaneous Charges:</span><br/>
+                            <span>Order Miscellaneous Charges:</span><br/>
+                            <br/>
+                            <b>Order Total RM</b>
+                          </div>
+                          <div class="col-2 mb-2" style="text-align:right">
+                            <span t-esc="'{:,.2f}'.format(doc.amount_total)"/>
+                            <br/> <!-- Line Miscellaneous Charges-->
+                            <br/> <!-- Order Miscellaneous Charges-->
+                            <br/>
+                            <hr class="black_line bottom-marginless"/>
+                            <strong t-esc="'{:,.2f}'.format(doc.amount_total)"/>
+                          </div>
+                      </div>
+                      <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+            </t>
+        </field>
+    </record>
+  </odoo>

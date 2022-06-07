@@ -1,0 +1,40 @@
+<odoo>
+	<record id="crm_lead_stg_design" model="crm.stage">
+        <field name="name">Design</field>
+        <field name="sequence">1</field>
+        <field name="is_won">False</field>
+    </record>
+    <record id="crm_lead_stg_tender" model="crm.stage">
+        <field name="name">Tender</field>
+        <field name="sequence">2</field>
+        <field name="is_won">False</field>
+    </record>
+    <record id="crm_lead_stg_awarded" model="crm.stage">
+        <field name="name">Awarded</field>
+        <field name="sequence">3</field>
+        <field name="is_won">False</field>
+    </record>
+    <record id="crm_lead_stg_construction" model="crm.stage">
+        <field name="name">Construction</field>
+        <field name="sequence">4</field>
+        <field name="is_won">True</field>
+    </record>
+    <record id="crm_lead_stg_completed" model="crm.stage">
+        <field name="name">Completed</field>
+        <field name="sequence">5</field>
+        <field name="is_won">False</field>
+    </record>
+    <record id="crm_lead_stg_duplicate" model="crm.stage">
+        <field name="name">Duplicate</field>
+        <field name="sequence">6</field>
+        <field name="is_won">False</field>
+        <field name="fold">True</field>
+    </record>
+    <!-- DELETE EXISTING DEFAULT STAGES -->
+    <!-- IT IS IMPERATIVE THAT NO LEADS ARE USING THESE STAGES ON UPGRADE 
+         FAILURE TO DO SO RESULTS IN FOREIGN KEY EXCEPTION-->
+<!--     <delete id="crm.stage_lead1" model="crm.stage"/>
+    <delete id="crm.stage_lead2" model="crm.stage"/>
+    <delete id="crm.stage_lead3" model="crm.stage"/>
+    <delete id="crm.stage_lead4" model="crm.stage"/> -->
+</odoo>

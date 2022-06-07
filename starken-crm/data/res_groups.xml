@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+
+		<record id="sales_team.group_sale_salesman" model="res.groups">
+            <field name="name">Sales Person</field>
+		</record>
+
+		<record id="sales_team.group_sale_salesman_all_leads" model="res.groups">
+            <field name="name">Sales Coordinator</field>
+        </record>
+
+		<record id="group_head_of_sales" model="res.groups">
+          	<field name="name">Head of Sales Group</field>
+          	<field name="category_id" ref="base.module_category_sales_sales"/>
+			<field name="implied_ids" eval="[(4, ref('sales_team.group_sale_salesman_all_leads'))]"/>
+        </record>
+
+		<record id="sales_team.group_sale_manager" model="res.groups">
+  			<field name="implied_ids" eval="[(4, ref('starken-crm.group_head_of_sales'))]"/>
+      	</record>
+
+		<!-- Sales Order Approval-->
+		<record id="module_sales_approval" model="ir.module.category">
+        	<field name="name">Sales Approval</field>
+        	<field name="sequence">20</field>
+			<field name="parent_id" ref="base.module_category_sales" />
+    	</record>
+
+      	<record id="sales_approver_group" model="res.groups">
+	        <field name="name">Sales Approver</field>
+		 	<field name="implied_ids" eval="[(6, 0, [ref('sales_team.group_sale_salesman')])]"/>
+			<field name="category_id" ref="starken-crm.module_sales_approval" />
+	    </record>
+
+		<record id="sales_agm_approver_group" model="res.groups">
+			<field name="name">Sales AGM</field>
+			<field name="category_id" ref="starken-crm.module_sales_approval" />
+			<field name="implied_ids" eval="[(4, ref('sales_approver_group'))]"/>
+		</record>
+
+		<record id="sales_ceo_approver_group" model="res.groups">
+			<field name="name">Sales CEO</field>
+			<field name="category_id" ref="starken-crm.module_sales_approval" />
+			<field name="implied_ids" eval="[(4, ref('sales_agm_approver_group'))]" />
+		</record>
+	</data>
+</odoo>

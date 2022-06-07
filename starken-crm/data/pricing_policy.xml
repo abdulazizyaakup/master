@@ -1,0 +1,7 @@
+<odoo>
+    <record id="panel_default_price_policy" model="panel.pricing.policy">
+        <field name="name">Default</field>
+        <field name="price">450</field>
+        <field name="is_default">1</field>
+    </record>
+</odoo>

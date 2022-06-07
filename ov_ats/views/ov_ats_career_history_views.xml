@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+        <record model="ir.ui.view" id="contact_career_history_form_view">
+            <field name="name">career.history.form</field>
+            <field name="model">career.history</field>
+            <field name="arch" type="xml">
+                <form string="Career History">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="applicant_id"/>
+                                <field name="name"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </group>
+                            <group>
+                                <field name="gross_sal"/>
+                                <field name="reason_leave"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_career_history_tree_view">
+            <field name="name">career.history.tree</field>
+            <field name="model">career.history</field>
+            <field name="arch" type="xml">
+                <tree string="Career History">
+                    <field name="applicant_id"/>
+                    <field name="name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="gross_sal"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_contact_career_history" model="ir.actions.act_window">
+            <field name="name">Career History</field>
+            <field name="res_model">career.history</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_hr_recruitment_contact_career_history" name="Career History"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_contact_career_history" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+        <record model="ir.ui.view" id="resignation_records_form_view">
+            <field name="name">employee.resignation.details.form</field>
+            <field name="model">employee.resignation.details</field>
+            <field name="arch" type="xml">
+                <form string="Resignation Records">
+                    <sheet>
+                        <group>
+                            <group>
+                                <!-- <field name="employee_id"/> -->
+                                <field name="applicant_id"/>
+                                <field name="resignation_date"/>
+                            </group>
+                            <group>
+                                <field name="resignation_reason"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="resignation_records_tree_view">
+            <field name="name">employee.resignation.details.tree</field>
+            <field name="model">employee.resignation.details</field>
+            <field name="arch" type="xml">
+                <tree string="Resignation Records">
+                    <!-- <field name="employee_id"/>
+                    <field name="applicant_id"/ -->
+                    <field name="resignation_date"/>
+                    <field name="resignation_reason"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_resignation_records" model="ir.actions.act_window">
+            <field name="name">Resignation Records</field>
+            <field name="res_model">employee.resignation.details</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_resignation_records" name="Resignation Records"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_resignation_records" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+        <record model="ir.ui.view" id="contact_current_last_company_form_view">
+            <field name="name">current.last.company.form</field>
+            <field name="model">current.last.company</field>
+            <field name="arch" type="xml">
+                <form string="Current / Last Company">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="applicant_ids">
+                                <tree>
+                                  <field name="name"/>
+                                  <field name="call_application_name" />
+                                  <field name="call_individual_pwm_grade"/>
+                                  <field name="call_nationality" />
+                                  <field name="call_gender" />
+                                  <field name="call_races" />
+                                  <field name="call_age" />
+                                </tree>
+                              </field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_current_last_company_tree_view">
+            <field name="name">current.last.company.tree</field>
+            <field name="model">current.last.company</field>
+            <field name="arch" type="xml">
+                <tree string="Current / Last Company">
+                    <field name="name"/>
+                    <field name="applicant_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_contact_current_last_company" model="ir.actions.act_window">
+            <field name="name">Current / Last Company</field>
+            <field name="res_model">current.last.company</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_contact_current_last_company" name="Current / Last Company"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_contact_current_last_company" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+</odoo>

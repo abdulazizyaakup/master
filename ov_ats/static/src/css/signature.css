@@ -1,0 +1,150 @@
+$color-scheme-1: #C7BE9C;
+$color-scheme-2: #FAFAAB;
+$color-scheme-3: #616125;
+$color-scheme-4: #6E8ECE;
+$color-scheme-5: #ABDAFA;
+$white: #fff;
+$black: #333;
+
+* {
+  box-sizing: border-box;
+}
+
+%clearfix:after {
+  content: '';
+  clear: both;
+  display: table;
+}
+  
+html {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(45deg, lighten($color-scheme-4, 2%), $white);
+  font-family: 'Rubik';
+  font-weight: 400;
+  height: 100%;
+}
+
+.modal {
+  background-color: $white;
+  max-width: 50rem;
+  min-height: 15rem;
+  box-shadow: 1px 1px 7px #ccc;
+  margin: 0 auto;
+  opacity: 0;
+  animation: drop-in 1s;
+  animation-fill-mode: forwards;
+}
+
+.modal-heading {
+  opacity: 0;
+  animation: appear 0.5s ease-out;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+  font-weight: 300;
+  padding: 1rem;
+  color: $color-scheme-4;
+}
+
+.signature-panel {
+  background-color: lighten($color-scheme-4, 34%);
+}
+
+.controls-panel {
+  @extend %clearfix;
+  padding: 1rem;
+}
+
+.btn {
+  animation: appear .2s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.btn, .link {
+  background-color: $color-scheme-5;
+  color: $white;
+  display: block;
+  margin: 0 0.3rem;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  
+  @media(min-width: 570px) {
+    float: left;
+  }
+}
+
+.btn--disabled {
+  background-color: grey;
+}
+
+
+.btn:hover,
+.btn:active {
+  background-color: lighten($color-scheme-5, 5%);
+}
+
+.btn--secondary {
+  background-color: $color-scheme-4;
+}
+
+.btn--secondary:hover,
+.btn--secondary:active {
+  background-color: lighten($color-scheme-4, 5%);
+}
+
+@for $i from 1 through 2 {
+  .btn:nth-child(#{$i}) {
+    animation-delay: calc(0.3 * #{$i}s);
+  }
+  
+  .link:nth-child(#{$i}) {
+    animation-delay: calc(0.3 * #{$i}s);
+  }
+}
+
+.link {
+  background-color: $white;
+  color: $color-scheme-3;
+  text-decoration: none;
+}
+
+.link:hover, 
+.link:active {
+  color: $color-scheme-4;
+}
+
+.controls-panel {
+}
+
+.skip-link {
+  @media(min-width: 570px) {
+    float: right;
+  }
+}
+
+@keyframes drop-in {
+  0% {
+    transform: translateY(-1rem);
+  }
+  
+  50% {
+    transform: translateY(4rem);
+  }
+  
+  100% {
+    transform: translateY(3rem);
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  0% {
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}

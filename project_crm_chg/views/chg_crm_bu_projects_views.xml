@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="crm_bu_project_id_tree" model="ir.ui.view">
+      <field name="name">bu.project.id.tree</field>
+      <field name="model">bu.project.id</field>
+      <field name="arch" type="xml">
+          <tree string="Business Unit Projects" editable="bottom">   
+              <field name="bu_company_id"/>
+              <field name="bu_line_id"/> 
+              <field name="name"/>
+          </tree>
+      </field>
+  </record>
+
+    <record id="crm_bu_project_id_form" model="ir.ui.view">
+      <field name="name">bu.project.id.form</field>
+      <field name="model">bu.project.id</field>
+      <field name="arch" type="xml">
+          <form string="Business Unit Projects">
+              <field name="name"/>
+              <field name="bu_company_id"/>
+              <field name="bu_line_id"/>
+          </form>
+      </field>
+  </record>
+
+  <record id="crm_bu_project_id_action" model="ir.actions.act_window">
+      <field name="name">Business Unit Project</field>
+      <field name="res_model">bu.project.id</field>
+      <field name="view_id" ref="crm_bu_project_id_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          
+        </p>
+      </field>
+  </record>
+
+  <menuitem
+      id="crm_bu_project_id"
+      name="Business Unit Projects"
+      parent="crm_menu_project"
+      action="crm_bu_project_id_action"
+      sequence="1" groups="sales_team.group_sale_manager"/>
+
+</odoo>

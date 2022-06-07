@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="team1" model="ov.projectsiteteam">
+            <field name="name">A</field>
+        </record>
+        <record id="team2" model="ov.projectsiteteam">
+            <field name="name">B</field>
+        </record>
+        <record id="team3" model="ov.projectsiteteam">
+            <field name="name">C</field>
+        </record>
+        <record id="team4" model="ov.projectsiteteam">
+            <field name="name">D</field>
+        </record>
+        <record id="team5" model="ov.projectsiteteam">
+            <field name="name">E</field>
+        </record>
+    </data>
+</odoo>

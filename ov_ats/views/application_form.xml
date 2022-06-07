@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <report
+        id="application_resume_form"
+        model="hr.applicant"
+        string="Resume Form"
+        name="ov_ats.application_resume_form_view"
+        file="ov_ats.application_form"
+        report_type="qweb-pdf"
+        menu="False"/>
+
+    <template id="application_resume_form_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="header">
+                    </div>
+                    <div class="footer"><!-- 
+                      <div style="text-align:center;">
+                         <strong><span>CONFIDENTIAL</span></strong><br/>
+                         <strong><span>STAFF-IN-CONFIDENCE</span></strong>
+                      </div> -->
+                      <!-- <div style="text-align:center;">
+                         <span>This document is computer generated.</span>
+                      </div> -->
+                      <div style="text-align:right;">
+                         <span>Page </span><span class="page" /> of <span class="topage" />
+                      </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <h3>APPLICATION FORM</h3>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;border-top: 1px solid;border-bottom: 1px solid;">
+                            <tbody>
+                                <tr style="line-height: 35px;">
+                                    <td style="padding-left:5px;width:30%;">POSITION APPLIED FOR</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="doc.job_id.name"/></td>
+                                </tr>
+                                <tr style="line-height: 35px;">
+                                    <td style="padding-left:5px;width:30%;">PREFERRED LOCATION</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="doc.preferred_location1"/></td>
+                                </tr>
+                                <tr style="line-height: 35px;">
+                                    <td style="padding-left:5px;width:30%;">EXPECTED SALARY</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="doc.salary_expected"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <span style="font-size:20px;padding-left:15px;"><b>(A) PERSONAL PARTICULARS</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;border-bottom: 1px solid;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:60%;">Name as in NRIC :</td>
+                                    <td style="padding-left:15px;width:40%;">Preferred Name :</td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:60%;border: 1px solid;"><span t-field="doc.partner_name"/></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="doc.partner_name"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;border-bottom: 1px solid;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;">NRIC Number :</td>
+                                    <td style="padding-left:15px;width:20%;">Age :</td>
+                                    <td style="padding-left:15px;width:40%;">Date of Birth :</td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="doc.nric"/></td>
+                                    <td style="padding-left:15px;width:20%;border: 1px solid;"><span t-field="doc.age"/></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="doc.date_of_birth"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:35%;">Country of Birth :</td>
+                                        <td style="padding-left:15px;width:30%;">Race :</td>
+                                        <td style="padding-left:15px;width:35%;">Religion :</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:35%;border: 1px solid;"><span t-field="doc.country_of_birth"/></td>
+                                        <td style="padding-left:15px;width:30%;border: 1px solid;"><span t-field="doc.races"/></td>
+                                        <td style="padding-left:15px;width:35%;border: 1px solid;"><span t-field="doc.religion"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;">Contact Numbers :</td>
+                                    <td style="padding-left:15px;width:20%;"></td>
+                                    <td style="padding-left:15px;width:40%;"></td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;position: relative;"><span t-field="doc.partner_phone"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Home)</span></td>
+                                    <td style="padding-left:15px;width:20%;"></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;position: relative;"><span style="text-align:left;" t-field="doc.mobile_no1"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Handphone)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">Address :</td>
+                                        <td style="padding-left:15px;width:40%;">* The Address indicated Below is: </td>
+                                        <td style="padding-left:15px;width:20%;">
+                                            
+                                        <t t-if="doc.address_status == 'owned'">
+                                            <label>
+                                                <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                <span>Owned</span>
+                                            </label>
+                                        </t>
+                                        <t t-if="doc.address_status == 'rented'">
+                                            <label>
+                                                <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                <span>Rented</span>
+                                            </label>
+                                        </t>
+                                        <t t-if="doc.address_status == 'relative'">
+                                            <label>
+                                                <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                <span>*Relative / Friend Place</span>
+                                            </label>
+                                        </t>
+                                        
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:100%;border: 1px solid;"><span t-field="doc.address"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">*Nationality :</td>
+                                        <td style="padding-left:15px;width:20%;"></td>
+                                        <td style="padding-left:15px;width:40%;">Email Address (if any) :</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">
+                                            <label>
+                                                <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                <span t-field="doc.nationality"/>
+                                            </label>
+                                        </td>
+                                        <td style="padding-left:15px;width:20%;"></td>
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="doc.email"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="page-break-after: always;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:35%;">Gender :</td>
+                                        <td style="padding-left:15px;width:30%;">Marital Status :</td>
+                                        <td style="padding-left:15px;width:35%;">Driving License :</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:35%;">
+                                            <label>
+                                                <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                <span t-field="doc.gender"/>
+                                            </label>
+                                        </td>
+                                        <td style="padding-left:15px;width:30%;">
+                                            <label>
+                                                <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                <span t-field="doc.marital_status"/>
+                                            </label>
+                                        </td>
+                                        <td style="padding-left:15px;width:35%;">
+                                            <label>
+                                                <t t-foreach="doc.driving_license_ids" t-as="dli">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span t-field="dli.name"/>
+                                                </t>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(B) PERSON TO CONTACT IN THE EVENT OF AN EMERGENCY</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;border-bottom: 1px solid;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:60%;">Name :</td>
+                                    <td style="padding-left:15px;width:40%;">Relationship :</td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:60%;border: 1px solid;"><span t-field="doc.emergency_name"/></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="doc.emergency_relation"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;">Contact Numbers :</td>
+                                    <td style="padding-left:15px;width:20%;"></td>
+                                    <td style="padding-left:15px;width:40%;"></td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;position: relative;"><span t-field="doc.emergency_phone_no"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Home)</span></td>
+                                    <td style="padding-left:15px;width:20%;"></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;position: relative;"><span style="text-align:left;" t-field="doc.emergency_mobile_no"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Handphone)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:100%;">Address :</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:100%;border: 1px solid;"><span t-field="doc.emergency_address"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(C) EDUCATIONAL BACKGROUND</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">School</td>
+                                        <td style="padding-left:15px;width:40%;">Highest Qualification Attained</td>
+                                        <td style="padding-left:15px;width:10%;">Year</td>
+                                    </tr>
+                                    <t t-foreach="doc.school_ids" t-as="sc">
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span style="padding-left:10px;" t-field="sc.name"/></td>
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span style="padding-left:10px;" t-field="sc.hqa"/></td>
+                                        <td style="padding-left:15px;width:10%;border: 1px solid;"><span style="padding-left:10px;" t-field="sc.year"/></td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(D) NATIONAL SERVICE (IF APPLICABLE)</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-if="doc.nationalservice !='nil'">
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">* SAF / SPF / SCDF</td>
+                                        <td style="padding-left:15px;width:30%;">Rank</td>
+                                        <td style="padding-left:15px;width:30%;">PES Grading</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span style="padding-left:10px;" t-field="doc.nationalservice"/></td>
+                                        <td style="padding-left:15px;width:30%;border: 1px solid;"><span style="padding-left:10px;" t-field="doc.rank"/></td>
+                                        <td style="padding-left:15px;width:30%;border: 1px solid;"><span style="padding-left:10px;" t-field="doc.pes_grading"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.nationalservice =='nil'">
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">* SAF / SPF / SCDF</td>
+                                        <td style="padding-left:15px;width:60%;">Reason not served :</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span style="padding-left:10px;" t-field="doc.nationalservice"/></td>
+                                        <td style="padding-left:15px;width:60%;border: 1px solid;"><span style="padding-left:10px;" t-field="doc.ns_reason"/></td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(E) COMPUTER LITERACY</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:60%;">Microsoft Words</td>
+                                        <td style="padding-left:15px;width:40%;">
+                                            <label>
+                                                <t t-if="doc.m_words == 'nil'">
+                                                <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Nil</span>
+                                                </t>
+                                                <t t-if="doc.m_words == 'basic'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Basic</span>
+                                                </t>
+                                                <t t-if="doc.m_words == 'intermediate'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Intermediate</span>
+                                                </t>
+                                                <t t-if="doc.m_words != 'nil'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Nil</span>
+                                                </t>
+                                                <t t-if="doc.m_words != 'basic'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Basic</span>
+                                                </t>
+                                                <t t-if="doc.m_words != 'intermediate'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Intermediate</span>
+                                                </t>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:60%;">Microsoft Excel</td>
+                                        <td style="padding-left:15px;width:40%;">
+                                            <label>
+                                                <t t-if="doc.m_excel == 'nil'">
+                                                <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Nil</span>
+                                                </t>
+                                                <t t-if="doc.m_excel == 'basic'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Basic</span>
+                                                </t>
+                                                <t t-if="doc.m_excel == 'intermediate'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Intermediate</span>
+                                                </t>
+                                                <t t-if="doc.m_excel != 'nil'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Nil</span>
+                                                </t>
+                                                <t t-if="doc.m_excel != 'basic'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Basic</span>
+                                                </t>
+                                                <t t-if="doc.m_excel != 'intermediate'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Intermediate</span>
+                                                </t>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:60%;">Microsoft Power Point</td>
+                                        <td style="padding-left:15px;width:40%;">
+                                            <label>
+                                                <t t-if="doc.m_powerpoint == 'nil'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Nil</span>
+                                                </t>
+                                                <t t-if="doc.m_powerpoint == 'basic'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Basic</span>
+                                                </t>
+                                                <t t-if="doc.m_powerpoint == 'intermediate'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Intermediate</span>
+                                                </t>
+                                                <t t-if="doc.m_powerpoint != 'nil'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Nil</span>
+                                                </t>
+                                                <t t-if="doc.m_powerpoint != 'basic'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Basic</span>
+                                                </t>
+                                                <t t-if="doc.m_powerpoint != 'intermediate'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Intermediate</span>
+                                                </t>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:60%;">Microsoft Outlook</td>
+                                        <td style="padding-left:15px;width:40%;">
+                                            <label>
+                                                <t t-if="doc.m_outlook == 'nil'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Nil</span>
+                                                </t>
+                                                <t t-if="doc.m_outlook == 'basic'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Basic</span>
+                                                </t>
+                                                <t t-if="doc.m_outlook == 'intermediate'">
+                                                    <input type="checkbox" class="o_website_form_input" checked="checked"/>
+                                                    <span>Intermediate</span>
+                                                </t>
+                                                <t t-if="doc.m_outlook != 'nil'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Nil</span>
+                                                </t>
+                                                <t t-if="doc.m_outlook != 'basic'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Basic</span>
+                                                </t>
+                                                <t t-if="doc.m_outlook != 'intermediate'">
+                                                    <input type="checkbox" class="o_website_form_input"/>
+                                                    <span>Intermediate</span>
+                                                </t>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:50%;"><span style="font-size:20px;"><b>(F) LANGUAGE(S)</b></span></td>
+                                        <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"><b>* SPOKEN</b></span></td>
+                                        <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"><b>* WRITTEN</b></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="page-break-after: always;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-foreach="doc.lang_ids" t-as="l">
+                                    <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:50%;border: 1px solid;"><span style="padding-left:10px;" t-field="l.name"/></td>
+                                    <td style="padding-left:15px;width:25%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="l.proficiency_spoken"/>)</td>
+                                    <td style="padding-left:15px;width:25%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="l.proficiency_written"/>)</td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:50%;"><span style="font-size:20px;"><b>DIALECT(S)</b></span></td>
+                                        <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"><b>* SPOKEN</b></span></td>
+                                        <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-foreach="doc.dialect_ids" t-as="d">
+                                    <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:50%;border: 1px solid;"><span style="padding-left:10px;" t-field="d.name"/></td>
+                                    <td style="padding-left:15px;width:25%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="d.proficiency_dialect"/>)</td>
+                                    <td style="padding-left:15px;width:25%;"></td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(G) CAREER HISTORY</b></span>
+                        </div>
+                        <t t-foreach="doc.careerhistory_ids" t-as="ch">
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:10%;"><span>From</span></td>
+                                        <td style="padding-left:15px;width:10%;"><span>To</span></td>
+                                        <td style="padding-left:15px;width:30%;"><span>Company Name</span></td>
+                                        <td style="padding-left:15px;width:30%;"><span>Position Held</span></td>
+                                        <td style="padding-left:15px;width:20%;"><span>Gross Salary</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="width:10%;border: 1px solid;"><span style="text-align:center;" t-field="ch.date_from"/></td>
+                                        <td style="width:10%;border: 1px solid;"><span style="text-align:center;" t-field="ch.date_to"/></td>
+                                        <td style="width:30%;border: 1px solid;"><span style="padding-left:10px;" t-field="ch.name"/></td>
+                                        <td style="width:30%;border: 1px solid;"><span style="padding-left:10px;" t-field="ch.position_held"/></td>
+                                        <td style="width:20%;border: 1px solid;"><span style="padding-left:10px;" t-field="ch.gross_sal"/></td>
+                                    </tr>
+                                    <tr  style="line-height: 35px;width:100%;border: 1px solid;">
+                                        <td colspan="2" style="padding-left:15px;width:30%;"><span>Reason Leaving :</span></td>
+                                        <td colspan="3" style="padding-left:15px;width:70%;"><span t-field="ch.reason_leave"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        </t>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(H) OTHER INFORMATION</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-if="doc.post_source !='others'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>How do you learn of this post?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.post_source"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.post_source =='others'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>How do you learn of this post?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.post_source"/>) : <u><span style="padding-left:50px;" t-field="doc.post_other"/></u></td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.wss_applied =='no'">
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Have you ever applied for employment or worked before with William Security Services / William Secure Solutions?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.wss_applied"/>)</td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.wss_applied =='yes'">
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:100%;"><span>Have you ever applied for employment or worked before with William Security Services / William Secure Solutions?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="width:100%;padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.wss_applied"/>)   <span style="padding-left:50px;">When and where?</span><u><span style="padding-left:10px;" t-field="doc.wss_applied_other"/></u></td>
+                                    </tr>
+                                    </t>
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;"><span>Do you smoke?</span></td>
+                                    </tr>
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.smoke"/>)</td>
+                                    </tr>
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;"><span>Shift Preference</span></td>
+                                    </tr>
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.shift_preferences"/>)</td>
+                                    </tr>
+
+                                    <t t-if="doc.friend_relative =='no'">
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Do you have any friends / relatives working with William Security Services?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.friend_relative"/>)</td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="page-break-after: always;">
+                            <t t-if="doc.friend_relative =='yes'">
+                                <table>
+                                    <tbody>
+                                        <tr  style="line-height: 35px;width:100%;">
+                                            <td colspan="3" style="padding-left:15px;width:100%;"><span>Do you have any friends / relatives working with William Security Services?</span></td>
+                                        </tr>
+                                        <tr style="line-height: 35px;width:100%">
+                                            <td colspan="3" style="width:100%;padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.friend_relative"/>)</td>
+                                        </tr>
+                                        <tr style="line-height: 35px;width:100%">
+                                            <td style="padding-left:15px;width:45%;"><span>Name</span></td>
+                                            <td style="padding-left:15px;width:10%;"><span style="color:white;">-------</span></td>
+                                            <td style="padding-left:15px;width:45%;"><span>Relationship</span></td>
+                                        </tr>
+                                        <t t-foreach="doc.relative_ids" t-as="r">
+                                        <tr style="line-height: 35px;width:100%">
+                                            <td style="padding-left:15px;width:45%;border: 1px solid;"><span style="padding-left:10px;" t-field="r.name"/></td>
+                                            <td style="padding-left:15px;width:10%;"><span style="color:white;">-------</span></td>
+                                            <td style="padding-left:15px;width:45%;border: 1px solid;"><span style="padding-left:10px;" t-field="r.relationship"/></td>
+                                        </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </t>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(I) WORK PREFERENCE</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;"><span>Do you have a preferred shift?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;"><span t-field="doc.preferred_shift"/></td>
+                                    </tr>
+
+                                    <t t-if="doc.preferred_site !='others'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>What type of work site do you prefer?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.preferred_site"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.preferred_site =='others'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>What type of work site do you prefer?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.preferred_site"/>) : <u><span style="padding-left:50px;" t-field="doc.preferred_site_other"/></u></td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.six_shift !='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Are you able to work 6 shifts per week?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.six_shift"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.six_shift =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Are you able to work 6 shifts per week?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.six_shift"/>) : <u><span style="padding-left:50px;" t-field="doc.six_shift_no"/></u> shifts</td>
+                                    </tr>
+                                    </t>
+
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;"><span>Are you able to work on weekends?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:15px;" t-field="doc.working_weekend"/> )</td>
+                                    </tr>
+
+                                    
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td  colspan="7" style="padding-left:15px;"><span>Do you have specific days you can work?</span></td>
+                                    </tr>
+                                    <t t-foreach="doc.days_avail_ids" t-as="dai">
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span t-field="dai.name"/>)</td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(J) DECALARTION Q &amp; A</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-if="doc.illness =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever suffered, or are suffering from any medical condition, illness, disease, +mental illness or physical impairment? +Includes all forms of nervous breakdown and anxiety disorder</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.illness"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="doc.illness_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.illness =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever suffered, or are suffering from any medical condition, illness, disease, +mental illness or physical impairment? +Includes all forms of nervous breakdown and anxiety disorder</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.illness"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.criminal_record =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Do you have a criminal record in Singapore?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.criminal_record"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="doc.cr_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.criminal_record =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Do you have a criminal record in Singapore?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.criminal_record"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.charged_law =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you been charged with any offence in a court of law in Singapore or in 
+any other country for which the outcome is pending?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.charged_law"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="doc.cl_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.criminal_record =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you been charged with any offence in a court of law in Singapore or in 
+any other country for which the outcome is pending?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.charged_law"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.investigation_awareness =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Are you aware of being under any current police investigations in Singapore or in any other country following allegations made against you?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.investigation_awareness"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="doc.ia_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.criminal_record =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Are you aware of being under any current police investigations in Singapore or in any other country following allegations made against you?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.investigation_awareness"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.financial_embarrassment =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you been or are you under any financial embarrassment i.e. (a) an undischarged bankrupt, (b) a judgement debtor, (c) have unsecured debts and liabilities of more than 3 months of last-drawn pay, (d) have signed a promissory note or an acknowledgement of indebtedness?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.financial_embarrassment"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="doc.fe_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.financial_embarrassment =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you been or are you under any financial embarrassment i.e. (a) an undischarged bankrupt, (b) a judgement debtor, (c) have unsecured debts and liabilities of more than 3 months of last-drawn pay, (d) have signed a promissory note or an acknowledgement of indebtedness?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.financial_embarrassment"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.broken_service_period =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever broken any bond or failed to fulfil any minimum service period?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.broken_service_period"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="doc.bsp_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.financial_embarrassment =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever broken any bond or failed to fulfil any minimum service period?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.broken_service_period"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.currently_serving_bond =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Are you currently serving bond or any obligatory moral service with any organisation?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.currently_serving_bond"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="doc.csb_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.financial_embarrassment =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Are you currently serving bond or any obligatory moral service with any organisation?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.currently_serving_bond"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="doc.dismissed_from_service =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever been dismissed or discharged from the service of any employer?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.dismissed_from_service"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="doc.dfs_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="doc.financial_embarrassment =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever been dismissed or discharged from the service of any employer?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="doc.dismissed_from_service"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(J) DECLARATION</b></span>
+                        </div>
+                        <div class="row" style="padding-top:20px;padding-bottom:20px;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 20px;width:100%;">
+                                        <td style="padding-left:15px;width:100%;"><span>I give my consent for William Secure Solutions to obtain and verify information from or with any source, as you deem appropriate for the assessment of my application for employment.</span></td>
+                                    </tr>
+                                    <tr style="line-height: 20px;width:100%;">
+                                        <td style="padding-left:15px;width:100%;"><span style="color:white;">-----------------------------------------</span></td>
+                                    </tr>
+                                    <tr style="line-height: 20px;width:100%;">
+                                        <td style="padding-left:15px;width:100%;"><span>I declare that the information in this resume form and any sheets attached hereto are true to the best of my knowledge and I have not wilfully suppressed any material fact.  I accept that if any of the information given by me in this application is in any way false or incorrect, my application may be rejected, any offer of employment may be withdrawn or my employment with William Secure Solutions may be terminated summarily or I may be dismissed from William Secure Solutions.</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row" style="border-top:1px solid;border-bottom:1px solid;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;height:100px;">
+                                        <td style="padding-left:15px;width:45%;border-bottom:1px solid;text-align:center;padding-top:30px;">
+                                            <t t-if="doc.signature">
+                                            <img t-att-src="'data:image/png;base64,%s' % to_text(doc.signature)" style="max-height:4cm; max-width:8cm;"/>
+                                            </t>
+                                            <!-- <img t-if="company.logo_footer" t-att-src="image_data_uri(company.logo_footer)"  style="max-height: 30px;"/> -->
+                                        </td>
+                                        <td style="padding-left:15px;width:10%;"><span style="color:white;">-------</span></td>
+                                        <td style="padding-left:15px;width:45%;border-bottom:1px solid;text-align:center;"><span t-field="doc.declaration_date"/></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:45%;text-align:center;"><span>Signature</span></td>
+                                        <td style="padding-left:15px;width:10%;text-align:center;"><span style="color:white;">-------</span></td>
+                                        <td style="padding-left:15px;width:45%;text-align:center;"><span>Date</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="ov_ats.application_resume_form" model="ir.actions.report">
+        <field name="report_type">qweb-pdf</field>
+    </record>
+</odoo>

@@ -1,0 +1,517 @@
+<odoo>
+
+    <!-- 1.0 : CRM Lead Form -->
+    <record id='crm_lead_stcrm_form' model='ir.ui.view'>
+        <field name="name">crm.lead.stcrm.form</field>
+        <field name="model">crm.lead</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[1]" position="before">
+                <!-- <button name="compute_status_name" id="compute_status_name"
+                        string="GETSS222" class="btn-primary" type="object" groups="sales_team.group_sale_manager"/>  -->
+                <!-- <button name="%(starken-crm.crm_lead_generate_quotation_action)d" string="Quotation"
+                            type="action" class="oe_highlight"/> -->
+<!--                 <button name="action_new_quotation_123" type="object" string="Create Quotation" class="oe_highlight"/> -->
+<!--                 <button name="%(starken-crm.crm_keyword_filter_action)d" string="Filter from Master"
+                            type="action" class="oe_highlight" attrs="{'invisible': [('user_id', '!=', False)]}" groups="sales_team.group_sale_manager"/> -->
+
+                
+
+            </xpath>
+            <xpath expr="//header/button[1]" position="before">
+                <button name="%(starken-crm.crm_lead_generate_survey_action)d" string="Send Survey"
+                            type="action" class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//header/*[2]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|','|','|', ('active','=',False), ('crm_prj_status', '=', 'won'), ('crm_prj_status', '=', 'lost'), ('type', '=', 'lead')]}</attribute>
+            </xpath>
+            <xpath expr="//header/*[3]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|','|','|', ('active','=',False), ('crm_prj_status', '=', 'won'), ('crm_prj_status', '=', 'lost'), ('type', '=', 'lead')]}</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/*[3]" position="attributes">
+                <attribute name="attrs">{'invisible': [('crm_prj_status', '!=', 'lost')]}</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/*[4]" position="attributes">
+                <attribute name="attrs">{'invisible': [('crm_prj_status', '!=', 'won')]}</attribute>
+            </xpath>
+            <xpath expr="//div[@class='oe_title']" position="inside">
+                <field name="priority" widget="field_float_rating"/>
+            </xpath>
+            <!-- Survey button box button -->
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button name="action_view_survey" type="object"
+                    class="oe_stat_button" icon="fa-pencil">
+                    <div class="o_stat_info">
+                        <field name="survey_count" class="o_stat_value"/>
+                        <span class="o_stat_text" attrs="{'invisible': [('survey_count', '&lt;', 2)]}"> Surveys</span>
+                        <span class="o_stat_text" attrs="{'invisible': [('survey_count', '&gt;', 1)]}"> Survey</span>
+                    </div>
+                </button>
+            </xpath>
+
+            <xpath expr="//field[@name='probability']" position="replace">
+                <field name="cst_probability" widget="float" class="oe_inline" readonly="1"/>
+            </xpath>
+            <xpath expr="///group[1]/group[1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group[1]/group[2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group[1]/group[3]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <h2>
+                    <label for="sub_project_code" class="oe_edit_only"/>
+                    <field name="sub_project_code"/>
+                </h2>
+            </xpath>
+            <xpath expr="//group[1]/group[4]" position="replace">
+                <group>
+                    <field name="duplicate" invisible="1"/>
+                    <field name="bci_name" invisible="1"/>
+                    <field name="done" invisible="1"/>
+                    <field name="bci_complete_status"/>
+                    <field name="crm_bci_id"/>
+                    <!-- <label for="crm_title"/> -->
+                    <field name="crm_title" invisible="1"/>
+                    <field name="crm_prj_value"/>
+                    <field name="crm_category"/>
+                    <field name="crm_startdate"/>
+                    <field name="crm_enddate"/>
+                    <field name="crm_ibs"/>
+                    <field name="crm_gbi"/>
+                    <!-- <field name="crm_prj_level"/> -->
+                    <field name="crm_project_id" attrs="{'readonly': [('company_id', '!=', 9)]}"/>
+                    <field name="concept_drawing" widget="url" attrs="{'invisible': [('company_id', '!=', 2)]}"/>
+                    <field name="shop_drawing" widget="url" attrs="{'invisible': [('company_id', '!=', 2)]}"/>
+                </group>
+                
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="plant_id"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="replace">
+                <field name="user_id" string="Created By" invisible="0"/>
+                <field name="gsm_assign_to" string="GSM Assign To"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                    <!-- <field name="related_user_id"/> -->
+                    <!-- <label for="crm_prj_own_mark" style="white-space: nowrap;"/> -->
+                    
+                    <field name="crm_prj_team_leader" attrs="{'invisible': [('company_id', '!=', 14)]}"/>
+                    <field name="project_owner"/>
+                    <field name="crm_prj_own_mark" attrs="{'invisible': [('company_id', '==', 14)]}"/>
+                    <!-- <field name="related_crm_prj_own_mark"/> -->
+                    <!-- <label for="crm_prj_own_sales" style="white-space: nowrap;"/> -->
+                    <field name="crm_prj_signature_sales" attrs="{'invisible': [('company_id', '!=', 14)]}" string="Project Sales"/>
+                    <!-- <field name="crm_prj_signature_sales_domain" invisible="1"/> -->
+                    <field name="crm_prj_own_sales" attrs="{'invisible': [('company_id', '==', 14)]}"/>
+                    <!-- <field name="related_crm_prj_own_sales"/> -->
+                    <field name="key_account"/>
+                    <field name="crm_prj_mgr"/>
+                    <field name="crm_prj_dev" invisible="1"/>
+                    <field name="crm_prj_arc" invisible="1"/>
+                    <field name="crm_prj_cseng" invisible="1"/>
+                    <!-- <label for="crm_prj_qs" style="white-space: nowrap;"/> -->
+                    <field name="crm_prj_qs" nolabel="1" invisible="1"/>
+                    <field name="customer_type" required="0"/>
+                    <field name="delivery_zone" required="0" options="{'no_create_edit': True}"/>
+                    <field name="crm_prj_town"/>
+            </xpath>
+            <xpath expr="//group[1]/group[5]" position="after">
+                <group>
+                    <field name="crm_prj_level" invisible="1"/>
+                    <label for="crm_prj_spcy_date" style="white-space: nowrap;" attrs="{'invisible': [('company_id', 'not in', [2,3,4,5,12,13])]}"/>
+                    <field name="crm_prj_spcy_date" nolabel="1" attrs="{'invisible': [('company_id', 'not in', [2,3,4,5,12,13])]}"/>
+                    <label for="crm_prj_spcd_date" style="white-space: nowrap;" attrs="{'invisible': [('company_id', 'not in', [2,3,4,5,12,13])]}"/>
+                    <field name="crm_prj_spcd_date" nolabel="1" attrs="{'invisible': [('company_id', 'not in', [2,3,4,5,12,13])]}"/>
+                    <label for="crm_prj_sec_date" style="white-space: nowrap;" attrs="{'invisible': [('company_id', 'not in', [2,3,4,5,12,13])]}"/>
+                    <field name="crm_prj_sec_date" nolabel="1" attrs="{'invisible': [('company_id', 'not in', [2,3,4,5,12,13])]}"/>
+                    <field name="date_deadline"/>
+                    <field name="priority" widget="priority" invisible="1"/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                </group>
+                <group>
+                    <field name="crm_des_build"/>
+                    <field name="crm_prj_status"/>
+                    <label for="crm_cstmr_srvy_sent" style="white-space: nowrap;"/>
+                    <field name="crm_cstmr_srvy_sent" nolabel="1"/>
+                    <field name="crm_block_m3" string="Block m³" attrs="{'invisible': [('company_id', '!=', 2)]}"/>
+                    <field name="crm_block_m2" string="Block m²" attrs="{'invisible': [('company_id', '!=', 2)]}"/>
+                    <field name="crm_panel_m3" string="Panel m³" attrs="{'invisible': [('company_id', '!=', 2)]}"/>
+                    <field name="crm_panel_m2" string="Panel m²" attrs="{'invisible': [('company_id', '!=', 2)]}"/>
+                    <field name="crm_ttl_panel_value" string="Total Panel Price" force_save="1" attrs="{'invisible': [('company_id', '!=', 2)]}"/>
+                </group>
+                <group string="Info From BCI">
+                    <field name="bci_region"/>
+                    <field name="bci_ownership_type"/>
+                    <field name="bci_project_category"/>
+                    <field name="bci_project_stage"/>
+                    <field name="bci_project_status"/>
+                    <field name="bci_project_value"/>
+                    <field name="bci_start_date"/>
+                    <field name="bci_end_date"/>
+                    <field name="bci_project_remarks"/>
+                    <field name="bci_element_info"/>
+                    <field name="bci_complete_status_name" invisible="1"/>
+<!--                      <button name="set_lead_bci_status_from_csv" id="set_lead_bci_status_from_csv"
+                        string="GETSS" class="btn-primary" type="object" groups="base.group_erp_manager"/> -->
+                    
+                </group>
+                <group string="Quoted Amount">
+                    <field name="fd_quoted_amount"/>
+                    <field name="td_quoted_amount"/>
+                    <field name="accessories_quoted_amount"/>
+                    <field name="mf_quoted_amount"/>
+                    <field name="ir_quoted_amount"/>
+                    <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                        <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                            <label for="amount_total" />
+                        </div>
+                        <field name="amount_total" readonly="1" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//group[1]" position="after">
+                <notebook style="background-color:#fffde6;">
+                    
+                  <page string="Developers">
+                    <label for="crm_prj_dev1"/>
+                    <field name="crm_prj_dev1">
+                        <tree editable="bottom">
+                            <field name="id" invisible="1"/>
+                            <field name="display_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <!-- <button name="%(starken-crm.crm_lead_generate_quotation_action)d" string="Quote"
+                            type="action" class="oe_highlight" groups="sales_team.group_sale_manager"/> -->
+                        </tree>
+                    </field>
+                  </page>
+                  <!-- <page string="Developers2">
+                    <label for="crm_prj_dev2"/>
+                    <field name="crm_prj_dev2">
+                        <tree editable="bottom">
+                            <field name="id" invisible="1"/>
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </tree>
+                    </field>
+                  </page> -->
+                  <page string="Architects">
+                    <label for="crm_prj_arc1"/>
+                    <field name="crm_prj_arc1">
+                        <tree editable="bottom">
+                            <field name="id" invisible="1"/>
+                            <field name="display_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="partner_type"/>
+                            <!-- <button name="%(starken-crm.crm_lead_generate_quotation_action)d" string="Quote"
+                            type="action" class="oe_highlight" groups="sales_team.group_sale_manager"/> -->
+                        </tree>
+                    </field>
+                  </page>
+                  <page string="Consultant Engineer">
+                    <label for="crm_prj_cseng1"/>
+                    <field name="crm_prj_cseng1">
+                        <tree editable="bottom">
+                            <field name="id" invisible="1"/>
+                            <field name="display_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="partner_type"/>
+                        </tree>
+                    </field>
+                  </page>
+                  <page string="Quantity Surveyor (QS)">
+                    <label for="crm_prj_qs1"/>
+                    <field name="crm_prj_qs1">
+                        <tree editable="bottom">
+                            <field name="id" invisible="1"/>
+                            <field name="display_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="partner_type"/>
+                        </tree>
+                    </field>
+                  </page>
+                  <page string="Distributor">
+                    <label for="crm_prj_distributor"/>
+                    <field name="crm_prj_distributor">
+                        <tree editable="bottom">
+                            <field name="id" invisible="1"/>
+                            <field name="display_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="partner_type"/>
+                        </tree>
+                    </field>
+                  </page>
+                  <page string="Tenderers &amp; Contractors">
+                    <label for="crm_tenderer" string="Tenderers"/>
+                    <field name="crm_tenderer">
+                        <tree editable="bottom" class="fixed-tab-col">
+                            <field name="display_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="partner_type"/>
+                            <field name="selection_f" string="" help="Marked to be move as contractors" style="width:20px;"/>
+                        </tree>
+                    </field>
+                    <label for="marked_to_be_moved_as_contractor" string=""/>
+                    <div class="oe_right" style="margin-bottom:1em;">
+                        <button name="marked_to_be_moved_as_contractor" type="object" icon="fa-arrow-down" string=" Convert selected Tenderer(s) to Contractor(s)"/>
+
+                        <!-- <button name="insert_partner" type="object" string=" TEST"/>
+                        <button name="insert_partner2" type="object" string=" TEST1"/>
+                        <button name="insert_partner3" type="object" string=" TEST2"/>
+                        <button name="insert_partner4" type="object" string=" TEST3"/> -->
+                    </div>
+                    <label for="crm_cntrctrs"/>
+                    <field name="crm_cntrctrs">
+                        <tree editable="bottom" class="fixed-tab-col">
+                            <field name="display_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="partner_type"/>
+                        </tree>
+                    </field>
+                    <label for="crm_sbcns_aplctrs"/>
+                    <field name="crm_sbcns_aplctrs">
+                        <tree editable="bottom" class="fixed-tab-col">
+                            <field name="display_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="partner_type"/>
+                        </tree>
+                    </field>
+                  </page>
+                </notebook>
+                <group name="extended_stcrm_longcol2">
+                    <field name="crm_photo" widget="many2many_binary"/>
+                    <field name="crm_ctc_roles">
+                        <tree editable="bottom" class="fixed-tab-col">
+                            <field name="id" invisible="1"/>
+                            <field name="display_name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="partner_type"/>
+                        </tree>
+                    </field>
+                    <field name="crm_trdng_hses">
+                        <tree editable="bottom" class="fixed-tab-col">
+                            <field name="id" invisible="1"/>
+                            <field name="display_name"/>
+                            <!-- <field name="division"/> -->
+                            <field name="epicor_customer_id" readonly="1"/>
+                            <field name="epicor_customer_num" readonly="1"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="partner_type"/>
+                        </tree>
+                    </field>
+                </group>
+                <field name="crm_products" widget="section_and_note_one2many" mode="tree">
+                    <tree string="Products" editable="bottom">
+                        <field name="crm_prdct"/>
+                        <field name="crm_partcode"/>
+                        <field name="crm_prdct_size" force_save="1"/>
+                        <field name="crm_prdct_price"/>
+                        <field name="crm_prdct_qty"/>
+                        <field name="crm_prdct_vol" force_save="1"/>                            <field name="mtr_sq_per_plt" />
+                        <field name="no_pcs_per_plt" />
+                        <field name="plt_per_dlv" />
+                        <field name="crm_cmpt_price" force_save="1"/>
+                    </tree>
+                </field>
+                
+                <h3>Description Information</h3>
+                <group name="extended_stcrm_longcol1">
+                    <field name="crm_dsc_info" widget="text" class="fixed-crm-desc-inf"/>
+                </group>
+                <h3>Address Information</h3>
+                <group name="extended_stcrm_logncol2">
+                    <field name="street" string="Street"/>
+                    <field name="street2" string="Street2"/>
+                    <field name="city" string="City"/>
+                    <field name="state_id" string="State" options="{&quot;no_open&quot;: True}"/>
+                    <field name="zip" string="ZIP"/>
+                    <field name="country_id" string="Country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                    <field name="crm_prj_addr"/>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='team_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id='crm_case_kanban_view_leads_disable_group_create' model='ir.ui.view'>
+        <field name="name">crm.lead.kanban.lead.disable.group</field>
+        <field name="model">crm.lead</field>
+        <field name="type">kanban</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+            <kanban position="attributes">
+                <attribute name="group_create">false</attribute>
+            </kanban>
+        </field>
+    </record>
+    <record id='crm_quick_create_opportunity_form_stcrm_disabler' model='ir.ui.view'>
+        <field name="name">crm.lead.quick_create_opportunity_form.stcrm.extend</field>
+        <field name="model">crm.lead</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="crm_prj_own_mark"/>
+            </xpath>
+        </field>
+    </record>
+    <record id='view_crm_case_oppo_filter_extend' model='ir.ui.view'>
+        <field name="name">crm.lead.search.opportunity.extend</field>
+        <field name="model">crm.lead</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='assigned_to_me']" position="attributes">
+                <attribute name="domain">['|','|',('user_id', '=', uid), ('crm_prj_own_mark.user_ids', 'ilike', uid), ('crm_prj_own_sales.user_ids', 'ilike', uid)]</attribute>
+            </xpath>
+            <xpath expr="//filter[@name='assigned_to_me']" position="after">
+            <filter string="Specifying" name="crm_project_level"
+            domain="[('crm_project_level.name', '=', 'Specifying')]"/>
+            <filter string="Specified" name="crm_prj_level"
+            domain="[('crm_project_level.name', '=', 'Specified')]"/>
+            <filter string="Secure" name="crm_prj_level"
+            domain="[('crm_project_level.name', '=', 'Secure')]"/>
+            <filter string="BCI Completed" name="bci_complete_status"
+            domain="[('bci_complete_status', '=', True)]"/>
+            <filter string="Not Commence Yet" name="crm_startdate"
+            domain="[('crm_startdate', '=', False)]"/>
+            </xpath>
+            <xpath expr="//filter[@name='won']" position="attributes">
+                <attribute name="domain">[('crm_prj_status', '=', 'won')]</attribute>
+            </xpath>
+            <xpath expr="//filter[@name='lost']" position="attributes">
+                <attribute name="domain">['|',('active', '=', False),('active', '=', True), ('crm_prj_status', '=', 'lost')]</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="crm_project_id" />
+            </xpath>
+            <xpath expr="//filter[@name='salesperson']" position="before">
+                <filter string="BCI Completed Status" name="bci_complete_status_name" context="{'group_by':'bci_complete_status_name'}"/>
+                <filter string="Team" name="team_id" context="{'group_by':'team_id'}"/>
+                <filter string="Project Owner" name="user_id" context="{'group_by':'user_id'}"/>
+                <filter string="Project Owner (Marketing)" name="crm_prj_own_mark" context="{'group_by':'crm_prj_own_mark'}"/>
+                <filter string="Project Owner (Sales)" name="crm_prj_own_sales" context="{'group_by':'crm_prj_own_sales'}"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- EOF 1.0 -->
+    <!-- 1.1 : CRM Lead Project Specified, Specifying and Secure Pivot Report -->
+    <record id='crm_lead_prj_specy_pivot' model='ir.ui.view'>
+        <field name="name">crm.lead.prj_specy.pivot</field>
+        <field name="model">crm.lead</field>
+        <field name="type">pivot</field>
+        <field name="arch" type="xml">
+            <pivot string="Project Specifying Report">
+                <field name="crm_prj_spcy_date" interval="month" type="col"/>
+                <field name="crm_prj_own_mark" type="row"/>
+                <field name="crm_block_m3" type="measure" string="Block m³"/>
+                <!-- <field name="crm_block_m2" type="measure" string="Block m²"/> -->
+                <field name="crm_panel_m3" type="measure" string="Panel m³"/>
+                <!-- <field name="crm_panel_m2" type="measure" string="Panel m²"/> -->
+            </pivot>
+        </field>
+    </record>
+    <record id='crm_lead_prj_specd_pivot' model='ir.ui.view'>
+        <field name="name">crm.lead.prj_specd.pivot</field>
+        <field name="model">crm.lead</field>
+        <field name="type">pivot</field>
+        <field name="arch" type="xml">
+            <pivot string="Project Specified Report">
+                <field name="crm_prj_spcd_date" interval="month" type="col"/>
+                <field name="crm_prj_own_mark" type="row"/>
+                <field name="crm_block_m3" type="measure" string="Block m³"/>
+                <!-- <field name="crm_block_m2" type="measure" string="Block m²"/> -->
+                <field name="crm_panel_m3" type="measure" string="Panel m³"/>
+                <!-- <field name="crm_panel_m2" type="measure" string="Panel m²"/> -->
+            </pivot>
+        </field>
+    </record>
+    <record id='crm_lead_prj_sec_pivot' model='ir.ui.view'>
+        <field name="name">crm.lead.prj_sec.pivot</field>
+        <field name="model">crm.lead</field>
+        <field name="type">pivot</field>
+        <field name="arch" type="xml">
+            <pivot string="Project Secured Report">
+                <field name="crm_prj_sec_date" interval="month" type="col"/>
+                <field name="crm_prj_own_sales" type="row"/>
+                <field name="crm_block_m3" type="measure" string="Block m³"/>
+                <!-- <field name="crm_block_m2" type="measure" string="Block m²"/> -->
+                <field name="crm_panel_m3" type="measure" string="Panel m³"/>
+                <!-- <field name="crm_panel_m2" type="measure" string="Panel m²"/> -->
+            </pivot>
+        </field>
+    </record>
+    <record id="crm_lead_project_report_wizard_form" model="ir.ui.view">
+        <field name="name">crm.lead.project.report.wizard.form</field>
+        <field name="model">crm.lead.project.report.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+        <form>
+            <h1>Project Report Wizard</h1>
+            <group>
+                <group>
+                    <field name="prj_level_to_show"/>
+                    <field name="prj_date_from" widget="date"/>
+                    <field name="prj_date_to" widget="date"/>
+                </group>
+            </group>
+            <footer>
+              <div>
+                <button name="action_generate_report" string="Show report" type="object" default_focus="1" class="oe_highlight"/>
+                <button string="Close" class="btn btn-secondary" special="cancel" />
+              </div>
+            </footer>
+        </form>
+        </field>
+    </record>
+    <record id="crm_lead_project_report_wizard_action" model="ir.actions.act_window">
+        <field name="name">Project Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crm.lead.project.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="crm_lead_project_report_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+    <record id="sale.action_quotations" model="ir.actions.act_window">
+        <field name="domain">[('sim_no','=',False)]</field>
+    </record>
+    <menuitem
+        id="crm_lead_report_menuact"
+        parent="crm.crm_menu_report"
+        action="crm_lead_project_report_wizard_action"/>
+
+    <menuitem
+        id="crm_lead_sale_order_menu"
+        name="My Orders"
+        parent="crm.crm_menu_sales"
+        action="sale.action_orders"
+        sequence="3" />
+
+<!--     <menuitem
+            id="crm_menu_filter_wizard"
+            name="Check Existing"
+            parent="crm.crm_menu_root" 
+            action="crm_keyword_filter_action" 
+            sequence="2"/> -->
+    <!-- EOF 1.1 -->
+</odoo>

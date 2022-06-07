@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+       <div id="map" style="width:600px;height:600px;margin-right:20px;float:left;"></div>
+        <div id="sidebar" style="width:300px;float:left;">
+            <form action="#" onsubmit="getDirections(this.from.value, this.to.value, this.mode.value);return false;">
+                <p><label style="width:50px;display:inline-block;">From:</label><input type="text" size="34" name="from" value="Changi Airport"/></p>
+                <p><label style="width:50px;display:inline-block;">To:</label><input type="text" size="34" name="to" value="Orchard Road"/></p>
+                <p><label style="width:50px;display:inline-block;">Via:</label>
+                <select name="mode">
+                    <option value="pt">Public Transport</option>
+                    <option value="t">Taxi</option>
+                    <option value="c">Car</option>
+                </select>
+                <input type="submit" value="Get Directions" style="margin-left:25px"/></p>
+            </form>
+            <div id="panel"></div>
+        </div>
+</templates>
+

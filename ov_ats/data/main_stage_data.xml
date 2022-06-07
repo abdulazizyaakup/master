@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="hr.recruitment.stage" id="stage_contact">
+            <field name="name">Contact</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_application">
+            <field name="name">Application</field>
+            <field name="template_id" ref="hr_recruitment.email_template_data_applicant_interest"/>
+            <field name="sequence">2</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_interview">
+            <field name="name">Interview</field>
+            <field name="sequence">3</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_employment_offer">
+            <field name="name">Employment Offer</field>
+            <field name="sequence">4</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_employee">
+            <field name="name">Employee</field>
+            <field name="sequence">5</field>
+            <field name="fold" eval="True"/>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_rejected">
+            <field name="name">Rejected</field>
+            <field name="sequence">6</field>
+            <field name="fold" eval="True"/>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_banned">
+            <field name="name">Banned</field>
+            <field name="sequence">7</field>
+            <field name="fold" eval="True"/>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_blacklisted">
+            <field name="name">Blacklisted</field>
+            <field name="sequence">8</field>
+            <field name="fold" eval="True"/>
+        </record>
+    </data>
+</odoo>

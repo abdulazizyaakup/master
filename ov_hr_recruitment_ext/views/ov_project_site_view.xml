@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+
+<data>
+
+    <menuitem name="Project Site" id="ov_project_site" parent="hr_recruitment.menu_hr_recruitment_root" 
+    sequence="7" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+        <record model="ir.ui.view" id="ov_project_site_form_view">
+            <field name="name">ov.projectsite.form</field>
+            <field name="model">ov.projectsite</field>
+            <field name="arch" type="xml">
+                <form string="Project Site">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code" placeholder="1234"/>
+                                <field name="address"/>
+                                <field name="country_id"/>
+                                <field name="state_id"/>
+                                <field name="city_id"/>
+                                <field name="postcode" widget="char" placeholder="24578"/>
+                                <field name="sector"/>
+                            </group>
+                            <group>
+                                <field name="team"/>
+                                <field name="team_ic"/>
+                                <field name="project_ic"/>
+                                <field name="phone_guard" widget="phone" placeholder="123456789"/>
+                                <field name="phone_client" widget="phone" placeholder="123456789"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <!-- <field name="latitude" widget="char" placeholder="123456789"/>
+                                <field name="longitude" widget="char" placeholder="123456789"/> -->
+                            </group>
+                            <group>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_project_site_tree_view">
+            <field name="name">ov.projectsite.tree</field>
+            <field name="model">ov.projectsite</field>
+            <field name="arch" type="xml">
+                <tree string="Project Site">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="team_ic"/>
+                    <field name="project_ic"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_project_site" model="ir.actions.act_window">
+            <field name="name">Project Site</field>
+            <field name="res_model">ov.projectsite</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!-- <menuitem id="op_hr_recruitment_races" name="Team"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_op_races" groups="base.group_system"/> -->
+            
+
+
+        <record model="ir.ui.view" id="ov_project_site_team_form_view">
+            <field name="name">ov.projectsiteteam.form</field>
+            <field name="model">ov.projectsiteteam</field>
+            <field name="arch" type="xml">
+                <form string="Team">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="t_ic"/>
+                                <field name="p_ic"/>
+                            </group>
+                        </group>
+<!--                         <notebook>
+                            <page string="Members">
+                                <field name="team_member" mode="tree,kanban">
+                                    <tree string="Member Line" editable="bottom">
+                                        <field name="emp_id"/>
+                                    </tree>    
+                                </field>    
+                            </page>
+                        </notebook> -->
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_project_site_team_tree_view">
+            <field name="name">ov.projectsiteteam.tree</field>
+            <field name="model">ov.projectsiteteam</field>
+            <field name="arch" type="xml">
+                <tree string="Team">
+                    <field name="name"/>
+                    <field name="t_ic"/>
+                    <field name="p_ic"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_project_site_team" model="ir.actions.act_window">
+            <field name="name">Team</field>
+            <field name="res_model">ov.projectsiteteam</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <record id="view_projectsite_team_member_tree" model="ir.ui.view">
+            <field name="name">projectsite.team.member.tree</field>
+            <field name="model">projectsite.team.member</field>
+            <field name="arch" type="xml">
+                <tree string="Member List" create="false">
+                    <field name="emp_id"/>
+                </tree>
+            </field>
+        </record> -->
+
+<!-- <menuitem id="op_hr_recruitment_races" name="Team"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_op_races" groups="base.group_system"/> -->
+            <menuitem name="Team" id="ov_project_site_team" parent="ov_project_site" 
+    sequence="2" action="action_ov_project_site_team" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+    <menuitem name="Project Site" id="ov_project_site_act" parent="ov_project_site" 
+    sequence="1" action="action_ov_project_site" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+
+        <record model="ir.ui.view" id="ov_preferred_location_form_view">
+            <field name="name">ov.preflocation.form</field>
+            <field name="model">ov.preflocation</field>
+            <field name="arch" type="xml">
+                <form string="Location">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_preferred_location_tree_view">
+            <field name="name">ov.preflocation.tree</field>
+            <field name="model">ov.preflocation</field>
+            <field name="arch" type="xml">
+                <tree string="Locations">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_preferred_location" model="ir.actions.act_window">
+            <field name="name">Location</field>
+            <field name="res_model">ov.preflocation</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+            <menuitem name="Preferred Location" id="ov_preferred_location" parent="ov_project_site" 
+    sequence="2" action="action_ov_preferred_location" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+            </data>
+
+
+        <record model="ir.ui.view" id="ov_preferredsite_form_view">
+            <field name="name">ov.preferredsite.form</field>
+            <field name="model">ov.preferredsite</field>
+            <field name="arch" type="xml">
+                <form string="Preferred Site">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_preferredsite_tree_view">
+            <field name="name">ov.preferredsite.tree</field>
+            <field name="model">ov.preferredsite</field>
+            <field name="arch" type="xml">
+                <tree string="Preferred Sites">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_preferredsite" model="ir.actions.act_window">
+            <field name="name">Preferred Sites</field>
+            <field name="res_model">ov.preferredsite</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_preferredsite" name="Preferred Sites"
+            parent="ov_project_site" action="action_ov_preferredsite" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+<!--         <record model="ir.ui.view" id="ov_shift_form_view">
+            <field name="name">ov.shift.form</field>
+            <field name="model">ov.shift</field>
+            <field name="arch" type="xml">
+                <form string="Shift">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_shift_tree_view">
+            <field name="name">ov.shift.tree</field>
+            <field name="model">ov.shift</field>
+            <field name="arch" type="xml">
+                <tree string="Shift">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_shift" model="ir.actions.act_window">
+            <field name="name">Shift</field>
+            <field name="res_model">ov.shift</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_shift" name="Shift"
+            parent="ov_project_site" action="action_ov_shift" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+</odoo>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="preflocation1" model="ov.preflocation">
+        <field name="name">General North</field>
+    </record>
+    <record id="preflocation2" model="ov.preflocation">
+        <field name="name">Lim Chu Kang</field>
+    </record>
+    <record id="preflocation3" model="ov.preflocation">
+        <field name="name">Mandai</field>
+    </record>
+    <record id="preflocation4" model="ov.preflocation">
+        <field name="name">Sembawang</field>
+    </record>
+    <record id="preflocation5" model="ov.preflocation">
+        <field name="name">Woodlands</field>
+    </record>
+    <record id="preflocation6" model="ov.preflocation">
+        <field name="name">Yishun</field>
+    </record>
+    <record id="preflocation7" model="ov.preflocation">
+        <field name="name">General North East</field>
+    </record>
+    <record id="preflocation8" model="ov.preflocation">
+        <field name="name">Ang Mo Kio</field>
+    </record>
+    <record id="preflocation9" model="ov.preflocation">
+        <field name="name">Hougang</field>
+    </record>
+    <record id="preflocation10" model="ov.preflocation">
+        <field name="name">Punggol</field>
+    </record>
+    <record id="preflocation11" model="ov.preflocation">
+        <field name="name">Sengkang</field>
+    </record>
+    <record id="preflocation12" model="ov.preflocation">
+        <field name="name">Serangoon</field>
+    </record>
+    <record id="preflocation13" model="ov.preflocation">
+        <field name="name">General East</field>
+    </record>
+    <record id="preflocation14" model="ov.preflocation">
+        <field name="name">Bedok</field>
+    </record>
+    <record id="preflocation15" model="ov.preflocation">
+        <field name="name">Changi</field>
+    </record>
+    <record id="preflocation16" model="ov.preflocation">
+        <field name="name">Pasir Ris</field>
+    </record>
+    <record id="preflocation17" model="ov.preflocation">
+        <field name="name">Payar Lebar</field>
+    </record>
+    <record id="preflocation18" model="ov.preflocation">
+        <field name="name">Tampines</field>
+    </record>
+    <record id="preflocation19" model="ov.preflocation">
+        <field name="name">Ubi</field>
+    </record>
+    <record id="preflocation20" model="ov.preflocation">
+        <field name="name">General Central</field>
+    </record>
+    <record id="preflocation21" model="ov.preflocation">
+        <field name="name">Bishan</field>
+    </record>
+    <record id="preflocation22" model="ov.preflocation">
+        <field name="name">Bukit Merah</field>
+    </record>
+    <record id="preflocation23" model="ov.preflocation">
+        <field name="name">Bukit Timah</field>
+    </record>
+    <record id="preflocation24" model="ov.preflocation">
+        <field name="name">Geylang</field>
+    </record>
+    <record id="preflocation25" model="ov.preflocation">
+        <field name="name">Habourfront</field>
+    </record>
+    <record id="preflocation26" model="ov.preflocation">
+        <field name="name">Kallang</field>
+    </record>
+    <record id="preflocation27" model="ov.preflocation">
+        <field name="name">Marine Parade</field>
+    </record>
+    <record id="preflocation28" model="ov.preflocation">
+        <field name="name">Novena</field>
+    </record>
+    <record id="preflocation29" model="ov.preflocation">
+        <field name="name">Queenstown</field>
+    </record>
+    <record id="preflocation30" model="ov.preflocation">
+        <field name="name">Sentosa</field>
+    </record>
+    <record id="preflocation31" model="ov.preflocation">
+        <field name="name">Tanglin</field>
+    </record>
+    <record id="preflocation32" model="ov.preflocation">
+        <field name="name">Toa Payoh</field>
+    </record>
+    <record id="preflocation33" model="ov.preflocation">
+        <field name="name">General CBD</field>
+    </record>
+    <record id="preflocation34" model="ov.preflocation">
+        <field name="name">Boat Quay, Clarke Quay</field>
+    </record>
+    <record id="preflocation35" model="ov.preflocation">
+        <field name="name">Bugis</field>
+    </record>
+    <record id="preflocation36" model="ov.preflocation">
+        <field name="name">Cityhall</field>
+    </record>
+    <record id="preflocation37" model="ov.preflocation">
+        <field name="name">Tanjung Pagar</field>
+    </record>
+    <record id="preflocation38" model="ov.preflocation">
+        <field name="name">Raffles Place</field>
+    </record>
+    <record id="preflocation39" model="ov.preflocation">
+        <field name="name">Shenton Way</field>
+    </record>
+    <record id="preflocation40" model="ov.preflocation">
+        <field name="name">Marina</field>
+    </record>
+    <record id="preflocation41" model="ov.preflocation">
+        <field name="name">Newton</field>
+    </record>
+    <record id="preflocation42" model="ov.preflocation">
+        <field name="name">Orchard</field>
+    </record>
+    <record id="preflocation43" model="ov.preflocation">
+        <field name="name">Outram</field>
+    </record>
+    <record id="preflocation44" model="ov.preflocation">
+        <field name="name">River Valley</field>
+    </record>
+    <record id="preflocation45" model="ov.preflocation">
+        <field name="name">General West</field>
+    </record>
+    <record id="preflocation46" model="ov.preflocation">
+        <field name="name">Boon Lay</field>
+    </record>
+    <record id="preflocation47" model="ov.preflocation">
+        <field name="name">Bukit Batok</field>
+    </record>
+    <record id="preflocation48" model="ov.preflocation">
+        <field name="name">Bukit Panjang</field>
+    </record>
+    <record id="preflocation49" model="ov.preflocation">
+        <field name="name">Choa Chu Kang</field>
+    </record>
+    <record id="preflocation50" model="ov.preflocation">
+        <field name="name">Clementi</field>
+    </record>
+    <record id="preflocation51" model="ov.preflocation">
+        <field name="name">Jurong East</field>
+    </record>
+    <record id="preflocation52" model="ov.preflocation">
+        <field name="name">Jurong West</field>
+    </record>
+    <record id="preflocation53" model="ov.preflocation">
+        <field name="name">Pioneer</field>
+    </record>
+    <record id="preflocation54" model="ov.preflocation">
+        <field name="name">Tengah</field>
+    </record>
+    <record id="preflocation55" model="ov.preflocation">
+        <field name="name">Tuas</field>
+    </record>
+    <record id="preflocation56" model="ov.preflocation">
+        <field name="name">No Preference</field>
+    </record>
+</odoo>

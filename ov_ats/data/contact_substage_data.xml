@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="contact_new" model="contact.substage">
+            <field name="name">New</field>
+            <field name="sequence" type="int">1</field>
+        </record>
+        <record id="contact_nuturing" model="contact.substage">
+            <field name="name">Nuturing</field>
+            <field name="sequence" type="int">2</field>
+        </record>
+        <record id="contact_convert_to_application" model="contact.substage">
+            <field name="name">Application</field>
+            <field name="sequence" type="int">3</field>
+        </record>
+
+
+        <record id="employee_stage" model="employee.stage">
+            <field name="name">Employee</field>
+            <field name="sequence" type="int">1</field>
+        </record>
+        <record id="employee_resigned" model="employee.stage">
+            <field name="name">Resigned</field>
+            <field name="sequence" type="int">2</field>
+        </record>
+        <record id="employee_terminated" model="employee.stage">
+            <field name="name">Terminated</field>
+            <field name="sequence" type="int">3</field>
+        </record>
+    </data>
+</odoo>

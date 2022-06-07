@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="web.address_layout">
+        <t t-set="colclass" t-value="('col-md-12' if report_type == 'html' else 'col-12') + ' ml-auto'"/>
+        <t t-if="address">
+            <div class="address row" style="padding-right:40px;padding-left:40px;padding-top:33px;">
+                <t t-if="information_block">
+                    <t t-set="colclass" t-value="'col-5 offset-1'"/>
+                    <div name="information_block" class="col-6">
+                        <t t-raw="information_block"/>
+                    </div>
+                </t>
+                <div name="address" t-att-class="colclass">
+                    <t t-raw="address"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="web.external_layout_standard">
+        <div class="header">
+            <div class="row" style="padding-top:25px !important;">
+                <div class="col-6" style="">
+                        <div style="margin-top:20px;line-height:2px;padding-left:40px;">
+                            <b><p class="text-left" style="font-size:14px;" t-field="company.name" name="name"/></b>
+                            <p class="text-left" style="font-size:14px;" t-field="company.street" name="street"/>
+                            <p class="text-left" style="font-size:14px;" t-field="company.street2" name="street2"/>
+                            <p class="text-left" style="font-size:14px;" t-field="company.zip" name="zip"/>
+                            <p class="text-left" style="font-size:14px;" t-field="company.country_id.name" name="country"/>
+                        <!-- <div style="margin-top:20px;" t-field="company.partner_id"
+                            t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                        /> -->
+                        </div>
+                </div>
+                <div class="col-6">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="margin-top:20px;float:right;max-height: 250px;max-width:354px;padding-bottom:20px;padding-right:40px;" alt="Logo"/>
+                    <!-- <br/><p t-field="company.report_header"/>  style="display: flex;justify-content: center;align-items: center;" -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6"><i><p class="text-right" style="font-size:9px;padding-right:40px;" t-field="company.report_header" name="moto"/></i></div>
+            </div>
+            <div t-if="company.logo or company.report_header" class="row zero_min_height">
+                <div class="col-12">
+                    <div style="border-bottom: 1px solid grey;"/>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-6" name="company_address">
+                    <div t-field="company.partner_id"
+                        t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                    />
+                </div>
+            </div> -->
+        </div>
+
+        <div class="article o_report_layout_standard"  t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-call="web.address_layout"/>
+            <t t-raw="0"/>
+        </div>
+
+        <div class="footer" style="max-height:30px !important;">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4">
+                    <li t-if="company.phone" class="list-inline-item">Phone: <span t-field="company.phone"/></li>
+                    <li t-if="company.email" class="list-inline-item">Email: <span t-field="company.email"/></li>
+                    <li t-if="company.website" class="list-inline-item">Web: <span t-field="company.website"/></li>
+                    <li t-if="company.vat" class="list-inline-item"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                </ul>
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- <template id="external_layout_footer" inherit_id="account.external_layout_footer"> -->
+        <!-- make here your template modifications as usual -->
+    <!-- </template> -->
+</odoo>

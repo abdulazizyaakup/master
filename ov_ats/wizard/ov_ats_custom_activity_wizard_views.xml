@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="mail_activity_view_form_popup">
+        <field name="name">mail.activity.form</field>
+        <field name="model">mail.activity</field>
+        <field name="arch" type="xml">
+            <form string="Applicant's Activity">
+                <group>
+                    <group invisible="1">
+                        <field name="activity_category" invisible="1"/>
+                        <field name="res_model" invisible="1"/>
+                        <field name="res_model_id" invisible="1"/>
+                        <field name="res_id" invisible="1"/>
+                        <field name="force_next" invisible="1"/>
+                        <field name="previous_activity_type_id"/>
+                        <field name="has_recommended_activities"/>
+                    </group>
+                    <group>
+                        <!-- <button string="Test" name="test" type="object"/> -->
+                        <field name="applicant_ids" attrs="{'invisible':[('res_model', '!=', 'hr.applicant')]}"/>
+                        <field name="is_contact" invisible="1" attrs="{'invisible':[('res_model', '!=', 'hr.applicant')]}"/>
+                        <field name="is_application" invisible="1" attrs="{'invisible':[('res_model', '!=', 'hr.applicant')]}"/>
+                        <field name="is_iv" invisible="1" attrs="{'invisible':[('res_model', '!=', 'hr.applicant')]}"/>
+                        <field name="is_contract" invisible="1" attrs="{'invisible':[('res_model', '!=', 'hr.applicant')]}"/>
+                        <!-- <field name="activity_type_id" string="Action"/> -->
+                        <field name="activity_type_id" string="Action" attrs="{'invisible':[('res_model', '=', 'hr.applicant')]}"/>
+                        <field name="summary" attrs="{'invisible':[('res_model', '==', 'hr.applicant')]}"/>
+                    </group>
+                    <group>
+                        <field name="date_deadline"/>
+                        <field name="user_id"/>
+                        <field name="calendar_event" attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('contact_activity','!=', 'schedule_for_application')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="calendar_event" attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('engagement_status','!=', 'schedule_for_application')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="calendar_event" attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('application_activity','!=', 'first_iv')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="calendar_event" attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('interview_activity','!=', 'second_iv')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="calendar_event" attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('interview_activity','!=', 'third_iv')],'readonly': [('id', '!=', False)]}"/>
+                    </group>
+                    <group>
+                        <field name="contact_activity" attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('is_contact','!=', True)],'readonly': [('id', '!=', False)]}"/>
+                        <field name="application_activity" attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('is_application','!=', True)],'readonly': [('id', '!=', False)]}"/>
+                        <field name="interview_activity" attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('is_iv','!=', True)],'readonly': [('id', '!=', False)]}"/>
+                        <field name="contract_activity" attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('is_contract','!=', True)],'readonly': [('id', '!=', False)]}"/>
+                        <field name="contact_reject_reason"  attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('contact_activity', '!=', 'contact_reject')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="contact_reject_reason"  attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('application_activity', '!=', 'contact_reject')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="contact_reject_reason"  attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('interview_activity', '!=', 'contact_reject')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="contact_reject_reason"  attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('contract_activity', '!=', 'contact_reject')],'readonly': [('id', '!=', False)]}"/>
+
+                        <field name="wss_reject_reason"  attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('contact_activity', '!=', 'wss_reject')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="wss_reject_reason"  attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('application_activity', '!=', 'wss_reject')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="wss_reject_reason"  attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('interview_activity', '!=', 'wss_reject')],'readonly': [('id', '!=', False)]}"/>
+                        <field name="wss_reject_reason"  attrs="{'invisible':['|',('res_model', '!=', 'hr.applicant'),('contract_activity', '!=', 'wss_reject')],'readonly': [('id', '!=', False)]}"/>
+
+                        <!-- <field name="substage_reject" invisible="0"/> -->
+                        <field name="type_of_engagement" attrs="{'invisible':['|',('contact_activity', '!=', 'log_an_engagement'),('res_model', '!=', 'hr.applicant')]}"/>
+                        <field name="engagement_status" attrs="{'invisible':['|',('contact_activity', '!=', 'log_an_engagement'),('res_model', '!=', 'hr.applicant')]}"/>
+                        <!-- <field name="status_call_categ" attrs="{'invisible':['|',('contact_activity', '!=', 'log_a_call'),('res_model', '!=', 'hr.applicant')]}"/>
+                        <field name="status_call_categ_other" attrs="{'invisible':['|','|',('status_call_categ','!=','other'),('contact_activity', '!=', 'log_a_call'),('res_model', '!=', 'hr.applicant')]}"/> -->
+                    </group>
+                </group>
+                <group>
+                    <field name="note"/>
+                </group>
+                <footer>
+                    <button string="Schedule" name="action_close_dialog" type="object" class="btn-primary"/>
+                    <button attrs="{'invisible': ['|','|',('activity_category', '=', 'meeting'),('force_next', '=', True),('res_model', '=', 'hr.applicant')]}" string="Mark as Done" name="action_done" type="object" class="btn-secondary" context="{'mail_activity_quick_update': True}"/>
+                    <button attrs="{'invisible': ['|',('force_next', '=', True),('res_model', '!=', 'hr.applicant')]}" string="Mark as Done" name="action_done2" type="object" class="btn-secondary" context="{'mail_activity_quick_update': True}"/>
+                    <button attrs="{'invisible': [('force_next', '=', True)]}" string="Done &amp; Schedule Next" name="action_done_schedule_next" type="object" class="btn-secondary" context="{'mail_activity_quick_update': True}"/>
+                    <button attrs="{'invisible': [('force_next', '=', False)]}" string="Done &amp; Launch Next" name="action_done_schedule_next" type="object" class="btn-secondary" context="{'mail_activity_quick_update': True}"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="launch_custom_activity_wizard"
+                name="Activity"
+                src_model="hr.applicant"
+                res_model="mail.activity"
+                view_mode="form"
+                target="new"
+                key2="client_action_multi"/>
+</odoo>

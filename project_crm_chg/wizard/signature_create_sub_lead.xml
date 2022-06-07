@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="project_crm_lead2sublead_view3_form" model="ir.ui.view">
+            <field name="name">crm.lead2sublead.signature.form</field>
+            <field name="model">crm.lead2sublead.signature</field>
+            <field name="arch" type="xml">
+                <form string="Generate Lead">
+                    <group class="oe_title">
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <group>
+                            <!-- <field name="bu_id"/> -->
+                            <field name="company_id" readonly="1"/>
+                            <field name="team_id2"/>
+                            <field name="crm_prj_team_leader"/>
+                            <!-- <field name="owner_sales"/> -->
+                        </group>
+                        <group>
+                            <field name="sub_project_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="createsublead_salesman2" string="Create and Assign" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="project_crm_lead2sublead_signature_action" model="ir.actions.act_window">
+            <field name="name">Generate Lead</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.lead2sublead.signature</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_crm_lead2sublead_view3_form"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="crm_bu_plant_tree" model="ir.ui.view">
+      <field name="name">bu.plant.tree</field>
+      <field name="model">bu.plant</field>
+      <field name="arch" type="xml">
+          <tree string="Plant" editable="bottom">
+              <field name="name"/>
+              <field name="bu_id"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="crm_bu_plant_form" model="ir.ui.view">
+      <field name="name">bu.plant.form</field>
+      <field name="model">bu.plant</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+          <form string="Plant">
+              <sheet>
+                  <group>
+                      <field name="name"/>
+                      <field name="bu_id"/>
+                  </group>
+              </sheet>
+              <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+              </div>
+          </form>
+      </field>
+  </record>
+
+  <record id="crm_bu_plant_action" model="ir.actions.act_window">
+      <field name="name">Plant</field>
+      <field name="res_model">bu.plant</field>
+      <field name="view_id" ref="crm_bu_plant_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set plant for business unit
+        </p>
+      </field>
+  </record>
+
+  <menuitem
+      id="crm_menu_bu_plant"
+      name="Plant"
+      parent="crm.crm_menu_config"
+      action="crm_bu_plant_action"
+      groups="sales_team.group_sale_manager"/>
+
+
+  <record id="crm_project_level_tree" model="ir.ui.view">
+      <field name="name">crm.project.level.tree</field>
+      <field name="model">crm.project.level</field>
+      <field name="arch" type="xml">
+          <tree string="Level" editable="bottom">
+              <field name="sequence" widget="handle"/>
+              <field name="name"/>
+              <field name="parent"/>
+              <field name="parent_id"/>
+              <field name="definition"/>
+              <field name="company_id"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="crm_project_level_form" model="ir.ui.view">
+      <field name="name">crm.project.level.form</field>
+      <field name="model">crm.project.level</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+          <form string="Project Level">
+              <sheet>
+                  <group>
+                      <field name="sequence"/>
+                      <field name="parent_id"/>
+                      <field name="name"/>
+                      <field name="definition"/>
+                      <field name="company_id"/>
+                  </group>
+              </sheet>
+              <!-- <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+              </div> -->
+          </form>
+      </field>
+  </record>
+
+  <record id="crm_project_level_action" model="ir.actions.act_window">
+      <field name="name">Project Level</field>
+      <field name="res_model">crm.project.level</field>
+      <field name="view_id" ref="crm_project_level_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set project level for business unit
+        </p>
+      </field>
+  </record>
+
+  <menuitem
+      id="crm_menu_project_level"
+      name="Project Level"
+      parent="crm.crm_menu_config"
+      action="crm_project_level_action"
+      groups="sales_team.group_sale_manager"/>      
+
+
+  <record id="product_quotation_group_tree" model="ir.ui.view">
+      <field name="name">product.quotation.group.tree</field>
+      <field name="model">product.quotation.group</field>
+      <field name="arch" type="xml">
+          <tree string="Product Group" editable="bottom">
+              <field name="name"/>
+              <field name="company_id"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="product_quotation_group_form" model="ir.ui.view">
+      <field name="name">product.quotation.group.form</field>
+      <field name="model">product.quotation.group</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+          <form string="Product Group">
+              <sheet>
+                  <group>
+                      <field name="name"/>
+                      <field name="company_id"/>
+                  </group>
+              </sheet>
+              <!-- <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+              </div> -->
+          </form>
+      </field>
+  </record>
+
+  <record id="product_quotation_group_action" model="ir.actions.act_window">
+      <field name="name">Product Group</field>
+      <field name="res_model">product.quotation.group</field>
+      <field name="view_id" ref="product_quotation_group_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set product quotation group
+        </p>
+      </field>
+  </record>
+
+  <menuitem
+      id="crm_menu_product_quotation_group"
+      name="Product Group"
+      parent="crm.crm_menu_config"
+      action="product_quotation_group_action"
+      groups="sales_team.group_sale_manager"/>      
+
+</odoo>

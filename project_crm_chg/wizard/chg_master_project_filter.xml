@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="crm_keyword_filter2_view_form" model="ir.ui.view">
+            <field name="name">searchlead.bykeywords.form</field>
+            <field name="model">searchlead.bykeywords</field>
+            <field name="arch" type="xml">
+                <form string="Filter by Keywords">
+                    <group>
+                        <field name="keywords"/>
+                    </group><!-- 
+                    <group>
+                        <field name="keywords_2"/>
+                    </group> -->
+                    <footer>
+                        <button name="search_leads" string="Filter" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="crm_keyword_filter2_action" model="ir.actions.act_window">
+            <field name="name">Filter By Keywords</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">searchlead.bykeywords</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="crm_keyword_filter2_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+        
+</odoo>

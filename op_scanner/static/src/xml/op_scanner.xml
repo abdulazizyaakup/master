@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <div t-name="TwainContainer" class="o_twain_container">
+        <div class="container">
+            <!-- <form>
+                    <input required="1" type="hidden" name="csrf_token" t-att-value="false"/> -->
+            <!-- <div class="row">
+                <div style="display: block; position:absolute;">
+                    <div id="dwtcontrolContainer" style="float: left; width: 120px; height: 350px; position:relative;"></div>
+                    <div id="dwtcontrolContainerLargeViewer" style="float: left; width: 270px; height: 350px; position:relative;"></div>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col">
+                    <b>Options</b>
+                    <br/>
+                    <label for="BW">
+                        <input type="radio" id="BW" name="PixelType"/>B&amp;W </label>
+                    <label for="Gray">
+                        <input type="radio" id="Gray" name="PixelType" checked="checked"/>Gray</label>
+                    <label for="RGB">
+                        <input type="radio" id="RGB" name="PixelType"/>Color</label>
+                    |
+                    <label>
+                        <input type="checkbox" id="ADF" checked="checked"/>Auto Feeder</label>
+                    <label>
+                        <input type="checkbox" id="ShowUI" checked="checked"/>Show UI
+                        <br/>
+                    </label>
+                    <label for="Duplex">
+                        <input class="o_duplex_option" type="checkbox" id="Duplex"/>Duplex
+                    </label>
+                    <br/>
+                    Preview Mode :
+                    <select size="1" id="DW_PreviewMode" class="form-control o_website_form_input o_preview_mode" name="Preview Mode">
+                        <option value="0">1X1</option>
+                        <option value="1">2X2</option>
+                        <option value="2">3X3</option>
+                        <option value="3">4X4</option>
+                        <option value="4">5X5</option>
+                    </select>
+                    File Type :
+                    <select class="form-control o_website_form_input" id="fileType" name="Type">
+                        <option value="application_form">Application Form</option>
+                        <option value="aaa">NRIC</option>
+                        <option value="nric">Work Permit</option>
+                        <option value="passport">Passport</option>
+                        <option value="social_visit_pass">Social Visit Pass</option>
+                        <option value="certificate_of_good_conduct">Certificate of Good Conduct</option>
+                        <option value="identification_card">Identification Card</option>
+                        <option value="letter_of_appointment">Letter of Appointment</option>
+                        <option value="pre_employment_briefing_on_job_functions">Pre-Employment Briefing on Job Functions</option>
+                        <option value="pre_employment_briefing_on_administration">Pre Employment Briefing On Administration</option>
+                        <option value="plrd_security_licence">PLRD Security Licence</option>
+                        <option value="bank_account_particulars_document">Bank Account Particulars Document</option>
+                        <option value="plrd_screening_document">PLRD Screening Document</option>
+                        <option value="plrd_training_records_document">PLRD Training Records Document</option>
+                        <option value="plrd_notification_document">PLRD Notification Document</option>
+                        <option value="medical_report">Medical Report</option>
+                        <option value="logistics_issuance_document">Logistics Issuance Document</option>
+                      </select>
+                    Resolution :
+                    <select size="1" id="Resolution" class="form-control o_website_form_input">
+                        <option value="100">100</option>
+                        <option value="150">150</option>
+                        <option value="200">200</option>
+                        <option value="300">300</option>
+                    </select>
+                    Scanner Source :
+                    <select size="1" id="source" class="form-control o_website_form_input"></select>
+                    <br/>
+                    <button type="submit" class="o_acquire_image btn btn-primary btn-lg">Start Scan</button>
+                    <button type="submit" class="o_upload_file btn btn-primary btn-lg">Upload</button>
+                    <br/>
+                </div>
+                <div class="col">
+                    <b>Preview</b>
+                    <div style="width:50%;height:80%;" id="dwtcontrolContainer">
+                        <div style="width: 370px; height: 415px; overflow: hidden; border: 1px solid rgb(204, 204, 204); display: block; position: relative; background-color: rgb(255, 255, 255);"><canvas width="370" height="16" style="position: absolute; left: 0px; top: 399px;"></canvas><canvas width="16" height="415" style="position: absolute; left: 354px; top: 0px;"></canvas></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="ScanWrapper">
+                        <div id="divUpload" class="divinput mt30" style="position:relative">
+                                <b>Save Documents</b>
+                                <br/>
+                                Title :
+                                <input type="text" size="20" id="txt_title" required="1"/>
+                                <br/>
+                                File Name :
+                                <input type="text" size="20" id="txt_fileName" required="1"/>
+                                <br/>
+                                Description :
+                                <textarea id="txt_description"/>
+                                <br/>
+                                Format :
+                                <br/>
+                                <label for="imgTypebmp">
+                                    <input type="radio" value="bmp" name="ImageType" id="imgTypebmp"/>
+                                    BMP</label>
+                                <label for="imgTypejpeg">
+                                    <input type="radio" value="jpg" name="ImageType" id="imgTypejpeg"/>
+                                    JPEG</label>
+                                <label for="imgTypetiff">
+                                    <input type="radio" value="tif" name="ImageType" id="imgTypetiff"/>
+                                    TIFF</label>
+                                <label for="imgTypepng">
+                                    <input type="radio" value="png" name="ImageType" id="imgTypepng"/>
+                                    PNG</label>
+                                <label for="imgTypepdf">
+                                    <input type="radio" value="pdf" name="ImageType" id="imgTypepdf"/>
+                                    PDF</label>
+                                <label for="MultiPageTIFF">
+                                    <input type="checkbox" id="MultiPageTIFF"/>
+                                    Multi-Page TIFF</label>
+                                <label for="MultiPagePDF">
+                                    <input type="checkbox" id="MultiPagePDF"/>
+                                    Multi-Page PDF</label>
+                                <br/>
+                                <button type="submit" class="o_save_model btn btn-primary btn-lg">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        <!-- </form> -->
+        </div>
+    </div>
+</templates>

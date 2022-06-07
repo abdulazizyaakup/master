@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="preferred_site1" model="ov.preferredsite">
+        <field name="name">Condominium</field>
+    </record>
+    <record id="preferred_site2" model="ov.preferredsite">
+        <field name="name">Commercial</field>
+    </record>
+    <record id="preferred_site3" model="ov.preferredsite">
+        <field name="name">Office Building</field>
+    </record>
+    <record id="preferred_site4" model="ov.preferredsite">
+        <field name="name">Industrial</field>
+    </record>
+    <record id="preferred_site5" model="ov.preferredsite">
+        <field name="name">Mix Development</field>
+    </record>
+    <record id="preferred_site6" model="ov.preferredsite">
+        <field name="name">Educational</field>
+    </record>
+    <record id="preferred_site7" model="ov.preferredsite">
+        <field name="name">Government Building</field>
+    </record>
+    <record id="preferred_site8" model="ov.preferredsite">
+        <field name="name">Construction</field>
+    </record>
+    <record id="preferred_site9" model="ov.preferredsite">
+        <field name="name">Events</field>
+    </record>
+    <record id="preferred_site10" model="ov.preferredsite">
+        <field name="name">No Preference</field>
+    </record>
+</odoo>

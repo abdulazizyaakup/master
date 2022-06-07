@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <!-- Add instructor field to existing view -->
+        <record model="ir.ui.view" id="helpdesk_ticket_form_view_ext">
+            <field name="name">helpdesk.ticket</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                  <button name="create_applicant" string="Create As Applicant" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_email']" position="after">
+                  <field name="partner_nric"/>
+                  <field name="partner_phone_no"/>
+                  <field name="job_id"/>
+                  <field name="quality_of_contact"  widget="priority"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="helpdesk_tickets_view_tree_ext">
+            <field name="name">helpdesk.ticket</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='stage_id']" position="after">
+                  <button name="create_applicant" string="Create As Applicant" type="object" class="oe_highlight" groups="helpdesk.group_helpdesk_user"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>

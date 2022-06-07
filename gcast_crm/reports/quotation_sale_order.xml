@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="external_layout_standard_v4_gcast">
+        <div t-attf-class="header o_company_#{company.id}_layout first-page" t-att-style="report_header_style">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <center>
+                    <p style=""><b style="font-size:20px;">G-CAST CONCRETE SDN. BHD. </b><small>(971228-x)</small><br/>
+                    A-1-3A, PUSAT PERDAGANGAN KUCHAI, NO2, JALAN 1/127<br/>
+                    OFF JALAN KUCHAI LAMA, 58200 KUALA LUMPUR,<br/>
+                    TEL: 603-79828168 FAX: 603-79828068<br/>
+                    </p>
+                    </center>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <t t-call="web.address_layout"/>
+            <t t-raw="0"/>
+        </div>
+
+        <!-- <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4">
+                    <li t-if="company.phone" class="list-inline-item d-inline">Phone: <span class="o_force_ltr" t-field="company.phone"/></li>
+                    <li t-if="company.email" class="list-inline-item d-inline">Email: <span t-field="company.email"/></li>
+                    <li t-if="company.website" class="list-inline-item d-inline">Web: <span t-field="company.website"/></li>
+                    <li t-if="company.vat" class="list-inline-item d-inline"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                </ul>
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted" style="text-align: left">
+                   <img class="img img-responsive" src="/midah_firedoor_sale/static/src/img/Midah_Industries_footer_logo.PNG" style="max-height: 75px;"/>
+                </div>
+            </div>
+        </div> -->
+    </template>
+    <template id="external_layout_v4_gcast">
+        <t t-if="not o" t-set="o" t-value="doc"/>
+
+        <t t-if="not company">
+            <!-- Multicompany -->
+            <t t-if="company_id">
+                <t t-set="company" t-value="company_id"/>
+            </t>
+            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-else="else">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+        </t>
+
+        <t t-if="company.external_report_layout_id" t-call="{{company.external_report_layout_id.key}}"><t t-raw="0"/></t>
+        <t t-else="else" t-call="gcast_crm.external_layout_standard_v4_gcast"><t t-raw="0"/></t>
+
+    </template>
+
+    <template id="report_quotation_sale_order"> 
+        <t t-call="gcast_crm.external_layout_v4_gcast">
+
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <table style="width:100%; border: none;">
+                        <tr>
+                            <td><b>To: </b></td>
+                            <td><b><t t-esc="doc.partner_id.name"/></b></td>
+                            <td style="text-align: right" class=""><b>Our Ref: </b></td>
+                            <td style="text-align: right" class=""><b><t t-esc="doc.fl_name"/></b></td>
+                        </tr>
+                        <tr>
+                            <td><b>Attn: </b></td>
+                            <td><b><t t-esc="doc.attn_to"/></b></td>
+                            <td style="text-align: right"><b>Date:</b></td>
+                            <td style="text-align: right"><b><t t-esc="doc.date_order" t-options='{"widget": "date"}'/></b></td>
+                        </tr>
+                        <tr>
+                            <td>TEL: </td>
+                            <td><t t-esc="doc.partner_id.phone"/></td>
+                            <td style="text-align: right">FAX: </td>
+                            <td style="text-align: right"><t t-esc="doc.partner_id.fax"/></td>
+                        </tr>
+                    </table>
+                    <br/>
+
+                    <p><b><t t-esc="doc.quot_regarding_gcast"/>
+                    
+                    <!-- RE: Quotation For -->
+                    
+                    <!-- RE -->
+                    <!-- <t t-set="i" t-value="1"/>
+                    <t t-foreach="doc.quot_regarding_gcast" t-as="line">
+                        <t t-if="len(doc.quot_regarding_gcast) > i">
+                            <t t-esc="line.name"/> &amp;
+                            <t t-set="i" t-value="i +1"/>
+                        </t>
+                        <t t-else="len(doc.quot_regarding_gcast) == i">
+                            <t t-esc="line.name"/>
+                        </t>
+                    </t> -->
+
+                    </b></p>
+
+                    <p style="padding-left: 35px"><b>Project: <t t-esc="doc.project_quoted_name"/></b></p>
+                    
+                    <table style="width:100%; border: 1px solid black; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center; border: 1px solid black;">No</th>
+                                <th colspan="" style="text-align:center; border: 1px solid black;">DESCRIPTION</th> 
+                                <th style="text-align:center; border: 1px solid black;">Qty(No)</th>
+                                <th style="text-align:center; border: 1px solid black;">Unit Price(RM)</th>
+                                <th style="text-align:center; border: 1px solid black;">Amount(RM)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-set="current_subtotal" t-value="0"/>
+                            <t t-set="counter" t-value="1"/>
+                            <t t-foreach="doc.order_line" t-as="line">
+                                <tr t-att-class="'bg-200 font-weight-bold o_line_section' if line.display_type == 'line_section' else 'font-italic o_line_note' if line.display_type == 'line_note' else ''">
+                                    <t t-if="not line.display_type">
+                                        <td style="text-align:center; border: 1px solid black;"><span t-esc="counter"/></td>
+                                        <td style="padding-left: 10px; border: 1px solid black;"><span t-field="line.name"/></td>
+                                        <td style="text-align:center; border: 1px solid black;">
+                                            <t t-if="line.item_order_type == 'full'">
+                                                <span>Full Load</span>
+                                            </t>
+                                            <t t-elif="line.item_order_type == 'ro'">
+                                                <span>R.O.</span>
+                                            </t>
+                                            <t t-else="line.item_order_type == Null">
+                                                <span t-field="line.product_uom_qty"/><span t-field="line.product_uom"/>
+                                            </t>
+                                        </td>
+                                        <td style="text-align:center; border: 1px solid black;"><span t-field="line.price_unit"/></td>                                 
+                                        <td style="text-align:center; border: 1px solid black;"><span t-field="line.price_total" t-options="{'widget': 'float', 'precision': 2}"/></td>
+                                        <t t-set="counter" t-value="counter + 1"/>
+                                    </t>
+                                    <t t-if="line.display_type == 'line_section'">
+                                        <td style="border: 1px solid black;"></td>
+                                        <td style="padding-left: 10px; border: 1px solid black;" name="td_section_line" colspan="99">
+                                            <b><u><span t-field="line.name"/></u></b>
+                                        </td>
+                                    </t>
+                                    <t t-if="line.display_type == 'line_note'">
+                                        <td style="border: 1px solid black;"></td>
+                                        <td style="padding-left: 10px;" name="td_note_line" colspan="99">
+                                            <b><u><span t-field="line.name"/></u></b>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tr>
+                            <td style="border: 1px solid black;"></td>
+                            <td style="border: 1px solid black;" colspan="2" ></td>
+                            <td style="text-align:center; border: 1px solid black;"><b>TOTAL/RM</b></td>
+                            <td style="text-align:center; border: 1px solid black;"><b><t t-esc="'{0:,.2f}'.format(doc.amount_total)"/></b></td>
+                        </tr>
+                    </table>
+
+                    <br/>
+
+                    <span><b><u>Terms &amp; Conditions</u></b></span>
+                    <t t-if="doc.quot_tnc_type == 'local'">
+                        <table style="width:100%; border: none;">
+                            <tr style="font-size:13px; padding: 2px">
+                                <td style="padding: 2px">1)</td>
+                                <td style="padding: 2px">Pricing</td>
+                                <td style="padding: 2px">: <t t-esc="doc.quot_pricing_gcast"/></td>
+                            </tr>
+                            <tr style="font-size:13px;">
+                                <td style="padding: 2px">2)</td>
+                                <td style="padding: 2px">Standard</td>
+                                <td style="padding: 2px">: <t t-esc="doc.quot_standard_gcast"/></td>
+                            </tr>
+                            <tr style="font-size:13px;">
+                                <td style="padding: 2px">3)</td>
+                                <td style="padding: 2px">Product Liability</td>
+                                <td style="padding: 2px">: <t t-esc="doc.quot_standard_gcast"/></td>
+                            </tr>
+                            <tr style="font-size:13px;">
+                                <td style="padding: 2px">4)</td>
+                                <td style="padding: 2px">Payment Terms</td>
+                                <td style="padding: 2px">: <t t-esc="doc.quot_payment_gcast"/></td> 
+                            </tr>
+                            <tr style="font-size:13px;">
+                                <td style="padding: 2px">5)</td>
+                                <td style="padding: 2px">Delivery</td>
+                                <td style="padding: 2px">: <t t-esc="doc.quot_delivery_gcast"/></td>
+                            </tr>
+                            <tr style="font-size:13px;">
+                                <td style="padding: 2px">6)</td>
+                                <td style="padding: 2px">Validity</td>
+                                <td style="padding: 2px">: <t t-esc="doc.quot_validity_gcast"/></td>
+                            </tr>
+                            <tr style="font-size:13px;">
+                                <td style="padding: 2px">7)</td>
+                                <td style="padding: 2px">Non Standard Products</td>
+                                <td style="padding: 2px">: <t t-esc="doc.quot_non_standard_products_gcast"/></td>
+                            </tr>
+                            <tr style="font-size:13px;">
+                                <td style="padding: 2px">8)</td>
+                                <td style="padding: 2px">Note</td>
+                                <td style="padding: 2px">: <t t-esc="doc.quot_note_gcast"/></td>
+                            </tr>
+                            <tr style="font-size:13px;">
+                                <td style="padding: 2px">9)</td>
+                                <td style="padding: 2px">Remarks</td>
+                                <!-- <td style="padding: 2px">:</td> -->
+                                <td style="padding: 2px">:
+                                    <div>
+                                        <t t-raw="doc.quot_remarks_gcast"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>  
+                    </t> 
+                    <t t-else="doc.quot_tnc_type == 'oversea'">
+                        <table style="width:100%; border: none;">
+                            <tr style="font-size:13px;">
+                                <td style="padding: 2px">Remarks</td>
+                                <td style="padding: 2px">:</td>
+                                <td style="padding: 2px">
+                                    <div>
+                                        <t t-raw="doc.quot_remarks_oversea_gcast"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </t> 
+
+                    <div style="font-size:13px;">
+                        We hope that our quotation will meet with your requirement and we look to your kind support.
+                        <p>Should you require any further information regarding the above, please do not hesitate to contact us immediately for assistance.</p><br/>
+
+                        <p>Thank You.</p><br/>
+
+                        Yours faithfully,<br/>
+                        <b><t t-esc="doc.company_id.name"/></b><br/><br/>
+                        <!-- <i style="font-size:16px;"><t t-esc="doc.user_id.name"/></i><br/> -->
+                        <!-- <img t-if="doc.user_id.partner_id.signature" t-att-src="image_data_uri(doc.user_id.partner_id.signature)" style="max-height:150px;width:150px;"/><br/> -->
+                        <img t-if="doc.user_id.digital_signature" t-attf-src="data:image/*;base64,{{doc.user_id.digital_signature}}" height="90" width="150"/><br/>
+                        <b>............................................................</b><br/>
+                        <b><t t-esc="doc.user_id.name"/> &amp;nbsp; (<t t-esc="doc.user_id.partner_id.phone"/>)</b><br/>
+                        <b><t t-esc="doc.user_id.partner_id.function"/></b>
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+    </template>
+
+</odoo>

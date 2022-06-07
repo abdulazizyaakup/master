@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="preflocation1" model="preferred.location">
+        <field name="name">General North</field>
+    </record>
+    <record id="preflocation2" model="preferred.location">
+        <field name="name">Lim Chu Kang</field>
+    </record>
+    <record id="preflocation3" model="preferred.location">
+        <field name="name">Mandai</field>
+    </record>
+    <record id="preflocation4" model="preferred.location">
+        <field name="name">Sembawang</field>
+    </record>
+    <record id="preflocation5" model="preferred.location">
+        <field name="name">Woodlands</field>
+    </record>
+    <record id="preflocation6" model="preferred.location">
+        <field name="name">Yishun</field>
+    </record>
+    <record id="preflocation7" model="preferred.location">
+        <field name="name">General North East</field>
+    </record>
+    <record id="preflocation8" model="preferred.location">
+        <field name="name">Ang Mo Kio</field>
+    </record>
+    <record id="preflocation9" model="preferred.location">
+        <field name="name">Hougang</field>
+    </record>
+    <record id="preflocation10" model="preferred.location">
+        <field name="name">Punggol</field>
+    </record>
+    <record id="preflocation11" model="preferred.location">
+        <field name="name">Sengkang</field>
+    </record>
+    <record id="preflocation12" model="preferred.location">
+        <field name="name">Serangoon</field>
+    </record>
+    <record id="preflocation13" model="preferred.location">
+        <field name="name">General East</field>
+    </record>
+    <record id="preflocation14" model="preferred.location">
+        <field name="name">Bedok</field>
+    </record>
+    <record id="preflocation15" model="preferred.location">
+        <field name="name">Changi</field>
+    </record>
+    <record id="preflocation16" model="preferred.location">
+        <field name="name">Pasir Ris</field>
+    </record>
+    <record id="preflocation17" model="preferred.location">
+        <field name="name">Payar Lebar</field>
+    </record>
+    <record id="preflocation18" model="preferred.location">
+        <field name="name">Tampines</field>
+    </record>
+    <record id="preflocation19" model="preferred.location">
+        <field name="name">Ubi</field>
+    </record>
+    <record id="preflocation20" model="preferred.location">
+        <field name="name">General Central</field>
+    </record>
+    <record id="preflocation21" model="preferred.location">
+        <field name="name">Bishan</field>
+    </record>
+    <record id="preflocation22" model="preferred.location">
+        <field name="name">Bukit Merah</field>
+    </record>
+    <record id="preflocation23" model="preferred.location">
+        <field name="name">Bukit Timah</field>
+    </record>
+    <record id="preflocation24" model="preferred.location">
+        <field name="name">Geylang</field>
+    </record>
+    <record id="preflocation25" model="preferred.location">
+        <field name="name">Habourfront</field>
+    </record>
+    <record id="preflocation26" model="preferred.location">
+        <field name="name">Kallang</field>
+    </record>
+    <record id="preflocation27" model="preferred.location">
+        <field name="name">Marine Parade</field>
+    </record>
+    <record id="preflocation28" model="preferred.location">
+        <field name="name">Novena</field>
+    </record>
+    <record id="preflocation29" model="preferred.location">
+        <field name="name">Queenstown</field>
+    </record>
+    <record id="preflocation30" model="preferred.location">
+        <field name="name">Sentosa</field>
+    </record>
+    <record id="preflocation31" model="preferred.location">
+        <field name="name">Tanglin</field>
+    </record>
+    <record id="preflocation32" model="preferred.location">
+        <field name="name">Toa Payoh</field>
+    </record>
+    <record id="preflocation33" model="preferred.location">
+        <field name="name">General CBD</field>
+    </record>
+    <record id="preflocation34" model="preferred.location">
+        <field name="name">Boat Quay, Clarke Quay</field>
+    </record>
+    <record id="preflocation35" model="preferred.location">
+        <field name="name">Bugis</field>
+    </record>
+    <record id="preflocation36" model="preferred.location">
+        <field name="name">Cityhall</field>
+    </record>
+    <record id="preflocation37" model="preferred.location">
+        <field name="name">Tanjung Pagar</field>
+    </record>
+    <record id="preflocation38" model="preferred.location">
+        <field name="name">Raffles Place</field>
+    </record>
+    <record id="preflocation39" model="preferred.location">
+        <field name="name">Shenton Way</field>
+    </record>
+    <record id="preflocation40" model="preferred.location">
+        <field name="name">Marina</field>
+    </record>
+    <record id="preflocation41" model="preferred.location">
+        <field name="name">Newton</field>
+    </record>
+    <record id="preflocation42" model="preferred.location">
+        <field name="name">Orchard</field>
+    </record>
+    <record id="preflocation43" model="preferred.location">
+        <field name="name">Outram</field>
+    </record>
+    <record id="preflocation44" model="preferred.location">
+        <field name="name">River Valley</field>
+    </record>
+    <record id="preflocation45" model="preferred.location">
+        <field name="name">General West</field>
+    </record>
+    <record id="preflocation46" model="preferred.location">
+        <field name="name">Boon Lay</field>
+    </record>
+    <record id="preflocation47" model="preferred.location">
+        <field name="name">Bukit Batok</field>
+    </record>
+    <record id="preflocation48" model="preferred.location">
+        <field name="name">Bukit Panjang</field>
+    </record>
+    <record id="preflocation49" model="preferred.location">
+        <field name="name">Choa Chu Kang</field>
+    </record>
+    <record id="preflocation50" model="preferred.location">
+        <field name="name">Clementi</field>
+    </record>
+    <record id="preflocation51" model="preferred.location">
+        <field name="name">Jurong East</field>
+    </record>
+    <record id="preflocation52" model="preferred.location">
+        <field name="name">Jurong West</field>
+    </record>
+    <record id="preflocation53" model="preferred.location">
+        <field name="name">Pioneer</field>
+    </record>
+    <record id="preflocation54" model="preferred.location">
+        <field name="name">Tengah</field>
+    </record>
+    <record id="preflocation55" model="preferred.location">
+        <field name="name">Tuas</field>
+    </record>
+    <record id="preflocation56" model="preferred.location">
+        <field name="name">No Preference</field>
+    </record>
+</odoo>

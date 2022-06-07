@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="crm_lead_generate_quotation_view_form" model="ir.ui.view">
+            <field name="name">crm.quotation.form</field>
+            <field name="model">crm.quotation</field>
+            <field name="arch" type="xml">
+                <form string="Create Quotation">
+                    <group>
+                        <field name="quote_to_type" widget='radio' options="{'horizontal': true}"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="crm_quotation_company" widget="selection"/>
+                            <field name="midah_quotation_product_group" attrs="{'invisible': [('crm_quotation_company', 'not in', [4,5,12,13])]}"/>
+                            <field name="crm_trdng_hses" attrs="{'invisible': [('quote_to_type', '!=', 'ec')]}"/>
+                            <field name="crm_prj_dev" attrs="{'invisible': [('quote_to_type', '!=', 'developer')]}"/>
+                            <field name="crm_prj_arc" attrs="{'invisible': [('quote_to_type', '!=', 'architect')]}"/>
+                            <field name="crm_prj_cseng" attrs="{'invisible': [('quote_to_type', '!=', 'c_engineer')]}"/>
+                            <field name="crm_prj_qs" attrs="{'invisible': [('quote_to_type', '!=', 'qs')]}"/>
+                            <field name="crm_tenderer" attrs="{'invisible': [('quote_to_type', '!=', 'tenderer')]}"/>
+                            <field name="crm_cntrctrs" attrs="{'invisible': [('quote_to_type', '!=', 'contractor')]}"/>
+                            <field name="crm_sbcns_aplctrs" attrs="{'invisible': [('quote_to_type', '!=', 'sa')]}"/>
+                            <field name="crm_prj_distributor" attrs="{'invisible': [('quote_to_type', '!=', 'dist')]}"/>
+
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="createquotation" string="Create Quotation" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="crm_lead_generate_quotation_action" model="ir.actions.act_window">
+            <field name="name">Generate Quotation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.quotation</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="crm_lead_generate_quotation_view_form"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

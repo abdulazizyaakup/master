@@ -1,0 +1,369 @@
+<odoo>
+    <!-- SALE ORDER ACTION MODIFICATION -->
+    <record id='sale.action_orders' model='ir.actions.act_window'>
+      <field name="domain">[('sim_no', '!=', False)]</field>
+      <field name="context">{'set_state': 'sim_draft', 'so_page': True}</field>
+    </record>
+    <!-- SALE ORDER FORM EXTENSION -->
+    <record id='sale_order_form_extend' model='ir.ui.view'>
+        <field name="name">sale.order.form.extend</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='name']" position="replace">
+            <field name="name" invisible="1"/>
+            <field name="fl_name" readonly="1"/>
+          </xpath>
+          <xpath expr="//field[@name='partner_id']" position="before">
+              <field name="revision_num" readonly="1" invisible="1"/>
+              <field name="is_revised" invisible="1"/>
+          </xpath>
+          <xpath expr="//field[@name='partner_id']" position="replace">
+              <field name="signature_type" attrs="{'invisible': [('company_id', '!=', 14)]}" widget="many2many_tags"/>
+              <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+              <field name="midah_quotation_product_group" attrs="{'invisible': [('company_id', 'not in', [4,5,12,13])]}"/>
+              <field name="partner_id" domain="['|', '&amp;', ('company_id', '=', False), ('company_id', '=', company_id), ('customer_rank', '&gt;', 0), ('parent_id', '=', False)]" attrs="{'readonly':[('state','in',['tba','done','locked'])],'required': True}" widget="res_partner_many2one" context="{'res_partner_search_mode': 'customer', 'show_address': 1, 'show_vat': True}" string="Quoted Customer"/>
+              <!-- <field name="quote_to"
+                attrs="{'invisible': ['|',('company_id', '=', 9),('state', 'not in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])], 'required': [('state', 'in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}"
+                context="{'default_customer_rank': 0, 'form_view_ref': 'starken-crm.shipto_address_form_view'}"/> -->
+              <!--<field name="quote_to" attrs="{'invisible': ['|',('company_id', '=', 9),('state', 'not in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}" context="{'default_customer_rank': 0, 'form_view_ref': 'starken-crm.shipto_address_form_view'}"/>-->
+              <field name="quote_to" attrs="{'invisible': ['|',('company_id', 'not in', [2,3,6,8]),('state', 'not in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}" context="{'default_customer_rank': 0, 'form_view_ref': 'starken-crm.shipto_address_form_view'}"/>
+              <label for="quote_to_street" string=" " attrs="{'invisible': [('state', 'not in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}"/>
+                <div class="o_address_format" attrs="{'invisible': [('state', 'not in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}">
+                    <field name="quote_to_street" class="o_address_street" readonly="1" force_save="1"/>
+                    <field name="quote_to_street2" class="o_address_street" readonly="1" force_save="1"/>
+                    <field name="quote_to_street3" class="o_address_street" readonly="1" force_save="1"/>
+                    <field name="quote_to_zip" class="o_address_zip" readonly="1" force_save="1"/>
+                    <field name="quote_to_city" class="o_address_city" readonly="1" force_save="1"/>
+                    <field name="quote_to_state_id" class="o_address_state" readonly="1" force_save="1"/>
+                    <field name="quote_to_country_id" class="o_address_country" readonly="1" force_save="1"/>
+                </div>
+              <field name="ship_to" attrs="{'invisible': [('state', 'in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])], 'required': [('state', 'not in', ['draft', 'tba', 'quotation', 'sent', 'convert_so', 'cancel'])]}" context="{'default_type':'delivery', 'default_parent_id': epicor_partner_id, 'default_customer_rank': 0, 'default_country_id': 157,                 'form_view_ref': 'starken-crm.shipto_address_form_view'                 }"/>
+              <label for="ship_to_street" string=" " attrs="{'invisible': [('state', 'in', ['draft', 'tba', 'quotation', 'sent', 'convert_so']),('company_id', 'not in', [2,3,6,8])]}"/>
+                <div class="o_address_format" attrs="{'invisible': [('state', 'in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}">
+                    <field name="ship_to_street" class="o_address_street" readonly="1" force_save="1"/>
+                    <field name="ship_to_street2" class="o_address_street" readonly="1" force_save="1"/>
+                    <field name="ship_to_street3" class="o_address_street" readonly="1" force_save="1"/>
+                    <field name="ship_to_zip" class="o_address_zip" readonly="1" force_save="1"/>
+                    <field name="ship_to_city" class="o_address_city" readonly="1" force_save="1"/>
+                    <field name="ship_to_state_id" class="o_address_state" readonly="1" force_save="1"/>
+                    <field name="ship_to_country_id" class="o_address_country" readonly="1" force_save="1"/>
+                </div>
+              <field name="latest_so_ref" string="SIM No" attrs="{'invisible': ['|', ('has_so_ref', '=', False), ('latest_so_ref', '=', False)]}"/>
+              <field name="sim_no" readonly="1" forcesave="1" attrs="{'invisible': ['|',('has_so_ref', '=', True),('company_id', 'not in', [2,3,6,8])]}"/>
+              <field name="so_no" attrs="{'invisible': [('state', 'in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}"/>
+              <field name="quo_ref" readonly="1" attrs="{'invisible': ['|', ('state', 'in', ['draft', 'tba', 'quotation', 'sent', 'convert_so']), ('quo_ref', '=', False)]}"/>
+              <field name="sim_status" attrs="{'invisible': ['|', ('has_so_ref', '=', False), ('state', 'not in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}"/>
+              <field name="related_quo" string="Related Quotation" widget="many2many_tags" attrs="{'invisible': ['|', ('sim_no', '=', False), ('state', 'in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}" options="{'no_create_edit': True}"/>
+              <field name="related_so" string="Related Sale Order" widget="many2many_tags" attrs="{'invisible': ['|','|', ('sim_no', '!=', False), ('state', 'in', ['sim_draft', 'sim_pending', 'sim_pending_agm', 'sim_pending_ceo', 'sale']),('company_id', '=', 9)]}" options="{'no_create_edit': True}"/>
+          </xpath>
+          <xpath expr="//field[@name='validity_date']" position="replace">
+            <field name="validity_date" attrs="{'invisible': [('company_id', '=', 9)]}"/>
+          </xpath>
+          <xpath expr="//field[@name='partner_id']" position="after">
+              <field name="has_so_ref" invisible="1"/>
+              <field name="so_ref" invisible="1"/>
+              <field name="quo_ref" invisible="1"/>
+              <field name="approval_level" invisible="1"/>
+<!--               <field name="epicor_partner_id"
+                     options="{'no_create_edit': True}"
+                     attrs="{'required': [('state', 'not in', ['draft', 'tba', 'quotation', 'sent', 'convert_so', 'cancel'])], 'invisible': [('state', 'in', ['draft', 'tba', 'quotation', 'sent', 'convert_so'])]}" /> -->
+              <field name="epicor_partner_id" options="{'no_create_edit': True}"/>
+              <field name="customer_type" required="0" attrs="{'invisible': [('company_id', 'not in', [2,3,6,8])]}"/>
+              <field name="delivery_zone" required="0" options="{'no_create_edit': True}" attrs="{'invisible': [('company_id', 'not in', [2,3,6,8])]}"/>
+              <field name="delivery_info"  attrs="{'invisible': [('company_id', 'not in', [2,3,6,8])]}"/>
+              <field name="pricing_info"  attrs="{'invisible': [('company_id', 'not in', [2,3,6,8])]}"/>
+              <field name="quantity_info"  attrs="{'invisible': [('company_id', 'not in', [2,3,6,8])]}"/>
+              <field name="odd_size_cutting_info"  attrs="{'invisible': [('company_id', 'not in', [2,3,6,8])]}"/>
+              <field name="validity_info"  attrs="{'invisible': [('company_id', 'not in', [2,3,6,8])]}"/>
+          </xpath>
+          <xpath expr="//field[@name='payment_term_id']" position="replace">
+            <field name="payment_term_id"  attrs="{'invisible': [('company_id', 'not in', [2,3,6,8])]}"/>
+          </xpath>
+          <xpath expr="//field[@name='payment_term_id']" position="after">
+            <field name="attn_to"/>
+            <field name="need_by_date"  attrs="{'invisible': [('company_id', 'not in', [2,3,6,8])]}"/>
+            <field name="opportunity_id" string="Project" invisible="1"/>
+            <field name="project_quoted_name"/>
+            <field name="crm_project_id"/>
+            <field name="ship_via" attrs="{'invisible': [('company_id', '=', 9)]}"/>
+            <field name="prj_sch_attach" widget="many2many_binary" string="Project Schedule"/>
+            <field name="user_id" invisible="1"/>
+            <field name="saleperson_id"/>
+            <field name="team_id" kanban_view_ref="734" options="{'no_create': True}"/>
+            <!-- <field name="approver_lv1" attrs="{'required': [('state', 'in', ['draft']), ('approval_required', '=', True)], 'readonly': [('state', 'not in', ['draft'])], 'invisible' : [('approval_required', '=', False)]}"/> -->
+            <!-- <field name="approver_lv1" attrs="{'required': [('state', 'in', ['draft']), ('approval_required', '=', True)], 'readonly': [('state', 'not in', ['draft'])]}"/> -->
+            <field name="approver_lv1" attrs="{'required': [('state', 'in', ['draft']), ('approval_required', '=', True)], 'readonly': [('state', 'not in', ['draft'])], 'invisible' : [('approval_required', '=', False)]}"/>
+
+            <field name="approved_by" readonly="1" attrs="{'invisible' : ['|', ('state', 'in', ['draft']), ('approval_required', '=', False)]}"/>
+            <field name="so_approved_lv1_by" string="SO Approved By" readonly="1" attrs="{'invisible': ['|', ('so_approved_lv1_by', '=', False),  ('state', 'not in', ['sale', 'sim_pending', 'sim_pending_agm', 'sim_pending_ceo'])]}"/>
+            <field name="so_approved_lv2_by" string="SO Approved Lv2" readonly="1" attrs="{'invisible': ['|', ('so_approved_lv2_by', '=', False),  ('state', 'not in', ['sale', 'sim_pending', 'sim_pending_agm', 'sim_pending_ceo'])]}"/>
+            <field name="so_approved_lv3_by" string="SO Approved Lv3" readonly="1" attrs="{'invisible': ['|', ('so_approved_lv3_by', '=', False),  ('state', 'not in', ['sale', 'sim_pending', 'sim_pending_agm', 'sim_pending_ceo'])]}"/>
+          </xpath>
+          <xpath expr="//sheet/group" position="after">
+            <group attrs="{'invisible': [('company_id', '=', 9)]}">
+              <group>
+                <field name="po_number" string="Purchase Order"/>
+                <field name="po_attach" widget="many2many_binary" string=""/>
+              </group>
+            </group>
+          </xpath>
+          <xpath expr="//tree/field[@name='name']" position="after">
+            <field name="compressive_strength" string="Compressive Strength" attrs="{'column_invisible': [('parent.company_id', 'not in', [2,3,6])]}"/>
+          </xpath>
+          <xpath expr="//tree/field[@name='tax_id']" position="attributes">
+              <attribute name="invisible">1</attribute>
+          </xpath>
+          <xpath expr="//tree/field[@name='price_unit']" position="before">
+            <field name="quoted_price" readonly="1" attrs="{'column_invisible': ['|',('parent.state', 'in', ['draft', 'tba', 'quotation', 'sent', 'convert_so', 'sim_draft']),('parent.company_id', 'not in', [2,3,6,8])]}"/>
+          </xpath>
+          <xpath expr="//tree/field[@name='product_id']" position="after">
+            <field name="part_number" attrs="{'column_invisible': [('parent.company_id', 'in', [2])]}"/>
+          </xpath>
+          <xpath expr="//tree/field[@name='tax_id']" position="replace">
+            <field name="tax_id" attrs="{'column_invisible': [('parent.company_id', 'in', [2])]}"/>
+          </xpath>
+          <xpath expr="//tree/field[@name='price_subtotal']" position="before">
+            <!-- G-Cast company = 8, removed -->
+            <field name="pro_group" attrs="{'column_invisible': [('parent.company_id', 'not in', [2,3,6])]}"/>
+            <field name="mtr_sq_per_plt" attrs="{'column_invisible': [('parent.company_id', 'not in', [2,3,6])]}"/>
+            <field name="no_pcs_per_plt" attrs="{'column_invisible': [('parent.company_id', 'not in', [2,3,6])]}"/>
+            <field name="plt_per_dlv" attrs="{'column_invisible': [('parent.company_id', 'not in', [2,3,6])]}"/>
+          </xpath>
+          <!-- Fikri add -->
+          <xpath expr="//tree/field[@name='price_unit']" position="after">
+            <field name="price_per_meter" string="Price/ Metre sq." attrs="{'column_invisible': [('parent.company_id', 'not in', [2])]}"/>
+          </xpath>
+          <xpath expr="//field[@name='note']" position="before"> 
+              <field name="quot_remarks_starken" string="Remarks: " attrs="{'invisible':[('company_id', 'not in', [2])]}"/>
+          </xpath>
+
+          <!-- Replacing header due to shift in state -->
+          <xpath expr="//header/button[@name='action_quotation_send'][1]" position="replace">
+            <button name="action_quotation_send" string="Send by Email" type="object" states="quotation" class="btn-primary"/>
+          </xpath>
+          <xpath expr="//header/button[@name='action_quotation_send'][2]" position="replace">
+            <button name="action_quotation_send" type="object" string="Send PRO-FORMA Invoice" groups="sale.group_proforma_sales" class="btn-primary" attrs="{'invisible': ['|', ('state', '!=', 'quotation'), ('invoice_count','&gt;=',1)]}" context="{'proforma': True}"/>
+          </xpath>
+          <xpath expr="//header/button[@name='action_confirm'][1]" position="replace">
+            <button name="action_confirm" id="action_confirm" string="Confirm" class="btn-primary" type="object" attrs="{'invisible': ['|', ('has_so_ref', '!=', False), ('state', 'not in', ['quotation'])]}"/>
+          </xpath>
+          <xpath expr="//header/button[@name='action_confirm'][2]" position="replace">
+            <button name="action_confirm" string="Confirm" type="object" attrs="{'invisible': ['|', ('has_so_ref', '!=', False), ('state', 'not in', ['sent', 'convert_so'])]}"/>
+          </xpath>
+          <xpath expr="//header/button[@name='action_quotation_send'][3]" position="replace">
+            <button name="action_quotation_send" type="object" string="Send PRO-FORMA Invoice" groups="sale.group_proforma_sales" attrs="{'invisible': ['|', ('state', '=', 'quotation'), ('invoice_count','&gt;=',1)]}" context="{'proforma': True}"/>
+          </xpath>
+          <xpath expr="//header/button[@name='action_quotation_send'][4]" position="replace">
+            <button name="action_quotation_send" string="Send by Email" type="object"/>
+            <!-- <button name="action_quotation_send" string="Send by Email" type="object" states="sent,convert_so,sale"/> -->
+
+          </xpath>
+          <xpath expr="//header/button[@name='action_confirm']" position="attributes">
+            <attribute name="attrs">{'invisible': ['|', ('has_so_ref', '!=', False), ('state', 'not in', ['quotation', 'sim_draft'])]}</attribute>
+          </xpath>
+          <xpath expr="//header/button[@name='action_cancel']" position="replace">
+            <field name="id" invisible="1"/>
+            <button name="action_cancel" attrs="{'invisible': ['|', ('id', '=', False), ('state', 'not in', ['draft', 'tba', 'quotation', 'sent', 'convert_so', 'sim_pending', 'sale'])]}" class="btn-danger" type="object" string="Cancel"/>
+          </xpath>
+          <xpath expr="//header/button[@name='action_draft']" position="replace">
+          </xpath>
+          <xpath expr="//header/field[@name='state']" position="replace">
+            <field name="state_quo" widget="statusbar" statusbar_visible="draft,sent,tba,quotation,convert_so" attrs="{'invisible': [('state', 'not in', ['quotation', 'sent', 'convert_so'])]}"/>
+            <field name="state" widget="statusbar" statusbar_visible="draft,sent,tba,quotation,sale" attrs="{'invisible': [('state', 'in', ['quotation', 'sent', 'convert_so'])]}"/>
+          </xpath>
+          <xpath expr="//header/button[@name='action_quotation_send'][4]" position="after">
+            <field name="allow_so_approve_lv1" invisible="1"/>
+            <field name="approval_required" invisible="1"/>
+            <button name="set_approve_quotation" string="Approve" type="object" class="btn-primary" groups="starken-crm.sales_approver_group" attrs="{'invisible': ['|',('state', 'not in', ['tba']), ('approval_level', '!=', '1')]}"/>
+            <button name="set_approve_quotation" string="Approve by AGM" type="object" class="btn-primary" groups="starken-crm.sales_agm_approver_group" attrs="{'invisible': ['|', ('state', 'not in', ['tba']), ('approval_level', '!=', '2')]}"/>
+            <button name="set_approve_quotation" string="Approve by CEO" type="object" class="btn-primary" groups="starken-crm.sales_ceo_approver_group" attrs="{'invisible': ['|', ('state', 'not in', ['tba']), ('approval_level', '!=', '3')]}"/>
+            <button name="set_approve_sales_order" string="SO Approve" type="object" class="btn-primary" attrs="{'invisible': [('allow_so_approve_lv1', '=', False)]}"/>
+            <button name="set_approve_sales_order" string="SO Approve by AGM" type="object" class="btn-primary" groups="starken-crm.sales_agm_approver_group" attrs="{'invisible': [('state', 'not in', ['sim_pending_agm'])]}"/>
+            <button name="set_approve_sales_order" string="SO Approve by CEO" type="object" class="btn-primary" groups="starken-crm.sales_ceo_approver_group" attrs="{'invisible': [('state', 'not in', ['sim_pending_ceo'])]}"/>
+            <button name="get_approval_quotation" string="Submit for Approval" class="btn-primary" type="object" attrs="{'invisible': ['|', ('approval_required', '!=', True), ('state', 'not in', ['draft'])]}"/>
+            <button name="bypass_approval_quotation" string="Confirm Quotation" class="btn-primary" type="object" attrs="{'invisible': ['|', ('approval_required', '!=', False), ('state', 'not in', ['draft'])]}"/>
+            <button name="action_duplicate_under_new_revision" string="Revise" type="object" attrs="{'invisible': ['|', ('is_revised', '=', True), ('state', 'in', ['sale', 'sim_pending', 'sim_draft'])]}"/>
+          </xpath>
+          <xpath expr="//notebook/page//field[@name='user_id']" position="replace"/>
+          <xpath expr="//notebook/page//field[@name='team_id']" position="replace"/>
+          <xpath expr="//field[@name='order_line']/tree/field[@name='state']" position="after">
+            <field name="approval_lvl" invisible="1"/>
+          </xpath>
+
+          <xpath expr="//button[@name='preview_sale_order']" position="after">
+            <button name="action_view_so_ref" type="object" class="oe_stat_button" icon="fa-tag icon" attrs="{'invisible': [('has_so_ref', '=', False)]}">
+              <div class="o_field_widget o_stat_info">
+                  <span class="o_stat_text">Convert to</span>
+                  <span class="o_stat_text">Sales Order</span>
+              </div>
+            </button>
+          </xpath>
+
+          <xpath expr="//group[@name='sales_person']/field[@name='company_id']" position="replace"/>
+
+          <xpath expr="//field[@name='order_line']/tree/field[@name='discount']" position="after">
+            <field name="disc_amount" invisible="1"/>
+            <field name="price_policy" readonly="1" attrs="{'column_invisible': [('parent.company_id', 'in', [8])]}"/>
+            <field name="fp_unit_price"/>
+          </xpath>
+
+        </field>
+    </record>
+    <!-- SALE ORDER TREE FOR SALE QUOTATION EXTENSION -->
+    <record id='sale_order_tree_quotation_extend' model='ir.ui.view'>
+        <field name="name">sale.order.tree.quotation.extend</field>
+        <field name="model">sale.order</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='name']" position="replace">
+              <field name="project_id" optional="hide"/>
+              <field name="project_name" string="Project Title" optional=""/>
+           		<field name="fl_name" string="Quotation Number" readonly="1"/>
+       	  </xpath>
+          <xpath expr="//field[@name='state']" position="after">
+            <field name="approved_status"/>
+          </xpath>
+        </field>
+    </record>
+    <!-- SALE ORDER TREE FOR SALE ORDER EXTENSION -->
+    <record id='sale_order_tree_order_extend' model='ir.ui.view'>
+        <field name="name">sale.order.tree.order.extend</field>
+        <field name="model">sale.order</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='name']" position="replace">
+           		<field name="fl_name" string="Order Number" readonly="1"/>
+       	  </xpath>
+          <xpath expr="//field[@name='partner_id']" position="before">
+            <field name="epicor_partner_id" />
+          </xpath>
+          <xpath expr="//field[@name='commitment_date']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+          <xpath expr="//field[@name='invoice_status']" position="replace">
+            <field name="invoice_status" invisible="1"/>
+            <field name="state" string="Sales Order Status" optional="show"/>
+          </xpath>
+        </field>
+    </record>
+    <!-- SALE ORDER SEARCH FOR SALES ORDER EXTENSTION -->
+    <record id="sale_order_search_so_extend" model="ir.ui.view">
+        <field name="name">sale.order.search.so.extend</field>
+        <field name="model">sale.order</field>
+        <field name="type">search</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="epicor_partner_id" />
+            </xpath>
+        </field>
+    </record>
+    <!-- SALE ORDER SEARCH FOR QUOTATION EXTENSION -->
+    <record id='sale_order_search_quotation_extend' model='ir.ui.view'>
+        <field name="name">sale.order.search.quotation.extend</field>
+        <field name="model">sale.order</field>
+        <field name="type">search</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+        <field name="arch" type="xml">
+          <xpath expr="//filter[@name='my_quotation']" position="after">
+           		<filter string="To be Approved By Me" name="my_tbapprove" domain="['|', '&amp;', ('user_id', '=', uid), ('state', '=', 'sim_pending'), '&amp;', ('approver_lv1', '=', uid), ('state','=','tba')]"/>
+                <filter string="To be Approved By AGM" name="agm_tbapprove" domain="['|', ('user_id', '=', uid), ('state', '=', 'sim_pending_agm')]" groups="starken-crm.sales_agm_approver_group"/>
+                <filter string="To be Approved By CEO" name="ceo_tbapprove" domain="['|', ('user_id', '=', uid), ('state', '=', 'sim_pending_ceo')]" groups="starken-crm.sales_ceo_approver_group"/>
+       	  </xpath>
+          <xpath expr="//field[@name='name']" position="before">
+            <field name="project_name" string="Project Name"/>
+            <field name="project_id" />
+          </xpath>
+          <xpath expr="//field[@name='campaign_id']" position="replace"></xpath>
+        </field>
+    </record>
+    <!-- SALE ORDER ACTION FOR QUOTATION EXTENSION -->
+    <record id="sale.action_quotations_with_onboarding" model="ir.actions.act_window">
+        <field name="domain">[('sim_no','=',False)]</field>
+        <field name="context">{'search_default_my_quotation': 1, 'search_default_my_tbapprove': 1}</field>
+    </record>
+    <!-- SALE ORDER FORM STOCK BYPASS -->
+    <record id='sale_order_sale_stock_form_extend' model='ir.ui.view'>
+        <field name="name">starken-crm.sale_order_sale_stock_form_extend</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+        <field name="arch" type="xml">
+          <xpath expr="//button[@name='action_view_delivery']" position="replace">
+              <button type="object" name="action_view_delivery" class="oe_stat_button" icon="fa-truck" groups="base.group_user">
+                  <field name="delivery_count" widget="statinfo" string="Delivery"/>
+              </button>
+          </xpath>
+        </field>
+    </record>
+    <!-- SALE ORDER SHIPTO ADDRESS FORM !-->
+    <record id="shipto_address_form_view" model="ir.ui.view">
+        <field name="name">starken-crm.shipto_address_form_view</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form string="Ship to address">
+                <sheet>
+                    <group col="12">
+                        <group colspan="5">
+                            <field name="parent_id" invisible="1" />
+                            <field name="ship_to_id" attrs="{'invisible': [('type', '!=', 'delivery')]}" readonly="1"/>
+                            <field name="name" required="1" />
+                            <!-- <field name="type" invisible="1" /> -->
+                            <field name="type" required="1" widget="radio" options="{'horizontal': true}"/>
+                            <field name="customer_rank" invisible="0"/>
+                            <field name="commercial_partner_id" invisible="1"/>
+                            <field name="is_company" invisible="1"/>
+                            <field name="street" string="Address Line 1" class="o_address_street" />
+                            <field name="street2" string="Address Line 2" class="o_address_street" />
+                            <field name="street3" string="Address Line 3" class="o_address_street" />
+                            <field name="city" placeholder="City" class="o_address_city" />
+                            <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}' />
+                            <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                            <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' />
+                        </group>
+                        <group colspan="5">
+                            <field name="attn" attrs="{'invisible': [('type', '!=', 'delivery')]}"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="mobile" widget="phone"/>
+                            <field name="email" widget="email"/>
+                            <field name="fax" widget="phone"/>
+                            <field name="comment" placeholder="Internal notes..."/>
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                        <group colspan="1">
+                            <field name="image_1920" widget='image' nolabel="1" class="oe_avatar" options='{"preview_image": "image_128"}'/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- HIDE qty_at_date_widget-->
+    <record id="sale_order_form_extend_sale_stock" model="ir.ui.view">
+        <field name="name">sale.order.form.extend.sale.stock</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock_qty"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/widget[@name='qty_at_date_widget']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_form_crm_extended" model="ir.ui.view">
+        <field name="name">sale.order.form.crm.extended</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_crm.sale_view_inherit123" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='opportunity_id']" position="attributes">
+		<attribute name="invisible">1</attribute> 
+			<!--<field name="opportunity_id" help="Log in the chatter from which opportunity the order originates" invisible="1"/>-->
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

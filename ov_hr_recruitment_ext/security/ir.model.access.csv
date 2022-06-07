@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ov_races,ov.races,model_ov_races,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_ov_shiftpreference,ov.shiftpreference,model_ov_shiftpreference,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_ov_daysavail,ov.daysavail,model_ov_daysavail,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_ov_source,ov.source,model_ov_source,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_ov_projectsiteteam,ov.projectsiteteam,model_ov_projectsiteteam,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_ov_projectsite,ov.projectsite,model_ov_projectsite,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_ov_preflocation,ov.preflocation,model_ov_preflocation,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_ov_preferredsite,ov.preferredsite,model_ov_preferredsite,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_ov_salarypackage,ov.salarypackage,model_ov_salarypackage,hr.group_hr_manager,1,1,1,1
+access_map_website_read,Read access on map.website to everybody,model_map_website,,1,0,0,0
+access_map_website_full,Full access on map.website to System user,model_map_website,base.group_system,1,1,1,1
+access_ov_prevcompany,ov.prevcompany,model_ov_prevcompany,hr_recruitment.group_hr_recruitment_user,1,1,1,1
+access_contact_substage,contact.substage,model_contact_substage,hr_recruitment.group_hr_recruitment_user,1,1,1,1

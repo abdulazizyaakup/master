@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <record id="panelm3default_parameter" model="ir.config_parameter">
+            <field name="key">panelm3price</field>
+            <field name="value">450</field>
+        </record>
+
+    </data>
+</odoo>

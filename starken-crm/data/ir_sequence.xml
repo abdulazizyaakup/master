@@ -1,0 +1,46 @@
+<odoo>
+    <data noupdate="1">
+    	<record id="crm_project_sequence" model="ir.sequence">
+            <field name="name">CRM Project Sequence</field>
+            <field name="code">crm.lead.prj_sequence</field>
+            <field name="implementation">standard</field>
+            <field name="active">1</field>
+            <field name="prefix">P</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">10001</field>
+        </record>
+
+        <record id="quo_sequence" model="ir.sequence">
+            <field name="name">Quotation Sequence</field>
+            <field name="code">sale.order.quot</field>
+            <field name="implementation">standard</field>
+            <field name="active">1</field>
+            <field name="prefix">QUO-</field>
+            <field name="padding">7</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">1</field>
+          </record>
+
+        <record id="sim_draft_sequence" model="ir.sequence">
+            <field name="name">SIM Sequence</field>
+            <field name="code">sale.enquiry.sim_draft</field>
+            <field name="implementation">standard</field>
+            <field name="active">1</field>
+            <field name="prefix">SIM-</field>
+            <field name="padding">7</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">1</field>
+          </record>
+        <record id="shiptoid_sequence" model="ir.sequence">
+            <field name="name">Ship To ID Sequence</field>
+            <field name="code">res.partner.shiptoid</field>
+            <field name="implementation">standard</field>
+            <field name="active">1</field>
+            <field name="prefix">OD</field>
+            <field name="padding">10</field>
+            <field name="number_increment">1</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+</odoo>

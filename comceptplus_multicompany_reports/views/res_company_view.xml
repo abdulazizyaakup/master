@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_company_form" model="ir.ui.view">
+            <field name="name">comceptPLUS: add page for report templates</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[last()]" position="after">
+                    <page name="comceptplus_reports" id="comceptplus_reports" string="Reports">
+                        <group>
+                            <group colspan="4">
+                                <help id="help_reports">
+                                    Use this area to set default templates to be used
+                                </help>
+                                <field name="external_report_layout_id" readonly="0"/>
+                                <field name="paperformat_id"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="crm_project_keywords_tree" model="ir.ui.view">
+      <field name="name">project.crm.keywords.tree</field>
+      <field name="model">project.crm.keywords</field>
+      <field name="arch" type="xml">
+          <tree string="Projects Keywords" editable="bottom">
+              <field name="name"/>
+              <field name="company_id"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="crm_project_keywords_form" model="ir.ui.view">
+      <field name="name">project.crm.keywords.form</field>
+      <field name="model">project.crm.keywords</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+          <form string="Project Keywords">
+              <sheet>
+                  <group>
+                      <group>
+                          <field name="name"/>
+                      </group>
+                      <group>
+                          <field name="company_id"/>
+                      </group>
+                  </group>
+              </sheet>
+              <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+              </div>
+          </form>
+      </field>
+  </record>
+
+  <record id="crm_project_keywords_action" model="ir.actions.act_window">
+      <field name="name">Project Keywords</field>
+      <field name="res_model">project.crm.keywords</field>
+      <field name="view_id" ref="crm_project_keywords_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set a new keywords for which company
+        </p>
+      </field>
+  </record>
+
+  <menuitem
+      id="crm_menu_project_keywords"
+      name="Project Keywords"
+      parent="crm_menu_project"
+      action="crm_project_keywords_action"
+      sequence="2" groups="sales_team.group_sale_manager"/>
+
+</odoo>

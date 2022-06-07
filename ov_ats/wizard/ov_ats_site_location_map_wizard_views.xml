@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_res_site_map2" model="ir.ui.view">
+        <field name="name">view.project.site.map</field>
+        <field name="model">project.site</field>
+        <field name="arch" type="xml">
+            <map class="o_res_site_map" library="geometry" string="Map" lat="site_latitude" lng="site_longitude" colors="blue:name!=None;">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="site_latitude"/>
+                <field name="site_longitude"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_res_site_kanban">
+
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title oe_site_heading">
+                                    <field name="name"/>
+                                </strong>
+
+                                <div class="oe_kanban_site_links"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </map>
+        </field>
+    </record>
+
+
+    <record id="action_site_form_view3" model="ir.actions.act_window.view">
+        <field eval="3" name="sequence"/>
+        <field name="view_mode">map</field>
+        <field name="view_id" ref="view_res_site_map2"/>
+        <field name="act_window_id" ref="ov_ats.action_ov_project_site"/>
+    </record>
+
+    <act_window id="launch_project_site_wizard"
+                name="Site's Location"
+                src_model="hr.applicant"
+                res_model="project.site"
+                view_mode="form"
+                target="new"
+                key2="client_action_multi"/>
+</odoo>

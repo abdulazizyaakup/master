@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <record id="project_master_non_bci_created_email" model="mail.template">
+            <field name="name">Master Project : Notification on Created Non-BCI Project</field>
+            <field name="model_id" ref="project_crm_chg.model_master_project"/>
+            <field name="email_from"></field>
+            <field name="partner_to"></field>
+            <field name="subject"></field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Greetings <strong></strong>,
+                        <br /><br />
+                        Project <strong>${object.name}</strong> has been created and waiting for approval.
+                        <br /><br />
+                        <div style="margin: 16px 0px 16px 0px;">
+                            <a href="${ctx.get('urllink')}" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                                View Lead
+                            </a>
+                        </div>
+                        <br /><br />
+                    </p>
+                </div>
+            </field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+        <record id="project_master_validated_email" model="mail.template">
+            <field name="name">Master Project : Notification on Verification</field>
+            <field name="model_id" ref="project_crm_chg.model_master_project"/>
+            <field name="email_from"></field>
+            <field name="partner_to"></field>
+            <field name="subject"></field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Greetings <strong>${object.requestor.name}</strong>,
+                        <br /><br />
+                        Project <strong>${object.name}</strong> has been approved by Group Sales Marketing. New lead has been created automatically for <strong>${object.requestor_company.name}</strong>.
+                        <br /><br />
+                        <div style="margin: 16px 0px 16px 0px;">
+                            <a href="${ctx.get('urllink')}" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                                View Lead
+                            </a>
+                        </div>
+                        <br /><br />
+                    </p>
+                </div>
+            </field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

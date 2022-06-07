@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View  -->
+    <record id="sale_order_drymix_inherit" model="ir.ui.view">
+        <field name="name">Sale Order Drymix Inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <label for="" name="quoted_cust_address_name">
+                    <b attrs="{'invisible': [('company_id', 'not in', [7])]}">Address</b>
+                </label>
+                <div class="o_address_format">
+                    <field name="quot_street_drymix" placeholder="Street..." class="o_address_street" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_street2_drymix" placeholder="Street 2.." class="o_address_street" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_city_drymix" placeholder="City" class="o_address_city" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_state_id_drymix" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_zip_drymix" placeholder="ZIP" class="o_address_zip" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_country_id_drymix" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                </div> 
+            </xpath>
+            <xpath expr="//field[@name='epicor_partner_id']" position="after">
+                <label for="" name="epicor_cust_address_name">
+                    <b attrs="{'invisible': [('company_id', 'not in', [7])]}">Address</b>
+                </label>
+                <div class="o_address_format">
+                    <field name="quot_epicor_street_drymix" placeholder="Street..." class="o_address_street" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_epicor_street2_drymix" placeholder="Street 2.." class="o_address_street" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_epicor_city_drymix" placeholder="City" class="o_address_city" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_epicor_state_id_drymix" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_epicor_zip_drymix" placeholder="ZIP" class="o_address_zip" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                    <field name="quot_epicor_country_id_drymix" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'invisible': [('company_id', 'not in', [7])]}" invisible="0"/>
+                </div> 
+            </xpath>
+	        <xpath expr="//form/sheet/group[1]/group[2]" position="inside">
+                <field name="quot_title_drymix" attrs="{'invisible': [('company_id', 'not in', [7])]}"/>
+            </xpath>
+            <xpath expr="//field[@name='attn_to']" position="after"> 
+                <field name="attn_mobile" attrs="{'invisible': [('company_id', 'not in', [7])]}"/>
+                <field name="attn_email" attrs="{'invisible': [('company_id', 'not in', [7])]}"/>
+            </xpath>
+            <xpath expr="//field[@name='note']" position="before">
+                <field name="quot_remarks_drymix" attrs="{'invisible': [('company_id', 'not in', [7])]}"/>
+            </xpath>
+            <xpath expr="//tree/field[@name='price_policy']" position="attributes">
+                <attribute name="attrs">{'column_invisible': [('parent.company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='fp_unit_price']" position="attributes">
+                <attribute name="attrs">{'column_invisible': [('parent.company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//page[@name='other_information']" position="after">
+                <page string="Drymix Notes" attrs="{'invisible': [('company_id', 'not in', [7])]}">
+                    <group>
+                        <field name="quot_drymix_notes" nolabel="1" placeholder="Type something here ..."/>
+                    </group>
+                </page>
+            </xpath>
+            <!-- Fikri Add -->
+            <xpath expr="//page[@name='optional_products']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//page[@name='other_information']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='note']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='customer_type']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='delivery_zone']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='delivery_info']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='pricing_info']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='quantity_info']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='odd_size_cutting_info']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='validity_info']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='quote_to']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='sim_no']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='po_number']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='ship_via']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='prj_sch_attach']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='need_by_date']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', 'in', [7,8])]}</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

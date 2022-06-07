@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="project_crm_case_tree_view_leads_after_wizard" model="ir.ui.view">
+            <field name="name">project.crm.tree.lead.wizard</field>
+            <field name="model">project.crm</field>
+            <field name="arch" type="xml">
+                <tree string="Filtered">
+                    <field name="project_code" context="{'default_project_id': active_id,'default_name':name}"/>
+                    <field name="project_id" invisible="1"/>
+                    <field name="bci_project_code"/>
+                    <field name="name"/>
+                    <field name="project_developer1"/>
+                    <field name="project_stage_id"/>
+                    <!-- <button string="Get ID" class="oe_highlight"/> -->
+                    <!-- <button name="get_set_id" type="object" string="Get/Set IDs"/>
+                    <button name="set_not_applicable" type="object" string="Set N/A"/> -->
+                    <button name="copy_bci_project_to_master_wizard" type="object" string="Copy to Master" class="btn-primary"/>
+                </tree>
+            </field>
+        </record> 
+
+  <record id="crm_project_action_after_wizard" model="ir.actions.act_window">
+      <field name="name">Projects</field>
+      <field name="res_model">project.crm</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="project_crm_case_tree_view_leads_after_wizard"/>
+      <!-- <field name="search_view_id" ref="view_project_crm_filter"/> -->
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set a new project
+        </p><p>
+          Stages allow salespersons to easily track how a specific opportunity
+          is positioned in the sales cycle.
+        </p>
+      </field>
+  </record>
+
+  <record id="crm_project_search" model="ir.ui.view">
+      <field name="name">Project - Search</field>
+      <field name="model">project.crm</field>
+      <field name="arch" type="xml">
+          <search string="Project Search">
+              <field name="name"/>
+              <field name="start_date"/>
+              <field name="end_date"/>
+              <field name="project_value"/>
+          </search>
+      </field>
+  </record>
+
+  <record id="view_project_crm_filter" model="ir.ui.view">
+      <field name="name">project.crm.search.lead</field>
+      <field name="model">project.crm</field>
+      <field name="arch" type="xml">
+	      <search string="Search Projects">
+	      <field name="name" string="General" 
+                filter_domain="['|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|',
+		      ('name', 'ilike', self),
+		      ('project_code','ilike',self),
+                ('address1', 'ilike', self),
+                ('bci_project_code', 'ilike', self),
+                ('address1', 'ilike', self),
+                ('project_developer1', 'ilike', self),
+                ('project_architect1', 'ilike', self),
+                ('project_architect2', 'ilike', self),
+                ('consulting_engineer1', 'ilike', self),
+                ('consultant1', 'ilike', self),
+                ('green_building_consultant1', 'ilike', self),
+                ('bci_project_code', 'ilike', self),
+                ('project_main_contractor1', 'ilike', self),
+                ('project_main_contractor2', 'ilike', self),
+                ('turnkey_contractor1', 'ilike', self),
+                ('project_owner1', 'ilike', self),
+                ('project_category1', 'ilike', self),
+                ('project_category2', 'ilike', self),
+                ('project_category3', 'ilike', self),
+                ('project_category4', 'ilike', self),
+                ('project_category5', 'ilike', self),
+                ('project_category6', 'ilike', self),
+                ('project_category7', 'ilike', self),
+                ('project_category8', 'ilike', self),
+                ('project_subcategory1', 'ilike', self),
+                ('project_subcategory2', 'ilike', self),
+                ('project_subcategory3', 'ilike', self),
+                ('project_subcategory4', 'ilike', self),
+                ('project_subcategory5', 'ilike', self),
+                ('project_subcategory6', 'ilike', self),
+                ('project_subcategory7', 'ilike', self),
+                ('project_subcategory8', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="BCI Project ID" filter_domain="[('bci_project_code', 'ilike', self)]"/>
+              <field name="project_developer1" string="Developer" filter_domain="[('project_developer1', 'ilike', self)]"/>
+              <!-- <field name="name" string="Developer 2" filter_domain="[('project_developer2', 'ilike', self)]"/> -->
+              <field name="name" string="Architect" filter_domain="['|',('project_architect1', 'ilike', self),('project_architect2', 'ilike', self)]"/>
+              <!-- <field name="name" string="Architect 2" filter_domain="[('project_architect2', 'ilike', self)]"/> -->
+              <field name="name" string="Consulting Engineer" filter_domain="['|','|',('consulting_engineer1', 'ilike', self),('consultant1', 'ilike', self),('green_building_consultant1', 'ilike', self)]"/>
+              <!-- <field name="name" string="Green Building Consultant" filter_domain="[('green_building_consultant1', 'ilike', self)]"/>
+              <field name="name" string="Consultant" filter_domain="[('consultant1', 'ilike', self)]"/> -->
+              <field name="name" string="Quantity Surveyor" filter_domain="[('project_quantity_surveyor1', 'ilike', self)]"/>
+              <field name="name" string="Contractors" filter_domain="['|','|','|',('project_main_contractor1', 'ilike', self),('project_main_contractor2', 'ilike', self),('turnkey_contractor1', 'ilike', self),('project_owner1', 'ilike', self)]"/>
+              <!-- <field name="name" string="Main Contractor 2" filter_domain="[('project_main_contractor2', 'ilike', self)]"/>
+              <field name="name" string="Contractor 1" filter_domain="[('contractor1', 'ilike', self)]"/>
+              <field name="name" string="Turnkey Contractor 1" filter_domain="[('turnkey_contractor1', 'ilike', self)]"/>
+              <field name="name" string="Subcontractor 1" filter_domain="[('project_sub_contractor1', 'ilike', self)]"/> -->
+              <field name="name" string="Owner" filter_domain="[('project_owner1', 'ilike', self)]"/>
+<!--               <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/>
+              <field name="name" string="Project" filter_domain="[('name', 'ilike', self)]"/> -->
+              <separator />
+              <separator/>
+              <filter string="Project Above 100M" name="project_value" domain="[('project_value', '>=', 100)]"/>
+              <filter string="Project Above 300M" name="project_value" domain="[('project_value', '>=', 300)]"/>
+              <filter string="Project Above 500M" name="project_value" domain="[('project_value', '>=', 500)]"/>
+              <filter string="Project Below 100M" name="project_value" domain="[('project_value', '&#60;', 100)]"/>
+	      <filter string="Last 7 Days" name="create_date" domain="[('create_date','&lt;',time.strftime('%%Y-%%m-%%d 23:59:59')),('create_date','>=',(datetime.date.today()-datetime.timedelta(days=7)).strftime('%%Y-%%m-%%d 00:00:00'))]"/>
+              <separator/>
+              <separator/>
+              <group expand="0" string="Group By">
+                  <filter string="Developer" name="project_developer1" context="{'group_by':'project_developer1'}"/>
+                  <filter string="Architect" name="project_architect1" context="{'group_by':'project_architect1'}"/>
+                  <filter string="Consulting Engineer" name="consulting_engineer1" context="{'group_by':'consulting_engineer1'}"/>
+                  <filter string="Consultant" name="consultant1" context="{'group_by':'consultant1'}"/>
+                  <filter string="Quantity Surveyor" name="project_quantity_surveyor1" context="{'group_by':'project_quantity_surveyor1'}"/>
+                  <filter string="Main Contractor" name="project_main_contractor1" context="{'group_by':'project_main_contractor1'}"/>
+                  <filter string="Sub-Contractor" name="project_sub_contractor1" context="{'group_by':'project_sub_contractor1'}"/>
+                  <!-- <filter string="Project Category 2" name="project_category2" context="{'group_by':'project_category2'}"/>
+                  <filter string="Project Category 3" name="project_category3" context="{'group_by':'project_category3'}"/>
+                  <filter string="Project Category 4" name="project_category4" context="{'group_by':'project_category4'}"/>
+                  <filter string="Project Category 5" name="project_category5" context="{'group_by':'project_category5'}"/>
+                  <filter string="Project Category 6" name="project_category6" context="{'group_by':'project_category6'}"/>
+                  <filter string="Project Category 7" name="project_category7" context="{'group_by':'project_category7'}"/>
+                  <filter string="Project Category 8" name="project_category8" context="{'group_by':'project_category8'}"/> -->
+              </group>
+          </search>
+      </field>
+  </record>
+
+    <record id="crm_project_tree" model="ir.ui.view">
+      <field name="name">project.crm.tree</field>
+      <field name="model">project.crm</field>
+      <field name="arch" type="xml">
+          <tree string="Projects" create="false">
+              <!-- <field name="project_code"/> -->
+              <field name="project_type" optional="show"/>
+              <field name="create_date" optional="hide"/>
+              <field name="project_version" optional="hide"/>
+              <field name="name"/>
+              <field name="project_category1" optional="hide"/>
+              <field name="project_category2" optional="hide"/>
+              <field name="project_building_storeys" optional="hide"/>
+              <field name="project_status_description" optional="hide"/>
+              <field name="start_date" optional="hide"/>
+              <field name="end_date" optional="hide"/>
+              <field name="project_owner1" optional="hide"/>
+              <field name="project_developer1" optional="show"/>
+              <field name="project_value"/>
+              <field name="project_stage_id" optional="show"/>
+              <field name="project_architect1" optional="hide"/>
+              <field name="project_quantity_surveyor1" optional="hide"/>
+              <field name="project_main_contractor1" optional="hide"/>
+              <field name="project_building_contractor1" optional="hide"/>
+              <field name="contractor1" optional="hide"/>
+              <field name="turnkey_contractor1" optional="hide"/>
+              <field name="town" optional="hide"/>
+              <field name="address1" optional="show"/>
+              <field name="province1" optional="show"/>
+              <field name="bci_project_code" optional="show"/>
+              <field name="postcode1" optional="hide"/>
+              <field name="project_owner_type" optional="hide"/>
+              <field name="postcode1" optional="hide"/>
+              <field name="project_development_type" optional="hide"/>
+              <field name="postcode1" optional="hide"/>
+              <field name="write_date" optional="show"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="crm_project_form" model="ir.ui.view">
+      <field name="name">project.crm.form</field>
+      <field name="model">project.crm</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+          <form string="Main Project" create="false">
+		  <header>
+			  <button name="set_category_many2many" id="set_category_many2many"
+                        string="Categ" class="btn-primary" type="object"  groups="base.group_erp_manager"/>
+                <button name="generate_leads" id="generate_leads"
+                        string="Generate Lead" class="btn-primary" type="object"/>
+                <button string="Close" class="oe_highlight" attrs="{'invisible': [('stage_id', 'not in', ['validated'])]}" groups="sales_team.group_sale_manager"/>
+                <field name="stage_id" widget="statusbar" options="{'clickable': '0', 'fold_field': 'fold'}"/>
+            </header>
+            <sheet>
+<!--               <div class="oe_button_box" name="button_box">
+                  <button class="oe_stat_button o_res_partner_tip_opp" type="object"
+                      name="action_view_opportunity"
+                      icon="fa-star"
+                      groups="sales_team.group_sale_salesman"
+                      context="{'default_project_id': active_id}">
+                      <field string="Leads" name="opportunity_count" widget="statinfo"/>
+                  </button>
+              </div> -->
+              <div>
+                    <header style="border-top: 1px solid #ced4da;">
+                        <field name="project_stage_id" widget="statusbar" options="{'clickable': '0', 'fold_field': 'fold'}"/>
+                    </header>
+
+                </div>
+                  <div class="oe_title">
+                      <div class="oe_edit_only">
+                          <label for="name"/>
+                      </div>
+                      <h1>
+                          <field name="name"/>
+                      </h1>
+                      <div class="oe_edit_only">
+                          <label for="project_type"/>
+                      </div>
+                      <h2>
+                          <field name="project_type"/>
+                      </h2>
+                      <div>
+                        <label for="bci_project_code"/>
+                      </div>
+                      <h3>
+                          <field name="bci_project_code"/>
+                      </h3>
+                      <div>
+                        <label for="is_related_project"/>
+                        <field name="is_related_project"/>
+                      </div>
+                      
+                  </div>
+                  <group string="Group CRM">
+                      <field name="master_project_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="project_code"/>
+                            <field name="name"/>
+                        </tree>
+                      </field>
+                  </group>
+                  <group string="General Information">
+                      <group>
+                        <!-- <label for="street" string="Address"/>
+                        <div class="o_address_format">
+                          <field name="street" placeholder="Street..." class="o_address_street"/>
+                          <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                          <field name="city" placeholder="City" class="o_address_city"/>
+                          <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+                          <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                          <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                        </div> -->
+                        <field name="address1"/>
+                        <field name="postcode1"/>
+                        <field name="province1"/>
+                        <field name="country1"/>
+                        <field name="bci_region"/>
+                        <field name="project_owner_type"/>
+                        <field name="project_development_type"/>
+                      </group>
+                      <group>
+                          <field name="start_date"/>
+                          <field name="end_date"/>
+                          <field name="project_value" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                          <field name="us_value" invisible="1"/>
+                          <field name="company_id"/>
+                          <field name="created_by" invisible="1"/>
+                          <field name="validate_by" invisible="1"/>
+                          <field name="team_id" invisible="1"/>
+                      </group>
+                      <group>
+                          <field name="project_site_area"/>
+                          <field name="project_floor_area"/>
+                          <field name="project_building_storeys"/>
+                          <field name="project_timestamp"/>
+                          <field name="project_refid"/>
+                          <field name="project_version"/>
+                          <field name="project_keywords"/>
+                      </group>
+                      <group>
+                          <field name="timetable_remarks"/>
+                          <field name="foreign_participation"/>
+                          <field name="major"/>
+                          <field name="project_language" invisible="1"/>
+                          <field name="project_last"/>
+                          <field name="project_green_building_rating"/>
+                          <field name="project_status_description"/>
+                          <field name="project_units_residential"/>
+                          <field name="project_units_industrial"/>
+                      </group>
+		      <group>
+			<field name="p_category" widget="many2many_tags"/>
+                        <field name="project_category1" invisible="1"/>
+                        <field name="project_category2" invisible="1"/>
+                        <field name="project_category3" invisible="1"/>
+                        <field name="project_category4" invisible="1"/>
+                        <field name="project_category5" invisible="1"/>
+                        <field name="project_category6" invisible="1"/>
+                        <field name="project_category7" invisible="1"/>
+                        <field name="project_category8" invisible="1"/>
+                      </group>
+                      <group>
+                        <field name="project_subcategory1" invisible="1"/>
+                        <field name="project_subcategory2" invisible="1"/>
+                        <field name="project_subcategory3" invisible="1"/>
+                        <field name="project_subcategory4" invisible="1"/>
+                        <field name="project_subcategory5" invisible="1"/>
+                        <field name="project_subcategory6" invisible="1"/>
+                        <field name="project_subcategory7" invisible="1"/>
+                        <field name="project_subcategory8" invisible="1"/>
+                      </group>
+                  </group>
+                  <notebook>
+                      <page string="Developers">
+                        <group>
+                          <group>
+                            <field name="project_developer1"/>
+                            <field name="project_developer1_contact1"/>
+                            <field name="project_developer1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_developer2"/>
+                            <field name="project_developer2_contact1"/>
+                            <field name="project_developer2_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Architects">
+                        <group>
+                          <group>
+                            <field name="project_architect1"/>
+                            <field name="project_architect1_contact1"/>
+                            <field name="project_architect1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_architect2"/>
+                            <field name="project_architect2_contact1"/>
+                            <field name="project_architect2_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Consultants">
+                        <group>
+                          <group>
+                            <field name="consulting_engineer1"/>
+                            <field name="consulting_engineer1_contact1"/>
+                            <field name="consulting_engineer1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="consultant1"/>
+                            <field name="consultant1_contact1"/>
+                            <field name="consultant1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="green_building_consultant1"/>
+                            <field name="green_building_consultant1_contact1"/>
+                            <field name="green_building_consultant1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_quantity_surveyor1"/>
+                            <field name="project_quantity_surveyor1_contact1"/>
+                            <field name="project_quantity_surveyor1_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Quantity Surveyors">
+                        <group>
+                          <group>
+                            <field name="project_quantity_surveyor1"/>
+                            <field name="project_quantity_surveyor1_contact1"/>
+                            <field name="project_quantity_surveyor1_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Contractors">
+                        <group>
+                          <group>
+                            <field name="project_main_contractor1"/>
+                            <field name="project_main_contractor1_contact1"/>
+                            <field name="project_main_contractor1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_main_contractor2"/>
+                            <field name="project_main_contractor2_contact1"/>
+                            <field name="project_main_contractor2_contact2"/>
+                          </group>
+                          <group>
+                            <field name="contractor1"/>
+                            <field name="contractor1_contact1"/>
+                            <field name="contractor1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_building_contractor1"/>
+                          </group>
+                          <group>
+                            <field name="project_civil_structural_eng1"/>
+                          </group>
+                          <group>
+                            <field name="turnkey_contractor1"/>
+                            <field name="turnkey_contractor1_contact1"/>
+                            <field name="turnkey_contractor1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_sub_contractor1"/>
+                            <field name="project_sub_contractor1_contact1"/>
+                            <field name="project_sub_contractor1_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Owner">
+                        <group>
+                          <group>
+                            <field name="project_owner1"/>
+                            <field name="project_owner1_contact1"/>
+                            <field name="project_owner1_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                    </notebook>
+                  <notebook>
+                      <page string="Project's Remarks">
+                        <field name="project_remarks" placeholder="Add an info..."/>
+                          <!-- <field name="other_info" placeholder="Add an info..."/> -->
+                      </page>
+                      <page string="Bulding Elements">
+                          <field name="element_info" placeholder="Add an info..."/>
+                      </page>
+                  </notebook>
+              </sheet>
+              <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+              </div>
+          </form>
+      </field>
+  </record>
+
+  <record id="view_crm_project_kanban" model="ir.ui.view">
+            <field name="name">project.crm.kanban</field>
+            <field name="model">project.crm</field>
+            <field name="priority" eval="0"/>
+            <field name="arch" type="xml">
+                <kanban default_group_by="project_stage_id" class="o_kanban_small_column o_opportunity_kanban" archivable="false" quick_create="false" create="false">
+                    <field name="name" string="Order Number"/>
+                    <field name="project_stage_id"/>
+                    <field name="team_id"/>
+                    <field name="project_code"/>
+                    <field name="name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                                <div>
+                                    <strong class="o_kanban_record_title"><span><field name="project_code"/></span></strong>
+                                </div>
+                                <div>
+                                    <span class="o_kanban_record_subtitle"><field name="name"/></span>
+                                </div>
+                              
+                                <!-- <div class="row">
+                                    <div class="col-6">
+                                    </div> -->
+                                    <!-- <div class="col-6">
+                                        <span class="float-right">
+                                            <field name="state_id" widget="label_selection" options="{'classes': {'open': 'success', 'inprogress': 'primary',
+                                            'closed': 'danger'}}"/>
+                                        </span>
+                                    </div> -->
+                                <!-- </div> -->
+                                <!-- <div>
+                                  <field name="project_status_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                </div> -->
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+  <record id="crm_project_action" model="ir.actions.act_window">
+      <field name="name">Projects</field>
+      <field name="res_model">project.crm</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_crm_project_kanban"/>
+      <field name="search_view_id" ref="view_project_crm_filter"/>
+      <field name="context">{'search_default_create_date': 1}</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set a new project
+        </p><p>
+          Stages allow salespersons to easily track how a specific opportunity
+          is positioned in the sales cycle.
+        </p>
+      </field>
+  </record>
+
+  <record id="crm_project_action_pipeline_view_tree" model="ir.actions.act_window.view">
+      <field name="sequence" eval="0"/>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="crm_project_tree"/>
+      <field name="act_window_id" ref="crm_project_action"/>
+  </record>
+
+  <record id="crm_project_action_pipeline_view_kanban" model="ir.actions.act_window.view">
+      <field name="sequence" eval="1"/>
+      <field name="view_mode">kanban</field>
+      <field name="view_id" ref="view_crm_project_kanban"/>
+      <field name="act_window_id" ref="crm_project_action"/>
+  </record>
+
+        <record id="action_validate_project" model="ir.actions.server">
+            <field name="name">Validate</field>
+            <field name="model_id" ref="project_crm_chg.model_project_crm"/>
+            <field name="binding_model_id" ref="project_crm_chg.model_project_crm"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_validate_multi()</field>
+        </record>
+
+        <menuitem
+            id="chgb_bci_menu_root"
+            name="Internal BCI"
+            web_icon="project_crm_chg,static/description/icon.png" sequence="4"/>
+
+            <!-- groups="sales_team.group_sale_salesman,sales_team.group_sale_manager" -->
+            
+  <menuitem
+      id="crm.crm_menu_sales"
+      name="Sales"
+      parent="crm.crm_menu_root"
+      sequence="2"/>
+
+  <menuitem
+      id="crm_menu_project"
+      name="Projects"
+      parent="chgb_bci_menu_root" 
+      sequence="1"/>
+      <!-- groups="sales_team.group_sale_salesman,sales_team.group_sale_manager" -->
+
+  <menuitem id="sales_crm_project"
+      name="All Projects"
+      parent="crm_menu_project"
+      action="crm_project_action"
+      sequence="0"/>
+
+</odoo>

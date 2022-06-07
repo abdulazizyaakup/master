@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_regarding_items_gcast,regarding.items.gcast,model_regarding_items_gcast,base.group_user,1,1,1,1
+access_extra_product_lines_gcast,extra.product.lines.gcast,model_extra_product_lines_gcast,base.group_user,1,1,1,1

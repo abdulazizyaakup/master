@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="register_new_master_project" name="Project">
+        <t t-call="website.layout">
+            <div class="container">
+                <form t-attf-action="/crm" method="post" role="form" class="tag_text js_website_submit_form">
+                    <input required="1" type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="text-align:center;"><h3><span>New Project</span></h3></div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row" style="border-top: 1px solid;padding-top:10px;">
+                <br/>
+                <div class="col-md-12">Project Name: <input required="1" type="text" class="form-control o_website_form_input" name="name" step="any"/></div>
+                <!-- <div class="col-md-6">Project Keyword: <input required="1" type="text" class="form-control o_website_form_input" name="project_keywords" step="any"/>
+                  </div> -->
+            </div>
+            <br/>
+            <!-- <div class="row">
+                <span style="font-size:20px;padding-left:15px;"><b>Project Details</b></span>
+            </div>
+ -->
+            <div class="row" style="padding-top:20px;">
+                <div class="col-md-4">Project Value: <input required="1" type="text" class="form-control o_website_form_input" name="project_value" step="any"/></div>
+                <div class="col-md-4">Start date :
+                    <div class="o_website_form_date input-group date" id="datepicker2" data-target-input="nearest">
+                    <input required="1" type="text" class="form-control datetimepicker-input o_website_form_input" data-target="#datepicker2" name="start_date"/>
+                    <div class="input-group-append" data-target="#datepicker2" data-toggle="datetimepicker">
+                      <div class="input-group-text">
+                        <i class="fa fa-calendar"/>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-4">End date :
+                    <div class="o_website_form_date input-group date" id="datepicker3" data-target-input="nearest">
+                    <input required="1" type="text" class="form-control datetimepicker-input o_website_form_input" data-target="#datepicker3" name="end_date"/>
+                    <div class="input-group-append" data-target="#datepicker3" data-toggle="datetimepicker">
+                      <div class="input-group-text">
+                        <i class="fa fa-calendar"/>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top:20px;">
+                <div class="col-md-6">Street :
+                    <input required="1" type="text" class="form-control o_website_form_input" name="street"/>
+                </div>
+                <div class="col-md-6">Street 2 :
+                    <input required="1" type="text" class="form-control o_website_form_input" name="street2"/>
+                </div>
+                <div class="col-md-4">City :
+                    <input required="1" type="text" class="form-control o_website_form_input" name="city"/>
+                </div>
+                <div class="col-md-4">Zip :
+                    <input required="1" type="text" class="form-control o_website_form_input" name="zip"/>
+                </div>
+                <div t-attf-class="form-group col-lg-6 div_country">
+                        <label class="col-form-label" for="country_id">Country</label>
+                        <select id="country_id" name="country_id" t-attf-class="form-control">
+                            <option value="">Country...</option>
+                            <t t-foreach="countries" t-as="c">
+                                <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">
+                                    <t t-esc="c.name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div t-attf-class="form-group col-lg-6 div_state" t-att-style="(not country or not country.state_ids) and 'display: none'">
+                        <label class="col-form-label" for="state_id">State / Province</label>
+                        <select name="state_id" t-attf-class="form-control" data-init="1">
+                            <option value="">State / Province...</option>
+                            <t t-foreach="country and country.state_ids or []" t-as="s">
+                                <option t-att-value="s.id" t-att-selected="s.id">
+                                    <t t-esc="s.name" />
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                
+<!--                 <div class="col-md-4">State :
+                <select class="form-control o_website_form_input" name="state_id">
+                      <t t-foreach="state or []" t-as="s">
+                          <option t-att-value="s.id" t-att-selected="s.id == int(state_id) if state_id else s.id == master.state_id.id"><t t-esc="s.name"/></option>
+                      </t>
+                      </select>
+                </div>
+                <div class="col-md-4">Country :
+                <select class="form-control o_website_form_input" name="country_id">
+                      <t t-foreach="country or []" t-as="c">
+                          <option t-att-value="c.id" t-att-selected="c.id == int(country_id) if country_id else c.id == master.country_id.id"><t t-esc="c.name"/></option>
+                      </t>
+                      </select>
+                </div> -->
+                <br/>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                        </div>
+            </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+<template id="crm_project_masters" name="CRM">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="row">
+                    <!-- <h3>Project : <span t-field="master.name"/></h3> -->
+                    <t t-foreach="masters" t-as="master">
+                        <div class="col-md-3">
+                            <div class="panel panel-primary course_panel">
+                                <div class="panel-heading text-center"><b  t-field="master.name"></b></div>
+                            </div>
+                       </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <report
+        id="ov_sales_proposal_form"
+        model="sale.order"
+        string="Proposal for the Provision of Security Services"
+        name="ov_sales.ov_sales_proposal_view"
+        file="ov_sales.ov_sales_proposal"
+        report_type="qweb-pdf"
+        menu="False"/>
+
+    <template id="ov_sales_proposal_view">
+        <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                  <t t-foreach="docs" t-as="doc">
+                    <div class="page" style="justify-content: center;">
+                      <div class="oe_structure"/>
+                      <div class="container">
+                        <div class="row">
+                            <p>Dear Sir,</p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                            <h4>PROPOSAL FOR THE PROVISION OF SECURITY SERVICES - <br/><span t-field="doc.partner_id.name"/></h4>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>Thank you for giving us this opportunity to introduce our company portfolio to your establishment.</p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>Our unrivalled experience, industry-leading expertise and ability to deliver highly innovative and
+                          effective services have made William Secure Solutions a trusted partner for our private and business
+                          clients.</p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>The William Secure Solutions team puts service at the heart of our operation. Our commitment to
+                          delivering consistently high standards is what drives us as a business. Our unique approach sees
+                          the time-honoured human elements of security – diligence, motivation and training – met with
+                          cutting-edge technology to provide perfectly tailored solutions to each client. This is not a one-size-
+                          fits-all; this is best-in-class, fit-for-purpose security that delivers total peace of mind. Below is an
+                          overview of our company profile.</p>
+                        </div>
+                        <div class="row" style="justify-content: center;width:300px;">
+                          <p><span style="font-weight: bold;text-decoration:underline;">About William Secure Solutions</span></p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>Established in <span style="color:red;font-weight: bold;">1999</span> as William Security Services, the company has grown from strength to strengthand built a reputation for excellence in our field. In 2016, based on the foundations of the previous 17 years and under the same highly experienced management and operation steam, we unveiled our  new  brand - <span style="color:red;font-weight: bold;">William  Secure Solutions</span> - as part of our new vision forgrowth and service enhancement.</p>
+                        </div>
+
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>As William Security, <span style="color:red;font-weight: bold;">we were graded ‘A’, ‘A’, ‘B’ by the Singapore Police Force in 2015, 2014 and 2013 respectively</span>. This was a testament to our commitment to providing quality services and enhancing our solutions in-line with the latest security trends.</p>
+                        </div>
+                        
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>As <span style="color:red;font-weight: bold;">William Secure Solutions,we are graded ‘B’ by the Singapore Police Force in 2019</span>,we have also preserved  the  same  people-centric, innovative and technologically-advanced ethos. We are trusted by our clients and have been accreditedto thehighest levels by the Singapore Government. We are an <span style="color:red;font-weight: bold;">ISO 9001:2008</span> and <span style="color:red;font-weight: bold;">OHSAS18001:2007 organisation as well as a bizSafe Enterprise</span>. We are also a member of the Security Association (Singapore) and Association of Certified Security Agencies.</p>
+                        </div>
+                        <div class="row" style="justify-content: center;width:300px;">
+                          <p><span style="font-weight: bold;text-decoration:underline;">Our Commitment to Clients</span></p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <ul>
+                            <li>Dedicated and reliable team of officers and account servicing executive</li>
+                            <li>Regular progress and update reports</li>
+                            <li>Prompt follow up with comprehensive reports for major incidents for records and insurance claim purposes</li>
+                            <li>Operations  survey,  analysis  reports  and  proposed  solutions  for  after-action-reviews  for  major incidents</li>
+                            <li>Multiple channels to ensure your concerns and needs are addressed</li>
+                            <li>Training  of  site  procedures  for  officers  deployed  to  ensure  their  competency  to  deal  with situations</li>
+                            <li>24 hours’ response for operations support, feedbacks and complaints.</li>
+                          </ul>
+                        </div>
+                        <div class="row" style="justify-content: center;width:300px;">
+                          <p><span style="font-weight: bold;text-decoration:underline;">Proposal for Provision of Services</span></p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>The  proposal  has  been  divided  into  two  portions;  security  solution  implementation timeline  and quotation for provision of services. </p>
+                        </div>
+                        <div class="row" style="justify-content: center;width:300px;">
+                          <p><span style="font-weight: bold;">I&#160;&#160;&#160;&#160;Proposed Implementation Timeline Plan</span></p>
+                        </div>
+                        <div class="row" style="justify-content: center;padding-bottom:30px;page-break-after: always;">
+                          <table width="100%;" style="border: 1px solid;">
+                            <thead>
+                              <tr>
+                                <th height="50" align="center" style="border: 1px solid;width:30%;text-align:center;background-color:#ccccb3;">Period</th>
+                              <th height="50" style="border: 1px solid;width:70%;text-align:center;background-color:#ccccb3;">Plan</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td style="border: 1px solid;width:30%;text-align:left;padding:15px;">Upon receipt of confirmation of the award of tender</td>
+                                <td style="border: 1px solid;width:70%;text-align:left;padding:15px;">
+                                  <p>1. Site Inspection</p>
+                                  <p>2. Induction training for appointed Security Officers, which will also include a site visit.</p>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="border: 1px solid;width:30%;text-align:left;padding:15px;">On the day of the taking over</td>
+                                <td style="border: 1px solid;width:70%;text-align:left;padding:15px;">
+                                  <p>1. Onsite handing over and taking over procedures</p>
+                                  <p>2. Conduct an On-Job-Training for the Security Officers.</p>
+                                  <p>3. Close monitoring on the site and frequent site visits by the Management (at least once in the day and once in the night) during the first 2 weeks.</p>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="border: 1px solid;width:30%;text-align:left;padding:15px;">2 weeks after taking over</td>
+                                <td style="border: 1px solid;width:70%;text-align:left;padding:15px;">
+                                  <p>1. After assuming operations, we will arrange for a follow up meeting will be arranged to review services provided.</p>
+                                  <p>2. A second meeting will be arranged two weeks later and subsequent meetings will be arranged on a monthly basis at your convenience.</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div class="row" style="justify-content: center;width:300px;">
+                          <p><span style="font-weight: bold;"><i>Operations Procedures</i></span></p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>Thereafter, to ensure that the quality of our services is maintained, we will visit the site at least twice per week to meet up with our officers.</p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>We have a performance appraisal system in place, where we will review the performance of each officer three times a year and provide counselling, if necessary.</p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>Continuous training will be provided forour team of officers. Security Officers will be scheduled for in-house training to ensure that they are kept abreast on the fast-changing security landscape as part of their personal development program.  Senior Officers will also be sent for courses conducted by approved institutions.</p>
+                        </div>
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>An Operations Executive will be assigned to manage your account and will also be on stand-by 24 hours a day, 7 days a week, to attend to your feedback and major incidences at your premises.</p>
+                        </div>
+
+                        <div class="row" style="justify-content: center;width:300px;">
+                          <p><span style="font-weight: bold;">II&#160;&#160;&#160;&#160;Quotation for Services</span></p>
+                        </div>
+
+                        <div class="row" style="justify-content: center;">
+                          <table width="100%;" style="border: 1px solid;">
+                            <thead>
+                              <tr>
+                                <th height="50" colspan="4" align="center" style="border: 1px solid;text-align:center;background-color:#ccccb3;"><span t-field="doc.partner_id.name"/></th>
+                              </tr>
+                              <tr>
+                                <th height="50" colspan="2" align="center" style="border: 1px solid;text-align:center;background-color:#ccccb3;">Description of Service</th>
+                                <th height="50" colspan="2" style="border: 1px solid;text-align:center;background-color:#ccccb3;">Rates</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th rowspan="3" align="left" style="border: 1px solid;transform: rotate(90deg);-webkit-transform: rotate(90deg);-ms-transform: rotate(90deg);text-align:center;" scope="rowgroup">NIGHT SHIFT</th>
+                                <td scope="row" style="border: 1px solid;text-align:left;padding:15px;">Provision of ONE (1)Security Supervisor  from 0800H –2000Hdaily, including public holidays.</td>
+                                <td style="border: 1px solid;width:30%;text-align:left;padding:15px;">$ 4,950</td>
+                              </tr>
+                              <tr>
+                                <td scope="row" style="border: 1px solid;text-align:left;padding:15px;">Provision  of ONE(1)Security  Officersfrom 0800H –2000Hdaily,  including public holidays.</td>
+                                <td style="border: 1px solid;text-align:left;padding:15px;">$ 4,150</td>
+                              </tr>
+                              <tr>
+                                <td scope="row" style="border: 1px solid;text-align:left;padding:15px;">Provision  of ONE  (1)Security  Officer from 0800H –2000HfromMondays  to Fridays</td>
+                                <td style="border: 1px solid;text-align:left;padding:15px;">$ 3,650</td>
+                              </tr>
+                            </tbody>
+                            <tbody>
+                              <tr>
+                                <th rowspan="3" align="left" style="border: 1px solid;transform: rotate(90deg);-webkit-transform: rotate(90deg);-ms-transform: rotate(90deg);text-align:center;" scope="rowgroup">NIGHT SHIFT</th>
+                                <td scope="row" style="border: 1px solid;text-align:left;padding:15px;">Provision of ONE (1)Security Supervisor  from 2000H –0800Hdaily, including public holidays.</td>
+                                <td style="border: 1px solid;text-align:left;padding:15px;">$ 4,950</td>
+                              </tr>
+                              <tr>
+                                <td scope="row" style="border: 1px solid;text-align:left;padding:15px;">Provision  of ONE  (1)Security  Officer from 2000H –0800Hdaily,  including public holidays.</td>
+                                <td style="border: 1px solid;text-align:left;padding:15px;">$ 4,150</td>
+                              </tr>
+                              <tr>
+                                <td scope="row" style="border: 1px solid;text-align:left;padding:15px;"></td>
+                                <td style="border: 1px solid;text-align:left;padding:15px;"></td>
+                              </tr>
+                            </tbody>
+                            <tbody>
+                              <tr>
+                                <th></th>
+                                <td scope="row" style="border: 1px solid;text-align:right;padding:15px;"><b>TOTAL</b></td>
+                                <td style="border: 1px solid;text-align:left;padding:15px;"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="row" style="justify-content: center;">
+                          <p><i>*Note: Rates indicated are subject to prevailing Goods and Services Tax (GST)</i></p>
+                        </div>
+
+                        <div class="row" style="justify-content: center;">
+                          <table>
+                            <tr>
+                              <td style="width:10%;">(a)</td>
+                              <td style="width:40%;">Employer’s CPF Contribution;</td>
+                              <td style="width:10%;">(b)</td>
+                              <td style="width:40%;">Security Officers’ uniform andequipment;</td>
+                            </tr>
+                            <tr>
+                              <td style="width:10%;">(c)</td>
+                              <td style="width:40%;">Performance Incentives for Security Officers;</td>
+                              <td style="width:10%;">(d)</td>
+                              <td style="width:40%;">Security Officers’ welfare and benefits</td>
+                            </tr>
+                            <tr>
+                              <td style="width:10%;">(e)</td>
+                              <td style="width:40%;">Overtime Payment at the rates specified by MOM for the period worked beyond 44 hours per week;</td>
+                              <td style="width:10%;">(f)</td>
+                              <td style="width:40%;">Salary of Relief Officers engaged to cover incumbent Security Officers’ day off and leave1;</td>
+                            </tr>
+                            <tr>
+                              <td style="width:10%;">(g)</td>
+                              <td style="width:40%;">Work Injury Compensation Insurance Policy; and</td>
+                              <td style="width:10%;">(h)</td>
+                              <td style="width:50%;">Public Liability Insurance Policy of $2 million coverage.</td>
+                            </tr>
+                          </table>
+                        </div>
+                      
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>The rates quoted are based on the positions which you have requested for. Please note that the job functions of the respective position are confined within the guidelines prescribed by the Progressive Wage Model framework. </p>
+                        </div>
+
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>Hence, the engaged personnel areonly able to carry out duties according to their appointed positions as indicated in the framework (e.g. A Security Officer cannot perform the duties and job functions of a Senior Security Officer or Security Supervisor). A copy of the job functions for each position is enclosed at Annex A for your reference.</p>
+                        </div>
+
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>Kindly note that the prices quoted herein are only valid for 1 monthbarring any revision or changes to Government Policies related to the security industry. A lead time of 1 month is also required to assume operations. </p>
+                        </div>
+
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>Should you have any queries, please feel free to contact the undersignedat 6846 9883 (e-mail: louis.wee@wss.sg).</p>
+                        </div>
+
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>We look forward to hearing from you and assisting you in making your asset more secure.</p>
+                        </div>
+
+                        <div class="row" style="display: flex;justify-content: center;">
+                          <p>Yours sincerely,</p>
+                        </div>
+
+                      </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="ov_sales.ov_sales_proposal_form" model="ir.actions.report">
+        <field name="report_type">qweb-pdf</field>
+    </record>
+</odoo>

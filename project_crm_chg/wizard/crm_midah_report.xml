@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="generate_midah_report_view_form" model="ir.ui.view">
+        <field name="name">crm.midah.report.form</field>
+        <field name="model">crm.midah.report</field>
+        <field name="arch" type="xml">
+            <form string="Generate Report">
+            	  <footer>
+                    <field name="company_id"/>
+                    <button name="midah_report" string="Generate" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+        <record id="generate_midah_report" model="ir.actions.act_window">
+            <field name="name">Midah Group Specs Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.midah.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="generate_midah_report_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+
+</odoo>

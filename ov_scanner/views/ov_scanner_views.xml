@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        
+        <template id="assets_backend" name="ov_scanner_assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/ov_scanner/static/src/css/dynamsoft.webtwain.css"/>
+                <!-- <script type="text/javascript" src="/ov_scanner/Resources/dynamsoft.webtwain.config.js"/>
+                <script type="text/javascript" src="/ov_scanner/Resources/dynamsoft.webtwain.initiate.js"/> -->
+                <script type="text/javascript" src="/ov_scanner/static/src/js/ov_scanner.js"/>
+                
+            </xpath>
+        </template>
+
+        <menuitem id="main_ov_scanner_menu" name="Docment Scanner" web_icon="ov_scanner,static/description/icon.png" />
+
+        <menuitem id="ov_scanner_menu" name="Document Scanner"
+            parent="main_ov_scanner_menu" />
+
+        <record id="action_op_scanner_page" model="ir.actions.client">
+            <field name="name">Scan Document</field>
+            <field name="tag">ov.scanner</field>
+        </record>
+
+        <menuitem id="op_scanner" name="Scanner" parent="ov_scanner_menu"
+            action="action_op_scanner_page"/>    
+
+        <record model="ir.ui.view" id="ov_scanner_form_view">
+            <field name="name">ov.scanner.form</field>
+            <field name="model">ov.scanner</field>
+            <field name="arch" type="xml">
+                <form string="Scanner">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_scanner_tree_view">
+            <field name="name">ov.scanner.tree</field>
+            <field name="model">ov.scanner</field>
+            <field name="arch" type="xml">
+                <tree string="scanner">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_scanner" model="ir.actions.act_window">
+            <field name="name">scanner</field>
+            <field name="res_model">ov.scanner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="doc_scan" name="Documents" parent="ov_scanner_menu"
+            action="action_ov_scanner"/>
+
+            
+</odoo>

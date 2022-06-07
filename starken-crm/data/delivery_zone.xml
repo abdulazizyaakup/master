@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="dlv_zone_johor" model="delivery.zone">
+            <field name="name">Johor</field>
+        </record>
+        <record id="dlv_zone_melaka" model="delivery.zone">
+            <field name="name">Melaka</field>
+        </record>
+        <record id="dlv_zone_kedah" model="delivery.zone">
+            <field name="name">Kedah</field>
+        </record>
+        <record id="dlv_zone_butterworth" model="delivery.zone">
+            <field name="name">Butterworth</field>
+        </record>
+        <record id="dlv_zone_penang" model="delivery.zone">
+            <field name="name">Penang Island</field>
+        </record>
+        <record id="dlv_zone_perak" model="delivery.zone">
+            <field name="name">Perak</field>
+        </record>
+        <record id="dlv_zone_kl" model="delivery.zone">
+            <field name="name">Kuala Lumpur</field>
+        </record>
+        <record id="dlv_zone_selangor" model="delivery.zone">
+            <field name="name">Selangor</field>
+        </record>
+        <record id="dlv_zone_ns" model="delivery.zone">
+            <field name="name">Negeri Sembilan</field>
+        </record>
+        <record id="dlv_zone_kelantan" model="delivery.zone">
+            <field name="name">Kelantan</field>
+        </record>
+        <record id="dlv_zone_trengganu" model="delivery.zone">
+            <field name="name">Trengganu</field>
+        </record>
+        <record id="dlv_zone_west_pahang" model="delivery.zone">
+            <field name="name">West Pahang</field>
+        </record>
+        <record id="dlv_zone_east_pahang" model="delivery.zone">
+            <field name="name">East Pahang</field>
+        </record>
+        <record id="dlv_zone_east_malaysia" model="delivery.zone">
+            <field name="name">East Malaysia</field>
+        </record>
+        <record id="dlv_zone_east_coast" model="delivery.zone">
+            <field name="name">East Coast</field>
+        </record>
+    </data>
+</odoo>

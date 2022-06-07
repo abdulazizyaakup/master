@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hr_applicant_website" name="Applicants">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="row">
+                    <t t-foreach="applicants" t-as="applicant">
+                        <div class="col-md-3">
+                            <div class="panel panel-primary course_panel">
+                                <div class="panel-heading text-center"><b  t-field="applicant.name"></b></div>
+                                <div class="panel-body">
+                                    <div>
+                                        <img class="img img-responsive shadow applicant_image" t-att-src="'/website/image?model=hr.applicant&amp;field=logo&amp;id='+str(applicant.id)" width="250" height="250"></img>
+                                    </div>
+                                </div>
+                                <div class="panel-footer text-center">
+                                    <p class="text-center" style="margin-bottom:0px;"><strong>Job Applied </strong> </p>
+                                    <p><span class="text-center" t-field="applicant.job_id.name"></span></p>
+                                    <a class="btn btn-primary" t-attf-href="/applicant/#{applicant.id}">See in detail</a>
+                                    <a class="btn btn-primary" t-attf-href="/applicant/form/#{applicant.id}">Open Form</a>
+                                 </div>
+                            </div>
+                       </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="hr_applicant_detail" name="Applicant">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="row mt32 mb32">
+                    <div class="col-md-5">
+                        <img class="img img-responsive shadow mt16" t-att-src="'/website/image?model=hr.applicant&amp;field=logo&amp;id='+str(applicant.id)"  width="400" height="250"></img>
+                    </div>
+                    <div class="col-md-6">
+                        <h1 t-field="applicant.name"></h1>
+                        <h3 ><i class="fa fa-user"></i> Job Applied : <span t-field="applicant.job_id.name"></span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3>
+                            Job Applied: 
+                            <span t-field="applicant.job_id"></span>
+                        </h3>
+                    </div>
+
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template name="Applicant" id="hr_applicant_detail_edit">
+          <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+              <!-- <form action="/website_form/" method="post" class="s_website_form container-fluid mt32" enctype="multipart/form-data" data-model_name="hr.applicant" data-success_page=""> -->
+                <div class="container">
+                  <div class="row form-group form-field o_website_form_required">
+                    <div class="col-md-4 text-md-right">
+                      <label class="col-form-label" for="name">
+                            Subject / Application Name
+                        </label>
+                    </div>
+                    <div class="col-md-8">
+                      <input type="text" class="form-control o_website_form_input" name="name" required="1" t-att-value="applicant.name"/>
+                    </div>
+                  </div>
+                  <div class="row form-group form-field o_website_form_required">
+                    <div class="col-md-4 text-md-right">
+                      <label class="col-form-label" for="job_id">
+                            Applied Job
+                        </label>
+                    </div>
+                    <div class="col-md-8">
+                      <select class="form-control o_website_form_input" name="job_id" required="1"  t-att-value="applicant.job_id.name">
+                        <option value="1">
+                                    Security Officer
+                                </option>
+                        <option value="2">
+                                    Senior Security Officer
+                                </option>
+                        <option value="3">
+                                    Security Supervisor
+                                </option>
+                        <option value="4">
+                                    Senior Security Supervisor
+                                </option>
+                        <option value="5">
+                                    Chief Security Officer
+                                </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row form-group form-field">
+                    <div class="col-md-4 text-md-right">
+                      <label class="col-form-label" for="age">
+                            Age
+                        </label>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="o_website_form_flex">
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="18-19"/>
+                            <span>
+                                        18-19
+                                    </span>
+                          </label>
+                        </div>
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="20-29"/>
+                            <span>
+                                        20-29
+                                    </span>
+                          </label>
+                        </div>
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="30-39"/>
+                            <span>
+                                        30-39
+                                    </span>
+                          </label>
+                        </div>
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="40-49"/>
+                            <span>
+                                        40-49
+                                    </span>
+                          </label>
+                        </div>
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="50-55"/>
+                            <span>
+                                        50-55
+                                    </span>
+                          </label>
+                        </div>
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="56-60"/>
+                            <span>
+                                        56-60
+                                    </span>
+                          </label>
+                        </div>
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="61-65"/>
+                            <span>
+                                        61-65
+                                    </span>
+                          </label>
+                        </div>
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="66-69"/>
+                            <span>
+                                        66-69
+                                    </span>
+                          </label>
+                        </div>
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="70-75"/>
+                            <span>
+                                        70-75
+                                    </span>
+                          </label>
+                        </div>
+                        <div class="radio o_website_form_flex_item">
+                          <label>
+                            <input type="radio" class="o_website_form_input" name="age" value="others"/>
+                            <span>
+                                        Others
+                                    </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
+                      <button class="btn btn-primary btn-lg o_website_form_send o_default_snippet_text">Submit</button>
+                      <span id="o_website_form_result"/>
+                    </div>
+                  </div>
+                </div>
+                <input type="hidden" name="submitted" value="1" />
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+              <!-- </form> -->
+            </div>
+          </t>
+    </template>
+
+
+    <template name="Interview Form" id="hr_applicant_form">
+          <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <!-- <form action="/applicant/form/" method="post"> -->
+                    <div class="container">
+                        Testss
+                        <div class="row form-group form-field">
+                            <div class="col-md-4 text-md-right">
+                              <label class="col-form-label" for="mobile_no1">
+                                    Mobile
+                                </label>
+                            </div>
+                            <div class="col-md-8">
+                              <input type="text" class="form-control o_website_form_input" name="mobile_no1" required="0"/>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </form> -->
+            </div>
+          </t>
+    </template>
+</odoo>

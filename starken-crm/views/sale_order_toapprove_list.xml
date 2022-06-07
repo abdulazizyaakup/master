@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="sale_order_to_approve_users_tree" model="ir.ui.view">
+            <field name="name">sale.order.user.toapprove.tree</field>
+            <field name="model">sale.order.user.toapprove</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="user_to_approve" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="sale_order_to_approve_users_action" model="ir.actions.act_window">
+            <field name="name">Approval Required Users</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.user.toapprove</field>
+            <field name="target">current</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem
+            id="sale_order_to_approve_users_menu_item"
+            parent="sale.menu_sale_config"
+            action="sale_order_to_approve_users_action"
+            sequence="21"
+            groups="sales_team.group_sale_manager"/>
+    </data>
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+<!--         <record id="source1" model="job.source">
+            <field name="name">Newspaper Advertisement</field>
+        </record>
+        <record id="source2" model="job.source">
+            <field name="name">Word of Mouth</field>
+        </record>
+        <record id="source3" model="job.source">
+            <field name="name">Website</field>
+        </record>
+        <record id="source4" model="job.source">
+            <field name="name">Friends / Relatives</field>
+        </record>
+        <record id="source5" model="job.source">
+            <field name="name">One Stop Security Platform</field>
+        </record>
+        <record id="source6" model="job.source">
+            <field name="name">Others</field>
+        </record>
+
+ -->
+
+        <record id="source1" model="wss.campaign">
+            <field name="name">Newspaper Advertisement</field>
+        </record>
+        <record id="source2" model="wss.campaign">
+            <field name="name">Word of Mouth</field>
+        </record>
+        <record id="source3" model="wss.campaign">
+            <field name="name">Website</field>
+        </record>
+        <record id="source4" model="wss.campaign">
+            <field name="name">Friends / Relatives</field>
+        </record>
+        <record id="source5" model="wss.campaign">
+            <field name="name">One Stop Security Platform</field>
+        </record>
+        <record id="source6" model="wss.campaign">
+            <field name="name">Ex-Employee</field>
+        </record>
+        <record id="source7" model="wss.campaign">
+            <field name="name">Others</field>
+        </record>
+
+    </data>
+</odoo>

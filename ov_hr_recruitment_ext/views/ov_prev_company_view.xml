@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+        <record model="ir.ui.view" id="ov_prevcompany_form_view">
+            <field name="name">ov.prevcompany.form</field>
+            <field name="model">ov.prevcompany</field>
+            <field name="arch" type="xml">
+                <form string="Previous Company">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_prevcompany_tree_view">
+            <field name="name">ov.prevcompany.tree</field>
+            <field name="model">ov.prevcompany</field>
+            <field name="arch" type="xml">
+                <tree string="Previous Company">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_prevcompany" model="ir.actions.act_window">
+            <field name="name">Previous Company</field>
+            <field name="res_model">ov.prevcompany</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_prevcompany" name="Previous Company"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_prevcompany" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+</odoo>

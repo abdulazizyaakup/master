@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="master_pivot_view_form" model="ir.ui.view">
+            <field name="name">master.pivot.view.form</field>
+            <field name="model">master.pivot.view</field>
+            <field name="arch" type="xml">
+                <form string="Group CRM Report">
+                    <footer>
+                        <button name="open_pivot_view" string="Open Report" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="master_pivot_action" model="ir.actions.act_window">
+            <field name="name">Open Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">master.pivot.view</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_crm_lead2sublead_view_form"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

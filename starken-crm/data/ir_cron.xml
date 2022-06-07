@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="set_all_users_to_new_default_page" model="ir.cron">
+            <field name="name">Users : Set all users to new default page</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="state">code</field>
+            <field name="code">model.set_all_user_new_default_page()</field>
+            <field eval="False" name="active" />
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">months</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+        </record>
+    </data>
+</odoo>

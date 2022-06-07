@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="crm_bci_search_view_form" model="ir.ui.view">
+            <field name="name">searchbcimaster.bycode.form</field>
+            <field name="model">searchbcimaster.bycode</field>
+            <field name="arch" type="xml">
+                <form string="Search BCI Id">
+                    <group>
+                        <field name="bci_number"/>
+                    </group><!-- 
+                    <group>
+                        <field name="keywords_2"/>
+                    </group> -->
+                    <footer>
+                        <!-- <button name="search_master" string="Search from Master" type="object" class="btn-primary"/> -->
+                        <button name="search_bci" string="Search from BCI/Master" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="crm_bci_search_action" model="ir.actions.act_window">
+            <field name="name">Search From Bci Master</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">searchbcimaster.bycode</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="crm_bci_search_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+        
+</odoo>

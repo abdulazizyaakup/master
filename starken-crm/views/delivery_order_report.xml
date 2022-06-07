@@ -1,0 +1,193 @@
+<odoo>
+    <record id='report_delivery_order_new' model='ir.ui.view'>
+        <field name="name">starken-crm.delivery_order.report</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+          <t t-name="starken-crm.report_delivery_order_new">
+              <t t-call="web.html_container">
+                  <t t-call="starken-crm.do_external_layout">
+                      <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+                      <t t-set="partner" t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
+                      <style>
+                        .black_thin_line {
+                          border: 1px solid;
+                        }
+                        .boxed_div {
+                            box-sizing: border-box;
+                            -moz-box-sizing: border-box;
+                            -webkit-box-sizing: border-box;
+                            border: 1px solid;
+                        }
+                        table.table-bordered > tbody > tr > td{
+                            border:1px solid black;
+                        }
+                      </style>
+                      <div class="page">
+                          <h3>DELIVERY ORDER</h3>
+                          <div class="row mt8 mb8">
+                              <div class="col-6">
+                                <div class="row boxed_div">
+                                  <div class="col-3">
+                                    <span>To |</span><br/>
+                                  </div>
+                                  <div class="col-9">
+                                    <span t-esc="o.partner_id.name"></span><br/>
+                                    <span t-esc="o.partner_id.street"></span><br/>
+                                    <t t-if="o.partner_id.street2"><span t-esc="o.partner_id.street2"></span><br/></t>
+                                    <span t-esc="o.partner_id.zip"></span> <span t-esc="o.partner_id.city"></span><br/>
+                                    <span t-esc="o.partner_id.state_id.name"></span><br/>
+                                  </div>
+                                </div>
+                                <div class="row boxed_div">
+                                  <div class="col-3">
+                                    <span>Delivery To |</span><br/>
+                                  </div>
+                                  <div class="col-9">
+                                    <span t-esc="o.customer_ship_id.name"></span><br/>
+                                    <span t-esc="o.customer_ship_id.street"></span><br/>
+                                    <t t-if="o.customer_ship_id.street2"><span t-esc="o.partner_id.street2"></span><br/></t>
+                                    <span t-esc="o.customer_ship_id.zip"></span> <span t-esc="o.customer_ship_id.city"></span><br/>
+                                    <span t-esc="o.customer_ship_id.state_id.name"></span><br/>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-1"/>
+                              <div class="col-5">
+                                <table class="table table-sm table-bordered">
+                                  <tbody>
+                                    <tr>
+                                      <td><span>Del. Order No.</span></td>
+                                      <td><span t-esc="o.seq_num"></span></td>
+                                    </tr>
+                                    <tr>
+                                      <td><span>Date</span></td>
+                                      <td><span t-field="o.shipping_date" options="{'format': 'DD/MM/YYYY'}"></span></td>
+                                    </tr>
+                                    <tr>
+                                      <td><span>Your P.O No.</span></td>
+                                      <td><span t-esc="o.origin_so_po"></span></td>
+                                    </tr>
+                                    <tr>
+                                      <td><span>Lorry No.</span></td>
+                                      <td><span t-esc="o.lorry_no"></span></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                          </div>
+                          <table class="table table-sm table-bordered" name="stock_move_table">
+                              <thead class="thead-dark">
+                                  <tr>
+                                      <th name="th_sm_quantity"><strong>Quantity</strong></th>
+                                      <th name="th_sm_product"><strong>Description</strong></th>
+                                      <th name="th_sm_bnote"></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.quantity_done)"/>
+                                  <tr t-foreach="lines" t-as="move">
+                                      <td>
+                                          <span t-field="move.quantity_done"/>
+                                          <span t-field="move.product_uom"/>
+                                      </td>
+                                      <td>
+                                          <span t-field="move.product_id"/>
+                                          <p t-if="move.description_picking != move.product_id.name">
+                                              <span t-field="move.description_picking"/>
+                                          </p>
+                                      </td>
+                                      <td>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                          <div class="row mt8 mb32">
+                            <div class="col-12">
+                              <h4>CONDITION OF SALES</h4>
+                              <small>* Buyer must examing the goods upon delivery as no complaint can be made 7 days after delivery.</small><br/>
+                              <small>* Claim for damages or shortages will not be entertained after 7 days from date of delivery.</small><br/>
+                              <small>* Damages discrepancy above 3% per load will replaced by company and subject to verify by sales personal.</small><br/>
+                            </div>
+                          </div>
+                          <br/>
+                          <br/>
+                          <div class="row mt32 mb8" style="text-align: center">
+                              <div class="col-4">
+                                <hr class="black_thin_line"/>
+                                <strong>Receiver's Signature and Seal</strong>
+                              </div>
+                              <div class="col-4">
+                                <hr class="black_thin_line"/>
+                                <strong>Transporter Signature and Seal</strong>
+                              </div>
+                              <div class="col-4">
+                                <hr class="black_thin_line"/>
+                                <strong t-esc="o.company_id.name"/>
+                              </div>
+                          </div>
+                      </div>
+                  </t>
+               </t>
+          </t>
+        </field>
+    </record>
+    <record id='do_external_layout' model='ir.ui.view'>
+            <field name="name">do_external_layout</field>
+            <field name="type">qweb</field>
+            <field name="arch" type="xml">
+                <t t-name="starken-crm.do_external_layout">
+                  <t t-set="active_model" t-value="False"/>
+                  <t t-set="active_branch" t-value="False"/>\
+                  <t t-if="doc">
+                      <!-- Report LetterHead based on Active branch of respective record -->
+                      <t t-set="active_model" t-value="doc._table"/>
+                  </t>
+                  <t t-if="not company">
+                      <!-- Multicompany -->
+                      <t t-if="company_id">
+                          <t t-set="company" t-value="company_id"/>
+                      </t>
+                      <t t-elif="o and 'company_id' in o">
+                          <t t-set="company" t-value="o.company_id.sudo()"/>
+                      </t>
+                      <t t-else="else">
+                          <t t-set="company" t-value="res_company"/>
+                      </t>
+                   </t>\
+                   <t t-esc="company.update_scss()"/>
+                    <div t-attf-class="header o_company_#{company.id}_layout first-page">
+                        <div class="row">
+                            <div class="col-5">
+                              <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                            </div>
+                            <div class="col-7 mb4" name="company_address">
+                                <b t-esc="company.name"></b> (<span t-esc="company.company_registry"></span>)<br/>
+                                <span t-esc="company.street"></span><span> </span><span t-esc="company.street2"></span><span> </span>
+                                <span t-esc="company.zip"></span><span> </span>
+                                <span t-esc="company.city"></span><span> </span>
+                                <span t-esc="company.state_id.name"></span><span> </span>
+                                <span t-esc="company.country_id.name"></span><br/>
+                                <span>Tel : </span><span t-esc="company.partner_id.phone"/><span> </span><span>Fax : </span><span t-esc="company.partner_id.fax"/><br/>
+                                <span>Email : </span><span t-esc="company.partner_id.email"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                        <t t-raw="0"/>
+                    </div>
+                    <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                    </div>
+                </t>
+            </field>
+    </record>
+    <record id='do_print_bypass' model='ir.ui.view'>
+        <field name="name">sales.crm_report_saleorder</field>
+        <field name="type">qweb</field>
+        <field name="inherit_id" ref="stock.report_deliveryslip"/>
+        <field name="arch" type="xml">
+            <xpath expr="//t/t/t" position="replace">
+                <t t-call="starken-crm.report_delivery_order_new" t-lang="o.partner_id.lang"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

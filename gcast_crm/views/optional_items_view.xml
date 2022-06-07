@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="terms_conditions_tree" model="ir.ui.view">
+      <field name="name">regarding.items.gcast.tree</field>
+      <field name="model">regarding.items.gcast</field>
+      <field name="arch" type="xml">
+          <tree string="Projects">
+              <field name="name"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="terms_conditions_form" model="ir.ui.view">
+      <field name="name">regarding.items.gcast.form</field>
+      <field name="model">regarding.items.gcast</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+          <form string="Term">
+              <sheet>
+                  <group>
+                      <group>
+                          <field name="name"/>
+                      </group>
+                  </group>
+              </sheet>
+          </form>
+      </field>
+  </record>
+
+  <record id="terms_conditions_action" model="ir.actions.act_window">
+      <field name="name">Regarding(RE)</field>
+      <field name="res_model">regarding.items.gcast</field>
+      <!-- <field name="view_id" ref="terms_conditions_tree"/> -->
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set a new Regarding(RE) for quotation.
+        </p>
+      </field>
+  </record>
+
+  <menuitem
+      id="crm_menu_project_category_gcast"
+      name="G-Cast Regarding(RE) Items"
+      parent="sale.menu_sale_config"
+      action="terms_conditions_action"
+      sequence="3" groups="sales_team.group_sale_manager"/>
+
+</odoo>

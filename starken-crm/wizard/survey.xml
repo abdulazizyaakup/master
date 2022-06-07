@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="crm_lead_generate_survey_view_form" model="ir.ui.view">
+            <field name="name">crm.survey.wizard</field>
+            <field name="model">crm.survey</field>
+            <field name="arch" type="xml">
+                <form string="Create Survey">
+                    <group>
+                        <field name="survey_type" options="{'horizontal': true}"/>
+                        <field name="cust_type" widget='radio' options="{'horizontal': true}"/>
+                        <field name="crm_prj_devs" attrs="{'invisible': [('cust_type', '!=', 'developer')]}" widget="many2many_tags"/>
+                        <field name="crm_prj_arcs" attrs="{'invisible': [('cust_type', '!=', 'architect')]}" widget="many2many_tags"/>
+                        <field name="crm_cntrctrs" attrs="{'invisible': [('cust_type', '!=', 'contractor')]}" widget="many2many_tags"/>
+                        <field name="crm_prj_distributors" attrs="{'invisible': [('cust_type', '!=', 'distributor')]}" widget="many2many_tags"/>
+                        <field name='total' />
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print" type="object" class="oe-highlight"/>
+                        <button name="send_survey" string="Send Survey" type="object" class="oe-highlight"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="crm_lead_generate_survey_action" model="ir.actions.act_window">
+            <field name="name">Send Survey</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.survey</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="crm_lead_generate_survey_view_form"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

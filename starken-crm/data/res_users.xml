@@ -1,0 +1,125 @@
+<odoo>
+    <data>
+    	<function name="write" model="ir.model.data">
+		    <function name="search" model="ir.model.data">
+		        <value eval="[('module', '=', 'auth_signup'), ('name', '=', 'set_password_email')]"/>
+		    </function>
+		    <value eval="{'noupdate': False}"/>
+		</function>
+        <record id="auth_signup.set_password_email" model="mail.template">
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0" style="padding-top:16px;background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tbody><tr><td align="center">
+				<table border="0" cellpadding="0" cellspacing="0" width="590" style="padding:16px;background-color: white; color: #454748; border-collapse:separate;">
+				<tbody>
+				    <!-- HEADER -->
+				    <tr>
+				        <td align="center" style="min-width:590px;">
+				            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width:590px;background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+				                <tbody><tr><td valign="middle">
+				                    <span style="font-size:10px;">Welcome to Odoo</span><br/>
+				                    <span style="font-size:20px;font-weight: bold;">
+				                        ${object.name}
+				                    </span>
+				                </td><td valign="middle" align="right">
+				                    <img src="/logo.png?company=${object.company_id.id}" style="padding:0px;margin: 0px; height: auto; width: 80px;" alt="${object.company_id.name}"/>
+				                </td></tr>
+				                <tr><td colspan="2" style="text-align:center;">
+				                  <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+				                </td></tr>
+				            </tbody></table>
+				        </td>
+				    </tr>
+				    <!-- CONTENT -->
+				    <tr>
+				        <td align="center" style="min-width:590px;">
+				            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width:590px;background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+				                <tbody><tr><td valign="top" style="font-size:13px;">
+				                    <div>
+				                        Dear ${object.name},<br/><br/>
+				                        You have been invited by ${object.create_uid.name} of ${object.company_id.name} to connect on Odoo.
+				                        <div style="margin:16px 0px 16px 0px;">
+				                            <a href="${object.signup_url}" style="background-color:#875A7B;padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+				                                Accept invitation
+				                            </a> 
+				                        </div>
+				                        % set website_url = object.env['ir.config_parameter'].sudo().get_param('web.base.url')
+				                        Your Odoo domain is: <b><a href="${website_url}">${website_url}</a></b><br/>
+				                        Your sign in email is: <b><a href="/web/login?login=${object.email}" target="_blank">${object.email}</a></b>
+				                        <br/><br/>
+				                        <br/><br/>
+				                        Enjoy Odoo!<br/>
+				                        --<br/>The ${object.company_id.name} Team
+				                    </div>
+				                </td></tr>
+				                <tr><td style="text-align:center;">
+				                  <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+				                </td></tr>
+				            </tbody></table>
+				        </td>
+				    </tr>
+				    <!-- FOOTER -->
+				    <tr>
+				        <td align="center" style="min-width:590px;">
+				            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width:590px;background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+				                <tbody><tr><td valign="middle" align="left">
+				                    ${object.company_id.name}
+				                </td></tr>
+				                <tr><td valign="middle" align="left" style="opacity:0.7;">
+				                    ${object.company_id.phone}
+				                    % if object.company_id.email
+				                        | <a href="'mailto:%s' % ${object.company_id.email}" style="color: #454748;">${object.company_id.email}</a>
+				                    % endif
+				                    % if object.company_id.website
+				                        | <a href="'%s' % ${object.company_id.website}" style="color: #454748;">
+				                        ${object.company_id.website}
+				                    </a>
+				                    % endif
+				                </td></tr>
+				            </tbody></table>
+				        </td>
+				    </tr>
+				</tbody>
+				</table>
+				</td></tr>
+				<!-- POWERED BY -->
+				<tr><td align="center" style="min-width:590px;">
+				    <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width:590px;background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;">
+				      <tbody><tr><td style="text-align:center;font-size: 13px;">
+				        Powered by <a target="_blank" href="https://www.odoo.com?utm_source=db&amp;utm_medium=auth" style="color:#875A7B;">Odoo</a>
+				      </td></tr>
+				    </tbody></table>
+				</td></tr>
+				</tbody></table>
+            </field>
+        </record>
+        <function name="write" model="ir.model.data">
+		    <function name="search" model="ir.model.data">
+		        <value eval="[('module', '=', 'auth_signup'), ('name', '=', 'set_password_email')]"/>
+		    </function>
+		    <value eval="{'noupdate': True}"/>
+		</function>
+        <function name="write" model="ir.model.data">
+		    <function name="search" model="ir.model.data">
+		        <value eval="[('module', '=', 'base'), ('name', '=', 'default_user')]"/>
+		    </function>
+		    <value eval="{'noupdate': False}"/>
+		</function>
+        <record model="res.users" id="base.default_user">
+	        <field name="groups_id" eval="[(6,0,[ref('uom.group_uom'),ref('account.group_show_line_subtotals_tax_excluded'),ref('sales_team.group_sale_salesman_all_leads'),ref('base.group_partner_manager')])]"/>
+	        <field name="action_id" ref="crm.action_your_pipeline"/>
+	        <field name="tz">Asia/Kuala_Lumpur</field>
+      	</record>
+      	<function name="write" model="ir.model.data">
+		    <function name="search" model="ir.model.data">
+		        <value eval="[('module', '=', 'base'), ('name', '=', 'default_user')]"/>
+		    </function>
+		    <value eval="{'noupdate': True}"/>
+		</function>
+        <record model="res.config.settings" id="starken-crm.user_default_perm_act_set">
+	        <field name="user_default_rights" eval="1"/>
+      	</record>
+      	<function model="res.config.settings" name="execute">
+        	<value eval="[ref('starken-crm.user_default_perm_act_set')]"/>
+      	</function>
+    </data>
+</odoo>

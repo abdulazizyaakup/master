@@ -1,0 +1,1650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <report
+        id="emp_contract_monthly"
+        model="hr.applicant"
+        string="Monthly-rated Letter of Appointment"
+        name="ov_hr_recruitment_ext.contract_monthly_view"
+        file="ov_hr_recruitment_ext.contract_monthly"
+        report_type="qweb-pdf"
+        menu="False"/>
+
+    <template id="contract_monthly_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="header">
+                    </div>
+                    <div class="footer">
+                      <div style="text-align:center;">
+                         <strong><span>CONFIDENTIAL</span></strong><br/>
+                         <strong><span>STAFF-IN-CONFIDENCE</span></strong>
+                      </div>
+                      <div style="text-align:right;">
+                         <span>Page </span><span class="page" /> of <span class="topage" />
+                      </div>
+                    </div>
+                    <div  style="padding-right:60px;padding-left:60px;text-align: justify;" class="page">
+                        <div>
+                          <div style="text-align:center;">
+                          </div>
+                          <div style="text-align:right;">
+                             <span style="font-size:10px;"><i>Graded 'B' by the Singapore Police Force for 2019</i></span>
+                          </div>
+                        </div>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:5px;width:30%;">Our Ref.</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="doc.appointment_reference"/></td>
+                                </tr>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:5px;width:30%;">Date</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="doc.letter_date"/></td>
+                                </tr>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:5px;width:30%;">Name</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="doc.name"/></td>
+                                </tr>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:5px;width:30%;">NRIC / FIN No.</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="doc.nric"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="margin-top:30px;">
+                            <p>Dear <span t-field="doc.name"/>,</p>
+                            <h5>LETTER OF APPOINTMENT FOR FLEXIBLE EMPLOYMENT ARRANGEMENT</h5>
+                            <br/>
+                            <p>We are pleased to inform you that you have been appointed as a &#160;<u><span t-field="doc.job_id"/></u> with William Secure Solutions Pte. Ltd. on the following terms and conditions:-</p>
+                        </div>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">1.</td>
+                                    <td style="padding-left:15px;"><u>Appointment</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">1.1</td>
+                                    <td style="padding-left:40px;">Job Title</td>
+                                    <td style="padding-left:60px;width:60%;">:<span style="padding-left:60px;" t-field="doc.job_id"/></td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:40px;">Commencement Date</td>
+                                    <td style="padding-left:60px;width:60%;">:<span style="padding-left:60px;" t-field="doc.commencement_date"/></td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:40px;">Period of Probation</td>
+                                    <td style="padding-left:60px;width:60%;">:<i><span style="padding-left:60px;">Not Applicable</span></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">2.</td>
+                                    <td style="padding-left:15px;"><u>Duties and Responsibilities</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">2.1</td>
+                                    <td style="padding-left:40px;">Your duties shall include the specific duties assigned and any other duties that the Managing Director or your superior may direct you to perform.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">2.2</td>
+                                    <td style="padding-left:40px;">You shall work in any assignment or project (located in Singapore) as the Managing Director or your superior may direct.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">2.3</td>
+                                    <td style="padding-left:40px;">You are subject to the Company’s Standing Orders, Instruction Manuals, rules or regulations, whether expressed or implied, for the time being in force.  It shall be your responsibility, on assuming duty, to familiarise yourself to such orders, rules or regulations.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">2.4</td>
+                                    <td style="padding-left:40px;">You shall assist in any legal proceedings which may arise out of your involvement in the course of your duties, whether during or after the termination of this Agreement.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">3.</td>
+                                    <td style="padding-left:15px;"><u>Contracts (Rights of Third Party) Act</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;page-break-after: always;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">3.1</td>
+                                    <td style="padding-left:40px;">A person who is not a party to this agreement shall have no right under the Contracts (Rights of Third Parties) Act, Chapter 53B to enforce any term of this Agreement.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">4.</td>
+                                    <td style="padding-left:15px;"><u>Probation and Confirmation</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">4.1</td>
+                                    <td style="padding-left:40px;width:70%;">As specified in Para.1.1, you will be placed on probation for a period of 3 months with effect from your date of assumption of duty. Your remuneration package during the period of probation will be the same as that of a permanent officer, except for any performance bonus or incentive paid out during this period.</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">4.2</td>
+                                    <td style="padding-left:40px;width:70%;">During your probation, you will be reviewed on a quarterly basis to ensure that your performance meets with Organization’s expectation of you.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">5.</td>
+                                    <td style="padding-left:15px;"><u>Training</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">5.1</td>
+                                    <td style="padding-left:40px;">You may be, at any time, required by the Company to attend training courses, whether in-house or at any institution, if the Company deems such courses necessary.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">6.</td>
+                                    <td style="padding-left:15px;"><u>Working Days / Rest Days / Public Holidays / Hours of Work / Overtime</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">6.1</td>
+                                    <td style="padding-left:40px;">Your working days, working hours and rest days are stipulated in &#160;<strong><u>ANNEX A</u></strong> of this agreement.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">6.2</td>
+                                    <td style="padding-left:40px;">Any work done on your rest day will be mutually agreed upon by both Parties.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">6.3</td>
+                                    <td style="padding-left:40px;">If you are requested to work on your rest day at the Company’s request:</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(a)</td>
+                                    <td style="padding-left:40px;">You will be paid &#160;<u>1</u> day’s salary when you work up to half the normal daily working hours; or</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(b)</td>
+                                    <td style="padding-left:40px;">2 days’ salary when you work more than half the normal daily working hours.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">6.4</td>
+                                    <td style="padding-left:40px;">If it is your own request to work on your off day:</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(a)</td>
+                                    <td style="padding-left:40px;">You will be paid &#160;<u>half</u> day's salary when you work up to half the normal daily working hours; or</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(b)</td>
+                                    <td style="padding-left:40px;"><u>1</u> day's salary when the employee works more than half the normal daily working hours.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">6.5</td>
+                                    <td style="padding-left:40px;width:70%;">The normal working hours include a 1-hour break for meals.</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">6.6</td>
+                                    <td style="padding-left:40px;width:70%;">If work is done beyond 8 hours a day or 44 hours per week, you will be paid &#160;<u>1.5</u> times your hourly basic rate of salary.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">6.7</td>
+                                    <td style="padding-left:40px;">You will be entitled to all official public holidays.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">6.8</td>
+                                    <td style="padding-left:40px;">The Company may require you to work on a public holiday.  If so, you will be paid:</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(a)</td>
+                                    <td style="padding-left:40px;">An extra day's salary at the basic rate of pay for working on the public holiday; and</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(b)</td>
+                                    <td style="padding-left:40px;">The gross rate of pay for that holiday.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">7.</td>
+                                    <td style="padding-left:15px;"><u>Remuneration</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">7.1</td>
+                                    <td style="padding-left:40px;">The breakdown of your salary is at &#160;<strong><u> ANNEX A.</u></strong></td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">7.2</td>
+                                    <td style="padding-left:40px;">Your salary, inclusive of overtime payments, for each respective month will be credited into your bank account on the &#160;<u>5<sup>th</sup> of the following month.</u></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="width:100%;">
+                            <tbody>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="border:1px solid;width:70%;text-align:center;"><strong>Salary Period</strong></td>
+                                    <td style="border:1px solid;width:20%;text-align:center;"><strong>Payment Date</strong></td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> January to 31<sup>st</sup> January</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> February</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> February to 28<sup>th</sup> / 29<sup>th</sup> February</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> March</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> March to 31<sup>st</sup> March</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> April</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> April to 30<sup>st</sup> April</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> May</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> May to 31<sup>st</sup> May</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> June</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> June to 30<sup>st</sup> June</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> July</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> July to 31<sup>st</sup> July</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> August</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> August to 31<sup>st</sup> August</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> September</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> September to 30<sup>st</sup> September</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> October</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> October to 31<sup>st</sup> October</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> November</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> November to 30<sup>st</sup> November</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> December</td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="padding-left:20px;width:10%;"></td>
+                                    <td style="padding-left:40px;border:1px solid;width:70%;">1<sup>st</sup> December to 31<sup>st</sup> December</td>
+                                    <td style="padding-left:20px;border:1px solid;width:20%;">5<sup>th</sup> January</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">7.3</td>
+                                    <td style="padding-left:40px;">Your salary will be reviewed by the Company on a yearly basis which will be dependent on your performance as well as the Company’s performance.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">8.</td>
+                                    <td style="padding-left:15px;"><u>Incentive Payments <i>(if applicable)</i></u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">8.1</td>
+                                    <td style="padding-left:40px;">The Company may pay a discretionary incentive in accordance with the terms of the respective incentive scheme which may be implemented from time to time. These pay outs may be withdrawn in part or in whole, at the Company’s discretion.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">8.2</td>
+                                    <td style="padding-left:40px;">The incentives stated in Clause 8.1 are meant to encourage good turnout and decorum, as well as for exemplary performance and attendance.  </td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">8.3</td>
+                                    <td style="padding-left:40px;">For the avoidance of doubt, the incentive payments are discretionary and the terms of such schemes may be revised from time to time or terminated at the sole discretion of the Company.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">9.</td>
+                                    <td style="padding-left:15px;"><u>Leave Benefits</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:30px;">Annual Leave</td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">9.1</td>
+                                    <td style="padding-left:40px;">After 3 months of service, you will be entitled to &#160;<u>7</u> working days of annual leave a year to be taken at such time or times as may be approved by the Managing Director. An additional &#160;<u>1</u> day’s paid leave will be added to your annual leave entitlement for every subsequent &#160;<u>12</u> months of continuous service thereafter, up to a maximum of &#160;<u>14</u> days of annual leave a year.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:30px;">Medical Leave</td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">9.2</td>
+                                    <td style="padding-left:40px;">During the first &#160;<u>3</u> months of your employment, you will not be entitled to paid sick leave. Any sick leave taken during this period will be considered as unpaid leave.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">9.3</td>
+                                    <td style="padding-left:40px;">After 3 months of service, you are entitled to &#160;<u>14</u> days of sick leave in each calendar year if no hospitalization is necessary and &#160;<u>60</u> days of hospitalisation leave in each calendar year if hospitalisation is necessary, depending on your period of service based on the breakdown as follows:</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;text-align:center;">
+                                    <td></td>
+                                    <td style="border:1px solid;"><strong>No. Of Months Of Service Completed</strong></td>
+                                    <td style="border:1px solid;"><strong>Paid Outpatient Non-Hospitalisation Leave (days)</strong></td>
+                                    <td style="border:1px solid;"><strong>Paid Hospitalisation Leave (Days)</strong></td>
+                                </tr>
+                                <tr style="line-height: 30px;text-align:center;">
+                                    <td></td>
+                                    <td style="border:1px solid;">3</td>
+                                    <td style="border:1px solid;">5</td>
+                                    <td style="border:1px solid;">15</td>
+                                </tr>
+                                <tr style="line-height: 30px;text-align:center;">
+                                    <td></td>
+                                    <td style="border:1px solid;">4</td>
+                                    <td style="border:1px solid;">8</td>
+                                    <td style="border:1px solid;">30</td>
+                                </tr>
+                                <tr style="line-height: 30px;text-align:center;">
+                                    <td></td>
+                                    <td style="border:1px solid;">5</td>
+                                    <td style="border:1px solid;">11</td>
+                                    <td style="border:1px solid;">45</td>
+                                </tr>
+                                <tr style="line-height: 30px;text-align:center;">
+                                    <td></td>
+                                    <td style="border:1px solid;">6 and thereafter</td>
+                                    <td style="border:1px solid;">14</td>
+                                    <td style="border:1px solid;">60</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">9.4</td>
+                                    <td style="padding-left:40px;">You must notify your respective Operations Executive and/or the Office as soon as you decide to absent yourself from work for medical reasons. Any medical leave must be substantiated by a medical certificate endorsed by a &#160;<u>Government Medical Officer</u>. All private clinics’ medical certificates will not be recognised by the Company. </td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">9.5</td>
+                                    <td style="padding-left:40px;">If you fail to report your absence from work to your respective Operations Executive and/or the Office within 48 hours, you shall be considered to have been absent from work without official leave or reasonable even if it is due to medical reasons.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 40px;width:100%;">
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:30px;width:70%;">Maternity Leave <i>(Applicable only for Female Employees)</i></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">9.6</td>
+                                    <td style="padding-left:40px;">You are entitled to paid maternity leave in accordance with the Children Development Co-Savings Act or the Employment Act, where applicable.  Please refer to the Ministry of Manpower’s website at www.mom.gov.sg for more information.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:30px;">Paternity Leave</td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">9.7</td>
+                                    <td style="padding-left:40px;">As a working father, you are entitled to Government-Paid Paternity Leave (GPPL) for all births. You have served your employer for a continuous period of at least 3 months before the birth of your child. Please refer to the Ministry of Manpower’s website at www.mom.gov.sg for more information.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:30px;">Childcare Leave</td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">9.8</td>
+                                    <td style="padding-left:40px;">You are entitled to paid childcare leave in accordance with the Children Development Co-Savings Act or of the Employment Act, where applicable.  Please refer to the Ministry of Manpower’s website at www.mom.gov.sg for more information.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">10.</td>
+                                    <td style="padding-left:15px;"><u>Medical Benefits</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">10.1</td>
+                                    <td style="padding-left:40px;">After &#160;<u>3</u> months of service, you will be reimbursed the consultation charges incurred for medical treatment at a Singapore Government Hospital or Polyclinic.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">10.2</td>
+                                    <td style="padding-left:40px;">The company will only accept a Medical Certificate (MC) endorsed by a medical officer from a Singapore Government Hospital or Polyclinic.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">11.</td>
+                                    <td style="padding-left:15px;"><u>Medical Examination <i>(for employees age 60 and above)</i></u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">11.1</td>
+                                    <td style="padding-left:40px;">You are required to go through a medical examination by a Government Medical Officer or any other registered medical practitioner or medical officer to certify that you are fit to work as a security officer and submit the certification to the Company within the first two weeks of your employment.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">11.2</td>
+                                    <td style="padding-left:40px;">It shall be your responsibility to go through a yearly medical examination by a Government Medical Officer or any other registered medical practitioner or medical officer to certify that you are fit to work as a security officer and submit such certification to the Company.  Please contact the Office for the Medical Examination Form for Security Officers Above 60 Years of Age. </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">12.</td>
+                                    <td style="padding-left:30px;"><u>Work Injury Compensation Insurance</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">12.1</td>
+                                    <td style="padding-left:40px;">The Company has purchased Work Injury Compensation Insurance for all employees.  You are therefore required to ensure that you report any injury you have sustained at your work place, during the discharge of your duties, to your respective Operations Executive and the office within 24 hours of the incident.  Failing which, you will not be able to make any claim whatsoever on the
+           Company’s insurance policy nor will you be able to make any claim against the Company.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">13.</td>
+                                    <td style="padding-left:30px;"><u>Termination of Employment</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:30px;">Notice of Termination</td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">13.1</td>
+                                    <td style="padding-left:40px;">During your Probation Period, either party may terminate this Agreement at any time, by giving &#160;<u>7</u> days’ notice in writing or payment of gross salary in lieu thereof.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">13.2</td>
+                                    <td style="padding-left:40px;">After confirmation, either party may terminate this Agreement at any time, by giving &#160;<u>14</u> days’ notice in writing or payment of gross salary in lieu thereof.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:30px;">Termination without Notice</td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">13.3</td>
+                                    <td style="padding-left:40px;">The Company may terminate this Agreement without notice if you have absent yourself from work continuously for more than 2 working days, without approval or good excuse, or if you have absent yourself from work continuously for more than two working days without informing or attempting to inform the Company of the reason for absence.  You will consequently be considered to have breached this Agreement and you will be liable to pay to the Company the gross salary in-lieu of notice required of you.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">13.4</td>
+                                    <td style="padding-left:40px;">Your services will be terminated immediately by the Company without notice and without payment in lieu of notice under any of the following circumstances:-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(a)</td>
+                                    <td style="padding-left:40px;">Your license to operate as a Security Officer and/or Security Supervisor has been suspended or revoked by the Police Licencing Regulatory Department (PLRD) for whatsoever reasons it may be;</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(b)</td>
+                                    <td style="padding-left:40px;">You are convicted of any criminal offences in Singapore or elsewhere;</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(c)</td>
+                                    <td style="padding-left:40px;">You are guilty for any misconduct or any act, whether in the performance of your duties or otherwise, which in the opinion of the Company or its clients, is likely to bring the Company or its clients into disrepute whether or not such act is directly related to the nature of business of the Company or its clients; </td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(d)</td>
+                                    <td style="padding-left:40px;">You are found to be negligent, for whatever reasons, in your duties or fail to comply with any order, direction or instruction of the Company;</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(e)</td>
+                                    <td style="padding-left:40px;">You have committed any material breach during the discharge of your duties or obligations under this Agreement;</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(f)</td>
+                                    <td style="padding-left:40px;">You have been notified of your non-performance and have not rectified the shortcoming(s) within 3 days of the date of receipt of the notice; or</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">(g)</td>
+                                    <td style="padding-left:40px;">You have made any false declaration, misrepresentation or wilfully suppressed any facts during your job application process.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">14.</td>
+                                    <td style="padding-left:30px;"><u>Recovery of Monies</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">14.1</td>
+                                    <td style="padding-left:40px;">In the event of a termination of this Agreement for whatever reason it may be, the Company reserves the right to deduct any debts, overpayments and/or unearned paid leave from your last payment of salary.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">14.2</td>
+                                    <td style="padding-left:40px;">The Company reserves the right in its absolute discretion to recover from you damages, penalties and financial deductions by Clients, or losses suffered by the Company as a result of your action(s), inaction(s), negligence, unapproved absence, conduct, appearance, or behaviour.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">14.3</td>
+                                    <td style="padding-left:40px;">Should the last payment of your salary be insufficient for the payment of the monies due to the Company under this Agreement or otherwise, you shall make all necessary payments to the Company within 7 days from the last day of employment with the Company.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">14.4</td>
+                                    <td style="padding-left:40px;">In the event that you fail to compensate the Company the monies owed by you within &#160;<u>7</u> days from the last day of employment with the Company as specified in Clause 14.3, you shall be liable to pay all legal fees, including the reasonable estimate of the allocated costs and expenses of in-house staff involved as well as external contractors that may be engaged in the administrative process as well as all cost and other expenses incurred by the Company in collecting the arrears owed by you, which will include modifying, compromising, enforcing or exercising its rights or remedies created by, connected with or provided for in this Agreement.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">15.</td>
+                                    <td style="padding-left:30px;"><u>Employees on Training Awards or Bond</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">15.1</td>
+                                    <td style="padding-left:40px;">The Company shall have the right to recover money from you, as specified in your training Agreement(s) if you are unable to fulfil the minimum service period or bond period stated in the Agreement(s) for whatsoever reason it may be.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">16.</td>
+                                    <td style="padding-left:30px;"><u>Uniforms and Equipment</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">16.1</td>
+                                    <td style="padding-left:40px;">You will be supplied 2 sets of uniforms and personal equipment, by the Company.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">16.2</td>
+                                    <td style="padding-left:40px;">At every assignment/project you are deployed to, equipment such as walkie-talkies, torchlight and stationeries etc. will be provided.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">16.3</td>
+                                    <td style="padding-left:40px;">The issued items mentioned in Clauses 16.1 and Clause 16.2 are meant for the effective discharge of your duties and shall remain the property of the Company.  In this regard, you shall be liable to pay for any damage to such items.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">16.4</td>
+                                    <td style="padding-left:40px;">The Company has the right to levy a fee, the amount at Company’s discretion, if the uniforms or other issued items are not returned or are not returned in clean and proper condition to the Company upon termination of this agreement.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">17.</td>
+                                    <td style="padding-left:30px;"><u>Outside Employment</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">17.1</td>
+                                    <td style="padding-left:40px;">You are not permitted to engage in a second job or part-time employment unless permission is given in writing by the Managing Director.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">18.</td>
+                                    <td style="padding-left:30px;"><u>Conflict of Interest</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">18.1</td>
+                                    <td style="padding-left:40px;">You shall not be employed by the Client at any of the Client’s premises, subsidiaries or affiliate companies for a period of &#160;<u>6</u> months after this Agreement ceases for whatsoever reason.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">18.2</td>
+                                    <td style="padding-left:40px;">In the event when the Company ceases providing security services for the Client for whatsoever reason, you shall not take up employment with the Client and/or through any of its contractor or agent for a period of&#160;<u>6</u> months.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">19.</td>
+                                    <td style="padding-left:30px;"><u>Central Provident Fund</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">19.1</td>
+                                    <td style="padding-left:40px;">You and the Company shall make contributions, at the prevailing rates, to your Central Provident Fund (CPF) in accordance with the CPF Act.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">20.</td>
+                                    <td style="padding-left:30px;"><u>Income Tax <i>(if applicable)</i></u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">20.1</td>
+                                    <td style="padding-left:40px;">You shall be responsible for the payment of income tax on your remuneration during your employment.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">21.</td>
+                                    <td style="padding-left:30px;"><u>Tax Clearance for Malaysian Employees <i>(if applicable)</i></u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">21.1</td>
+                                    <td style="padding-left:40px;">The Company reserves the right to withhold any monies due to you, from the time either party terminate this Agreement, for tax clearance purposes.  The withheld amount will be released to you upon the receipt of the tax clearance directive issued by the Inland Revenue Authority of Singapore with the necessary deductions made as advised, if any.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">22.</td>
+                                    <td style="padding-left:30px;"><u>National Service Duty <i>(if applicable)</i></u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">22.1</td>
+                                    <td style="padding-left:40px;">If you have been called up for reservist, please file your make up claim with the Government directly.  The Company will not compensate you.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">23.</td>
+                                    <td style="padding-left:30px;"><u>Confidentiality</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">23.1</td>
+                                    <td style="padding-left:40px;">You shall at all times, during or following the termination of this Agreement, keep confidential information, relating to the Company or its clients, acquired in the course of your duties, except for information which you may be required to disclose under compulsion of law.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">23.2</td>
+                                    <td style="padding-left:40px;">You shall not disclose any of such confidential information, during or following the termination of this Agreement, directly or indirectly to any individual, corporation, or other entity; or use such information for self or another’s benefit, whether or not reduced to written or other tangible form.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">23.3</td>
+                                    <td style="padding-left:40px;">You shall not disclose to anyone, whether or not reduced to written or other tangible form, any information pertaining to the Company’s infrastructure, methodology, salary scale and benefits, and any other information you may acquire during your employment with the Company.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">23.4</td>
+                                    <td style="padding-left:40px;">Your obligations to maintain confidentiality and secrecy shall apply after your employment until such time that the information is no longer confidential or has been made public by the Company or its clients.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">23.5</td>
+                                    <td style="padding-left:40px;">You shall not without prior written consent of the Company destroy, make copies, duplicate or reproduce in any form the Company's and its client’s confidential information.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">23.6</td>
+                                    <td style="padding-left:40px;">When contacted by a member of the news media, you are to advise them to contact the Company directly.  You are not to make any other comments or statements.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">24.</td>
+                                    <td style="padding-left:30px;"><u>Personal Data Protection Act</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">24.1</td>
+                                    <td style="padding-left:40px;">You hereby confirm and represent to the Company, that with respect to any personal data disclosed to the Company in connection with your employment, or at the request of, or by or through the Company from time to time, you have, prior to such disclosure, agreed and consented to such disclosure, and the collection (including by way of recorded voice calls), use and disclosure of their personal data by the Company for purposes reasonably required by the Company to conduct its business.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">25.</td>
+                                    <td style="padding-left:30px;"><u>Variation</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">25.1</td>
+                                    <td style="padding-left:40px;">The Company reserves the right to introduce, modify, amend or annul any of the terms and conditions spelt out in this Agreement at any time.  Any such changes shall be notified to you by issuance of circulars, memorandums, or other instructions, from time to time, which shall form part of the terms and conditions of employment.  The prevailing terms and conditions shall apply to you.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">26.</td>
+                                    <td style="padding-left:30px;"><u>Other Terms and Conditions</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">26.1</td>
+                                    <td style="padding-left:40px;">All payments shall be made in Singapore Dollars.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">26.2</td>
+                                    <td style="padding-left:40px;">This agreement is in substitution for all previous contracts of service between the Company and you (if any) which shall be deemed to have been terminated by mutual consent on the date on which this agreement shall be deemed to have commenced.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">26.3</td>
+                                    <td style="padding-left:40px;">If any provision or provisions of this Agreement shall be held to be invalid, illegal, unenforceable or in conflict with the laws of the Republic of Singapore, the validity, legality and enforceability of the remaining provisions shall not in any way be affected or impaired.  The invalidity or unenforceability of one or more provisions of this Agreement shall not affect any other provisions of this Agreement.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">26.4</td>
+                                    <td style="padding-left:40px;">Clauses 6 and 7 of this agreement and its Annexes are drafted on the basis of your deployment to the assignment and position stipulated in <strong>ANNEX A</strong> and may change if you have been deemed by the Company to be unsuitable for the assignment.  The change will be consistent with the assignment or project and position that you will be transferred to.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">27.</td>
+                                    <td style="padding-left:30px;"><u>Governing Law</u></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;page-break-after: always;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">27.1</td>
+                                    <td style="padding-left:40px;">This agreement shall be governed by, and construed in accordance with, the laws of Singapore.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">27.2</td>
+                                    <td style="padding-left:40px;">You irrevocably agree that the courts of Singapore are to have non-exclusive jurisdiction to settle any disputes which may arise out of or in connection with this agreement and the documents to be entered into pursuant to it and that accordingly any proceedings arising out of or in connection with this agreement and such documents may be brought in such courts.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:30px;">If you accept the appointment on the said terms and conditions, please sign the acceptance on the last page, its Annexes and also at the bottom right of every page of the original and duplicate copies, and return it to this office.  This offer will lapse 1 week from the date of this letter. </td><!-- 
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;page-break-after: always;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                <td style="padding-left:40px;">
+                                    <div align="center">
+                                        <table align="center">
+                                            <tbody>
+                                                <tr style="line-height: 30px;width:100%;margin-bottom:100px;">
+                                                    <td style="width:50%;height:100px;padding-left:10px;padding-right:10px;">Yours faithfully,</td>
+                                                    <td style="width:50%;height:100px;padding-left:10px;padding-right:10px;">I accept the appointment on the above terms and conditions.</td>
+                                                </tr>
+                                                <tr style="line-height: 30px;width:100%;">
+                                                    <td style="width:50%;height:90px;padding-left:10px;padding-right:10px;"><strong><span t-field="doc.parent_id"/></strong>,<br/><span t-field="doc.parent_id.job_id"/></td>
+                                                    <td style="width:50%;height:90px;">
+                                                        <table style="width:100%;">
+                                                            <tbody style="border:0px;">
+                                                                <tr style="line-height:40px;width:100%;">
+                                                                    <td style="width:30%;padding-left:10px;padding-right:10px;">Signature</td>
+                                                                    <td style="width:70%;padding-left:10px;padding-right:10px;">: ____________________</td>
+                                                                </tr>
+                                                                <tr style="line-height:40px;width:100%;">
+                                                                    <td style="width:30%;padding-left:10px;padding-right:10px;">Name</td>
+                                                                    <td style="width:70%;padding-left:10px;padding-right:10px;">: <span style="padding-left:30px;" t-field="doc.name"/></td>
+                                                                </tr>
+                                                                <tr style="line-height:40px;width:100%;">
+                                                                    <td style="width:30%;padding-left:10px;padding-right:10px;">NRIC/FIN No.</td>
+                                                                    <td style="width:70%;padding-left:10px;padding-right:10px;">: <span style="padding-left:30px;" t-field="doc.nric"/></td>
+                                                                </tr>
+                                                                <tr style="line-height:40px;width:100%;">
+                                                                    <td style="width:30%;padding-left:10px;padding-right:10px;">Date</td>
+                                                                    <td style="width:70%;padding-left:10px;padding-right:10px;">: </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="text-align:right;"><strong><span>ANNEX A</span></strong></div><br/>
+                        <div style="text-align:left;"><strong><span>WORKING SCHEDULE AND REMUNERATION STRUCTURE</span></strong></div><br/>
+                        <div style="text-align:left;"><span>This pay structure is based on your appointment as a &#160;<span style="text-transform:uppercase;" t-field="doc.job_id"/> at &#160;<span t-field="doc.project_site"/> located at &#160;<span t-field="doc.project_site.address"/>.</span></div>
+                        <br/>
+                        <br/>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:5px;width:30%;"><strong><span>WORKING SCHEDULE</span></strong></td>
+                                    <td style="padding-left:15px;width:2%;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:5px;width:30%;">Working Days and Time</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:5%;"><span t-field="doc.shift_id.type_of_package"/></td>
+                                    <td style="padding-left:15px;text-align:right;"><span t-field="doc.shift_id.time"/><br/>
+                                        (1 off day per week)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <br/>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;width:100%;">
+                                    <td style="padding-left:5px;width:50%;"><strong><span>REMUNERATION STRUCTURE</span></strong></td>
+                                    <td style="padding-left:15px;width:2%;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:5px;width:30%;"><span>SALARY CODE</span></td>
+                                    <td style="padding-left:15px;width:2%;"></td>
+                                    <td style="padding-left:15px;width:5%;"></td>
+                                    <td style="padding-left:15px;text-align:right;"><i>(<span t-field="doc.shift_id"/>)</i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;page-break-after: always;">
+                            <tbody>
+                                <t t-if="doc.shift_id.basic_salary != 0.00">
+                                <tr style="line-height: 40px;width:100%;">
+                                    <td style="padding-left:5px;width:48%;">BASIC SALARY</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:30px;width:25%;text-align:left;">$</td>
+                                    <td style="padding-left:15px;width:25%;text-align:right;"><span t-esc="'%.2f'% doc.shift_id.basic_salary"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="doc.shift_id.ot != 0.00">
+                                <tr style="line-height: 40px;width:100%;">
+                                    <td style="padding-left:5px;width:48%;;">OVERTIME &#160;<i>(at 1.5x rates) (estimated figure per month)</i></td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:30px;width:25%;text-align:left;">$</td>
+                                    <td style="padding-left:15px;width:25%;text-align:right;"><span t-esc="'%.2f'% doc.shift_id.ot"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="doc.shift_id.mvc != 0.00">
+                                <tr style="line-height: 40px;width:100%;">
+                                    <td style="padding-left:5px;width:48%;;">MONTHLY VARIABLE COMPONENT<sup>1</sup></td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:30px;width:25%;text-align:left;">$</td>
+                                    <td style="padding-left:15px;width:25%;text-align:right;"><span t-esc="'%.2f'% doc.shift_id.mvc"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="doc.shift_id.pis != 0.00">
+                                <tr style="line-height: 40px;width:100%;">
+                                    <td style="padding-left:5px;width:48%;;">PRODUCTIVITY INCENTIVE SCHEME<sup>2</sup></td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:30px;width:25%;text-align:left;">$</td>
+                                    <td style="padding-left:15px;width:25%;text-align:right;"><span t-esc="'%.2f'% doc.shift_id.pis"/></td>
+                                </tr>
+                                </t>
+                                <t t-if="doc.shift_id.awbr != 0.00">
+                                <tr style="line-height: 40px;width:100%;">
+                                    <td style="padding-left:5px;width:48%;">ATTENDANCE &amp; WEEKEND BONUS REWARD<sup>3</sup></td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:30px;width:25%;text-align:left;">$</td>
+                                    <td style="padding-left:15px;width:25%;text-align:right;"><strong><span t-esc="'%.2f'% doc.shift_id.awbr"/></strong></td>
+                                </tr>
+                                </t>
+                                <t t-set="total"
+    t-value="sum(doc.shift_id.basic_salary + doc.shift_id.ot + doc.shift_id.mvc + doc.shift_id.pis + doc.shift_id.awbr for doc in docs)"/>
+                                <tr style="line-height: 40px;width:100%;">
+                                    <td style="padding-left:5px;width:48%;">GROSS SALARY</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:30px;width:25%;text-align:left;">$</td>
+                                    <td style="padding-left:15px;width:25%;text-align:right;"><strong><span t-esc="'%.2f'% total"/></strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <t t-if="doc.country_id.name == 'Malaysia'">
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;"></td>
+                                    <td style="padding-left:15px;"><strong>ACKNOWLEDGEMENT TO PROCEED WITH WORK PERMIT APPLICATION</strong></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;"></td>
+                                    <td style="padding-left:15px;width:90%;">This is to confirm that you have instructed William Secure Solutions Pte Ltd to proceed with your work permit application as at the date of this Letter of Appointment.</td>
+                                </tr>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">2</td>
+                                    <td style="padding-left:15px;width:90%;">We wish to emphasise to you that once the Work Permit Application is submitted, William Secure Solutions will start incurring the monthly foreign worker levy for your application, whether or not you have commenced work with us.</td>
+                                </tr>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;">3</td>
+                                    <td style="padding-left:15px;width:90%;">Hence, should you withdraw your application with William Secure Solutions before you are officially deployed to our project site, we reserve the right to report your case to the Ministry of Manpower, which may affect (including being barred) your future employment in Singapore.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </t>
+                        <t t-else="">
+                          <td></td>
+                        </t>
+                        <br/>
+                        <br/>
+                        <hr style="border-top: dashed 1px;" />
+                        <div style="text-align:left;"><span>I accept the above terms and conditions:</span></div>
+                        <br/>
+                        <br/>
+                        <div style="page-break-after: always;">
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="width:20%;padding-left:15px;"></td>
+                                    <td style="width:20%;padding-left:50px;">Signature</td>
+                                    <td style="width:20%;padding-left:15px;">:</td>
+                                    <td style="width:40%;"></td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="width:20%;padding-left:15px;"></td>
+                                    <td style="width:20%;padding-left:50px;">Name</td>
+                                    <td style="width:20%;padding-left:15px;">:</td>
+                                    <td style="width:40%;text-align:left;"><span t-field="doc.name"/></td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="width:20%;padding-left:15px;"></td>
+                                    <td style="width:20%;padding-left:50px;">NRIC No.</td>
+                                    <td style="width:20%;padding-left:15px;">:</td>
+                                    <td style="width:40%;text-align:left;"><span t-field="doc.nric"/></td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="width:20%;padding-left:15px;"></td>
+                                    <td style="width:20%;padding-left:50px;">Date</td>
+                                    <td style="width:20%;padding-left:15px;">:</td>
+                                    <td style="width:40%;text-align:left;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <t t-if="doc.shift_id.mvc != 0.00">
+                            <t t-if="doc.shift_id.pis != 0.00">
+                                <t t-if="doc.shift_id.awbr != 0.00">
+                                    <div style="text-align:right;"><strong><span>ANNEX B</span></strong></div><br/>
+                                    <div style="font-size:9px;"><span><sup>1</sup>&#160;The Monthly Variable Component is a flexible wage system. The Company reserves the right to amend, adjust, remove or terminate this component at the sole discretion of the Company.<br/>
+                                    <sup>2</sup>&#160;The incentive payments stipulated are subject to the terms and conditions prescribed by the Company at Annex B. These incentives may be also withdrawn in part or in whole at the Company's discretion. Please refer Clause 8.1, Clause 8.2 and Clause 8.3 of the Letter of Appointment.<br/>
+                                    <sup>3</sup>&#160;This is a bonus reward payment that will be paid out to you if you work at least 26 days and on 5 weekends (Saturdays and/or Sundays) in a particular month.</span></div>
+
+                                    <br/>
+                                    <br/>
+                                </t>
+                            </t>        
+                        </t>
+                        <t t-if="doc.shift_id.mvc == 0.00">
+                            <t t-if="doc.shift_id.pis != 0.00">
+                                <t t-if="doc.shift_id.awbr != 0.00">
+                                    <div style="text-align:right;"><strong><span>ANNEX B</span></strong></div><br/>
+                                    <div style="font-size:9px;"><span><sup>1</sup>&#160;The incentive payments stipulated are subject to the terms and conditions prescribed by the Company at &#160;<b>Annex B</b>. These incentives may be also withdrawn in part or in whole at the Company's discretion. Please refer Clause 8.1, Clause 8.2 and Clause 8.3 of the Letter of Appointment.<br/>
+                                    <sup>2</sup>&#160;This is a bonus reward payment that will be paid out to you if you work at least 26 days and on 5 weekends (Saturdays and/or Sundays) in a particular month.</span></div>
+
+                                    <br/>
+                                    <br/>
+                                </t>
+                            </t>
+                        </t>
+
+                        <t t-if="doc.shift_id.pis == 0.00">
+                            <t t-if="doc.shift_id.mvc == 0.00">
+                            <t t-if="doc.shift_id.awbr != 0.00">
+                                <div style="font-size:9px;"><span><sup>1</sup>&#160;This is a bonus reward payment that will be paid out to you if you work at least 26 days and on 5 weekends (Saturdays and/or Sundays) in a particular month.</span></div>
+
+                                <br/>
+                                <br/>
+                            </t>
+                            </t>
+                        </t>
+                        <t t-if="doc.shift_id.pis == 0.00">
+                            <t t-if="doc.shift_id.awbr == 0.00">
+                            <t t-if="doc.shift_id.mvc != 0.00">
+                                <div style="font-size:9px;"><span><sup>1</sup>&#160;The Monthly Variable Component is a flexible wage system. The Company reserves the right to amend, adjust, remove or terminate this component at the sole discretion of the Company.</span></div>
+
+                                <br/>
+                                <br/>
+                            </t>
+                            </t>
+                        </t>
+                        <t t-if="doc.shift_id.pis == 0.00">
+                            <t t-if="doc.shift_id.mvc != 0.00">
+                                <t t-if="doc.shift_id.awbr != 0.00">
+                                <div style="font-size:9px;"><span><sup>1</sup>&#160;The Monthly Variable Component is a flexible wage system. The Company reserves the right to amend, adjust, remove or terminate this component at the sole discretion of the Company.</span><br/>
+                                <span><sup>2</sup>&#160;This is a bonus reward payment that will be paid out to you if you work at least 26 days and on 5 weekends (Saturdays and/or Sundays) in a particular month.</span></div>
+
+                                <br/>
+                                <br/>
+                            </t>
+                            </t>
+                        </t>
+                    </div>
+
+                        <t t-if="doc.shift_id.pis != 0.00">
+                        <!-- PIS -->
+                        <div style="text-align:center;"><strong><span>PRODUCTIVITY INCENTIVE SCHEME</span></strong></div><br/>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;"></td>
+                                    <td style="padding-left:15px;"><b>Purpose</b></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:40px;">The Productivity Incentive Scheme is a variable payment, made as an incentive to motivate and reward employees for their contributions, performance and behaviour.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                              <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;"></td>
+                                    <td style="padding-left:15px;"><b>Eligibility</b></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">2</td>
+                                    <td style="padding-left:40px;">The PIS is meant for full-time permanent monthly rated employees that are designated as Senior Security Supervisor (SSS), Security Supervisor (SS), Senior Security Officer (SSO) and Security Officer (SO), that are based at &#160;<span t-field="doc.project_site"/> permanently and the PIS shall cease if the employee is transferred out of &#160;<span t-field="doc.project_site"/>, unless otherwise specified in writing.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">3</td>
+                                    <td style="padding-left:40px;">The PIS is not an entitlement. Employees will need to have signed this terms and conditions to be in the running for the disbursements of this scheme.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">4</td>
+                                    <td style="padding-left:40px;">The PIS shall not be applicable in conjunction with any other incentive, unless specified in writing otherwise.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;"></td>
+                                    <td style="padding-left:15px;"><b>Criteria</b></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">5</td>
+                                    <td style="padding-left:40px;">This PIS aims to reward employees based on 3 areas, namely, Punctuality, Attendance and Performance &amp;Discipline with a maximum of &#160;<strong>SGD200 per month</strong> (subject to CPF) to be paid out if the employees fulfil the requirements that has been set out as follows:</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:40px;">
+                                         <!-- tableeeee -->
+                        <table style="border:0px;width:100%">
+                            <tbody>
+                                <tr>
+                                   <td>
+                                      <div align="center">
+                                          <table align="center" class="table-bordered" style="border-color:black;">
+                                              <tbody>
+                                                  <tr>
+                                                      <td align="center" style="width:30%;padding-top: 12px;padding-bottom: 12px;background-color:#FFC000;"><b>Component</b></td>
+                                                      <td align="center" style="width:45%;padding-top: 12px;padding-bottom: 12px;background-color:#FFC000;"><b>Requirement</b></td>
+                                                      <td align="center" style="width:25%;padding-top: 12px;padding-bottom: 12px;background-color:#FFC000;"><b>Award Amount</b></td>
+                                                  </tr>
+                                                  <tr style="background-color:#E5DFEC">
+                                                    <td align="center" style="width:30%">Punctuality</td>
+                                                    <td style="width:40%">
+                                                        <p>
+                                                            You must have signed in using WSS Attendance Mobile Application, or any company authorised system as well as the site attendance book / file within &#160;<b>15 minutes from the time the shift starts. </b>Failing which, you will be considered to have reported late for work for the shift.
+                                                        </p>
+                                                        <p>
+                                                            You must also ensure that the sign in / sign out photograph that you have taken on the WSS Attendance Mobile Application for the attendance MUST be clear enough to identify you. Failing which, it will be considered that you have reported late for work or your attendance for the day will be voided. The Company has the discretion to decide if the photo that you have used to sign in is clear or not.
+                                                            <br/>
+                                                            Should there be any lapse and you are not able to sign in in time, please inform the Command Centre and also your Operations Manager / Operations Executive immediately in writing.
+                                                        </p>
+                                                        <p>
+                                                            To be eligible for this incentive, you must also ensure that you do not sign out on the WSS Attendance Mobile Application / any company authorised system prior to the end of your scheduled shift and you must sign out on the WSS Attendance Mobile Application at the end of every shift you work.
+                                                        </p>
+                                                        <p>
+                                                            Amount will given if you have are &#160;<b>not late</b> for more than &#160;<b>3 times a month</b> or you have &#160;<b>not</b> been &#160;<b>cumulatively late for more than 2 hours in a month or you have failed to sign out on the WSS Attendance Mobile Application more than 1 time a month.</b>
+                                                        </p>
+                                                        <p>
+                                                            Please also note that your payroll is calculated based on the hours you work and being late will also result in a deduction of your overtime pay due to the lesser hours worked.
+                                                        </p>
+                                                        <p>
+                                                            If you are continually late, you may be subject to disciplinary actions.
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" style="width:30%"> SGD50</td>
+                                                </tr>
+                                                <tr style="background-color:#E5DFEC">
+                                                    <td align="center" style="width:30%">Attendance</td>
+                                                    <td style="width:40%">
+                                                        <p>You must work <b>at least 26 days in the qualifying calendar month</b> and follow the working schedule that has been assigned by your respective Operations Manager / Operations Executive and/or Command Centre
+                                                            <br/>
+                                                        You <b>must not be absent from a scheduled working day.</b>
+                                                        </p>
+                                                    </td>
+                                                    <td align="center" style="width:30%">SGD 50</td>
+                                                </tr>
+                                                <tr style="background-color:#E5DFEC">
+                                                    <td align="center" style="width:30%">Performance &amp; Discipline</td>
+                                                    <td style="width:40%">
+                                                        <p>This is a &#160;<b>discretionary</b> incentive. The payout, partial payout or non-payout will be determined by the Company in consultation with your respective Operations Manager / Operations Executive.</p>
+                                                        <p>It shall take into consideration whether you have complied with all instructions and carried out all duties required of you or assigned to you and your performance as well as actions you have done that resulted in letter of warnings / letter of advice being issued against you.</p>
+                                                        <p>As this is a discretionary incentive, the Company is not obligated to provide any reasons for the payment, partial payment or non-payment of this component.</p>
+                                                        <td align="center" style="width:30%">SGD 50</td>
+                                                    </td>
+                                                </tr>   
+                                              </tbody>
+                                          </table>
+                                      </div> 
+                                   </td> 
+                                </tr>
+                            </tbody>
+                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="page-break-after:always;"></p>
+                         <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;"></td>
+                                    <td style="padding-left:15px;"><b>Appeals</b></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                          <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">6</td>
+                                    <td style="padding-left:40px;">Employees who wish to appeal a decision shall comply with the following appeal procedures:</td>
+                                </tr>                              
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                 <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">a)</td>
+                                    <td style="padding-left:40px;">Appeals must be made to your Operations Manager / Operations Executive within 3 days after the incentive amount is disbursed.</td>
+                                </tr>
+                                 <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">b)</td>
+                                    <td style="padding-left:40px;">Appeals are to be made in writing detailing the circumstances under which the appeal arises and the issues and grounds for the appeal as well as all relevant facts, evidence and arguments in respect of the appeal. It can be accompanied by written reports, video recordings or photos to establish strong grounds for your appeal. </td>
+                                </tr>
+                                 <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">c)</td>
+                                    <td style="padding-left:40px;">The Management will review the appeal and inform the employee of the result of the appeal through his / her respective Operations Manager / Operations Executive within 7 working days.</td>
+                                </tr>
+                                 <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;"></td>
+                                    <td style="padding-left:65px;">d)</td>
+                                    <td style="padding-left:40px;">The Management’s decision on the appeal is final.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                         <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 40px;">
+                                    <td style="padding-left:15px;width:6%;"></td>
+                                    <td style="padding-left:15px;"><b>Other Terms and Conditions</b></td>
+                                    <td style="padding-left:15px;"></td>
+                                    <td style="padding-left:15px;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">7</td>
+                                    <td style="padding-left:40px;">The incentive and its pay outs may be withdrawn and/or paid out in part or in whole, at the Company’s discretion.</td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">8</td>
+                                    <td style="padding-left:40px;">The incentive amount after tabulation will be pro-rated with the total numbers of days worked for the month (Total numbers of days worked with PIS / total numbers of working days in a month x Tabulated PIS Amount).
+                                    </td>
+                                </tr>
+                                <tr style="line-height: 30px;">
+                                    <td style="padding-left:20px;"></td>
+                                    <td style="padding-left:40px;">9</td>
+                                    <td style="padding-left:40px;">The terms and details of this scheme may be revised from time to time or terminated at the sole discretion of the Company at any time without prior notice.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <br/>
+                        <hr style="border-top: dashed 1px;" />
+                        <div style="text-align:left;"><span>I acknowledge and accept the above terms and conditions.</span></div>
+                        <br/>
+                        <br/>
+                        <table style="border:0px;">
+                            <tbody>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="width:20%;padding-left:15px;"></td>
+                                    <td style="width:20%;padding-left:50px;">Signature</td>
+                                    <td style="width:20%;padding-left:15px;">:</td>
+                                    <td style="width:40%;"></td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="width:20%;padding-left:15px;"></td>
+                                    <td style="width:20%;padding-left:50px;">Name</td>
+                                    <td style="width:20%;padding-left:15px;">:</td>
+                                    <td style="width:40%;text-align:left;"><span t-field="doc.name"/></td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="width:20%;padding-left:15px;"></td>
+                                    <td style="width:20%;padding-left:50px;">NRIC No.</td>
+                                    <td style="width:20%;padding-left:15px;">:</td>
+                                    <td style="width:40%;text-align:left;"><span t-field="doc.nric"/></td>
+                                </tr>
+                                <tr style="line-height: 30px;width:100%;">
+                                    <td style="width:20%;padding-left:15px;"></td>
+                                    <td style="width:20%;padding-left:50px;">Date</td>
+                                    <td style="width:20%;padding-left:15px;">:</td>
+                                    <td style="width:40%;text-align:left;"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                         <hr/>
+                         <div style="text-align:left;">
+                             <span style="font-size:9px"><sup>*</sup><i>
+                                 Note: The Employee is required to also sign on the bottom right of Page 12 to 15 for this incentive to be in effect. 
+                             </i></span>
+                         </div>
+
+                        <!-- END PIS -->
+                    </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="ov_hr_recruitment_ext.emp_contract_monthly" model="ir.actions.report">
+        <field name="report_type">qweb-pdf</field>
+    </record>
+</odoo>

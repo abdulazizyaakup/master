@@ -1,0 +1,570 @@
+<odoo>
+
+<!--         <record model="ir.actions.act_window" id="crm.crm_lead_opportunities">
+            <field name="name">Opportunities</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">kanban,tree,graph,pivot,form,calendar,activity</field>
+            <field name="domain">['|','|',('company_id','=',False),('company_id', 'in', company_ids),('type','=','opportunity')]</field>
+            <field name="context">{
+                    'default_type': 'opportunity',
+                }
+            </field>
+            <field name="search_view_id" ref="crm.view_crm_case_opportunities_filter"/>
+        </record> -->
+
+
+        <record model="ir.actions.act_window" id="crm.crm_lead_action_pipeline">
+            <field name="name">Pipeline</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">kanban,tree,graph,pivot,form,calendar,activity</field>
+            <field name="domain">[('company_id','=',allowed_company_ids)]</field>
+            <field name="context">{
+                    'default_type': 'opportunity',
+                    'search_default_assigned_to_me': 1
+            }</field>
+            <field name="search_view_id" ref="crm.view_crm_case_opportunities_filter"/>
+        </record>
+
+    <record id="action_view_master_pivot2" model="ir.actions.act_window">
+      <field name="name">View Pivot</field>
+      <field name="res_model">crm.lead</field>
+      <field name="view_mode">pivot</field>
+      <field name="domain">[('company_id','=',allowed_company_ids)]</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Enter the target</p>
+      </field>
+    </record>
+
+  <record id="view_master_pivot3" model="ir.ui.view">
+    <field name="name">pivot</field>
+    <field name="model">crm.lead</field>
+    <field name="arch" type="xml">      
+      <pivot string="Pivot View">
+        <!-- <field name="crm_bci_id" type="row"/> -->
+        <field name="gsm_lead" type="row"/>
+        <field name="parent_project_level" type="row"/>
+        <field name="company_id" type="col"/>
+        <field name="date_open" type="col" context="{'group_by': 'date_open:month'}"/>
+      </pivot>
+    </field>
+  </record>
+
+          <record id="crm_lead_opportunities_view_master_pivot2" model="ir.actions.act_window.view">
+            <field name="sequence" eval="4"/>
+            <field name="view_mode">pivot</field>
+            <field name="view_id" ref="view_master_pivot3"/>
+            <field name="act_window_id" ref="action_view_master_pivot2"/>
+        </record>
+
+
+<menuitem name="Business Unit Report" id="menu_report_bu_project"  parent="crm.crm_menu_report" action="action_view_master_pivot2" sequence="10"/>
+
+    <record id="crm_tree_view_midah_group" model="ir.ui.view">
+            <field name="name">crm.lead.tree.midah</field>
+            <field name="model">crm.lead</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="create_date"/>
+                    <field name="crm_bci_id"/>
+                    <field name="sub_project_code"/>
+                    <field name="master_bci_related"/>
+                    <field name="name" string="Project"/>
+                    <field name="crm_category"/>
+                    <field name="bci_project_categories" widget="many2many_tags"/>
+                    <!-- <field name="project_address"/> -->
+                    <field name="crm_prj_own_mark"/>
+                    <field name="crm_prj_own_sales"/>
+                    <field name="crm_prj_dev"/>
+                    <field name="crm_prj_arc"/>
+                    <field name="crm_prj_qs"/>
+                    <field name="crm_cntrctrs"/>
+                    <field name="stage_id"/>
+                    <field name="bci_project_stage"/>
+                    <field name="crm_project_level"/>
+                    <field name="crm_prj_spcy_date"/>
+                    <field name="crm_prj_spcd_date"/>
+                    <field name="crm_prj_sec_date"/>
+                    <!-- <field name="quotation_ids" widget="many2many_tags" context="{'default_potential_value': 'potential_value'}"/> -->
+                    <!-- <field name="crmlead_ids" widget="many2many_tags" context="{'default_name': 'company_name'}"/> -->
+		    <field name="bci_start_date"/>
+			    <!--<label for="fd_quoted_amount"/>-->
+		    <field name="fd_quoted_amount" string="FD"/>
+			    <!--<label for="td_quoted_amount"/>-->
+		    <field name="td_quoted_amount" string="Metal Frame"/>
+		    <!--<label for="accessories_quoted_amount"/>-->
+		    <field name="accessories_quoted_amount" string="TD"/>
+			    <!--<label for="mf_quoted_amount"/>-->
+		    <field name="mf_quoted_amount" string="Accessories"/>
+		    <!--<label for="ir_quoted_amount"/>-->
+		    <field name="ir_quoted_amount" string="Ironmongery"/>
+			    <!--<label for="amount_total"/>-->
+                    <field name="amount_total" string="Total Sum of Potential Value"/>
+                    <field name="crm_startdate" invisible="1"/>
+                    <field name="crm_enddate" invisible="1"/>
+                    <field name="crm_prj_level" invisible="1"/>
+                    <field name="crm_project_level" invisible="1"/>
+                    <field name="stage_id" invisible="1"/>
+                    <field name="contact_name"  invisible="1" optional="show"/>
+                    <field name="partner_name"  invisible="1" optional="hide"/>
+                    <field name="email_from"  invisible="1" optional="show"/>
+                    <field name="phone"  invisible="1" optional="show" class="o_force_ltr"/>
+                    <field name="city"  invisible="1" optional="show"/>
+                    <field name="state_id"  invisible="1" optional="hide"/>
+                    <field name="country_id"  invisible="1" optional="show"/>
+                    <field name="partner_id" invisible="1"/>
+                    <field name="team_id"  invisible="1" optional="show"/>
+                    <field name="user_id"  invisible="1" optional="show" string="Sales Person"/>
+                    <field name="company_id" invisible="1" groups="base.group_multi_company" optional="show"/>
+                    <field name="active" invisible="1"/>
+                    <field name="probability" invisible="1"/>
+                    <field name="campaign_id" invisible="1"/>
+                    <field name="referred" invisible="1"/>
+                    <field name="medium_id" invisible="1"/>
+                    <field name="message_needaction" invisible="1"/>
+                    <field name="tag_ids"  invisible="1" optional="show" widget="many2many_tags"/>
+                    <field name="priority"  invisible="1" optional="hide"/>
+                    <field name="activity_exception_decoration"  invisible="1" widget="activity_exception"/>
+                </tree>
+            </field>
+        </record> 
+
+
+    <record id="crm_case_tree_view_leads_after_wizard" model="ir.ui.view">
+            <field name="name">crm.lead.tree.lead.wizard</field>
+            <field name="model">crm.lead</field>
+            <field name="arch" type="xml">
+                <tree string="Filtered" decoration-bf="message_needaction==True" decoration-muted="probability == 100">
+                    <field name="crm_project_id"/>
+                    <field name="name" string="Project"/>
+                    <field name="crm_title"/>
+                    <field name="crm_startdate"/>
+                    <field name="crm_enddate"/>
+                    <field name="crm_prj_level" invisible="1"/>
+                    <field name="crm_project_level"/>
+                    <field name="stage_id"/>
+                    <field name="contact_name"  invisible="1" optional="show"/>
+                    <field name="partner_name"  invisible="1" optional="hide"/>
+                    <field name="email_from"  invisible="1" optional="show"/>
+                    <field name="phone"  invisible="1" optional="show" class="o_force_ltr"/>
+                    <field name="city"  invisible="1" optional="show"/>
+                    <field name="state_id"  invisible="1" optional="hide"/>
+                    <field name="country_id"  invisible="1" optional="show"/>
+                    <field name="partner_id" invisible="1"/>
+                    <field name="team_id"  invisible="1" optional="show"/>
+                    <field name="user_id"  invisible="1" optional="show" string="Sales Person"/>
+                    <field name="company_id"  invisible="" groups="base.group_multi_company" optional="show"/>
+                    <field name="active" invisible="1"/>
+                    <field name="probability" invisible="1"/>
+                    <field name="campaign_id" invisible="1"/>
+                    <field name="referred" invisible="1"/>
+                    <field name="medium_id" invisible="1"/>
+                    <field name="message_needaction" invisible="1"/>
+                    <field name="tag_ids"  invisible="1" optional="show" widget="many2many_tags"/>
+                    <field name="priority"  invisible="1" optional="hide"/>
+                    <field name="activity_exception_decoration"  invisible="1" widget="activity_exception"/>
+                    <button name="mark_as_duplicate" type="object" string="Mark Duplicate"/>
+                </tree>
+            </field>
+        </record>  
+
+<record id="crm_lead_opportunities_from_master_tree" model="ir.ui.view">
+            <field name="name">crm.lead.tree.from.master</field>
+            <field name="model">crm.lead</field>
+            <field name="arch" type="xml">
+                <tree string="Filtered" decoration-bf="message_needaction==True" decoration-muted="probability == 100">
+                    <field name="crm_bci_id"/>
+                    <field name="crm_project_id"/>
+                    <field name="sub_project_code" optional="show"/>
+                    <field name="master_id" optional="hide"/>
+                    <field name="master_bci_related" optional="hide"/>
+                    <field name="name" string="Project"/>
+                    <field name="crm_title"/>
+                    <field name="crm_startdate"/>
+                    <field name="crm_enddate"/>
+                    <field name="crm_prj_own_mark" optional="hide"/>
+                    <field name="crm_prj_own_sales" optional="hide"/>
+                    <field name="crm_project_level"/>
+                    <field name="crm_prj_spcy_date" optional="hide"/>
+                    <field name="crm_prj_spcd_date" optional="hide"/>
+                    <field name="crm_prj_sec_date" optional="hide"/>
+                    <field name="bci_start_date" optional="hide" string="BCI Construction Start Date"/>
+                    <field name="bci_end_date" optional="hide" string="BCI Construction End Date"/>
+                    <field name="bci_project_categories" widget="many2many_tags" optional="hide"/>
+                    <field name="bci_no_storeys" optional="hide"/>
+                    <field name="bci_project_status" optional="hide"/>
+                    <field name="bci_project_stage" optional="hide"/>
+                    <field name="bci_ownership_type" optional="hide"/>
+                    <field name="bci_region" optional="hide"/>
+                    <field name="stage_id"/>
+                    <field name="contact_name"  invisible="1" optional="show"/>
+                    <field name="partner_name"  invisible="1" optional="hide"/>
+                    <field name="email_from"  invisible="1" optional="show"/>
+                    <field name="phone"  invisible="1" optional="show" class="o_force_ltr"/>
+                    <field name="city"  invisible="1" optional="show"/>
+                    <field name="state_id"  invisible="1" optional="hide"/>
+                    <field name="country_id"  invisible="1" optional="show"/>
+                    <field name="partner_id" invisible="1"/>
+                    <field name="team_id"  invisible="1" optional="show"/>
+                    <field name="user_id"  invisible="1" optional="show" string="Sales Person"/>
+                    <field name="company_id"  invisible="0" groups="base.group_multi_company" optional="show"/>
+                    <field name="potential_value_filter" optional="show"/>
+                    <field name="project_progress_filter" optional="show"/>
+                    <field name="bci_project_value" string="Value (Million)" optional="show"/>
+                    <field name="crm_prj_dev1" widget="many2many_tags" optional="show"/>
+                    <field name="crm_prj_arc1" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_cntrctrs" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_prj_qs1" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_trdng_hses" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_prj_cseng1" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_prj_distributor" widget="many2many_tags" optional="hide"/>
+                    <field name="active" invisible="1"/>
+                    <field name="probability" invisible="1"/>
+                    <field name="campaign_id" invisible="1"/>
+                    <field name="referred" invisible="1"/>
+                    <field name="medium_id" invisible="1"/>
+                    <field name="message_needaction" invisible="1"/>
+                    <field name="tag_ids"  invisible="1" optional="show" widget="many2many_tags"/>
+                    <field name="priority"  invisible="1" optional="hide"/>
+                    <field name="activity_exception_decoration"  invisible="1" widget="activity_exception"/>
+                </tree>
+            </field>
+        </record>  
+
+
+        <!-- 'My Pipeline' menu : Server action, act_window_views and act_windows -->
+        <record model="ir.actions.act_window" id="crm_lead_opportunities_from_master">
+            <field name="name">BU Projects</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('type','=','opportunity')]</field>
+            <field name="context">{
+                    'default_type': 'opportunity',
+                    'group_by':'company_id',
+                }
+            </field>
+            <field name="search_view_id" ref="crm.view_crm_case_opportunities_filter"/>
+        </record>
+
+        <record id="crm_lead_opportunities_from_master_view_tree" model="ir.actions.act_window.view">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="crm_lead_opportunities_from_master_tree"/>
+            <field name="act_window_id" ref="crm_lead_opportunities_from_master"/>
+        </record>
+
+    <record id="crm_case_tree_view_oppor_inherit_chg" model="ir.ui.view">
+        <field name="name">crm.lead.tree.inherit.chg</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="arch" type ="xml" >
+		<xpath expr="//field[@name='create_date']" position="after">
+			<field name="gsm_lead" optional="hide"/>
+                <field name="crm_bci_id" optional="show"/>
+                <field name="crm_project_id" optional="show"/>
+                <field name="sub_project_code" optional="show"/>
+                
+                <field name="master_id" optional="hide"/>
+                <field name="master_bci_related" optional="hide"/>
+                <field name="crm_startdate" optional="hide"/>
+                <field name="crm_enddate"  optional="hide"/>
+                <!-- <field name="crm_category" optional="hide"/> -->
+                <!-- <field name="project_address"/> -->
+                <field name="crm_prj_own_mark" optional="hide"/>
+                <field name="crm_prj_own_sales" optional="hide"/>
+                
+                <field name="crm_project_level" optional="hide"/>
+                <field name="crm_prj_spcy_date" optional="hide"/>
+                <field name="crm_prj_spcd_date" optional="hide"/>
+                <field name="crm_prj_sec_date" optional="hide"/>
+                <field name="bci_start_date" optional="hide" string="BCI Construction Start Date"/>
+                <field name="bci_end_date" optional="hide" string="BCI Construction End Date"/>
+                
+                <field name="bci_project_categories"  widget="many2many_tags" optional="hide"/>
+                <field name="bci_no_storeys" optional="hide"/>
+                <field name="bci_project_status" optional="hide"/>
+                <field name="bci_project_stage" optional="hide"/>
+                <field name="bci_ownership_type" optional="hide"/>
+                <field name="bci_region" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="before">
+                <field name="potential_value_filter" optional="show"/>
+                    <field name="project_progress_filter" optional="show"/>
+                    <field name="bci_project_value" string="Value (Million)" optional="show"/>
+                    <field name="crm_prj_dev1" widget="many2many_tags" optional="show"/>
+                    <field name="crm_prj_arc1" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_cntrctrs" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_prj_qs1" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_trdng_hses" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_prj_cseng1" widget="many2many_tags" optional="hide"/>
+                    <field name="crm_prj_distributor" widget="many2many_tags" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='activity_date_deadline']" position="replace">
+                <field name="activity_date_deadline" optional="show" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='activity_summary']" position="replace">
+                <field name="potential_value_filter" optional="show" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='planned_revenue']" position="replace">
+                <field name="planned_revenue" optional="show" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="crm_lead_view_form_inherit_form_2" model="ir.ui.view" >
+        <field name="name">crm.lead.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref ="crm.crm_lead_view_form" />
+        <field name="arch" type ="xml" >
+            <button name="action_view_sale_quotation" position="replace">
+                <button class="oe_stat_button" type="object"
+                    name="action_view_sale_quotation2" icon="fa-pencil-square-o" attrs="{'invisible': [('type', '=', 'lead')]}">
+                    <field name="quotation_count2" widget="statinfo" string="Quotations"/>
+                </button>
+                <button class="oe_stat_button" type="object" attrs="{'invisible': ['|', ('sale_order_count', '=', 0), ('type', '=', 'lead')]}"
+                    name="action_view_sale_order2" icon="fa-usd">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="sale_amount_total2" widget="monetary" options="{'currency_field': 'company_currency'}"/></span>
+                        <span class="o_stat_text"> Orders</span>
+                        <field name="sale_order_count2" invisible="1"/>
+                    </div>
+                </button>
+            </button>
+            <xpath expr="//header/button[2]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//header/button[1]" position="before">
+                <button name="%(starken-crm.crm_lead_generate_quotation_action)d" string="Quotation"
+                            type="action" class="oe_highlight"/>
+                <button string='Copy BCI' name="copy_from_bci_to_master" type="object" class="btn-primary" groups="base.group_erp_manager"/>
+                <button string='Get Value' name="get_project_value" type="object" class="btn-primary" groups="base.group_erp_manager"/>
+                <button string='Set Parent Level' name="click_parent_level" type="object" class="btn-primary" groups="base.group_erp_manager"/>
+                <button string='Copy non-BCI' name="copy_non_bci_to_master" type="object" class="btn-primary" groups="base.group_erp_manager"/>
+                <button string='SET GSM ID' name="set_gsm_id" type="object" class="btn-primary" groups="base.group_erp_manager"/> 
+                <button string='SET Master' name="link_master" type="object" class="btn-primary" groups="base.group_erp_manager"/> 
+                <button string='SET NON BCI-Master' name="set_master_id" type="object" class="btn-primary" groups="base.group_erp_manager"/> 
+                <button string='Copy BCI Info' name="copy_from_bci_to_leads" type="object" class="btn-primary" groups="base.group_erp_manager"/>
+                <button name="%(project_crm_chg.project_crm_lead2sublead_action)d" string="Create Lead" type="action" class="oe_highlight" attrs="{'invisible':[('company_id','not in',[1,4])]}" 
+                    context="{
+                    'default_crm_prj_dev': crm_prj_dev.id,
+                    'default_crm_prj_arc': crm_prj_arc.id,
+                    'default_crm_prj_cseng': crm_prj_cseng.id,
+                    'default_crm_prj_qs': crm_prj_qs.id,
+                    'default_crm_tenderer': crm_tenderer.id,
+                    'default_crm_cntrctrs': crm_cntrctrs.id,
+                    'default_crm_sbcns_aplctrs': crm_sbcns_aplctrs.id,
+                    'default_crm_trdng_hses': crm_trdng_hses.id}"/>
+
+<!--                 <button name="%(project_crm_chg.project_crm_lead2sublead_signature_action)d" string="Create Lead S" type="action" class="oe_highlight"  
+                    context="{
+                    'default_crm_prj_dev': crm_prj_dev.id,
+                    'default_crm_prj_arc': crm_prj_arc.id,
+                    'default_crm_prj_cseng': crm_prj_cseng.id,
+                    'default_crm_prj_qs': crm_prj_qs.id,
+                    'default_crm_tenderer': crm_tenderer.id,
+                    'default_crm_cntrctrs': crm_cntrctrs.id,
+                    'default_crm_sbcns_aplctrs': crm_sbcns_aplctrs.id,
+                    'default_crm_trdng_hses': crm_trdng_hses.id}"/> -->
+
+                <button name="%(project_crm_chg.project_crm_lead2sublead1_action)d" string="Create Lead" type="action" class="oe_highlight" attrs="{'invisible':[('company_id','!=',7)]}"/>
+                <button name="%(project_crm_chg.project_crm_lead2sublead_signature_action)d" string="Create Lead S" type="action" class="oe_highlight" attrs="{'invisible':[('company_id','!=',14)]}"/>
+
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="team_id2" widget="selection" domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]"  attrs="{'invisible': [('company_id', '!=', 14)]}"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="assign_checked_by_id" invisible="1"/>
+                <field name="master_bci_related" invisible="0"/>
+                <field name="checked_by_id" invisible="1"/>
+                <field name="checked_remark" invisible="1"/>
+                <field name="master_id"/>
+                <field name="bci_project_categories" widget="many2many_tags"/>
+                <field name="bci_province1"/>
+                <field name="bci_no_storeys"/>
+                <field name="bci_prj_val"/>
+                <field name="crm_prj_val"/>
+            </xpath>
+	    <xpath expr="//group[1]/group[6]/field[@name='crm_prj_level']" position="after">
+		<field name="gsm_lead"/>
+                <field name="parent_project_level"/>
+                <field name="crm_project_level"/>
+                <field name="sub_crm_project_level"/>
+            </xpath>
+            <xpath expr="//group[1]" position="before">
+                <group string="Business Unit Involved" attrs="{'invisible':[('company_id','not in',[1,4])]}">
+                      <field name="crmsublead_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="crm_project_id" />
+                            <field name="company_id" />
+                        </tree>
+                      </field>
+                  </group>
+            </xpath>
+            <xpath expr="//field[@name='crm_prj_town']" position="after">
+                <!-- <field name="company_name"/> -->
+                <field name="bu_remarks"/>
+            </xpath>
+            <xpath expr="//group[2]" position="after">
+                <!-- <label for="quotation_ids"/> -->
+                <field name="quotation_ids" nolabel="0"  context="{'group_by':'potential_value'}">
+                    <tree editable="bottom" default_order="create_date desc">
+                        <field name="quotation_id" invisible="1"/>
+                        <field name="quotation_attachment" widget="binary" filename="name"/>
+                        <field name="name"/>
+                        <field name="quote_to"/>
+                        <field name="product_group"/>
+                        <field name="potential_value"/>
+                        <field name="project_progress"/>
+                        <field name="created_by" readonly="1"/>
+                        <field name="create_date" readonly="1"/>
+                    </tree>
+                </field>
+                <!-- <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                    <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                        <label for="amount_total" />
+                    </div>
+                    <field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                </group> -->
+            </xpath>
+            <!-- <xpath expr="//group[@string='Info From BCI']" position="after">
+                <group string="Quoted Amount">
+                    <field name="fd_quoted_amount"/>
+                    <field name="td_quoted_amount"/>
+                    <field name="accessories_quoted_amount"/>
+                    <field name="mf_quoted_amount"/>
+                    <field name="ir_quoted_amount"/>
+                </group>
+            </xpath> -->
+        </field>
+    </record>
+
+    <record id="crm_lead_view_kanban_inherit_form_2" model="ir.ui.view" >
+        <field name="name">crm.lead.kanban.inherit2</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref ="crm.crm_case_kanban_view_leads" />
+        <field name="arch" type ="xml">
+            <xpath expr="//kanban/templates/t/div/div[2]/div[1]" position="after">
+                <div>
+                    <strong>GSM ID: <field name="sub_project_code"/></strong><br/>
+                    <strong>BCI ID: <field name="crm_bci_id"/></strong><br/>
+                    <strong>Project Level: <field name="crm_project_level"/></strong>
+                </div>
+                <div>
+                    <field name="company_id"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_crm_case_opportunities_filter_inherit" model="ir.ui.view" >
+        <field name="name">crm.lead.search.opportunity.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref ="crm.view_crm_case_opportunities_filter" />
+        <field name="arch" type ="xml" >
+            <xpath expr="//field[@name='name']" position="before">
+            <field name="name" string="General" 
+                    filter_domain="
+                    ['|','|','|','|','|','|','|','|','|','|','|',('name', 'ilike', self),('crm_bci_id', 'ilike', self),('crm_bci_id', 'ilike', self),('master_bci_related.project_developer1.name', 'ilike', self),('master_bci_related.project_architect1.name', 'ilike', self),('master_bci_related.project_main_contractor1.name', 'ilike', self),('crm_prj_own_mark.name', 'ilike', self),('crm_prj_own_sales.name', 'ilike', self),('bci_province1', 'ilike', self),('sub_project_code', 'ilike', self),('crm_project_id', 'ilike', self),('crm_prj_town', 'ilike', self)]"/>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="crm_bci_id" string="BCI ID" filter_domain="[
+                        ('crm_bci_id', 'ilike', self)]"/>
+                <field name="master_bci_related" string="Developer" filter_domain="[
+                        ('master_bci_related.project_developer1.name', 'ilike', self)]"/>
+                <field name="master_bci_related" string="Architect" filter_domain="[
+                        ('master_bci_related.project_architect1.name', 'ilike', self)]"/>
+                <field name="master_bci_related" string="Contractor" filter_domain="[
+                        ('master_bci_related.project_main_contractor1.name', 'ilike', self)]"/>
+                <field name="crm_sbcns_aplctrs" string="Sub-Contractor" filter_domain="[('crm_sbcns_aplctrs.name', 'ilike', self)]"/>
+                <field name="crm_prj_own_mark" string="Project Owner (Marketing)   " filter_domain="[('crm_prj_own_mark.name', 'ilike', self)]"/>
+                <field name="crm_prj_own_sales" string="Project Owner (Sales)   " filter_domain="[('crm_prj_own_sales.name', 'ilike', self)]"/>
+            </xpath>
+            <xpath expr="//filter[@name='salesperson']" position="before">
+                <filter string="Province" name="bci_province1" context="{'group_by':'bci_province1'}"/>
+                <!-- <filter string="Project Level" name="crm_prj_level" context="{'group_by':'crm_prj_level'}"/> -->
+                <filter string="Project Level" name="crm_project_level" context="{'group_by':'crm_project_level'}" groups="base.group_multi_company"/>
+                <!-- <filter string="Project Level" name="crm_prj_level" context="{'group_by':'crm_prj_level'},{'invisible':[('company_id','!=',2)]"/> -->
+            </xpath>
+        </field>
+    </record>
+
+
+<record id="view_assign_checker" model="ir.ui.view">
+    <field name="name">crm.lead.assign.wizard</field>
+    <field name="model">crm.lead.assign.wizard</field>
+    <field name="arch" type="xml">
+        <form string="Assign">
+            <field name="user"/>
+            <footer>
+                <button string='Assign' name="assign_checker" type="object" class="btn-primary"/>
+                <button string="Cancel" class="btn-default" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+<!-- Action to launch Wizard for change phase of payments from action menu -->
+<record id=" view_assign_checker_action" model="ir.actions.act_window">
+    <field name="name">Assign</field>
+    <field name="res_model">crm.lead.assign.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="view_assign_checker"/>
+    <field name="target">new</field>
+    <field name="binding_model_id" ref="project_crm_chg.model_crm_lead"/>
+</record>
+
+        <record id="action_your_pipeline2" model="ir.actions.server">
+            <field name="name">Crm: Assigned to me</field>
+            <field name="model_id" ref="crm.model_crm_team"/>
+            <field name="state">code</field>
+            <field name="code">action = model.action_your_pipeline()</field>
+        </record>
+
+
+    <record id="action_view_lead_midah_pivot" model="ir.actions.act_window">
+      <field name="name">View Pivot Midah Group</field>
+      <field name="res_model">crm.lead</field>
+      <field name="view_mode">pivot</field>
+      <field name="domain">[]</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Enter the target</p>
+      </field>
+    </record>
+
+  <record id="view_lead_midah_pivot" model="ir.ui.view">
+    <field name="name">pivot</field>
+    <field name="model">crm.lead</field>
+    <field name="arch" type="xml">      
+      <pivot string="Pivot View (Midah Group)">
+        <field name="sub_master_id" width="500px" type="row"/>
+        <field name="company_id" type="col"/>
+      </pivot>
+    </field>
+  </record>
+
+          <record id="crm_lead_opportunities_view_lead_midah_pivot" model="ir.actions.act_window.view">
+            <field name="sequence" eval="4"/>
+            <field name="view_mode">pivot</field>
+            <field name="view_id" ref="view_lead_midah_pivot"/>
+            <field name="act_window_id" ref="action_view_lead_midah_pivot"/>
+        </record>
+
+  <menuitem id="reporting_lead_midah_project"
+      name="Midah Report"
+      parent="crm.crm_menu_report"
+      action="generate_midah_report"
+      sequence="9"/>
+
+  <menuitem id="master_project_create_non_bci"
+      name="Create Non-BCI"
+      parent="chgb_master_menu_root"
+      action="create_non_bci_action"
+      groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"
+      sequence="2"/>
+
+<!-- <menuitem name="Midah Group Report" id="menu_report_midah_group_project"  parent="reporting_lead_midah_project" action="action_view_lead_midah_pivot" sequence="7"/> -->
+
+</odoo>

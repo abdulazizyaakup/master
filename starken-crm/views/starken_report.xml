@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report
+            string="Print Quotation(Starken)"
+            id="print_report_quotation_sale_order_starken"
+            model="sale.order"
+            report_type="qweb-pdf"
+            name="starken-crm.crm_report_saleorder_document"
+            file="starken-crm.crm_report_saleorder_document"
+    />
+</odoo>

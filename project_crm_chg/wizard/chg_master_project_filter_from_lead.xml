@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="crm_get_master_keyword_filter_view_form" model="ir.ui.view">
+            <field name="name">searchmaster.bykeywords2.form</field>
+            <field name="model">searchmaster.bykeywords2</field>
+            <field name="arch" type="xml">
+                <form string="Filter by Keywords">
+                    <group>
+                        <field name="keywords1"/>
+                        <field name="keywords2"/>
+                    </group>
+                    <footer>
+                        <button name="search_master" string="Filter" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="crm_get_master_keyword_filter_action" model="ir.actions.act_window">
+            <field name="name">Filter By Keywords</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">searchmaster.bykeywords2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="crm_get_master_keyword_filter_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+        
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="contact_new" model="contact.substage">
+            <field name="name">New</field>
+            <field name="sequence" type="int">1</field>
+        </record>
+        <record id="contact_nuturing" model="contact.substage">
+            <field name="name">Nuturing</field>
+            <field name="sequence" type="int">2</field>
+        </record>
+<!--         <record id="contact_dead" model="contact.substage">
+            <field name="name">Dead</field>
+        </record>
+        <record id="contact_sfi" model="contact.substage">
+            <field name="name">Scheduled For Interview</field>
+        </record>
+        <record id="contact_or" model="contact.substage">
+            <field name="name">Offer - Rejected</field>
+        </record>
+        <record id="contact_tfu" model="contact.substage">
+            <field name="name">To Follow Up</field>
+        </record>
+        <record id="contact_rs" model="contact.substage">
+            <field name="name">Recruited - Start</field>
+        </record>
+        <record id="contact_rmia" model="contact.substage">
+            <field name="name">Recruited - MIA</field>
+        </record>
+        <record id="contact_rp" model="contact.substage">
+            <field name="name">Recruited - Pending</field>
+        </record>
+        <record id="contact_wssr" model="contact.substage">
+            <field name="name">WSS Reject</field>
+        </record>
+        <record id="contact_cif" model="contact.substage">
+            <field name="name">Call In Future</field>
+        </record> -->
+    </data>
+</odoo>

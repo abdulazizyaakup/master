@@ -1,0 +1,25 @@
+<odoo>
+    <record id='starken_crm_partner_type_tree' model='ir.ui.view'>
+        <field name="name">starken_crm.partner.type.tree</field>
+        <field name="model">starken_crm.partner.type</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Partner Types">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="starken_crm_partner_type_tree_action" model="ir.actions.act_window">
+        <field name="name">Partner Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">starken_crm.partner.type</field>
+        <field name="view_id" ref="starken_crm_partner_type_tree"/>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem 
+        id="partner_type_contract_menu_item"
+        parent="crm.crm_menu_config"
+        action="starken_crm_partner_type_tree_action"
+        groups="sales_team.group_sale_manager"/>
+</odoo>

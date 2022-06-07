@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    
+    <!-- <template id="assets_backend" name="ov_scanner_assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/ov_hr_recruitment_ext/static/src/js/copy_url.js"/>
+        </xpath>
+    </template> -->
+
+    <menuitem
+        name="ATS"
+        id="hr_recruitment.menu_hr_recruitment_root"
+        web_icon="hr_recruitment,static/description/icon.png"
+        groups="hr_recruitment.group_hr_recruitment_user"
+        sequence="80"/>
+
+    <menuitem name="Documents" id="hr_recruitment.menu_crm_case_categ0_act_job02" action="hr_recruitment.hr_applicant_resumes" parent="hr_recruitment.menu_hr_recruitment_root" sequence="8"/>
+
+    <record id="view_kanban_hr_applicant_ext_nationality" model="ir.ui.view">
+        <field name="name">hr.applicant.view.kanban.inherit.ext.nationality</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_kanban_view_applicant"/>
+        <field name="arch" type="xml">
+            <xpath expr="//progressbar" position="before">
+                <field name="country_id"/>
+                <field name="country_image"/>
+            </xpath>
+            <xpath expr="//field[@name='categ_ids']" position="after">
+                <div><span t-if="record.country_id.value">
+                    <img t-att-src="kanban_image('res.country', 'image', record.country_id.raw_value)" t-att-title="record.country_id.value" t-att-alt="record.country_id.value" width="22"/>
+                </span></div>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_recruitment.crm_case_tree_view_job">
+        <field name="name">Applicants</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <tree string="Applicants" decoration-bf="message_needaction==True">
+                <!-- <field name="id"/> -->
+                <field name="message_needaction" invisible="1"/>
+                <field name="last_stage_id" invisible="1"/>
+                <field name="create_date"/>
+                <field name="name"/>
+                <field name="partner_name"/>
+                <field name="email_from"  invisible="1"/>
+                <field name="partner_phone" invisible="1"/>
+                <field name="mobile_no1" widget="phone"/>
+                <field name="job_id"/>
+                <field name="stage_id"/>
+                <field name="medium_id"  invisible="1"/>
+                <field name="source_ids"/>
+                <field name="source_id"/>
+                <field name="priority"  invisible="1"/>
+                <field name="type_id" invisible="1"/>
+                <field name="availability" invisible="1"/>
+                <field name="department_id" invisible="context.get('invisible_department', True)"/>
+                <field name="date_last_stage_update" string="Last Update"/>
+                <field name="link_url" colspan="2" readonly="1" widget="CopyClipboardText"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_recruitment.crm_case_form_view_job">
+        <field name="name">Jobs - Recruitment Form</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+          <form string="Jobs - Recruitment Form">
+            <header>
+                <button string="Create Employee" name="create_employee_from_applicant" type="object"
+                        class="oe_highlight" attrs="{'invisible': ['|',('emp_id', '!=', False),('active', '=', False)]}"/>
+                <!-- <button string="Refuse" name="archive_applicant" type="object" attrs="{'invisible': [('active', '=', False)]}"/>
+                <button string="Reopen Application" name="reset_applicant" type="object" attrs="{'invisible': [('active', '=', True),('blacklist', '=', True)]}"/> -->
+                <button string="Add as Application" name="add_as_application" type="object" attrs="{'invisible': [('application', '=', True)]}"/>
+                <button string="Call for Interview" name="interview_applicant" type="object" attrs="{'invisible': ['|',('blacklist', '=', True),('iv', '=', True)]}"/>
+                <button string="Propose Contract" name="contract_proposal_stage" type="object" attrs="{'invisible': ['|',('blacklist', '=', True),('contract_proposal', '=', True)]}"/>
+                <button string="Reset Blacklist" name="reset_blacklist_applicant" type="object" attrs="{'invisible': [('blacklist', '=', False)]}"/>
+                <button string="Blacklist" name="blacklist_applicant" type="object" attrs="{'invisible': [('blacklist', '=', True)]}"/>
+                <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" attrs="{'invisible': [('active', '=', False),('emp_id', '=', False)]}"/>
+            </header>
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_makeMeeting" class="oe_stat_button" icon="fa-calendar" type="object"
+                         help="Schedule interview with this applicant">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Meetings</span>
+                         </div>
+                    </button>
+                    <button name="action_get_attachment_tree_view"
+                        class="oe_stat_button"
+                        icon="fa-book"
+                        type="object">
+                        <field name="attachment_number" widget="statinfo" string="Documents"/>
+                    </button>
+                    <button name="action_get_created_employee"
+                        class="oe_stat_button"
+                        icon="fa-user"
+                        type="object"
+                        attrs="{'invisible': [('emp_id', '=', False)]}">
+                        <field name="employee_name" widget="statinfo" string="Employee"/>
+                    </button>
+                    <button name="toggle_active" type="object"
+                            class="oe_stat_button" icon="fa-archive"
+                            attrs="{'invisible': [('active', '=', True)]}">
+                        <field name="active" widget="boolean_button"
+                            options='{"terminology": "archive"}'/>
+                    </button>
+                </div>
+                <field name="kanban_state" widget="kanban_state_selection"/>
+                <field name="legend_normal" invisible="1"/>
+                <field name="legend_blocked" invisible="1"/>
+                <field name="legend_done" invisible="1"/>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name"/></h1>
+                    <h2 class="o_row">
+                        <div>
+                            <label for="partner_name" class="oe_edit_only"/>
+                            <field name="partner_name"/>
+                        </div>
+                        <div>
+                            <label for="categ_ids" class="oe_edit_only"/>
+                            <field name="categ_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                        </div>
+                    </h2>
+                </div>
+                <div style="padding-top:20px;">
+                    <h2 style="color: #666666;">Status Of Applicant</h2>
+                    <header style="border-top: 1px solid #ced4da;">
+                        <field name="contact_stage" widget="statusbar" options="{'clickable': '0', 'fold_field': 'fold'}"/>
+                    </header>
+                    <label for="contact_comment"/>
+                    <field name="contact_comment"/>
+                </div>
+                <group string="Basic Information">
+                    <group>
+                        <field name="partner_id" invisible="1"/>
+                        <field name="appointment_reference"/>
+                        <field name="salutation"/>
+                        <field name="email_from" widget="email" invisible="1"/>
+                        <field name="partner_phone" widget="phone" invisible="1" string="Mobile"/>
+                        <field name="mobile_no1" widget="phone"/>
+                        <!-- <button string="Check Mobile No" type="object" name="check_mobile"/> -->
+                        <field name="country_id"/>
+                        <field name="races"/>
+                        <field name="postal_code"/>
+                        <field name="project_site"/>
+                        <button class="oe_inline oe_stat_button"
+                name="open_route_map" type="object" string="Go There"
+                attrs="{'invisible': [('postal_code', '=', '')]}"
+                icon="fa-car"/>
+                    </group>
+                    <group>
+                        <field name="commencement_date"/>
+                        <field name="preferred_location1"/>
+                        <field name="job_id"/>
+                        <field name="department_id" invisible="1"/>
+                        <field name="company_id" groups="base.group_multi_company" options='{"no_open":True}' />
+                        <field name="type_id" placeholder="Degree" invisible="1"/>
+                        <!-- <field name="user_id" /> -->
+                        <field name="priority" widget="priority" invisible="1"/>
+                        <field name="quality_of_contact" widget="priority"/>
+                        <field name="reference" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="shift"/>
+                        <field name="shift_id"/>
+                        <field name="shift_time" invisible="1"/>
+                    </group>
+                    <group>
+                        <button name="print_contract_document" string="Print Contract" type="object" icon="fa-print"/>
+                    </group>
+                  </group>
+
+                <group>
+                    <group string="Contract">
+                        <label for="salary_expected"/>
+                        <div>
+                            <field name="salary_expected" class="oe_inline"/>
+                            <span class="oe_inline" attrs="{'invisible':[('salary_expected_extra','=',False)]}"> + </span>
+                            <field name="salary_expected_extra" class="oe_inline" placeholder="Extra advantages..."/>
+                        </div>
+                        <label for="salary_proposed"/>
+                        <div>
+                            <field name="salary_proposed" class="oe_inline"/>
+                            <span class="oe_inline" attrs="{'invisible':[('salary_proposed_extra','=',False)]}"> + </span>
+                            <field name="salary_proposed_extra" class="oe_inline" placeholder="Extra advantages..."/>
+                        </div>
+                        <field name="availability"/>
+                        <field name="emp_id" invisible="1"/>
+                    </group>
+                    <group string="User Information">
+                        <field name="parent_id"/>
+                        <field name="created_by"/>
+                        <field name="owner" invisible="1"/>
+                        <field name="recruiter"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Additional Information">
+                        <group>
+                          <group>
+                            <field name="nric"/>
+                            <field name="mobile_no2"/>
+                            <field name="source_ids"/>
+                            <field name="day_of_source"/>
+                            <field name="date_of_source"/>
+                            <field name="license"/>
+                            <field name="gender"/>
+                            <field name="age"/>
+                            <field name="employment_type"/>
+                            <field name="shift_preferences" widget="checkboxes"/>
+                            <field name="no_days_avail"/>
+                            <field name="days_avail" string=""/>
+                            <!-- <field name="medium_id" groups="base.group_no_one" /> -->
+                          </group>  
+                          <group>
+                            <field name="no_weekends_avail"/>
+                            <field name="preferred_site" widget="checkboxes"/>
+                            <field name="preferred_location2"/>
+                            <field name="preferred_location3"/>
+                            <field name="remarks" string="Remarks"/>
+                            <field name="previous_company"/>
+                            <field name="previous_working_site"/>
+                            <field name="reason_leave" string="Reason for leaving previous company"/>
+                            <field name="pay_like"/>
+                            <field name="remarks_on_prev_comp" string="Remarks on previous company"/>
+
+                            <field name="medium_id" groups="base.group_no_one" />
+                            <field name="source_id" invisible="1"/>
+                          </group>  
+                        </group>
+                    </page>
+                    <page string="Blacklist">
+                        <group string="Blacklist">
+                            <field name="enquiry" invisible="0"/>
+                            <field name="application" invisible="1"/>
+                            <field name="blacklist" invisible="1"/>
+                            <field name="iv" invisible="1"/>
+                            <field name="contract_proposal" invisible="1"/>
+                            <field name="convert_to_emp" invisible="1"/>
+                            <field name="blacklist_note" class="field_description" placeholder="Description of the tender..."/>
+                        </group>
+                    </page>
+                </notebook>
+                <separator string="Application Summary"/>
+                <field name="description" placeholder="Feedback of interviews..."/>
+            </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="activity_ids" widget="mail_activity"/>
+                <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+            </div>
+          </form>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="hr_recruitment.action_hr_job_applications">
+        <field name="name">Applications</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">tree,form,kanban,graph,calendar,pivot</field>
+        <field name="search_view_id" ref="hr_recruitment.view_crm_case_jobs_filter"/>
+        <field name="context">{'search_default_job_id': [active_id], 'default_job_id': active_id}</field>
+        <field name="help" type="html">
+              <p class="o_view_nocontent_empty_folder">
+                No applications yet
+              </p><p>
+                Odoo helps you track applicants in the recruitment
+                process and follow up all operations: meetings, interviews, etc.
+              </p><p>
+                Applicants and their attached CV are created automatically when an email is sent.
+                If you install the document management modules, all resumes are indexed automatically,
+                so that you can easily search through their content.
+              </p>
+         </field>
+    </record>
+    <record model="ir.actions.act_window.view" id="hr_recruitment.action_hr_sec_kanban_view_act_job">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="hr_recruitment.hr_kanban_view_applicant"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="hr_recruitment.action_hr_sec_tree_view_act_job">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_tree_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="hr_recruitment.action_hr_sec_form_view_act_job">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_form_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+    <record  id="hr_recruitment.hr_applicant_action_view_pivot" model="ir.actions.act_window.view">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_pivot_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+    <record id="hr_recruitment.action_hr_sec_graph_view_act_job" model="ir.actions.act_window.view">
+        <field name="sequence" eval="4"/>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_graph_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+   </data>   
+</odoo>

@@ -1,0 +1,27 @@
+<odoo>
+    <record id='starken_crm_mssql_track_tree' model='ir.ui.view'>
+        <field name="name">starken_crm.mssql.track.tree</field>
+        <field name="model">starken_crm.mssql.track</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="MSSQL Tracks" create="true" edit="true" editable="bottom">
+                <field name="name"/>
+                <field name="last_execution_time"/>
+                <field name="execution_details"/>
+            </tree>
+        </field>
+    </record>
+    <record id="starken_crm_mssql_track_tree_action" model="ir.actions.act_window">
+        <field name="name">MSSQL Track</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">starken_crm.mssql.track</field>
+        <field name="view_id" ref="starken_crm_mssql_track_tree"/>
+        <field name="view_mode">tree</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem
+        id="starken_crm_mssql_track_menu_item"
+        parent="base.menu_automation"
+        action="starken_crm_mssql_track_tree_action"
+    />
+</odoo>

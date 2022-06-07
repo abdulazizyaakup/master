@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="wizard_form_view">
+        <field name="name">gothere.wizard.form</field>
+        <field name="model">gothere.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Go There">
+                <group>
+                    <field name="applicant_id" readonly="1"/>
+                    <field name="call_applicant_latitude" invisible="1"/>
+                    <field name="call_applicant_longitude" invisible="1"/>
+                </group>
+                <group>
+                    <group>
+                        <field name="call_postal_code" readonly="0"/>
+                        <field name="call_project_site"/>
+                        <field name="call_site_latitude" invisible="1"/>
+                        <field name="call_site_longitude" invisible="1"/>
+                    </group>
+                    <group>
+                        <button name="open_route_map" type="object"
+                            string="  GoThere" class="oe_highlight" icon="/ov_ats/static/src/img/gothere.ico"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="set_project_site" type="object"
+                            string="Save" class="oe_highlight"/>
+                    or
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window id="launch_gothere_wizard"
+                name="GoThere"
+                src_model="hr.applicant"
+                res_model="gothere.wizard"
+                view_mode="form"
+                target="new"
+                key2="client_action_multi"/>
+</odoo>

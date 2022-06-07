@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <!-- Add instructor field to existing view -->
+        <record model="ir.ui.view" id="partner_tender_form_view">
+            <field name="name">partner.tender</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='sales_purchases']" position="after">
+                  <page string="Tenders">
+                      <group>
+                        <group>
+                          <field name="tb"/>
+                          <field name="is_date_compare" invisible="0"/>
+                        </group>
+                        <group>
+                          <field name="tenders_count" invisible="0"/>
+                          <field name="today_tenders_count" invisible="0"/>
+                          <field name="today_date" invisible="1"/>
+                          <field name="p_date" invisible="1"/>
+                          <field name="f_date" invisible="1"/>
+                        </group>
+                      </group>
+                      <group priority="1">
+                        <field name="keywords_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                      </group>
+
+                      <!-- <label for="tender_ids"/> -->
+                      <button string="Update Tender List" name="insert_val" type="object"/>
+                      <!-- <button string="Test Date" name="check_date_period" type="object"/> -->
+                      <field name="tender_ids" invisible="0">
+                        <tree>
+                          <field name="quotation_number"/>
+                          <field name="start_date" />
+                          <field name="end_date" />
+                        </tree>
+                      </field>
+                  </page>
+                </xpath>
+            </field>
+        </record>
+</odoo>

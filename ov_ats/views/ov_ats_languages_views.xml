@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+        <record model="ir.ui.view" id="contact_languages_form_view">
+            <field name="name">language.spokenwritten.form</field>
+            <field name="model">language.spokenwritten</field>
+            <field name="arch" type="xml">
+                <form string="Languages">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="applicant_id"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="proficiency_spoken"/>
+                                <field name="proficiency_written"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_languages_tree_view">
+            <field name="name">language.spokenwritten.tree</field>
+            <field name="model">language.spokenwritten</field>
+            <field name="arch" type="xml">
+                <tree string="Languages">
+                    <field name="name"/>
+                    <field name="proficiency_spoken"/>
+                    <field name="proficiency_written"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_contact_languages" model="ir.actions.act_window">
+            <field name="name">Languages</field>
+            <field name="res_model">language.spokenwritten</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_hr_recruitment_languages" name="Languages"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_contact_languages" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+        <record model="ir.ui.view" id="contact_languages_dialect_form_view">
+            <field name="name">language.dialect.form</field>
+            <field name="model">language.dialect</field>
+            <field name="arch" type="xml">
+                <form string="Dialect">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="applicant_id"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="proficiency_dialect"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_languages_dialect_tree_view">
+            <field name="name">language.dialect.tree</field>
+            <field name="model">language.dialect</field>
+            <field name="arch" type="xml">
+                <tree string="Dialect">
+                    <field name="applicant_id"/>
+                    <field name="name"/>
+                    <field name="proficiency_dialect"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_contact_languages_dialect" model="ir.actions.act_window">
+            <field name="name">Dialect</field>
+            <field name="res_model">language.dialect</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_hr_recruitment_languages_dialect" name="Dialect"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_contact_languages_dialect" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+</odoo>

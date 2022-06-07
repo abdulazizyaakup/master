@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <report
+            string="Print Quotation Drymix"
+            id="print_report_quotation_sale_order"
+            model="sale.order"
+            report_type="qweb-pdf"
+            name="drymix-crm.report_quotation_sale_order"
+            file="drymix-crm.report_quotation_sale_order"
+    />
+
+</odoo>

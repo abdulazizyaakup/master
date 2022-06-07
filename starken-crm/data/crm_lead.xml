@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <record id="emt_hos_stage_change_notf_email" model="mail.template">
+            <field name="name">CRM Lead : Notification on Stage Change</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="email_from"></field>
+            <field name="partner_to"></field>
+            <field name="subject"></field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Greetings,
+                        <br /><br />
+                        One of the Project named <strong>${object.name}</strong> has changed its state from ${ctx.get('past_stage')} to ${object.stage_id.name}
+                        <br /><br />
+                        <div style="margin: 16px 0px 16px 0px;">
+                            <a href="${ctx.get('urllink')}" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                                View Project
+                            </a>
+                        </div>
+                        <br /><br />
+                    </p>
+                </div>
+            </field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        <record id="emt_set_as_prown_email" model="mail.template">
+            <field name="name">CRM Lead : Notification on Set As Any Project Owner</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="email_from"></field>
+            <field name="partner_to"></field>
+            <field name="subject"></field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Greetings ${ctx.get('receiver_name')},
+                        <br /><br />
+                        ${ctx.get('assigner_name')} has assigned you as the ${ctx.get('title_set_as')} for the Project <strong>${object.name}</strong>.
+                        <br /><br />
+                        <div style="margin: 16px 0px 16px 0px;">
+                            <a href="${ctx.get('urllink')}" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                                View Project
+                            </a>
+                        </div>
+                        <br /><br />
+                    </p>
+                </div>
+            </field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+        <record id="emt_gsm_assign_email" model="mail.template">
+            <field name="name">CRM Lead : Project assigned by GSM</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="email_from"></field>
+            <field name="partner_to"></field>
+            <field name="subject"></field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Greetings ${ctx.get('receiver_name')},
+                        <br /><br />
+                        You were assigned a leads by GSM - Project <strong>${object.name}</strong>
+                        <br /><br />
+                        Please visit the URL as below for your perusal.
+                        <br /><br />
+                        <div style="margin: 16px 0px 16px 0px;">
+                            <!-- <a href="https://groupcrm.chinhingroup.com/web#id=${object.id}&amp;action=327&amp;model=crm.lead&amp;view_type=form&amp;cids=1&amp;menu_id=214" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;"> -->
+                            <a href="https://groupcrm.chinhingroup.com/web#id=${object.id}&amp;action=327&amp;model=crm.lead&amp;view_type=form&amp;cids=1&amp;menu_id=214" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                                View Project
+                            </a>
+                        </div>
+                        <br /><br />
+                    </p>
+                </div>
+            </field>
+            <field name="user_signature" eval="False"/>
+            <field name="auto_delete" eval="True"/>
+        </record>s
+    </data>
+</odoo>

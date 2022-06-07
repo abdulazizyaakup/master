@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="project_crm_lead_check_duplicate_view_form" model="ir.ui.view">
+            <field name="name">crm.check.lead.form</field>
+            <field name="model">crm.check.lead</field>
+            <field name="arch" type="xml">
+                <form string="Generate Lead">
+                    <footer>
+                        <button name="check" string="Check" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="project_crm_lead_check_duplicate_action" model="ir.actions.act_window">
+            <field name="name">Check Lead</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">crm.check.lead</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_crm_lead_check_duplicate_view_form"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

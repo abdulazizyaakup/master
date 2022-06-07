@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+
+    <menuitem id="ov_hr_recruitment_sub_stage" name="Sub Stages"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+        <record model="ir.ui.view" id="contact_stage_form_view">
+            <field name="name">contact.substage.form</field>
+            <field name="model">contact.substage</field>
+            <field name="arch" type="xml">
+                <form string="Contact Stage">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_stage_tree_view">
+            <field name="name">contact.substage.tree</field>
+            <field name="model">contact.substage</field>
+            <field name="arch" type="xml">
+                <tree string="Contact Stage">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_contact_sub_stage" model="ir.actions.act_window">
+            <field name="name">Contact Stage</field>
+            <field name="res_model">contact.substage</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_contact_stage" name="Contact Stage" sequence="1"
+            parent="ov_hr_recruitment_sub_stage" action="action_contact_sub_stage" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+        <!-- Application Sub Stage -->
+        <record model="ir.ui.view" id="application_stage_form_view">
+            <field name="name">application.substage.form</field>
+            <field name="model">application.substage</field>
+            <field name="arch" type="xml">
+                <form string="Application Stage">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="application_stage_tree_view">
+            <field name="name">application.substage.tree</field>
+            <field name="model">application.substage</field>
+            <field name="arch" type="xml">
+                <tree string="Application Stage">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_application_sub_stage" model="ir.actions.act_window">
+            <field name="name">Application Stage</field>
+            <field name="res_model">application.substage</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_application_stage" name="Application Stage" sequence="2"
+            parent="ov_hr_recruitment_sub_stage" action="action_application_sub_stage" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+        <!-- Interview Sub Stage -->
+        <record model="ir.ui.view" id="interview_stage_form_view">
+            <field name="name">interview.substage.form</field>
+            <field name="model">interview.substage</field>
+            <field name="arch" type="xml">
+                <form string="Interview Stage">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="interview_stage_tree_view">
+            <field name="name">interview.substage.tree</field>
+            <field name="model">interview.substage</field>
+            <field name="arch" type="xml">
+                <tree string="Interview Stage">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_interview_sub_stage" model="ir.actions.act_window">
+            <field name="name">Interview Stage</field>
+            <field name="res_model">interview.substage</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_interview_stage" name="Interview Stage" sequence="3"
+            parent="ov_hr_recruitment_sub_stage" action="action_interview_sub_stage" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+
+        <!-- Employment Offer Sub Stage -->
+        <record model="ir.ui.view" id="employmentoffer_stage_form_view">
+            <field name="name">employmentoffer.substage.form</field>
+            <field name="model">employmentoffer.substage</field>
+            <field name="arch" type="xml">
+                <form string="Employment Offer Stage">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="employmentoffer_stage_tree_view">
+            <field name="name">employmentoffer.substage.tree</field>
+            <field name="model">employmentoffer.substage</field>
+            <field name="arch" type="xml">
+                <tree string="Employment Offer Stage">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_employmentoffer_sub_stage" model="ir.actions.act_window">
+            <field name="name">Employment Offer Stage</field>
+            <field name="res_model">employmentoffer.substage</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_employmentoffer_stage" name="Employment Offer Stage" sequence="4"
+            parent="ov_hr_recruitment_sub_stage" action="action_employmentoffer_sub_stage" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+
+        <record model="ir.ui.view" id="employee_stage_form_view">
+            <field name="name">employee.stage.form</field>
+            <field name="model">employee.stage</field>
+            <field name="arch" type="xml">
+                <form string="Employee Stage">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="employee_stage_tree_view">
+            <field name="name">employee.stage.tree</field>
+            <field name="model">employee.stage</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Stage">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_contact_sub_stage" model="ir.actions.act_window">
+            <field name="name">Employee Stage</field>
+            <field name="res_model">employee.stage</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_employee_stage" name="Employee Stage" sequence="1"
+            parent="hr.menu_human_resources_configuration" action="action_contact_sub_stage" groups="hr.group_hr_manager"/> -->
+
+</odoo>

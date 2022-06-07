@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+<!--     <menuitem id="ov_education" name="Education"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+        <record model="ir.ui.view" id="edu_back_form_view">
+            <field name="name">edu.back.form</field>
+            <field name="model">edu.back</field>
+            <field name="arch" type="xml">
+                <form string="School">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="applicant_id"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="hqa"/>
+                                <field name="year"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="edu_back_tree_view">
+            <field name="name">edu.back.tree</field>
+            <field name="model">edu.back</field>
+            <field name="arch" type="xml">
+                <tree string="School">
+                    <field name="applicant_id"/>
+                    <field name="name"/>
+                    <field name="hqa"/>
+                    <field name="year"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_edu_back" model="ir.actions.act_window">
+            <field name="name">School</field>
+            <field name="res_model">edu.back</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_edu_back" name="School"
+            parent="ov_education" action="action_edu_back" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+
+        <!-- GCE 'N' / 'O' Level Result -->
+        <record model="ir.ui.view" id="gce_n_o_form_view">
+            <field name="name">nolevel.result.form</field>
+            <field name="model">nolevel.result</field>
+            <field name="arch" type="xml">
+                <form string="GCE 'N'/'O' Level Result">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="applicant_id"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="grade"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="gce_n_o_tree_view">
+            <field name="name">edu.back.tree</field>
+            <field name="model">nolevel.result</field>
+            <field name="arch" type="xml">
+                <tree string="GCE 'N'/'O' Level Result">
+                    <field name="applicant_id"/>
+                    <field name="name"/>
+                    <field name="grade"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_gce_n_o" model="ir.actions.act_window">
+            <field name="name">GCE 'N'/'O' Level Result</field>
+            <field name="res_model">nolevel.result</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_gce_n_o" name="GCE 'N'/'O' Level Result"
+            parent="ov_education" action="action_gce_n_o" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+
+        <!-- GCE 'N' / 'O' Level Result -->
+        <record model="ir.ui.view" id="gce_a_form_view">
+            <field name="name">alevel.result.form</field>
+            <field name="model">alevel.result</field>
+            <field name="arch" type="xml">
+                <form string="GCE 'A' Level Result">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="applicant_id"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="grade"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="gce_a_tree_view">
+            <field name="name">alevel.result.tree</field>
+            <field name="model">alevel.result</field>
+            <field name="arch" type="xml">
+                <tree string="GCE 'A' Level Result">
+                    <field name="applicant_id"/>
+                    <field name="name"/>
+                    <field name="grade"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_gce_a" model="ir.actions.act_window">
+            <field name="name">GCE 'A' Level Result</field>
+            <field name="res_model">alevel.result</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+<!--         <menuitem id="ov_gce_a" name="GCE 'A' Level Result"
+            parent="ov_education" action="action_gce_a" groups="hr_recruitment.group_hr_recruitment_user"/> -->
+
+</odoo>

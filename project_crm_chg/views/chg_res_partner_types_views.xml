@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="chg_partner_type_tree" model="ir.ui.view">
+      <field name="name">chg.partner.type.tree</field>
+      <field name="model">chg.partner.type</field>
+      <field name="arch" type="xml">
+          <tree string="Partner Types">
+              <field name="name"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="chg_partner_type_form" model="ir.ui.view">
+      <field name="name">chg.partner.type.form</field>
+      <field name="model">chg.partner.type</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+          <form string="Partner Types">
+              <sheet>
+                  <group>
+                      <group>
+                          <field name="name"/>
+                      </group>
+                  </group>
+              </sheet>
+              <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+              </div>
+          </form>
+      </field>
+  </record>
+
+  <record id="chg_partner_type_action" model="ir.actions.act_window">
+      <field name="name">Partner Types</field>
+      <field name="res_model">chg.partner.type</field>
+      <field name="view_id" ref="chg_partner_type_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set a new partner type
+        </p>
+      </field>
+  </record>
+
+  <menuitem
+      id="chg_menu_partner_types"
+      name="Partner Types"
+      parent="crm.crm_menu_config"
+      action="chg_partner_type_action"
+      sequence="2" groups="sales_team.group_sale_manager"/>
+
+
+  <record id="chg_sale_team_tree" model="ir.ui.view">
+      <field name="name">sale.team.tree</field>
+      <field name="model">sale.team</field>
+      <field name="arch" type="xml">
+          <tree string="Team">
+              <field name="name"/>
+          </tree>
+      </field>
+  </record>
+
+  <record id="chg_sale_team_form" model="ir.ui.view">
+      <field name="name">sale.team.form</field>
+      <field name="model">sale.team</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+          <form string="Team">
+              <sheet>
+                  <group>
+                      <group>
+                          <field name="name"/>
+                      </group>
+                  </group>
+              </sheet>
+              <div class="oe_chatter">
+                  <field name="message_follower_ids" widget="mail_followers"/>
+                  <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+              </div>
+          </form>
+      </field>
+  </record>
+
+  <record id="chg_sale_team_action" model="ir.actions.act_window">
+      <field name="name">Team</field>
+      <field name="res_model">sale.team</field>
+      <field name="view_id" ref="chg_sale_team_tree"/>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+          Set a new team
+        </p>
+      </field>
+  </record>
+
+  <menuitem
+      id="chg_menu_sale_team"
+      name="Team"
+      parent="crm.crm_menu_config"
+      action="chg_sale_team_action"
+      sequence="2" groups="sales_team.group_sale_manager"/>
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data noupdate="1">
+		<!-- <delete model="mail.activity.type" search="[('name','=', 'Email')]" />
+		<delete model="mail.activity.type" search="[('name','=', 'Call')]" />
+		<delete model="mail.activity.type" search="[('name','=', 'Meeting')]" />
+		<delete model="mail.activity.type" search="[('name','=', 'To Do')]" />
+		<delete model="mail.activity.type" search="[('name','=', 'Exception')]" /> -->
+		<delete model="hr.recruitment.stage" search="[('name','=', 'Initial Qualification')]" />
+		<delete model="hr.recruitment.stage" search="[('name','=', 'First Interview')]" />
+		<delete model="hr.recruitment.stage" search="[('name','=', 'Second Interview')]" />
+		<delete model="hr.recruitment.stage" search="[('name','=', 'Contract Proposal')]" />
+		<delete model="hr.recruitment.stage" search="[('name','=', 'Contract Signed')]" />
+	</data>
+</odoo>
+

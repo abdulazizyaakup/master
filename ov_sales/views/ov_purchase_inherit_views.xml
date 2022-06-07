@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+    <record id="ov_purchase_inherit_view" model="ir.ui.view">
+        <field name="name">ov.purchase.custom</field>
+        <field name="model">purchase.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <h3>
+                    <label for="rfq_no"/>
+                    <field name="rfq_no"/>
+                </h3>
+                <h3>
+                    <label for="purchase_order_no"/>
+                    <field name="purchase_order_no"/>
+                </h3>
+            </field>
+            <page name="purchase_delivery_invoice" position="inside">
+                <group>
+                    <group>
+                        <field name="first_approver"/>
+                        <field name="second_approver"/>
+                    </group>
+                </group>
+            </page>
+        </field>
+    </record>
+</odoo>

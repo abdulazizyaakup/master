@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="create_non_bci_view_wizard2_form" model="ir.ui.view">
+        <field name="name">master.project.form</field>
+        <field name="model">master.project</field>
+        <field name="priority" eval="2"/>
+        <field name="arch" type="xml">
+            <form string="Create New Project">
+            	<sheet>
+                  <div class="oe_title">
+                      <div class="oe_edit_only">
+                          <label for="name"/>
+                      </div>
+                      <h1>
+                          <field name="name"/>
+                      </h1>
+                      <div>
+                          <label for="project_keywords"/>
+                      </div>
+                      <h2>
+                          <field name="project_keywords"/>
+                      </h2>
+                      <div>
+                        <!-- <label for="is_bci_project"/> -->
+                        <field name="is_bci_project" readonly="1"/>
+                      </div>
+                      
+                  </div>
+                  <group string="General Information">
+                      <group>
+                        <field name="address" placeholder="Address..." class="o_address_street"/>
+                        <field name="province1"/>
+                        <field name="project_owner_type"/>
+                        <field name="project_development_type"/>
+                      </group>
+                      <group>
+                          <field name="start_date"/>
+                          <field name="end_date"/>
+                          <field name="project_value"/>
+                          <field name="requestor" invisible="1"/>
+                          <field name="requestor_company" invisible="1"/>
+                      </group>
+                      <group>
+                          <field name="project_site_area"/>
+                          <field name="project_floor_area"/>
+                          <field name="project_building_storeys"/>
+                      </group>
+                      <group>
+                          <field name="project_green_building_rating"/>
+                          <field name="project_status_description"/>
+                          <field name="project_units_residential"/>
+                          <field name="project_units_industrial"/>
+                      </group>
+                      <group>
+                        <field name="project_category1"/>
+                      </group>
+                      <group>
+                        <field name="project_subcategory1"/>
+                      </group>
+                  </group>
+                  <notebook>
+                      <page string="Developers">
+                        <group>
+                          <group>
+                            <field name="project_developer1"/>
+                            <field name="project_developer1_contact1"/>
+                            <field name="project_developer1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_developer2"/>
+                            <field name="project_developer2_contact1"/>
+                            <field name="project_developer2_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Architects">
+                        <group>
+                          <group>
+                            <field name="project_architect1"/>
+                            <field name="project_architect1_contact1"/>
+                            <field name="project_architect1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_architect2"/>
+                            <field name="project_architect2_contact1"/>
+                            <field name="project_architect2_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Consultants">
+                        <group>
+                          <group>
+                            <field name="consulting_engineer1"/>
+                            <field name="consulting_engineer1_contact1"/>
+                            <field name="consulting_engineer1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="consultant1"/>
+                            <field name="consultant1_contact1"/>
+                            <field name="consultant1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="green_building_consultant1"/>
+                            <field name="green_building_consultant1_contact1"/>
+                            <field name="green_building_consultant1_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Quantity Surveyors">
+                        <group>
+                          <group>
+                            <field name="project_quantity_surveyor1"/>
+                            <field name="project_quantity_surveyor1_contact1"/>
+                            <field name="project_quantity_surveyor1_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Contractors">
+                        <group>
+                          <group>
+                            <field name="project_main_contractor1"/>
+                            <field name="project_main_contractor1_contact1"/>
+                            <field name="project_main_contractor1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_main_contractor2"/>
+                            <field name="project_main_contractor2_contact1"/>
+                            <field name="project_main_contractor2_contact2"/>
+                          </group>
+                          <group>
+                            <field name="contractor1"/>
+                            <field name="contractor1_contact1"/>
+                            <field name="contractor1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="turnkey_contractor1"/>
+                            <field name="turnkey_contractor1_contact1"/>
+                            <field name="turnkey_contractor1_contact2"/>
+                          </group>
+                          <group>
+                            <field name="project_sub_contractor1"/>
+                            <field name="project_sub_contractor1_contact1"/>
+                            <field name="project_sub_contractor1_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                      <page string="Owner">
+                        <group>
+                          <group>
+                            <field name="project_owner1"/>
+                            <field name="project_owner1_contact1"/>
+                            <field name="project_owner1_contact2"/>
+                          </group>
+                        </group>
+                      </page>
+                    </notebook>
+                  <notebook>
+                      <page string="Project's Remarks">
+                        <field name="project_remarks" placeholder="Add an info..."/>
+                      </page>
+                      <page string="Bulding Elements">
+                          <field name="element_info" placeholder="Add an info..."/>
+                      </page>
+                  </notebook>
+                  <!-- <footer>
+                        <button name="create_non_bci" string="Create Non-Bci" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer> -->
+              </sheet>
+            </form>
+        </field>
+    </record>
+
+        <record id="create_non_bci_action_wizard2" model="ir.actions.act_window">
+            <field name="name">Create Non-BCI Project</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">master.project</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="create_non_bci_view_wizard2_form"/>
+            <field name="target">new</field>
+        </record>
+
+
+</odoo>

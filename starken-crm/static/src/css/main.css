@@ -1,0 +1,22 @@
+.fixed-tab-col [data-name="name"]{
+	width: 38%;
+	max-width:38% !important;
+}
+
+.fixed-tab-col [data-name="phone"]{
+	width: 20%;
+	max-width:20% !important;
+}
+
+.fixed-tab-col [data-name="email"]{
+	width: 20%;
+	max-width: 20% !important;
+}
+
+.fixed-crm-desc-inf {
+    height: 200px !important;
+}
+.one2many-chg [data-id="name"]{
+	width: 10%;
+	max-width:10% !important;
+}

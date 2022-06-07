@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="block_pricing_policy_form" model="ir.ui.view">
+            <field name="name">block.pricing.policy.form</field>
+            <field name="model">block.pricing.policy</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="customer_type" />
+                            <field name="delivery_zone" />
+                            <field name="block_type" />
+                            <field name="price" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="block_pricing_policy_tree" model="ir.ui.view">
+            <field name="name">block.pricing.policy.tree</field>
+            <field name="model">block.pricing.policy</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="customer_type" />
+                    <field name="delivery_zone" />
+                    <field name="block_type" />
+                    <field name="price" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="block_pricing_policy_action" model="ir.actions.act_window">
+            <field name="name">Block Pricing Policy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">block.pricing.policy</field>
+            <field name="target">current</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="accessories_pricing_policy_form" model="ir.ui.view">
+            <field name="name">accessories.pricing.policy.form</field>
+            <field name="model">accessories.pricing.policy</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="delivery_zone" />
+                            <field name="product_id" />
+                            <field name="price" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="accessories_pricing_policy_tree" model="ir.ui.view">
+            <field name="name">accessories.pricing.policy.tree</field>
+            <field name="model">accessories.pricing.policy</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="delivery_zone" />
+                    <field name="product_id" />
+                    <field name="price" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="accessories_pricing_policy_action" model="ir.actions.act_window">
+            <field name="name">Accessories Pricing Policy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">accessories.pricing.policy</field>
+            <field name="target">current</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="panel_pricing_policy_form" model="ir.ui.view">
+            <field name="name">panel.pricing.policy.form</field>
+            <field name="model">panel.pricing.policy</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" attrs="{'readonly': [('is_default','=',True)]}"/>
+                            <field name="delivery_zone" attrs="{'readonly': [('is_default','=',True)]}"/>
+                            <field name="product_id" attrs="{'required': [('is_default','=',False)], 'readonly': [('is_default','=',True)]}"/>
+                            <field name="price" />
+                            <field name="is_default" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="panel_pricing_policy_tree" model="ir.ui.view">
+            <field name="name">panel.pricing.policy.tree</field>
+            <field name="model">panel.pricing.policy</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="delivery_zone" />
+                    <field name="product_id" />
+                    <field name="price" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="panel_pricing_policy_action" model="ir.actions.act_window">
+            <field name="name">Panel Pricing Policy</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">panel.pricing.policy</field>
+            <field name="target">current</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="delivery_zone_form" model="ir.ui.view">
+            <field name="name">delivery.zone.form</field>
+            <field name="model">delivery.zone</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="delivery_zone_tree" model="ir.ui.view">
+            <field name="name">delivery.zone.tree</field>
+            <field name="model">delivery.zone</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="delivery_zone_action" model="ir.actions.act_window">
+            <field name="name">Delivery Zone</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="target">current</field>
+            <field name="res_model">delivery.zone</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="block_pricing_policy_menu_item"
+            parent="sale.menu_sale_config"
+            action="block_pricing_policy_action"
+            sequence="18"
+            groups="sales_team.group_sale_manager"/>
+
+        <menuitem
+            id="accessories_pricing_policy_menu_item"
+            parent="sale.menu_sale_config"
+            action="accessories_pricing_policy_action"
+            sequence="19"
+            groups="sales_team.group_sale_manager" />
+
+        <menuitem
+            id="panel_pricing_policy_menu_item"
+            parent="sale.menu_sale_config"
+            action="panel_pricing_policy_action"
+            sequence="20"
+            groups="sales_team.group_sale_manager" />
+
+        <menuitem
+            id="delivery_zone_menu_item"
+            parent="sale.menu_sale_config"
+            action="delivery_zone_action"
+            sequence="50"
+            groups="sales_team.group_sale_manager" />
+
+    </data>
+</odoo>

@@ -1,0 +1,3012 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <link href="/ov_ats/static/src/css/application_form.css" rel="stylesheet" type="text/css"/>
+            <script src="/ov_ats/static/src/js/application_form.js" type="text/javascript"/>
+        </xpath>
+    </template>
+
+    <template id="ov_ats_applicants" name="Applicants">
+        <t t-call="website.layout">
+            <div class="container">
+                <div class="row">
+                    <t t-foreach="applicants" t-as="applicant">
+                        <div class="col-md-3">
+                            <div class="panel panel-primary course_panel">
+                                <div class="panel-heading text-center"><b  t-field="applicant.partner_name"></b></div>
+                                <div class="panel-body">
+                                    <div>
+                                        <img class="img img-responsive shadow applicant_image" t-att-src="'/website/image?model=hr.applicant&amp;field=applicant_image&amp;id='+str(applicant.id)" width="250" height="250"></img>
+                                    </div>
+                                </div>
+                                <div class="panel-footer text-center">
+                                    <p class="text-center" style="margin-bottom:0px;"><strong>Applied Job </strong> </p>
+                                    <p><span class="text-center" t-field="applicant.job_id.name"></span></p>
+                                    <a class="btn btn-primary" t-attf-href="/ats/applicant/#{applicant.id}">See in detail</a>
+                                    <a class="btn btn-primary" t-attf-href="/ats/applicant/#{applicant.id}/edit">Edit</a>
+                                 </div>
+                            </div>
+                       </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="ov_ats_applicants_detail" name="Applicant">
+        <t t-call="website.layout">
+            <div class="container">
+                    <div class="container">
+                        <div class="row">
+                            <h3>APPLICATION FORM</h3>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;border-top: 1px solid;border-bottom: 1px solid;">
+                            <tbody>
+                                <tr style="line-height: 35px;">
+                                    <td style="padding-left:5px;width:30%;">POSITION APPLIED FOR</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="applicant.job_id.name"/></td>
+                                </tr>
+                                <tr style="line-height: 35px;">
+                                    <td style="padding-left:5px;width:30%;">PREFERRED LOCATION</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="applicant.preferred_location1"/></td>
+                                </tr>
+                                <tr style="line-height: 35px;">
+                                    <td style="padding-left:5px;width:30%;">EXPECTED SALARY</td>
+                                    <td style="padding-left:15px;width:2%;">:</td>
+                                    <td style="padding-left:15px;width:60%;"><span t-field="applicant.salary_expected"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <span style="font-size:20px;padding-left:15px;"><b>(A) PERSONAL PARTICULARS</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;border-bottom: 1px solid;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:60%;">Name as in NRIC :</td>
+                                    <td style="padding-left:15px;width:40%;">Preferred Name :</td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:60%;border: 1px solid;"><span t-field="applicant.partner_name"/></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="applicant.partner_name"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;border-bottom: 1px solid;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;">NRIC Number :</td>
+                                    <td style="padding-left:15px;width:20%;">Age :</td>
+                                    <td style="padding-left:15px;width:40%;">Date of Birth :</td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="applicant.nric"/></td>
+                                    <td style="padding-left:15px;width:20%;border: 1px solid;"><span t-field="applicant.age"/></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="applicant.date_of_birth"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:35%;">Country of Birth :</td>
+                                        <td style="padding-left:15px;width:30%;">Race :</td>
+                                        <td style="padding-left:15px;width:35%;">Religion :</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:35%;border: 1px solid;"><span t-field="applicant.country_of_birth"/></td>
+                                        <td style="padding-left:15px;width:30%;border: 1px solid;"><span t-field="applicant.races"/></td>
+                                        <td style="padding-left:15px;width:35%;border: 1px solid;"><span t-field="applicant.religion"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;">Contact Numbers :</td>
+                                    <td style="padding-left:15px;width:20%;"></td>
+                                    <td style="padding-left:15px;width:40%;"></td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;position: relative;"><span t-field="applicant.partner_phone"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Home)</span></td>
+                                    <td style="padding-left:15px;width:20%;"></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;position: relative;"><span style="text-align:left;" t-field="applicant.mobile_no1"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Handphone)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">Address :</td>
+                                        <td style="padding-left:15px;width:40%;">* The Address indicated Below is: </td>
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.address_status"/>)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:100%;border: 1px solid;"><span t-field="applicant.address"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">*Nationality :</td>
+                                        <td style="padding-left:15px;width:20%;"></td>
+                                        <td style="padding-left:15px;width:40%;">Email Address (if any) :</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.nationality"/>)</td>
+                                        <td style="padding-left:15px;width:20%;"></td>
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="applicant.email"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="page-break-after: always;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:35%;">Gender :</td>
+                                        <td style="padding-left:15px;width:30%;">Marital Status :</td>
+                                        <td style="padding-left:15px;width:35%;">Driving License :</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:35%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.gender"/>)</td>
+                                        <td style="padding-left:15px;width:30%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.marital_status"/>)</td>
+                                        <td style="padding-left:15px;width:35%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.driving_license"/>)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(B) PERSON TO CONTACT IN THE EVENT OF AN EMERGENCY</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;border-bottom: 1px solid;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:60%;">Name :</td>
+                                    <td style="padding-left:15px;width:40%;">Relationship :</td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:60%;border: 1px solid;"><span t-field="applicant.emergency_name"/></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;"><span t-field="applicant.emergency_relation"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                            <tbody>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;">Contact Numbers :</td>
+                                    <td style="padding-left:15px;width:20%;"></td>
+                                    <td style="padding-left:15px;width:40%;"></td>
+                                </tr>
+                                <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;position: relative;"><span t-field="applicant.emergency_phone_no"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Home)</span></td>
+                                    <td style="padding-left:15px;width:20%;"></td>
+                                    <td style="padding-left:15px;width:40%;border: 1px solid;position: relative;"><span style="text-align:left;" t-field="applicant.emergency_mobile_no"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Handphone)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:100%;">Address :</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:100%;border: 1px solid;"><span t-field="applicant.emergency_address"/>a</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(C) EDUCATIONAL BACKGROUND</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">School</td>
+                                        <td style="padding-left:15px;width:40%;">Highest Qualification Attained</td>
+                                        <td style="padding-left:15px;width:10%;">Year</td>
+                                    </tr>
+                                    <t t-foreach="applicant.school_ids" t-as="sc">
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span style="padding-left:10px;" t-field="sc.name"/></td>
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span style="padding-left:10px;" t-field="sc.hqa"/></td>
+                                        <td style="padding-left:15px;width:10%;border: 1px solid;"><span style="padding-left:10px;" t-field="sc.year"/></td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(D) NATIONAL SERVICE (IF APPLICABLE)</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-if="applicant.nationalservice !='nil'">
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">* SAF / SPF / SCDF</td>
+                                        <td style="padding-left:15px;width:30%;">Rank</td>
+                                        <td style="padding-left:15px;width:30%;">PES Grading</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span style="padding-left:10px;" t-field="applicant.nationalservice"/></td>
+                                        <td style="padding-left:15px;width:30%;border: 1px solid;"><span style="padding-left:10px;" t-field="applicant.rank"/></td>
+                                        <td style="padding-left:15px;width:30%;border: 1px solid;"><span style="padding-left:10px;" t-field="applicant.pes_grading"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.nationalservice =='nil'">
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;">* SAF / SPF / SCDF</td>
+                                        <td style="padding-left:15px;width:60%;">Reason not served :</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:40%;border: 1px solid;"><span style="padding-left:10px;" t-field="applicant.nationalservice"/></td>
+                                        <td style="padding-left:15px;width:60%;border: 1px solid;"><span style="padding-left:10px;" t-field="applicant.reason"/></td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(E) COMPUTER LITERACY</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:60%;">Microsoft Words</td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.m_words"/>)</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:60%;">Microsoft Excel</td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.m_excel"/>)</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:60%;">Microsoft Power Point</td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.m_powerpoint"/>)</td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:60%;">Microsoft Outlook</td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.m_outlook"/>)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:50%;"><span style="font-size:20px;"><b>(F) LANGUAGE(S)</b></span></td>
+                                        <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"><b>* SPOKEN</b></span></td>
+                                        <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"><b>* WRITTEN</b></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="page-break-after: always;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-foreach="applicant.lang_ids" t-as="l">
+                                    <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:50%;border: 1px solid;"><span style="padding-left:10px;" t-field="l.name"/></td>
+                                    <td style="padding-left:15px;width:25%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="l.proficiency_spoken"/>)</td>
+                                    <td style="padding-left:15px;width:25%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="l.proficiency_written"/>)</td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:50%;"><span style="font-size:20px;"><b>DIALECT(S)</b></span></td>
+                                        <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"><b>* SPOKEN</b></span></td>
+                                        <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-foreach="applicant.dialect_ids" t-as="d">
+                                    <tr style="line-height: 35px;width:100%">
+                                    <td style="padding-left:15px;width:50%;border: 1px solid;"><span style="padding-left:10px;" t-field="d.name"/></td>
+                                    <td style="padding-left:15px;width:25%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="d.proficiency_dialect"/>)</td>
+                                    <td style="padding-left:15px;width:25%;"></td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(G) CAREER HISTORY</b></span>
+                        </div>
+                        <t t-foreach="applicant.careerhistory_ids" t-as="ch">
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:10%;"><span>From</span></td>
+                                        <td style="padding-left:15px;width:10%;"><span>To</span></td>
+                                        <td style="padding-left:15px;width:30%;"><span>Company Name</span></td>
+                                        <td style="padding-left:15px;width:30%;"><span>Position Held</span></td>
+                                        <td style="padding-left:15px;width:20%;"><span>Gross Salary</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="width:10%;border: 1px solid;"><span style="text-align:center;" t-field="ch.date_from"/></td>
+                                        <td style="width:10%;border: 1px solid;"><span style="text-align:center;" t-field="ch.date_to"/></td>
+                                        <td style="width:30%;border: 1px solid;"><span style="padding-left:10px;" t-field="ch.name"/></td>
+                                        <td style="width:30%;border: 1px solid;"><span style="padding-left:10px;" t-field="ch.position_held"/></td>
+                                        <td style="width:20%;border: 1px solid;"><span style="padding-left:10px;" t-field="ch.gross_sal"/></td>
+                                    </tr>
+                                    <tr  style="line-height: 35px;width:100%;border: 1px solid;">
+                                        <td colspan="2" style="padding-left:15px;width:30%;"><span>Reason Leaving :</span></td>
+                                        <td colspan="3" style="padding-left:15px;width:70%;"><span t-field="ch.reason_leave"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        </t>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(H) OTHER INFORMATION</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-if="applicant.post_source !='others'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>How do you learn of this post?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.post_source"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.post_source =='others'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>How do you learn of this post?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.post_source"/>) : <u><span style="padding-left:50px;" t-field="applicant.post_other"/></u></td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.wss_applied =='no'">
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Have you ever applied for employment or worked before with William Security Services / William Secure Solutions?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.wss_applied"/>)</td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.wss_applied =='yes'">
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:100%;"><span>Have you ever applied for employment or worked before with William Security Services / William Secure Solutions?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="width:100%;padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.wss_applied"/>)   <span style="padding-left:50px;">When and where?</span><u><span style="padding-left:10px;" t-field="applicant.wss_applied_other"/></u></td>
+                                    </tr>
+                                    </t>
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;"><span>Do you smoke?</span></td>
+                                    </tr>
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.smoke"/>)</td>
+                                    </tr>
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;"><span>Shift Preference</span></td>
+                                    </tr>
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.shift_preferences"/>)</td>
+                                    </tr>
+
+                                    <t t-if="applicant.friend_relative =='no'">
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Do you have any friends / relatives working with William Security Services?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.friend_relative"/>)</td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="page-break-after: always;">
+                            <t t-if="applicant.friend_relative =='yes'">
+                                <table>
+                                    <tbody>
+                                        <tr  style="line-height: 35px;width:100%;">
+                                            <td colspan="3" style="padding-left:15px;width:100%;"><span>Do you have any friends / relatives working with William Security Services?</span></td>
+                                        </tr>
+                                        <tr style="line-height: 35px;width:100%">
+                                            <td colspan="3" style="width:100%;padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.friend_relative"/>)</td>
+                                        </tr>
+                                        <tr style="line-height: 35px;width:100%">
+                                            <td style="padding-left:15px;width:45%;"><span>Name</span></td>
+                                            <td style="padding-left:15px;width:10%;"><span style="color:white;">-------</span></td>
+                                            <td style="padding-left:15px;width:45%;"><span>Relationship</span></td>
+                                        </tr>
+                                        <t t-foreach="applicant.relative_ids" t-as="r">
+                                        <tr style="line-height: 35px;width:100%">
+                                            <td style="padding-left:15px;width:45%;border: 1px solid;"><span style="padding-left:10px;" t-field="r.name"/></td>
+                                            <td style="padding-left:15px;width:10%;"><span style="color:white;">-------</span></td>
+                                            <td style="padding-left:15px;width:45%;border: 1px solid;"><span style="padding-left:10px;" t-field="r.relationship"/></td>
+                                        </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </t>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(I) WORK PREFERENCE</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;"><span>Do you have a preferred shift?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;"><span t-field="applicant.preferred_shift"/></td>
+                                    </tr>
+
+                                    <t t-if="applicant.preferred_site !='others'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>What type of work site do you prefer?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.preferred_site"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.preferred_site =='others'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>What type of work site do you prefer?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.preferred_site"/>) : <u><span style="padding-left:50px;" t-field="applicant.preferred_site_other"/></u></td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.six_shift !='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>What type of work site do you prefer?</span></td>
+                                        <td style="padding-left:15px;width:40%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.six_shift"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.six_shift =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>What type of work site do you prefer?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.six_shift"/>) : <u><span style="padding-left:50px;" t-field="applicant.six_shift_no"/></u> shifts</td>
+                                    </tr>
+                                    </t>
+
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;"><span>Are you able to work on weekends?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:15px;" t-field="applicant.working_weekend"/> )</td>
+                                    </tr>
+
+                                    
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td  colspan="7" style="padding-left:15px;"><span>Do you have specific days you can work?</span></td>
+                                    </tr>
+                                    <t t-foreach="applicant.days_avail_ids" t-as="dai">
+                                    <tr  style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;">(<i class="fa fa-check" aria-hidden="true"></i><span t-field="dai.name"/>)</td>
+                                    </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(J) DECALARTION Q &amp; A</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <t t-if="applicant.illness =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever suffered, or are suffering from any medical condition, illness, disease, +mental illness or physical impairment? +Includes all forms of nervous breakdown and anxiety disorder</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.illness"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="applicant.illness_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.illness =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever suffered, or are suffering from any medical condition, illness, disease, +mental illness or physical impairment? +Includes all forms of nervous breakdown and anxiety disorder</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.illness"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.criminal_record =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Do you have a criminal record in Singapore?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.criminal_record"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="applicant.cr_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.criminal_record =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Do you have a criminal record in Singapore?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.criminal_record"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.charged_law =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you been charged with any offence in a court of law in Singapore or in 
+any other country for which the outcome is pending?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.charged_law"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="applicant.cl_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.criminal_record =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you been charged with any offence in a court of law in Singapore or in 
+any other country for which the outcome is pending?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.charged_law"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.investigation_awareness =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Are you aware of being under any current police investigations in Singapore or in any other country following allegations made against you?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.investigation_awareness"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="applicant.ia_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.criminal_record =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Are you aware of being under any current police investigations in Singapore or in any other country following allegations made against you?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.investigation_awareness"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.financial_embarrassment =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you been or are you under any financial embarrassment i.e. (a) an undischarged bankrupt, (b) a judgement debtor, (c) have unsecured debts and liabilities of more than 3 months of last-drawn pay, (d) have signed a promissory note or an acknowledgement of indebtedness?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.financial_embarrassment"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="applicant.fe_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.financial_embarrassment =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you been or are you under any financial embarrassment i.e. (a) an undischarged bankrupt, (b) a judgement debtor, (c) have unsecured debts and liabilities of more than 3 months of last-drawn pay, (d) have signed a promissory note or an acknowledgement of indebtedness?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.financial_embarrassment"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.broken_service_period =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever broken any bond or failed to fulfil any minimum service period?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.broken_service_period"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="applicant.bsp_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.financial_embarrassment =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever broken any bond or failed to fulfil any minimum service period?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.broken_service_period"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.currently_serving_bond =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Are you currently serving bond or any obligatory moral service with any organisation?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.currently_serving_bond"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="applicant.csb_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.financial_embarrassment =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Are you currently serving bond or any obligatory moral service with any organisation?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.currently_serving_bond"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                    <t t-if="applicant.dismissed_from_service =='yes'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever been dismissed or discharged from the service of any employer?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.dismissed_from_service"/>) <span style="padding-left:50px;">Details : </span><span style="padding-left:50px;" t-field="applicant.dfs_yes"/></td>
+                                    </tr>
+                                    </t>
+                                    <t t-if="applicant.financial_embarrassment =='no'">
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:80%;"><span>Have you ever been dismissed or discharged from the service of any employer?</span></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:20%;">(<i class="fa fa-check" aria-hidden="true"></i><span style="padding-left:10px;" t-field="applicant.dismissed_from_service"/>)</td>
+                                    </tr>
+                                    </t>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(J) DECLARATION</b></span>
+                        </div>
+                        <div class="row" style="padding-top:20px;padding-bottom:20px;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 20px;width:100%;">
+                                        <td style="padding-left:15px;width:100%;"><span>I give my consent for William Secure Solutions to obtain and verify information from or with any source, as you deem appropriate for the assessment of my application for employment.</span></td>
+                                    </tr>
+                                    <tr style="line-height: 20px;width:100%;">
+                                        <td style="padding-left:15px;width:100%;"><span style="color:white;">-----------------------------------------</span></td>
+                                    </tr>
+                                    <tr style="line-height: 20px;width:100%;">
+                                        <td style="padding-left:15px;width:100%;"><span>I declare that the information in this resume form and any sheets attached hereto are true to the best of my knowledge and I have not wilfully suppressed any material fact.  I accept that if any of the information given by me in this application is in any way false or incorrect, my application may be rejected, any offer of employment may be withdrawn or my employment with William Secure Solutions may be terminated summarily or I may be dismissed from William Secure Solutions.</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row" style="border-top:1px solid;border-bottom:1px solid;">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;height:100px;">
+                                        <td style="padding-left:15px;width:45%;border-bottom:1px solid;text-align:center;padding-top:30px;">
+                                            <t t-if="applicant.signature">
+                                            <img t-att-src="'data:image/png;base64,%s' % to_text(applicant.signature)" style="max-height:4cm; max-width:8cm;"/>
+                                            </t>
+                                            <!-- <img t-if="company.logo_footer" t-att-src="image_data_uri(company.logo_footer)"  style="max-height: 30px;"/> -->
+                                        </td>
+                                        <td style="padding-left:15px;width:10%;"><span style="color:white;">-------</span></td>
+                                        <td style="padding-left:15px;width:45%;border-bottom:1px solid;text-align:center;"><span t-field="applicant.declaration_date"/></td>
+                                    </tr>
+                                    <tr style="line-height: 35px;width:100%">
+                                        <td style="padding-left:15px;width:45%;text-align:center;"><span>Signature</span></td>
+                                        <td style="padding-left:15px;width:10%;text-align:center;"><span style="color:white;">-------</span></td>
+                                        <td style="padding-left:15px;width:45%;text-align:center;"><span>Date</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+            </div>
+        </t>
+    </template>
+
+<template id="edit_applicant">
+    <t t-call="website.layout">
+        <div class="container">
+        <h3 t-if="applicant.id">Application : <span t-field="applicant.name"/></h3>
+        <br/>
+        <form t-attf-action="/ats/applicant/#{slug(applicant)}/save" method="post" role="form" class="tag_text js_website_submit_form">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div class="row">
+                <h3>APPLICATION FORM</h3>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;border-top: 1px solid;border-bottom: 1px solid;padding-bottom:30px;">
+                <tbody>
+                    <tr style="line-height: 20px;">
+                        <td style="padding-left:5px;width:30%;">APPLICATION TITLE</td>
+                        <td style="padding-left:15px;width:2%;">:</td>
+                        <td style="padding-left:0px;width:60%;"><input type="text" class="form-control o_website_form_input" name="name" step="any" t-att-value="applicant.name"/></td>
+                    </tr>
+                    <tr style="line-height: 20px;">
+                        <td style="padding-left:5px;width:30%;">POSITION APPLIED FOR</td>
+                        <td style="padding-left:15px;width:2%;">:</td>
+                        <td style="padding-left:15px;width:60%;" class="row form-group form-field o_website_form_required">
+                              <select class="form-control o_website_form_input" name="job_id" required="true" style="margin-top: 15px;" t-att-value="applicant.job_id">
+                                <option t-att-value="1">
+                                            Security Officer
+                                        </option>
+                                <option t-att-value="2">
+                                            Senior Security Officer
+                                        </option>
+                                <option t-att-value="3">
+                                            Security Supervisor
+                                        </option>
+                                <option t-att-value="4">
+                                            Senior Security Supervisor
+                                        </option>
+                                <option t-att-value="5">
+                                            Chief Security Officer
+                                        </option>
+                              </select>
+                        </td>
+                    </tr>
+                    <tr style="line-height: 20px;">
+                        <td style="padding-left:5px;width:30%;">PREFERRED LOCATION</td>
+                        <td style="padding-left:15px;width:2%;">:</td>
+                        <td style="padding-left:15px;width:60%;" class="row form-group form-field o_website_form_required">
+                          <select class="form-control o_website_form_input" name="preferred_location1" style="margin-top: 15px;">
+                            <option t-att-value="1">
+                                        General North
+                                    </option>
+                            <option t-att-value="2">
+                                        Lim Chu Kang
+                                    </option>
+                            <option t-att-value="3">
+                                        Mandai
+                                    </option>
+                            <option t-att-value="4">
+                                        Sembawang
+                                    </option>
+                            <option t-att-value="5">
+                                        Woodlands
+                                    </option>
+                            <option t-att-value="6">
+                                        Yishun
+                                    </option>
+                            <option t-att-value="7">
+                                        General North East
+                                    </option>
+                            <option t-att-value="8">
+                                        Ang Mo Kio
+                                    </option>
+                            <option t-att-value="9">
+                                        Hougang
+                                    </option>
+                            <option t-att-value="10">
+                                        Punggol
+                                    </option>
+                            <option t-att-value="11">
+                                        Sengkang
+                                    </option>
+                            <option t-att-value="12">
+                                        Serangoon
+                                    </option>
+                            <option t-att-value="13">
+                                        General East
+                                    </option>
+                            <option t-att-value="14">
+                                        Bedok
+                                    </option>
+                            <option t-att-value="15">
+                                        Changi
+                                    </option>
+                            <option t-att-value="16">
+                                        Pasir Ris
+                                    </option>
+                            <option t-att-value="17">
+                                        Payar Lebar
+                                    </option>
+                            <option t-att-value="18">
+                                        Tampines
+                                    </option>
+                            <option t-att-value="19">
+                                        Ubi
+                                    </option>
+                            <option t-att-value="20">
+                                        General Central
+                                    </option>
+                            <option t-att-value="21">
+                                        Bishan
+                                    </option>
+                            <option t-att-value="22">
+                                        Bukit Merah
+                                    </option>
+                            <option t-att-value="23">
+                                        Bukit Timah
+                                    </option>
+                            <option t-att-value="24">
+                                        Geylang
+                                    </option>
+                            <option t-att-value="25">
+                                        Habourfront
+                                    </option>
+                            <option t-att-value="26">
+                                        Kallang
+                                    </option>
+                            <option t-att-value="27">
+                                        Marine Parade
+                                    </option>
+                            <option t-att-value="28">
+                                        Novena
+                                    </option>
+                            <option t-att-value="29">
+                                        Queenstown
+                                    </option>
+                            <option t-att-value="30">
+                                        Sentosa
+                                    </option>
+                            <option t-att-value="31">
+                                        Tanglin
+                                    </option>
+                            <option t-att-value="32">
+                                        Toa Payoh
+                                    </option>
+                            <option t-att-value="33">
+                                        General CBD
+                                    </option>
+                            <option t-att-value="34">
+                                        Boat Quay, Clarke Quay
+                                    </option>
+                            <option t-att-value="35">
+                                        Bugis
+                                    </option>
+                            <option t-att-value="36">
+                                        Cityhall
+                                    </option>
+                            <option t-att-value="37">
+                                        Tanjung Pagar
+                                    </option>
+                            <option t-att-value="38">
+                                        Raffles Place
+                                    </option>
+                            <option t-att-value="39">
+                                        Shenton Way
+                                    </option>
+                            <option t-att-value="40">
+                                        Marina
+                                    </option>
+                            <option t-att-value="41">
+                                        Newton
+                                    </option>
+                            <option t-att-value="42">
+                                        Orchard
+                                    </option>
+                            <option t-att-value="43">
+                                        Outram
+                                    </option>
+                            <option t-att-value="44">
+                                        River Valley
+                                    </option>
+                            <option t-att-value="45">
+                                        General West
+                                    </option>
+                            <option t-att-value="46">
+                                        Boon Lay
+                                    </option>
+                            <option t-att-value="47">
+                                        Bukit Batok
+                                    </option>
+                            <option t-att-value="48">
+                                        Bukit Panjang
+                                    </option>
+                            <option t-att-value="49">
+                                        Choa Chu Kang
+                                    </option>
+                            <option t-att-value="50">
+                                        Clementi
+                                    </option>
+                            <option t-att-value="51">
+                                        Jurong East
+                                    </option>
+                            <option t-att-value="52">
+                                        Jurong West
+                                    </option>
+                            <option t-att-value="53">
+                                        Pioneer
+                                    </option>
+                            <option t-att-value="54">
+                                        Tengah
+                                    </option>
+                            <option t-att-value="55">
+                                        Tuas
+                                    </option>
+                            <option t-att-value="56">
+                                        No Preference
+                                    </option>
+                          </select>
+                        </td>
+                    </tr>
+                    <tr style="line-height: 20px;">
+                        <td style="padding-left:5px;width:30%;">EXPECTED SALARY</td>
+                        <td style="padding-left:15px;width:2%;">:</td>
+                        <td style="padding-left:0px;width:60%;"><input type="number" class="form-control o_website_form_input" name="salary_expected" step="any"/></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <br/>
+            <div class="row">
+                <span style="font-size:20px;padding-left:15px;"><b>(A) PERSONAL PARTICULARS</b></span>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                <tbody>
+                    <tr style="line-height: 35px;width:100%">
+                        <td style="padding-left:15px;width:60%;">Name as in NRIC :</td>
+                        <td style="padding-left:15px;width:40%;">Preferred Name :</td>
+                    </tr>
+                    <tr style="line-height: 35px;width:100%">
+                        <td style="padding-left:15px;width:60%;"><span t-if="applicant.partner_name"><input type="text" class="form-control o_website_form_input" name="partner_name" t-att-value="applicant.partner_name"/></span></td>
+                        <td style="padding-left:15px;width:40%;"><span t-if="applicant.partner_name"><input type="text" class="form-control o_website_form_input" name="partner_name" t-att-value="applicant.partner_name"/></span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                <tbody>
+                    <tr style="line-height: 35px;width:100%">
+                        <td style="padding-left:15px;width:40%;">NRIC Number :</td>
+                        <td style="padding-left:15px;width:20%;">Age :</td>
+                        <td style="padding-left:15px;width:40%;">Date of Birth :</td>
+                    </tr>
+                    <tr style="line-height: 35px;width:100%">
+
+                        <td style="padding-left:15px;width:40%;"><input type="text" class="form-control o_website_form_input" name="nric" t-att-value="applicant.nric"/></td>
+                        <td style="padding-left:15px;width:20%;"><input type="text" class="form-control o_website_form_input" name="age" t-att-value="applicant.age"/></td>
+                        <td style="padding-left:15px;width:40%;">
+                            <div class="o_website_form_date input-group date" id="datepicker2" data-target-input="nearest">
+                                <input type="text" t-att-value="applicant.date_of_birth" class="form-control datetimepicker-input o_website_form_input" data-target="#datepicker2" name="date_of_birth"/>
+                                <div class="input-group-append" data-target="#datepicker2" data-toggle="datetimepicker">
+                                  <div class="input-group-text">
+                                    <i class="fa fa-calendar"/>
+                                  </div>
+                                </div>
+                              </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:35%;">Country of Birth :</td>
+                            <td style="padding-left:15px;width:30%;">Race :</td>
+                            <td style="padding-left:15px;width:35%;">Religion :</td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:35%;">
+                              <select class="form-control o_website_form_input" name="country_of_birth">
+                                <t t-foreach="applicant.country_of_birth" t-as="cob">
+                                    <option t-att-value="cob.id"><t t-esc="cob.name"/></option>
+                                </t>
+                                <option t-att-value="3">
+                                            Afghanistan
+                                        </option>
+                                <option t-att-value="6">
+                                            Albania
+                                        </option>
+                                <option t-att-value="62">
+                                            Algeria
+                                        </option>
+                                <option t-att-value="11">
+                                            American Samoa
+                                        </option>
+                                <option t-att-value="1">
+                                            Andorra
+                                        </option>
+                                <option t-att-value="8">
+                                            Angola
+                                        </option>
+                                <option t-att-value="5">
+                                            Anguilla
+                                        </option>
+                                <option t-att-value="9">
+                                            Antarctica
+                                        </option>
+                                <option t-att-value="4">
+                                            Antigua and Barbuda
+                                        </option>
+                                <option t-att-value="10">
+                                            Argentina
+                                        </option>
+                                <option t-att-value="7">
+                                            Armenia
+                                        </option>
+                                <option t-att-value="14">
+                                            Aruba
+                                        </option>
+                                <option t-att-value="13">
+                                            Australia
+                                        </option>
+                                <option t-att-value="12">
+                                            Austria
+                                        </option>
+                                <option t-att-value="16">
+                                            Azerbaijan
+                                        </option>
+                                <option t-att-value="32">
+                                            Bahamas
+                                        </option>
+                                <option t-att-value="23">
+                                            Bahrain
+                                        </option>
+                                <option t-att-value="19">
+                                            Bangladesh
+                                        </option>
+                                <option t-att-value="18">
+                                            Barbados
+                                        </option>
+                                <option t-att-value="36">
+                                            Belarus
+                                        </option>
+                                <option t-att-value="20">
+                                            Belgium
+                                        </option>
+                                <option t-att-value="37">
+                                            Belize
+                                        </option>
+                                <option t-att-value="25">
+                                            Benin
+                                        </option>
+                                <option t-att-value="27">
+                                            Bermuda
+                                        </option>
+                                <option t-att-value="33">
+                                            Bhutan
+                                        </option>
+                                <option t-att-value="29">
+                                            Bolivia
+                                        </option>
+                                <option t-att-value="30">
+                                            Bonaire, Sint Eustatius and Saba
+                                        </option>
+                                <option t-att-value="17">
+                                            Bosnia and Herzegovina
+                                        </option>
+                                <option t-att-value="35">
+                                            Botswana
+                                        </option>
+                                <option t-att-value="34">
+                                            Bouvet Island
+                                        </option>
+                                <option t-att-value="31">
+                                            Brazil
+                                        </option>
+                                <option t-att-value="105">
+                                            British Indian Ocean Territory
+                                        </option>
+                                <option t-att-value="28">
+                                            Brunei Darussalam
+                                        </option>
+                                <option t-att-value="22">
+                                            Bulgaria
+                                        </option>
+                                <option t-att-value="21">
+                                            Burkina Faso
+                                        </option>
+                                <option t-att-value="24">
+                                            Burundi
+                                        </option>
+                                <option t-att-value="116">
+                                            Cambodia
+                                        </option>
+                                <option t-att-value="47">
+                                            Cameroon
+                                        </option>
+                                <option t-att-value="38">
+                                            Canada
+                                        </option>
+                                <option t-att-value="52">
+                                            Cape Verde
+                                        </option>
+                                <option t-att-value="123">
+                                            Cayman Islands
+                                        </option>
+                                <option t-att-value="40">
+                                            Central African Republic
+                                        </option>
+                                <option t-att-value="214">
+                                            Chad
+                                        </option>
+                                <option t-att-value="46">
+                                            Chile
+                                        </option>
+                                <option t-att-value="48">
+                                            China
+                                        </option>
+                                <option t-att-value="54">
+                                            Christmas Island
+                                        </option>
+                                <option t-att-value="39">
+                                            Cocos (Keeling) Islands
+                                        </option>
+                                <option t-att-value="49">
+                                            Colombia
+                                        </option>
+                                <option t-att-value="118">
+                                            Comoros
+                                        </option>
+                                <option t-att-value="42">
+                                            Congo
+                                        </option>
+                                <option t-att-value="45">
+                                            Cook Islands
+                                        </option>
+                                <option t-att-value="50">
+                                            Costa Rica
+                                        </option>
+                                <option t-att-value="97">
+                                            Croatia
+                                        </option>
+                                <option t-att-value="51">
+                                            Cuba
+                                        </option>
+                                <option t-att-value="53">
+                                            Curaçao
+                                        </option>
+                                <option t-att-value="55">
+                                            Cyprus
+                                        </option>
+                                <option t-att-value="56">
+                                            Czech Republic
+                                        </option>
+                                <option t-att-value="44">
+                                            Côte d'Ivoire
+                                        </option>
+                                <option t-att-value="41">
+                                            Democratic Republic of the Congo
+                                        </option>
+                                <option t-att-value="59">
+                                            Denmark
+                                        </option>
+                                <option t-att-value="58">
+                                            Djibouti
+                                        </option>
+                                <option t-att-value="60">
+                                            Dominica
+                                        </option>
+                                <option t-att-value="61">
+                                            Dominican Republic
+                                        </option>
+                                <option t-att-value="63">
+                                            Ecuador
+                                        </option>
+                                <option t-att-value="65">
+                                            Egypt
+                                        </option>
+                                <option t-att-value="209">
+                                            El Salvador
+                                        </option>
+                                <option t-att-value="87">
+                                            Equatorial Guinea
+                                        </option>
+                                <option t-att-value="67">
+                                            Eritrea
+                                        </option>
+                                <option t-att-value="64">
+                                            Estonia
+                                        </option>
+                                <option t-att-value="69">
+                                            Ethiopia
+                                        </option>
+                                <option t-att-value="72">
+                                            Falkland Islands
+                                        </option>
+                                <option t-att-value="74">
+                                            Faroe Islands
+                                        </option>
+                                <option t-att-value="71">
+                                            Fiji
+                                        </option>
+                                <option t-att-value="70">
+                                            Finland
+                                        </option>
+                                <option t-att-value="75">
+                                            France
+                                        </option>
+                                <option t-att-value="79">
+                                            French Guiana
+                                        </option>
+                                <option t-att-value="174">
+                                            French Polynesia
+                                        </option>
+                                <option t-att-value="215">
+                                            French Southern Territories
+                                        </option>
+                                <option t-att-value="76">
+                                            Gabon
+                                        </option>
+                                <option t-att-value="84">
+                                            Gambia
+                                        </option>
+                                <option t-att-value="78">
+                                            Georgia
+                                        </option>
+                                <option t-att-value="57">
+                                            Germany
+                                        </option>
+                                <option t-att-value="80">
+                                            Ghana
+                                        </option>
+                                <option t-att-value="81">
+                                            Gibraltar
+                                        </option>
+                                <option t-att-value="88">
+                                            Greece
+                                        </option>
+                                <option t-att-value="83">
+                                            Greenland
+                                        </option>
+                                <option t-att-value="77">
+                                            Grenada
+                                        </option>
+                                <option t-att-value="86">
+                                            Guadeloupe
+                                        </option>
+                                <option t-att-value="91">
+                                            Guam
+                                        </option>
+                                <option t-att-value="90">
+                                            Guatemala
+                                        </option>
+                                <option t-att-value="82">
+                                            Guernsey
+                                        </option>
+                                <option t-att-value="85">
+                                            Guinea
+                                        </option>
+                                <option t-att-value="92">
+                                            Guinea-Bissau
+                                        </option>
+                                <option t-att-value="93">
+                                            Guyana
+                                        </option>
+                                <option t-att-value="98">
+                                            Haiti
+                                        </option>
+                                <option t-att-value="95">
+                                            Heard Island and McDonald Islands
+                                        </option>
+                                <option t-att-value="236">
+                                            Holy See (Vatican City State)
+                                        </option>
+                                <option t-att-value="96">
+                                            Honduras
+                                        </option>
+                                <option t-att-value="94">
+                                            Hong Kong
+                                        </option>
+                                <option t-att-value="99">
+                                            Hungary
+                                        </option>
+                                <option t-att-value="108">
+                                            Iceland
+                                        </option>
+                                <option t-att-value="104">
+                                            India
+                                        </option>
+                                <option t-att-value="100">
+                                            Indonesia
+                                        </option>
+                                <option t-att-value="107">
+                                            Iran
+                                        </option>
+                                <option t-att-value="106">
+                                            Iraq
+                                        </option>
+                                <option t-att-value="101">
+                                            Ireland
+                                        </option>
+                                <option t-att-value="103">
+                                            Isle of Man
+                                        </option>
+                                <option t-att-value="102">
+                                            Israel
+                                        </option>
+                                <option t-att-value="109">
+                                            Italy
+                                        </option>
+                                <option t-att-value="111">
+                                            Jamaica
+                                        </option>
+                                <option t-att-value="113">
+                                            Japan
+                                        </option>
+                                <option t-att-value="110">
+                                            Jersey
+                                        </option>
+                                <option t-att-value="112">
+                                            Jordan
+                                        </option>
+                                <option t-att-value="124">
+                                            Kazakhstan
+                                        </option>
+                                <option t-att-value="114">
+                                            Kenya
+                                        </option>
+                                <option t-att-value="117">
+                                            Kiribati
+                                        </option>
+                                <option t-att-value="250">
+                                            Kosovo
+                                        </option>
+                                <option t-att-value="122">
+                                            Kuwait
+                                        </option>
+                                <option t-att-value="115">
+                                            Kyrgyzstan
+                                        </option>
+                                <option t-att-value="125">
+                                            Laos
+                                        </option>
+                                <option t-att-value="134">
+                                            Latvia
+                                        </option>
+                                <option t-att-value="126">
+                                            Lebanon
+                                        </option>
+                                <option t-att-value="131">
+                                            Lesotho
+                                        </option>
+                                <option t-att-value="130">
+                                            Liberia
+                                        </option>
+                                <option t-att-value="135">
+                                            Libya
+                                        </option>
+                                <option t-att-value="128">
+                                            Liechtenstein
+                                        </option>
+                                <option t-att-value="132">
+                                            Lithuania
+                                        </option>
+                                <option t-att-value="133">
+                                            Luxembourg
+                                        </option>
+                                <option t-att-value="147">
+                                            Macau
+                                        </option>
+                                <option t-att-value="143">
+                                            Macedonia, the former Yugoslav Republic of
+                                        </option>
+                                <option t-att-value="141">
+                                            Madagascar
+                                        </option>
+                                <option t-att-value="155">
+                                            Malawi
+                                        </option>
+                                <option t-att-value="157">
+                                            Malaysia
+                                        </option>
+                                <option t-att-value="154">
+                                            Maldives
+                                        </option>
+                                <option t-att-value="144">
+                                            Mali
+                                        </option>
+                                <option t-att-value="152">
+                                            Malta
+                                        </option>
+                                <option t-att-value="142">
+                                            Marshall Islands
+                                        </option>
+                                <option t-att-value="149">
+                                            Martinique
+                                        </option>
+                                <option t-att-value="150">
+                                            Mauritania
+                                        </option>
+                                <option t-att-value="153">
+                                            Mauritius
+                                        </option>
+                                <option t-att-value="246">
+                                            Mayotte
+                                        </option>
+                                <option t-att-value="156">
+                                            Mexico
+                                        </option>
+                                <option t-att-value="73">
+                                            Micronesia
+                                        </option>
+                                <option t-att-value="138">
+                                            Moldova
+                                        </option>
+                                <option t-att-value="137">
+                                            Monaco
+                                        </option>
+                                <option t-att-value="146">
+                                            Mongolia
+                                        </option>
+                                <option t-att-value="139">
+                                            Montenegro
+                                        </option>
+                                <option t-att-value="151">
+                                            Montserrat
+                                        </option>
+                                <option t-att-value="136">
+                                            Morocco
+                                        </option>
+                                <option t-att-value="158">
+                                            Mozambique
+                                        </option>
+                                <option t-att-value="145">
+                                            Myanmar
+                                        </option>
+                                <option t-att-value="159">
+                                            Namibia
+                                        </option>
+                                <option t-att-value="168">
+                                            Nauru
+                                        </option>
+                                <option t-att-value="167">
+                                            Nepal
+                                        </option>
+                                <option t-att-value="165">
+                                            Netherlands
+                                        </option>
+                                <option t-att-value="160">
+                                            New Caledonia
+                                        </option>
+                                <option t-att-value="170">
+                                            New Zealand
+                                        </option>
+                                <option t-att-value="164">
+                                            Nicaragua
+                                        </option>
+                                <option t-att-value="161">
+                                            Niger
+                                        </option>
+                                <option t-att-value="163">
+                                            Nigeria
+                                        </option>
+                                <option t-att-value="169">
+                                            Niue
+                                        </option>
+                                <option t-att-value="162">
+                                            Norfolk Island
+                                        </option>
+                                <option t-att-value="120">
+                                            North Korea
+                                        </option>
+                                <option t-att-value="148">
+                                            Northern Mariana Islands
+                                        </option>
+                                <option t-att-value="166">
+                                            Norway
+                                        </option>
+                                <option t-att-value="171">
+                                            Oman
+                                        </option>
+                                <option t-att-value="177">
+                                            Pakistan
+                                        </option>
+                                <option t-att-value="184">
+                                            Palau
+                                        </option>
+                                <option t-att-value="172">
+                                            Panama
+                                        </option>
+                                <option t-att-value="175">
+                                            Papua New Guinea
+                                        </option>
+                                <option t-att-value="185">
+                                            Paraguay
+                                        </option>
+                                <option t-att-value="173">
+                                            Peru
+                                        </option>
+                                <option t-att-value="176">
+                                            Philippines
+                                        </option>
+                                <option t-att-value="180">
+                                            Pitcairn Islands
+                                        </option>
+                                <option t-att-value="178">
+                                            Poland
+                                        </option>
+                                <option t-att-value="183">
+                                            Portugal
+                                        </option>
+                                <option t-att-value="181">
+                                            Puerto Rico
+                                        </option>
+                                <option t-att-value="186">
+                                            Qatar
+                                        </option>
+                                <option t-att-value="188">
+                                            Romania
+                                        </option>
+                                <option t-att-value="190">
+                                            Russian Federation
+                                        </option>
+                                <option t-att-value="191">
+                                            Rwanda
+                                        </option>
+                                <option t-att-value="187">
+                                            Réunion
+                                        </option>
+                                <option t-att-value="26">
+                                            Saint Barthélémy
+                                        </option>
+                                <option t-att-value="198">
+                                            Saint Helena, Ascension and Tristan da Cunha
+                                        </option>
+                                <option t-att-value="119">
+                                            Saint Kitts and Nevis
+                                        </option>
+                                <option t-att-value="127">
+                                            Saint Lucia
+                                        </option>
+                                <option t-att-value="140">
+                                            Saint Martin (French part)
+                                        </option>
+                                <option t-att-value="179">
+                                            Saint Pierre and Miquelon
+                                        </option>
+                                <option t-att-value="237">
+                                            Saint Vincent and the Grenadines
+                                        </option>
+                                <option t-att-value="244">
+                                            Samoa
+                                        </option>
+                                <option t-att-value="203">
+                                            San Marino
+                                        </option>
+                                <option t-att-value="192">
+                                            Saudi Arabia
+                                        </option>
+                                <option t-att-value="204">
+                                            Senegal
+                                        </option>
+                                <option t-att-value="189">
+                                            Serbia
+                                        </option>
+                                <option t-att-value="194">
+                                            Seychelles
+                                        </option>
+                                <option t-att-value="202">
+                                            Sierra Leone
+                                        </option>
+                                <option t-att-value="197">
+                                            Singapore
+                                        </option>
+                                <option t-att-value="210">
+                                            Sint Maarten (Dutch part)
+                                        </option>
+                                <option t-att-value="201">
+                                            Slovakia
+                                        </option>
+                                <option t-att-value="199">
+                                            Slovenia
+                                        </option>
+                                <option t-att-value="193">
+                                            Solomon Islands
+                                        </option>
+                                <option t-att-value="205">
+                                            Somalia
+                                        </option>
+                                <option t-att-value="247">
+                                            South Africa
+                                        </option>
+                                <option t-att-value="89">
+                                            South Georgia and the South Sandwich Islands
+                                        </option>
+                                <option t-att-value="121">
+                                            South Korea
+                                        </option>
+                                <option t-att-value="207">
+                                            South Sudan
+                                        </option>
+                                <option t-att-value="68">
+                                            Spain
+                                        </option>
+                                <option t-att-value="129">
+                                            Sri Lanka
+                                        </option>
+                                <option t-att-value="182">
+                                            State of Palestine
+                                        </option>
+                                <option t-att-value="195">
+                                            Sudan
+                                        </option>
+                                <option t-att-value="206">
+                                            Suriname
+                                        </option>
+                                <option t-att-value="200">
+                                            Svalbard and Jan Mayen
+                                        </option>
+                                <option t-att-value="212">
+                                            Swaziland
+                                        </option>
+                                <option t-att-value="196">
+                                            Sweden
+                                        </option>
+                                <option t-att-value="43">
+                                            Switzerland
+                                        </option>
+                                <option t-att-value="211">
+                                            Syria
+                                        </option>
+                                <option t-att-value="208">
+                                            São Tomé and Príncipe
+                                        </option>
+                                <option t-att-value="227">
+                                            Taiwan
+                                        </option>
+                                <option t-att-value="218">
+                                            Tajikistan
+                                        </option>
+                                <option t-att-value="228">
+                                            Tanzania
+                                        </option>
+                                <option t-att-value="217">
+                                            Thailand
+                                        </option>
+                                <option t-att-value="223">
+                                            Timor-Leste
+                                        </option>
+                                <option t-att-value="216">
+                                            Togo
+                                        </option>
+                                <option t-att-value="219">
+                                            Tokelau
+                                        </option>
+                                <option t-att-value="222">
+                                            Tonga
+                                        </option>
+                                <option t-att-value="225">
+                                            Trinidad and Tobago
+                                        </option>
+                                <option t-att-value="221">
+                                            Tunisia
+                                        </option>
+                                <option t-att-value="224">
+                                            Turkey
+                                        </option>
+                                <option t-att-value="220">
+                                            Turkmenistan
+                                        </option>
+                                <option t-att-value="213">
+                                            Turks and Caicos Islands
+                                        </option>
+                                <option t-att-value="226">
+                                            Tuvalu
+                                        </option>
+                                <option t-att-value="232">
+                                            USA Minor Outlying Islands
+                                        </option>
+                                <option t-att-value="230">
+                                            Uganda
+                                        </option>
+                                <option t-att-value="229">
+                                            Ukraine
+                                        </option>
+                                <option t-att-value="2">
+                                            United Arab Emirates
+                                        </option>
+                                <option t-att-value="231">
+                                            United Kingdom
+                                        </option>
+                                <option t-att-value="233">
+                                            United States
+                                        </option>
+                                <option t-att-value="234">
+                                            Uruguay
+                                        </option>
+                                <option t-att-value="235">
+                                            Uzbekistan
+                                        </option>
+                                <option t-att-value="242">
+                                            Vanuatu
+                                        </option>
+                                <option t-att-value="238">
+                                            Venezuela
+                                        </option>
+                                <option t-att-value="241">
+                                            Vietnam
+                                        </option>
+                                <option t-att-value="239">
+                                            Virgin Islands (British)
+                                        </option>
+                                <option t-att-value="240">
+                                            Virgin Islands (USA)
+                                        </option>
+                                <option t-att-value="243">
+                                            Wallis and Futuna
+                                        </option>
+                                <option t-att-value="66">
+                                            Western Sahara
+                                        </option>
+                                <option t-att-value="245">
+                                            Yemen
+                                        </option>
+                                <option t-att-value="248">
+                                            Zambia
+                                        </option>
+                                <option t-att-value="249">
+                                            Zimbabwe
+                                        </option>
+                                <option t-att-value="15">
+                                            Åland Islands
+                                        </option>
+                              </select>
+                            </td>
+                            <td style="padding-left:15px;width:30%;">
+                            <!-- <select class="form-control o_website_form_input" name="races" t-att-value="applicant.races.id">
+                                <option t-att-value="1">
+                                            Chinese
+                                        </option>
+                                <option t-att-value="2">
+                                            Malay
+                                        </option>
+                                <option t-att-value="3">
+                                            Indian
+                                        </option>
+                                <option t-att-value="4">
+                                            Eurasian
+                                        </option>
+                            </select> -->
+                            <select id="races" class="form-control o_website_form_input" name="races">
+                                <!-- <t t-foreach="applicant.races" t-as="r">
+                                    <option t-att-value="r.id"><t t-esc="r.name"/></option>
+                                -->
+                                <t t-foreach="applicant.races or []" t-as="r">
+                                    <option t-att-value="r.id" t-att-selected="r.id == applicant.id"><t t-esc="r.name"/></option>
+                                </t>
+                                <option t-att-value="1">
+                                            Chinese
+                                        </option>
+                                <option t-att-value="2">
+                                            Malay
+                                        </option>
+                                <option t-att-value="3">
+                                            Indian
+                                        </option>
+                                <option t-att-value="4">
+                                            Eurasian
+                                        </option>
+                              
+                            </select> 
+
+
+                            </td>
+                            <td style="padding-left:15px;width:35%;"><input type="text" class="form-control o_website_form_input" name="religion" t-att-value="applicant.religion"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                <tbody>
+                    <tr style="line-height: 35px;width:100%">
+                        <td style="padding-left:15px;width:40%;">Contact Numbers :</td>
+                        <td style="padding-left:15px;width:20%;"></td>
+                        <td style="padding-left:15px;width:40%;"></td>
+                    </tr>
+                    <tr style="line-height: 35px;width:100%">
+                        <td style="padding-left:15px;width:40%;position: relative;"><input type="text" class="form-control o_website_form_input" name="partner_phone" t-att-value="applicant.partner_phone"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Home)</span></td>
+
+                        <td style="padding-left:15px;width:20%;"></td>
+                        <td style="padding-left:15px;width:40%;position: relative;"><input type="text" class="form-control o_website_form_input" name="mobile_no1" t-att-value="applicant.mobile_no1"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Handphone)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:40%;">Address :</td>
+                            <td style="padding-left:15px;width:40%;text-align:right;">* The Address indicated Below is: </td>
+                            <td style="padding-left:15px;width:20%;">
+                            <select id="address_status" class="form-control o_website_form_input" name="address_status">
+                                <t t-if="applicant.address_status == 'owned'">
+                                <option selected="selected" t-attf-value="owned">
+                                            Owned
+                                        </option>
+                                </t>
+                                <t t-if="applicant.address_status != 'owned'">
+                                <option t-attf-value="owned">
+                                            Owned
+                                        </option>
+                                </t>
+                                <t t-if="applicant.address_status == 'rented'">
+                                <option selected="selected" t-attf-value="rented">
+                                            Rented
+                                        </option>
+                                </t>
+                                <t t-if="applicant.address_status != 'rented'">
+                                <option t-attf-value="rented">
+                                            Rented
+                                        </option>
+                                </t>
+                                <t t-if="applicant.address_status == 'relative'">
+                                <option selected="selected" t-attf-value="relative">
+                                            *Relative / Friend Place
+                                        </option>
+                                </t>
+                                <t t-if="applicant.address_status != 'relative'">
+                                <option t-attf-value="relative">
+                                            *Relative / Friend Place
+                                        </option>
+                                </t>
+                            </select> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%;padding-left:15px;">
+                            <td style="padding-left:15px;width:100%;"><textarea class="form-control o_website_form_input" name="address" t-esc="address"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:50%;">*Nationality :</td>
+                            <td style="padding-left:15px;width:50%;">Email Address (if any) :</td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:50%;">
+                            <select id="nationality" class="form-control o_website_form_input" name="nationality">
+                                <t t-if="applicant.nationality == 'singaporean'">
+                                <option selected="selected" t-attf-value="singaporean">
+                                            Singaporean
+                                        </option>
+                                </t>
+                                <t t-if="applicant.nationality != 'singaporean'">
+                                <option t-attf-value="singaporean">
+                                            Singaporean
+                                        </option>
+                                </t>
+                                <t t-if="applicant.nationality == 'pr'">
+                                <option selected="selected" t-attf-value="pr">
+                                            Singapore PR
+                                        </option>
+                                </t>
+                                <t t-if="applicant.nationality != 'pr'">
+                                <option t-attf-value="pr">
+                                            Singapore PR
+                                        </option>
+                                </t>
+                                <t t-if="applicant.nationality == 'malaysian'">
+                                <option selected="selected" t-attf-value="malaysian">
+                                            Malaysian
+                                        </option>
+                                </t>
+                                <t t-if="applicant.nationality != 'malaysian'">
+                                <option t-attf-value="malaysian">
+                                            Malaysian
+                                        </option>
+                                </t>
+                                <t t-if="applicant.nationality == 'others'">
+                                <option selected="selected" t-attf-value="others">
+                                            Malaysian
+                                        </option>
+                                </t>
+                                <t t-if="applicant.nationality != 'others'">
+                                <option t-attf-value="others">
+                                            Others
+                                        </option>
+                                </t>
+                            </select> 
+                            </td>
+                            <td style="padding-left:15px;width:50%;"><input type="text" class="form-control o_website_form_input" name="email"/></td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:50%;">
+                                If other nationality: <input type="text" class="form-control o_website_form_input" name="nationality_other"/>
+                            </td>
+                            <td style="padding-left:15px;width:50%;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="row" style="page-break-after: always;">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:20%;">Gender :</td>
+                            <td style="padding-left:15px;width:40%;">Marital Status :</td>
+                            <td style="padding-left:15px;width:40%;">Driving License :</td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="width:20%;">
+                                    <select id="gender" class="form-control o_website_form_input" name="gender">
+                                        <t t-if="applicant.gender == 'male'">
+                                        <option selected="selected" t-attf-value="male">
+                                                    Male
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.gender != 'male'">
+                                        <option t-attf-value="singaporean">
+                                                    Male
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.gender == 'female'">
+                                        <option selected="selected" t-attf-value="female">
+                                                    Female
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.gender != 'female'">
+                                        <option t-attf-value="female">
+                                                    Female
+                                                </option>
+                                        </t>
+                                    </select> 
+                            </td>
+                            <td style="width:40%;">
+
+                                <select id="marital_status" class="form-control o_website_form_input" name="marital_status">
+                                        <t t-if="applicant.marital_status == 'single'">
+                                        <option selected="selected" t-attf-value="single">
+                                                    Single
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.marital_status != 'single'">
+                                        <option t-attf-value="single">
+                                                    Single
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.marital_status == 'married'">
+                                        <option selected="selected" t-attf-value="married">
+                                                    Married
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.marital_status != 'married'">
+                                        <option t-attf-value="married">
+                                                    Married
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.marital_status == 'divorced'">
+                                        <option selected="selected" t-attf-value="divorced">
+                                                    Divorced
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.marital_status != 'divorced'">
+                                        <option t-attf-value="divorced">
+                                                    Divorced
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.marital_status == 'widowed'">
+                                        <option selected="selected" t-attf-value="widowed">
+                                                    Widowed
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.marital_status != 'widowed'">
+                                        <option t-attf-value="widowed">
+                                                    Widowed
+                                                </option>
+                                        </t>
+                                    </select>
+                            </td>
+                            <td style="width:40%;">
+
+                                <select id="driving_license" class="form-control o_website_form_input" name="driving_license">
+                                        <t t-if="applicant.driving_license == 'class3'">
+                                        <option selected="selected" t-attf-value="class3">
+                                                    Class 3
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.driving_license != 'class3'">
+                                        <option t-attf-value="class3">
+                                                    Class 3
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.driving_license == 'class2'">
+                                        <option selected="selected" t-attf-value="class2">
+                                                    Class 2 / 2A / 2B
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.driving_license != 'class2'">
+                                        <option t-attf-value="class2">
+                                                    Class 2 / 2A / 2B
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.driving_license == 'no'">
+                                        <option selected="selected" t-attf-value="no">
+                                                    Nil
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.driving_license != 'no'">
+                                        <option t-attf-value="no">
+                                                    Nil
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.driving_license == 'others'">
+                                        <option selected="selected" t-attf-value="others">
+                                                    Others
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.driving_license != 'others'">
+                                        <option t-attf-value="others">
+                                                    Others
+                                                </option>
+                                        </t>
+                                    </select>
+                            </td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:20%;"></td>
+                            <td style="padding-left:15px;width:40%;"></td>
+                            <td style="padding-left:15px;width:40%;">Other Driving License : <input type="text" class="form-control o_website_form_input" name="driving_license_other"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div class="row" style="border-top:1px solid;">
+                <span style="font-size:20px;padding-left:15px;"><b>(B) PERSON TO CONTACT IN THE EVENT OF AN EMERGENCY</b></span>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                <tbody>
+                    <tr style="line-height: 35px;width:100%">
+                        <td style="padding-left:15px;width:60%;">Name :</td>
+                        <td style="padding-left:15px;width:40%;">Relationship :</td>
+                    </tr>
+                    <tr style="line-height: 35px;width:100%">
+                        <td style="padding-left:15px;width:60%;">
+                            <input type="text" class="form-control o_website_form_input" name="emergency_name" step="any" t-att-value="applicant.emergency_name"/>
+                        </td>
+                        <td style="padding-left:15px;width:40%;">
+                            <input type="text" class="form-control o_website_form_input" name="emergency_relation" step="any" t-att-value="applicant.emergency_relation"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                <tbody>
+                    <tr style="line-height: 35px;width:100%">
+                        <td style="padding-left:15px;width:40%;">Contact Numbers :</td>
+                        <td style="padding-left:15px;width:20%;"></td>
+                        <td style="padding-left:15px;width:40%;"></td>
+                    </tr>
+                    <tr style="line-height: 35px;width:100%">
+                        <td style="padding-left:15px;width:40%;position: relative;"><input type="text" class="form-control o_website_form_input" name="emergency_phone_no" t-att-value="applicant.emergency_phone_no"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Home)</span></td>
+
+                        <td style="padding-left:15px;width:20%;"></td>
+                        <td style="padding-left:15px;width:40%;position: relative;"><input type="text" class="form-control o_website_form_input" name="emergency_mobile_no" t-att-value="applicant.emergency_mobile_no"/><span style="position: absolute;bottom: 0;right: 0;text-align:right;vertical-align:bottom;padding-right:10px;">(Handphone)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:100%;">Address :</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%;padding-left:15px;">
+                            <td style="padding-left:15px;width:100%;"><textarea class="form-control o_website_form_input" name="emergency_address" t-esc="emergency_address"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div class="row" style="border-top:1px solid;">
+                <span style="font-size:20px;padding-left:15px;"><b>(C) EDUCATIONAL BACKGROUND</b></span>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:40%;">School</td>
+                            <td style="padding-left:15px;width:40%;">Highest Qualification Attained</td>
+                            <td style="padding-left:15px;width:10%;">Year</td>
+                            <td style="padding-left:15px;width:10%;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <t t-call="ov_ats.ov_ats_applicants_school" />
+
+            <br/>
+            <div class="row" style="border-top:1px solid;">
+                <span style="font-size:20px;padding-left:15px;"><b>(D) NATIONAL SERVICE (IF APPLICABLE)</b></span>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:60%;">* SAF / SPF / SCDF</td>
+                            <td style="padding-left:15px;width:40%;">If you have not served NS, please state reason</td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%;">
+                            <td style="padding-left:15px;width:60%;">
+
+                                <select id="nationalservice" class="form-control o_website_form_input" name="nationalservice">
+                                        <t t-if="applicant.nationalservice == 'saf'">
+                                        <option selected="selected" t-attf-value="saf">
+                                                    SAF
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.nationalservice != 'saf'">
+                                        <option t-attf-value="saf">
+                                                    SAF
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.nationalservice == 'spf'">
+                                        <option selected="selected" t-attf-value="spf">
+                                                    SPF
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.nationalservice != 'spf'">
+                                        <option t-attf-value="spf">
+                                                    SPF
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.nationalservice == 'scdf'">
+                                        <option selected="selected" t-attf-value="scdf">
+                                                    SCDF
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.nationalservice != 'scdf'">
+                                        <option t-attf-value="scdf">
+                                                    SCDF
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.nationalservice == 'nil'">
+                                        <option selected="selected" t-attf-value="nil">
+                                                    Not Served
+                                                </option>
+                                        </t>
+                                        <t t-if="applicant.nationalservice != 'nil'">
+                                        <option t-attf-value="nil">
+                                                    Not Served
+                                                </option>
+                                        </t>
+                                    </select>
+                            </td>
+                            <td style="padding-left:15px;width:40%;">
+                                <textarea class="form-control o_website_form_input" name="ns_reason" t-field="applicant.ns_reason"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%;">
+                            <td style="padding-left:15px;width:50%;">Rank</td>
+                            <td style="padding-left:15px;width:50%;">PES Grading</td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%;">
+                            <td style="padding-left:15px;width:50%;">
+                                <input type="text" class="form-control o_website_form_input" name="rank" t-att-value="applicant.rank"/>
+                            </td>
+                            <td style="padding-left:15px;width:50%;">
+                                <input type="text" class="form-control o_website_form_input" name="pes_grading" t-att-value="applicant.pes_grading"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br/>
+            <div class="row" style="border-top:1px solid;">
+                <span style="font-size:20px;padding-left:15px;"><b>(E) COMPUTER LITERACY</b></span>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:60%;">Microsoft Words</td>
+                            <td style="padding-left:15px;width:40%;">
+                                <select id="m_words" class="form-control o_website_form_input" name="m_words">
+                                    <t t-if="applicant.m_words == 'nil'">
+                                    <option selected="selected" t-attf-value="nil">
+                                                Nil
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_words != 'nil'">
+                                    <option t-attf-value="nil">
+                                                Nil
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_words == 'basic'">
+                                    <option selected="selected" t-attf-value="basic">
+                                                Basic
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_words != 'basic'">
+                                    <option t-attf-value="basic">
+                                                Basic
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_words == 'intermediate'">
+                                    <option selected="selected" t-attf-value="intermediate">
+                                                Intermediate
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_words != 'intermediate'">
+                                    <option t-attf-value="intermediate">
+                                                Intermediate
+                                            </option>
+                                    </t>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:60%;">Microsoft Excel</td>
+                            <td style="padding-left:15px;width:40%;">
+                                <select id="m_excel" class="form-control o_website_form_input" name="m_excel">
+                                    <t t-if="applicant.m_excel == 'nil'">
+                                    <option selected="selected" t-attf-value="nil">
+                                                Nil
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_excel != 'nil'">
+                                    <option t-attf-value="nil">
+                                                Nil
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_excel == 'basic'">
+                                    <option selected="selected" t-attf-value="basic">
+                                                Basic
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_excel != 'basic'">
+                                    <option t-attf-value="basic">
+                                                Basic
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_excel == 'intermediate'">
+                                    <option selected="selected" t-attf-value="intermediate">
+                                                Intermediate
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_excel != 'intermediate'">
+                                    <option t-attf-value="intermediate">
+                                                Intermediate
+                                            </option>
+                                    </t>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:60%;">Microsoft Outlook</td>
+                            <td style="padding-left:15px;width:40%;">
+                                <select id="m_outlook" class="form-control o_website_form_input" name="m_outlook">
+                                    <t t-if="applicant.m_outlook == 'nil'">
+                                    <option selected="selected" t-attf-value="nil">
+                                                Nil
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_outlook != 'nil'">
+                                    <option t-attf-value="nil">
+                                                Nil
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_outlook == 'basic'">
+                                    <option selected="selected" t-attf-value="basic">
+                                                Basic
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_outlook != 'basic'">
+                                    <option t-attf-value="basic">
+                                                Basic
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_outlook == 'intermediate'">
+                                    <option selected="selected" t-attf-value="intermediate">
+                                                Intermediate
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_outlook != 'intermediate'">
+                                    <option t-attf-value="intermediate">
+                                                Intermediate
+                                            </option>
+                                    </t>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:60%;">Microsoft Power Point</td>
+                            <td style="padding-left:15px;width:40%;">
+                                <select id="m_powerpoint" class="form-control o_website_form_input" name="m_powerpoint">
+                                    <t t-if="applicant.m_powerpoint == 'nil'">
+                                    <option selected="selected" t-attf-value="nil">
+                                                Nil
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_powerpoint != 'nil'">
+                                    <option t-attf-value="nil">
+                                                Nil
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_powerpoint == 'basic'">
+                                    <option selected="selected" t-attf-value="basic">
+                                                Basic
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_powerpoint != 'basic'">
+                                    <option t-attf-value="basic">
+                                                Basic
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_powerpoint == 'intermediate'">
+                                    <option selected="selected" t-attf-value="intermediate">
+                                                Intermediate
+                                            </option>
+                                    </t>
+                                    <t t-if="applicant.m_powerpoint != 'intermediate'">
+                                    <option t-attf-value="intermediate">
+                                                Intermediate
+                                            </option>
+                                    </t>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br/>
+            <div class="row" style="border-top:1px solid;">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:40%;"><span style="font-size:20px;"><b>(F) LANGUAGE(S)</b></span></td>
+                            <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"><b>* SPOKEN</b></span></td>
+                            <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"><b>* WRITTEN</b></span></td>
+                            <td style="padding-left:15px;width:10%;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <t t-call="ov_ats.ov_ats_applicants_languages" />
+
+            <br/>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody>
+                        <tr style="line-height: 35px;width:100%">
+                            <td style="padding-left:15px;width:50%;"><span style="font-size:20px;"><b>DIALECT(S)</b></span></td>
+                            <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"><b>* SPOKEN</b></span></td>
+                            <td style="padding-left:15px;width:25%;"><span style="font-size:20px;"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <t t-call="ov_ats.ov_ats_applicants_dialect" />
+
+
+            <br/>
+            <div class="row" style="border-top:1px solid;">
+                <span style="font-size:20px;padding-left:15px;"><b>(G) CAREER HISTORY</b></span>
+            </div>
+            <div class="row">
+                <table style="border:0px;width:100%;">
+                    <tbody id="buildyourform4">
+                        <tr style="line-height: 35px;width:100%;">
+                            <td style="padding-left:15px;width:13%;"><span>From</span></td>
+                            <td style="padding-left:15px;width:13%;"><span>To</span></td>
+                            <td style="padding-left:15px;width:20%;"><span>Company Name</span></td>
+                            <td style="padding-left:15px;width:20%;"><span>Position Held</span></td>
+                            <td style="padding-left:15px;width:10%;"><span>Gross Salary</span></td>
+                            <td style="padding-left:15px;width:20%;"><span>Reason Leave</span></td>
+                            <td style="padding-left:15px;width:4%;"></td>
+                        </tr>
+                        <t t-foreach="applicant.careerhistory_ids" t-as="ch">
+                        <tr style="line-height: 35px;width:100%">
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="applicant_id" t-att-value="applicant.id"/>
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="ch_id" t-att-value="ch.id"/>
+
+                            <td style="padding-left:15px;width:13%;">
+                            <div class="o_website_form_date input-group date" id="datepicker3" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input o_website_form_input" data-target="#datepicker3" name="date_from"/>
+                                <div class="input-group-append" data-target="#datepicker3" data-toggle="datetimepicker">
+                                  <div class="input-group-text">
+                                    <i class="fa fa-calendar"/>
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                            <td style="padding-left:15px;width:13%;">
+                                <div class="o_website_form_date input-group date" id="datepicker4" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input o_website_form_input" data-target="#datepicker4" name="date_to"/>
+                                    <div class="input-group-append" data-target="#datepicker4" data-toggle="datetimepicker">
+                                      <div class="input-group-text">
+                                        <i class="fa fa-calendar"/>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </td>
+                            <td style="padding-left:15px;width:20%;"><input type="text" class="form-control o_website_form_input fieldname" t-att-value="ch.name"/></td>
+                            <td style="padding-left:15px;width:20%;"><input type="text" class="form-control o_website_form_input fieldname" t-att-value="ch.position_held"/></td>
+                            <td style="padding-left:15px;width:10%;"><input type="text" class="form-control o_website_form_input fieldname" t-att-value="ch.gross_sal"/></td>
+                            <td style="padding-left:15px;width:20%;" colspan="6"><textarea type="text" class="form-control o_website_form_input fieldname" t-att-value="ch.reason_leave"/></td>
+                            <td style="padding-left:15px;width:4%;">
+                                <t t-call="ov_ats.link_button">
+                                <t t-set="url" t-value="'/ats/applicant/' + slug(applicant) + '/careerhistory/' + slug(ch) + '/delete'"/>
+                                <t t-set="label">Delete</t>
+                                <t t-set="classes" t-value="'fa-trash-o'"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                    </tbody>
+                </table>
+                <div class="col-md-4"></div>
+                <div class="col-md-4" align="center"><input type="button" value="Add" class="add btn" id="add4"/></div>
+                <div class="col-md-4"></div>
+            </div>
+
+                        <br/>
+                        <div class="row" style="border-top:1px solid;">
+                            <span style="font-size:20px;padding-left:15px;"><b>(H) OTHER INFORMATION</b></span>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>How do you learn of this post?</span></td>
+                                        <td style="padding-left:15px;width:40%;">
+                                            <select id="post_source" class="form-control o_website_form_input" name="post_source">
+                                                <t t-if="applicant.post_source == 'newspaper_advertisement'">
+                                                <option selected="selected" t-attf-value="newspaper_advertisement">
+                                                            Newspaper Advertisement
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.post_source != 'newspaper_advertisement'">
+                                                <option t-attf-value="newspaper_advertisement">
+                                                            Newspaper Advertisement
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.post_source == 'word_of_mouth'">
+                                                <option selected="selected" t-attf-value="word_of_mouth">
+                                                            Word of Mouth
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.post_source != 'word_of_mouth'">
+                                                <option t-attf-value="word_of_mouth">
+                                                            Word of Mouth
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.post_source == 'website'">
+                                                <option selected="selected" t-attf-value="website">
+                                                            Website
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.post_source != 'website'">
+                                                <option t-attf-value="website">
+                                                            Website
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.post_source == 'osp'">
+                                                <option selected="selected" t-attf-value="osp">
+                                                            One Stop Security Platform
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.post_source != 'osp'">
+                                                <option t-attf-value="osp">
+                                                            One Stop Security Platform
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.post_source == 'others'">
+                                                <option selected="selected" t-attf-value="others">
+                                                            Others
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.post_source != 'others'">
+                                                <option t-attf-value="others">
+                                                            Others
+                                                        </option>
+                                                </t>
+                                            </select>
+                                            State if from other post:
+                                            <input type="text" class="form-control o_website_form_input fieldname" t-att-value="applicant.post_other"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Have you ever applied for employment or worked before with William Security Services / William Secure Solutions?</span></td>
+                                        <td style="padding-left:15px;width:40%;">
+                                            <select id="wss_applied" class="form-control o_website_form_input" name="wss_applied">
+                                                <t t-if="applicant.wss_applied == 'yes'">
+                                                <option selected="selected" t-attf-value="yes">
+                                                            Yes
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.wss_applied != 'yes'">
+                                                <option t-attf-value="yes">
+                                                            Yes
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.wss_applied == 'no'">
+                                                <option selected="selected" t-attf-value="no">
+                                                            No
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.wss_applied != 'no'">
+                                                <option t-attf-value="no">
+                                                            No
+                                                        </option>
+                                                </t>
+                                            </select>
+                                            Please state when and where:
+                                            <input type="text" class="form-control o_website_form_input fieldname" t-att-value="applicant.wss_applied_other"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Do you smoke?</span></td>
+                                        <td style="padding-left:15px;width:40%;">
+                                            <select id="smoke" class="form-control o_website_form_input" name="smoke">
+                                                <t t-if="applicant.smoke == 'yes'">
+                                                <option selected="selected" t-attf-value="yes">
+                                                            Yes
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.smoke != 'yes'">
+                                                <option t-attf-value="yes">
+                                                            Yes
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.smoke == 'no'">
+                                                <option selected="selected" t-attf-value="no">
+                                                            No
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.smoke != 'no'">
+                                                <option t-attf-value="no">
+                                                            No
+                                                        </option>
+                                                </t>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Shift Preference?</span></td>
+                                        <td style="padding-left:15px;width:40%;">
+                                            <select id="shift_preferences" class="form-control o_website_form_input" name="shift_preferences">
+                                                <t t-if="applicant.shift_preferences == 'day'">
+                                                <option selected="selected" t-attf-value="day">
+                                                            Day
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.shift_preferences != 'day'">
+                                                <option t-attf-value="day">
+                                                            Day
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.shift_preferences == 'night'">
+                                                <option selected="selected" t-attf-value="night">
+                                                            Night
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.shift_preferences != 'night'">
+                                                <option t-attf-value="night">
+                                                            Night
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.shift_preferences == 'none'">
+                                                <option selected="selected" t-attf-value="none">
+                                                            Night
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.shift_preferences != 'none'">
+                                                <option t-attf-value="none">
+                                                            Night
+                                                        </option>
+                                                </t>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <table style="border:0px;width:100%;">
+                                <tbody>
+                                    <tr style="line-height: 35px;width:100%;">
+                                        <td style="padding-left:15px;width:60%;"><span>Do you have any friends / relatives working with William Security Services?</span></td>
+                                        <td style="padding-left:15px;width:40%;">
+                                            <select id="friend_relative" class="form-control o_website_form_input" name="friend_relative">
+                                                <t t-if="applicant.friend_relative == 'yes'">
+                                                <option selected="selected" t-attf-value="yes">
+                                                            Yes
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.friend_relative != 'yes'">
+                                                <option t-attf-value="yes">
+                                                            Yes
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.friend_relative == 'no'">
+                                                <option selected="selected" t-attf-value="no">
+                                                            No
+                                                        </option>
+                                                </t>
+                                                <t t-if="applicant.friend_relative != 'no'">
+                                                <option t-attf-value="no">
+                                                            No
+                                                        </option>
+                                                </t>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+            <div class="row" align="center">
+                <button type="submit" class="btn btn-primary btn-lg">Save</button>
+            </div>
+            
+        </form>
+    </div>
+    </t>
+</template>
+
+<template id="link_button">
+    <form method="POST" t-att-action="url">
+        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+        <button t-attf-class="fa btn btn-link #{classes} ">
+            <t t-esc="label"/></button>
+    </form>
+</template>
+
+<template id="link_button2">
+    <form method="POST" t-att-action="url">
+        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+        <button t-attf-class="fa btn btn-link #{classes} ">
+            <t t-esc="label"/></button>
+    </form>
+</template>
+
+
+<!-- <template id="ov_ats_applicants_career" name="Career History">
+    <div class="row">
+            <table style="border:0px;width:100%;">
+                <tbody>
+                    <t t-foreach="applicant.careerhistory_ids" t-as="ch">
+                        <tr style="line-height: 35px;width:100%">
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="applicant_id" t-att-value="applicant.id"/>
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="ch_id" t-att-value="ch.id"/>
+
+                            <td style="padding-left:15px;width:13%;">
+                            <div class="o_website_form_date input-group date" id="datepicker3" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input o_website_form_input" data-target="#datepicker3" name="date_from"/>
+                                <div class="input-group-append" data-target="#datepicker3" data-toggle="datetimepicker">
+                                  <div class="input-group-text">
+                                    <i class="fa fa-calendar"/>
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                            <td style="padding-left:15px;width:13%;">
+                                <div class="o_website_form_date input-group date" id="datepicker4" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input o_website_form_input" data-target="#datepicker4" name="date_to"/>
+                                    <div class="input-group-append" data-target="#datepicker4" data-toggle="datetimepicker">
+                                      <div class="input-group-text">
+                                        <i class="fa fa-calendar"/>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </td>
+                            <td style="padding-left:15px;width:20%;"><input type="text" class="form-control o_website_form_input fieldname" t-att-value="ch.name"/></td>
+                            <td style="padding-left:15px;width:20%;"><input type="text" class="form-control o_website_form_input fieldname" t-att-value="ch.position_held"/></td>
+                            <td style="padding-left:15px;width:10%;"><input type="text" class="form-control o_website_form_input fieldname" t-att-value="ch.gross_sal"/></td>
+                            <td style="padding-left:15px;width:20%;" colspan="6"><textarea type="text" class="form-control o_website_form_input fieldname" t-att-value="ch.reason_leave"/></td>
+                            <td style="padding-left:15px;width:4%;">
+                                <t t-call="ov_ats.link_button">
+                                <t t-set="url" t-value="'/ats/applicant/' + slug(applicant) + '/careerhistory/' + slug(ch) + '/delete'"/>
+                                <t t-set="label">Delete</t>
+                                <t t-set="classes" t-value="'fa-trash-o'"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <table style="border:0px;width:100%;">
+                <tbody id="buildyourform4">
+                </tbody>
+            </table>
+            <div class="col-md-4"></div>
+            <div class="col-md-4" align="center"><input type="button" value="Add" class="add btn" id="add4"/></div>
+            <div class="col-md-4"></div>
+    </div>
+</template> -->
+
+
+<template id="ov_ats_applicants_school" name="School">
+    <div class="row">
+            <table style="border:0px;width:100%;">
+                <tbody>
+                    <t t-foreach="applicant.school_ids" t-as="school">
+                        <tr style="line-height: 35px;width:100%">
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="applicant_id" t-att-value="applicant.id"/>
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="school_id" t-att-value="school.id"/>
+                            <td style="padding-left:15px;width:40%;">
+                                <input type="text" class="form-control o_website_form_input fieldname" t-att-value="school.name"/>
+                            </td>
+                            <td style="padding-left:15px;width:40%;">
+                                <input type="text" class="form-control o_website_form_input fieldname" t-att-value="school.hqa"/>
+                            </td>
+                            <td style="padding-left:15px;width:10%;">
+                                <input type="text" class="form-control o_website_form_input fieldname" t-att-value="school.year"/>
+                            </td>
+                            <td style="padding-left:15px;width:10%;">
+                                <t t-call="ov_ats.link_button">
+                                <t t-set="url" t-value="'/ats/applicant/' + slug(applicant) + '/school/' + slug(school) + '/delete'"/>
+                                <t t-set="label">Delete</t>
+                                <t t-set="classes" t-value="'fa-trash-o'"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <table style="border:0px;width:100%;">
+                <tbody id ="buildyourform">
+                </tbody>
+            </table>
+            <div class="col-md-4"></div>
+            <div class="col-md-4" align="center"><input type="button" value="Add" class="add btn" id="add"/></div>
+            <div class="col-md-4"></div>
+    </div>
+</template>
+
+<template id="ov_ats_applicants_languages" name="Languages">
+    <div class="row">
+            <table style="border:0px;width:100%;">
+                <tbody>
+                    <t t-foreach="applicant.lang_ids" t-as="language">
+                        <tr style="line-height: 35px;width:100%">
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="applicant_id" t-att-value="applicant.id"/>
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="language_id" t-att-value="language.id"/>
+                            <td style="padding-left:15px;width:40%;">
+                                <input type="text" class="form-control o_website_form_input fieldname" t-att-value="language.name"/>
+                            </td>
+                            <td style="padding-left:15px;width:25%;">
+                                <select id="proficiency_spoken" class="form-control o_website_form_input" name="language.proficiency_spoken">
+                                    <t t-if="language.proficiency_spoken == 'poor'">
+                                    <option selected="selected" t-attf-value="poor">
+                                                Poor
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_spoken != 'poor'">
+                                    <option t-attf-value="nil">
+                                                Poor
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_spoken == 'fair'">
+                                    <option selected="selected" t-attf-value="fair">
+                                                Fair
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_spoken != 'fair'">
+                                    <option t-attf-value="fair">
+                                                Fair
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_spoken == 'fluent'">
+                                    <option selected="selected" t-attf-value="fluent">
+                                                Fluent
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_spoken != 'fluent'">
+                                    <option t-attf-value="fluent">
+                                                Fluent
+                                            </option>
+                                    </t>
+                                </select>
+                            </td>
+                            <td style="padding-left:15px;width:25%;">
+                                <select id="proficiency_written" class="form-control o_website_form_input" name="language.proficiency_written">
+                                    <t t-if="language.proficiency_written == 'poor'">
+                                    <option selected="selected" t-attf-value="poor">
+                                                Poor
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_written != 'poor'">
+                                    <option t-attf-value="nil">
+                                                Poor
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_written == 'fair'">
+                                    <option selected="selected" t-attf-value="fair">
+                                                Fair
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_written != 'fair'">
+                                    <option t-attf-value="fair">
+                                                Fair
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_written == 'fluent'">
+                                    <option selected="selected" t-attf-value="fluent">
+                                                Fluent
+                                            </option>
+                                    </t>
+                                    <t t-if="language.proficiency_written != 'fluent'">
+                                    <option t-attf-value="fluent">
+                                                Fluent
+                                            </option>
+                                    </t>
+                                </select>
+                            </td>
+                            <td style="padding-left:15px;width:10%;">
+                                <t t-call="ov_ats.link_button2">
+                                <t t-set="url" t-value="'/ats/applicant/' + slug(applicant) + '/language/' + slug(language) + '/delete'"/>
+                                <t t-set="label">Delete</t>
+                                <t t-set="classes" t-value="'fa-trash-o'"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <table style="border:0px;width:100%;">
+                <tbody id ="buildyourform2">
+                </tbody>
+            </table>
+            <div class="col-md-4"></div>
+            <div class="col-md-4" align="center"><input type="button" value="Add" class="add2 btn" id="add2"/></div>
+            <div class="col-md-4"></div>
+    </div>
+</template>
+
+
+<template id="ov_ats_applicants_dialect" name="Dialect">
+    <div class="row">
+            <table style="border:0px;width:100%;">
+                <tbody>
+                    <t t-foreach="applicant.dialect_ids" t-as="dialect">
+                        <tr style="line-height: 35px;width:100%">
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="applicant_id" t-att-value="applicant.id"/>
+                            <input type="hidden" class="form-control o_website_form_input fieldname" name="dialect_id" t-att-value="dialect.id"/>
+                            <td style="padding-left:15px;width:50%;">
+                                <input type="text" class="form-control o_website_form_input fieldname" t-att-value="dialect.name"/>
+                            </td>
+                            <td style="padding-left:15px;width:20%;">
+                                <select id="proficiency_dialect" class="form-control o_website_form_input" name="dialect.proficiency_dialect">
+                                    <t t-if="dialect.proficiency_dialect == 'poor'">
+                                    <option selected="selected" t-attf-value="poor">
+                                                Poor
+                                            </option>
+                                    </t>
+                                    <t t-if="dialect.proficiency_dialect != 'poor'">
+                                    <option t-attf-value="nil">
+                                                Poor
+                                            </option>
+                                    </t>
+                                    <t t-if="dialect.proficiency_dialect == 'fair'">
+                                    <option selected="selected" t-attf-value="fair">
+                                                Fair
+                                            </option>
+                                    </t>
+                                    <t t-if="dialect.proficiency_dialect != 'fair'">
+                                    <option t-attf-value="fair">
+                                                Fair
+                                            </option>
+                                    </t>
+                                    <t t-if="dialect.proficiency_dialect == 'fluent'">
+                                    <option selected="selected" t-attf-value="fluent">
+                                                Fluent
+                                            </option>
+                                    </t>
+                                    <t t-if="dialect.proficiency_dialect != 'fluent'">
+                                    <option t-attf-value="fluent">
+                                                Fluent
+                                            </option>
+                                    </t>
+                                </select>
+                            </td>
+                            <td style="padding-left:15px;width:25%;">
+                                <t t-call="ov_ats.link_button">
+                                <t t-set="url" t-value="'/ats/applicant/' + slug(applicant) + '/dialect/' + slug(dialect) + '/delete'"/>
+                                <t t-set="label">Delete</t>
+                                <t t-set="classes" t-value="'fa-trash-o'"/>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+            <table style="border:0px;width:100%;">
+                <tbody id ="buildyourform3">
+
+                </tbody>
+            </table>
+            <div class="col-md-4"></div>
+            <div class="col-md-4" align="center"><input type="button" value="Add" class="add btn" id="add3"/></div>
+            <div class="col-md-4"></div>
+    </div>
+</template>
+
+</odoo>
+

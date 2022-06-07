@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+
+        <record model="ir.ui.view" id="ov_races_form_view">
+            <field name="name">ov.races.form</field>
+            <field name="model">ov.races</field>
+            <field name="arch" type="xml">
+                <form string="Race">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_races_tree_view">
+            <field name="name">ov.races.tree</field>
+            <field name="model">ov.races</field>
+            <field name="arch" type="xml">
+                <tree string="Races">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_races" model="ir.actions.act_window">
+            <field name="name">Races</field>
+            <field name="res_model">ov.races</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_races" name="Races"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_races" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+
+        <record model="ir.ui.view" id="ov_daysavail_form_view">
+            <field name="name">ov.daysavail.form</field>
+            <field name="model">ov.daysavail</field>
+            <field name="arch" type="xml">
+                <form string="Days Available">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_daysavail_tree_view">
+            <field name="name">ov.daysavail.tree</field>
+            <field name="model">ov.daysavail</field>
+            <field name="arch" type="xml">
+                <tree string="Days Available">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_daysavail" model="ir.actions.act_window">
+            <field name="name">Days Available</field>
+            <field name="res_model">ov.daysavail</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_daysavail" name="Days Available"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_daysavail" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+
+        <record model="ir.ui.view" id="ov_source_form_view">
+            <field name="name">ov.source.form</field>
+            <field name="model">ov.source</field>
+            <field name="arch" type="xml">
+                <form string="Sources">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_source_tree_view">
+            <field name="name">ov.source.tree</field>
+            <field name="model">ov.source</field>
+            <field name="arch" type="xml">
+                <tree string="Sources">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_source" model="ir.actions.act_window">
+            <field name="name">Sources</field>
+            <field name="res_model">ov.source</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_source" name="Sources"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_source" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+
+
+
+        <record model="ir.ui.view" id="ov_shift_preference_form_view">
+            <field name="name">ov.shiftpreference.form</field>
+            <field name="model">ov.shiftpreference</field>
+            <field name="arch" type="xml">
+                <form string="Shift Preference">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="ov_shift_preference_tree_view">
+            <field name="name">ov.shiftpreference.tree</field>
+            <field name="model">ov.shiftpreference</field>
+            <field name="arch" type="xml">
+                <tree string="Shift Preference">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_ov_shift_preference" model="ir.actions.act_window">
+            <field name="name">Shift Preference</field>
+            <field name="res_model">ov.shiftpreference</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_shift_preference" name="Shift Preference"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_ov_shift_preference" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+
+        <record model="ir.ui.view" id="contact_stage_form_view">
+            <field name="name">contact.substage.form</field>
+            <field name="model">contact.substage</field>
+            <field name="arch" type="xml">
+                <form string="Contact Stage">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contact_stage_tree_view">
+            <field name="name">contact.substage.tree</field>
+            <field name="model">contact.substage</field>
+            <field name="arch" type="xml">
+                <tree string="Contact Stage">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>        
+
+        <record id="action_contact_sub_stage" model="ir.actions.act_window">
+            <field name="name">Contact Stage</field>
+            <field name="res_model">contact.substage</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="ov_hr_recruitment_contact_stage" name="Contact Stage"
+            parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_contact_sub_stage" groups="hr_recruitment.group_hr_recruitment_user"/>
+
+</odoo>

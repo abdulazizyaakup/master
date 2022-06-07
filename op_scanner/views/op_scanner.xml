@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend" name="internal_twain" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/op_scanner/static/src/css/op_scanner.css"/>
+                <link href="/op_scanner/static/src/css/prettify.css" type="text/css" rel="stylesheet" />
+                <link href="/op_scanner/static/src/css/style.css" type="text/css" rel="stylesheet" />
+                <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"/>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.2/pdf.min.js"/>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.2/pdf.worker.min.js"/>
+                <!-- <script type="text/javascript" src="/op_scanner/static/src/js/dynamsoft.webtwain.config.js"/>
+                <script type="text/javascript" src="/op_scanner/static/src/js/dynamsoft.webtwain.install.js"/>
+                <script type="text/javascript" src="/op_scanner/static/src/js/dynamsoft.webtwain.initiate.js"/> -->
+                <script type="text/javascript" src="/op_scanner/Resources/dynamsoft.webtwain.config.js"/>
+                <script type="text/javascript" src="/op_scanner/Resources/dynamsoft.webtwain.install.js"/>
+                <script type="text/javascript" src="/op_scanner/Resources/dynamsoft.webtwain.initiate.js"/>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"/>
+                <script type="text/javascript" src="/op_scanner/static/src/js/op_scanner.js"/>
+            </xpath>
+        </template>
+
+        <!-- <template id="assets_backend_twain" name="external_twain">
+            <xpath expr="." position="after">
+                <script type="text/javascript" src="/op_scanner/Resources/dynamsoft.webtwain.config.js"/>
+                <script type="text/javascript" src="/op_scanner/Resources/dynamsoft.webtwain.initiate.js"/>
+                <script type="text/javascript" src="/op_scanner/Resources/addon/dynamsoft.upload.js"/>
+                <script type="text/javascript" src="/op_scanner/Resources/dynamsoft.webtwain.addon.pdf.js"/>
+            </xpath>
+        </template> -->
+
+        <!-- <menuitem id="main_op_scanner_menu" name="Document Scanner" groups="hr_recruitment.group_hr_recruitment_user" web_icon="op_scanner,static/description/icon.png" sequence="75"/> -->
+
+        <!-- <menuitem id="op_scanner_menu" name="Document Scanner"
+            parent="main_op_scanner_menu" /> -->
+
+        <record id="action_op_scanner_page" model="ir.actions.client">
+            <field name="name">Scan Document</field>
+            <field name="tag">twain_scanner</field>
+            <!-- <field name="target">new</field> -->
+        </record>
+
+        <!-- <menuitem id="op_scanner" name="Scanner" parent="op_scanner_menu"
+            action="action_op_scanner_page"/> -->
+
+
+<!--         <record model="ir.ui.view" id="op_scanner_tree">
+            <field name="name">twain.scanner.tree</field>
+            <field name="model">twain.scanner</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Documents">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="op_scanner_form">
+            <field name="name">twain.scanner.form</field>
+            <field name="model">twain.scanner</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Documents">
+                    <group>
+                        <field name="name" colspan="4"/>
+                        <field name="description"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="op_scanner_action">
+            <field name="name">Documents</field>
+            <field name="res_model">twain.scanner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record> -->
+
+        <!-- <menuitem id="op_scanner_menu" name="Document Scanner"
+            parent="main_op_scanner_menu" /> -->
+
+
+
+        <record model="ir.ui.view" id="op_scanner_tree">
+            <field name="name">twain.scanner.tree</field>
+            <field name="model">twain.scanner</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Documents">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="op_scanner_form">
+            <field name="name">twain.scanner.form</field>
+            <field name="model">twain.scanner</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Documents">
+                    <group>
+                        <field name="name" colspan="4"/>
+                        <field name="description"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="op_scanner_action">
+            <field name="name">Documents</field>
+            <field name="res_model">twain.scanner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- <menuitem id="doc_scan" name="Documents" parent="op_scanner_menu"
+            action="op_scanner_action"/> -->
+
+        <record id="action_op_scanner_page" model="ir.actions.client">
+            <field name="name">Scan Document</field>
+            <field name="tag">twain_scanner</field>
+        </record>
+
+        <!-- <menuitem id="op_scanner" name="Scanner" parent="op_scanner_menu"
+            action="action_op_scanner_page"/> -->
+    </data>
+</odoo>

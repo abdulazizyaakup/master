@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Negative Traits -->
+        <record id="negative_1" model="negative.character">
+            <field name="name">Aggressive</field>
+        </record>
+        <record id="negative_2" model="negative.character">
+            <field name="name">Bitchy</field>
+        </record>
+        <record id="negative_3" model="negative.character">
+            <field name="name">Conservative</field>
+        </record>
+        <record id="negative_4" model="negative.character">
+            <field name="name">Dogmatic</field>
+        </record>
+        <record id="negative_5" model="negative.character">
+            <field name="name">Fussy</field>
+        </record>
+        <record id="negative_6" model="negative.character">
+            <field name="name">Inconsistent</field>
+        </record>
+        <record id="negative_7" model="negative.character">
+            <field name="name">Lazy</field>
+        </record>
+        <record id="negative_8" model="negative.character">
+            <field name="name">Narrow-minded</field>
+        </record>
+        <record id="negative_9" model="negative.character">
+            <field name="name">Quarrelsome</field>
+        </record>
+        <record id="negative_10" model="negative.character">
+            <field name="name">Self-centered</field>
+        </record>
+        <record id="negative_11" model="negative.character">
+            <field name="name">Timid</field>
+        </record>
+        <record id="negative_12" model="negative.character">
+            <field name="name">Vulgar</field>
+        </record>
+        <record id="negative_13" model="negative.character">
+            <field name="name">Aloof</field>
+        </record>
+        <record id="negative_14" model="negative.character">
+            <field name="name">Boastful</field>
+        </record>
+        <record id="negative_15" model="negative.character">
+            <field name="name">Cowardly</field>
+        </record>
+        <record id="negative_16" model="negative.character">
+            <field name="name">Domineering</field>
+        </record>
+        <record id="negative_17" model="negative.character">
+            <field name="name">Grumpy</field>
+        </record>
+        <record id="negative_18" model="negative.character">
+            <field name="name">Indecisive</field>
+        </record>
+        <record id="negative_19" model="negative.character">
+            <field name="name">Opportunist</field>
+        </record>
+        <record id="negative_20" model="negative.character">
+            <field name="name">Nasty</field>
+        </record>
+        <record id="negative_21" model="negative.character">
+            <field name="name">Quick-tempered</field>
+        </record>
+        <record id="negative_22" model="negative.character">
+            <field name="name">Secretive</field>
+        </record>
+        <record id="negative_23" model="negative.character">
+            <field name="name">Untidy</field>
+        </record>
+        <record id="negative_24" model="negative.character">
+            <field name="name">Weaked-willed</field>
+        </record>
+        <record id="negative_25" model="negative.character">
+            <field name="name">Arrogant</field>
+        </record>
+        <record id="negative_26" model="negative.character">
+            <field name="name">Bossy</field>
+        </record>
+        <record id="negative_27" model="negative.character">
+            <field name="name">Cunning</field>
+        </record>
+        <record id="negative_28" model="negative.character">
+            <field name="name">Finicky</field>
+        </record>
+        <record id="negative_29" model="negative.character">
+            <field name="name">Gullible</field>
+        </record>
+        <record id="negative_30" model="negative.character">
+            <field name="name">Inflexible</field>
+        </record>
+        <record id="negative_31" model="negative.character">
+            <field name="name">Materialistic</field>
+        </record>
+        <record id="negative_31" model="negative.character">
+            <field name="name">Obstinate</field>
+        </record>
+        <record id="negative_32" model="negative.character">
+            <field name="name">Rude</field>
+        </record>
+        <record id="negative_33" model="negative.character">
+            <field name="name">Stubborn</field>
+        </record>
+        <record id="negative_34" model="negative.character">
+            <field name="name">Vain</field>
+        </record>
+        <record id="negative_35" model="negative.character">
+            <field name="name">Critical</field>
+        </record>
+        <record id="negative_36" model="negative.character">
+            <field name="name">Belligerent</field>
+        </record>
+        <record id="negative_37" model="negative.character">
+            <field name="name">Careless</field>
+        </record>
+        <record id="negative_38" model="negative.character">
+            <field name="name">Cynical</field>
+        </record>
+        <record id="negative_39" model="negative.character">
+            <field name="name">Flirtatious</field>
+        </record>
+        <record id="negative_40" model="negative.character">
+            <field name="name">Impatient</field>
+        </record>
+        <record id="negative_41" model="negative.character">
+            <field name="name">Irresponsible</field>
+        </record>
+        <record id="negative_42" model="negative.character">
+            <field name="name">Stingy</field>
+        </record>
+        <record id="negative_43" model="negative.character">
+            <field name="name">Pessimistic</field>
+        </record>
+        <record id="negative_44" model="negative.character">
+            <field name="name">Sarcastic</field>
+        </record>
+        <record id="negative_45" model="negative.character">
+            <field name="name">Tactless</field>
+        </record>
+        <record id="negative_46" model="negative.character">
+            <field name="name">Vengeful</field>
+        </record>
+
+        <!-- Positive Traits -->
+        <record id="positive_1" model="positive.character">
+            <field name="name">Adaptable</field>
+        </record>
+        <record id="positive_2" model="positive.character">
+            <field name="name">Friendly</field>
+        </record>
+        <record id="positive_3" model="positive.character">
+            <field name="name">Talkative</field>
+        </record>
+        <record id="positive_4" model="positive.character">
+            <field name="name">Dynamic</field>
+        </record>
+        <record id="positive_5" model="positive.character">
+            <field name="name">Generous</field>
+        </record>
+        <record id="positive_6" model="positive.character">
+            <field name="name">Impartial</field>
+        </record>
+        <record id="positive_7" model="positive.character">
+            <field name="name">Modest</field>
+        </record>
+        <record id="positive_8" model="positive.character">
+            <field name="name">Philosophical</field>
+        </record>
+        <record id="positive_9" model="positive.character">
+            <field name="name">Quiet</field>
+        </record>
+        <record id="positive_10" model="positive.character">
+            <field name="name">Resourceful</field>
+        </record>
+        <record id="positive_11" model="positive.character">
+            <field name="name">Sensitive</field>
+        </record>
+        <record id="positive_12" model="positive.character">
+            <field name="name">Straightforward</field>
+        </record>
+        <record id="positive_13" model="positive.character">
+            <field name="name">Witty</field>
+        </record>
+        <record id="positive_14" model="positive.character">
+            <field name="name">Approachable</field>
+        </record>
+        <record id="positive_15" model="positive.character">
+            <field name="name">Calm</field>
+        </record>
+        <record id="positive_16" model="positive.character">
+            <field name="name">Courteous</field>
+        </record>
+        <record id="positive_17" model="positive.character">
+            <field name="name">Decisive</field>
+        </record>
+        <record id="positive_18" model="positive.character">
+            <field name="name">Helpful</field>
+        </record>
+        <record id="positive_19" model="positive.character">
+            <field name="name">Independent</field>
+        </record>
+        <record id="positive_20" model="positive.character">
+            <field name="name">Optimistic</field>
+        </record>
+        <record id="positive_21" model="positive.character">
+            <field name="name">Practical</field>
+        </record>
+        <record id="positive_22" model="positive.character">
+            <field name="name">Rationale</field>
+        </record>
+        <record id="positive_23" model="positive.character">
+            <field name="name">Confident</field>
+        </record>
+        <record id="positive_24" model="positive.character">
+            <field name="name">Shy</field>
+        </record>
+        <record id="positive_25" model="positive.character">
+            <field name="name">Understanding</field>
+        </record>
+        <record id="positive_26" model="positive.character">
+            <field name="name">Agreeable</field>
+        </record>
+        <record id="positive_27" model="positive.character">
+            <field name="name">Careful</field>
+        </record>
+        <record id="positive_28" model="positive.character">
+            <field name="name">Hardworking</field>
+        </record>
+        <record id="positive_29" model="positive.character">
+            <field name="name">Easy-going</field>
+        </record>
+        <record id="positive_30" model="positive.character">
+            <field name="name">Honest</field>
+        </record>
+        <record id="positive_31" model="positive.character">
+            <field name="name">Intelligent</field>
+        </record>
+        <record id="positive_31" model="positive.character">
+            <field name="name">Passionate</field>
+        </record>
+        <record id="positive_32" model="positive.character">
+            <field name="name">Proactive</field>
+        </record>
+        <record id="positive_33" model="positive.character">
+            <field name="name">Reliable</field>
+        </record>
+        <record id="positive_34" model="positive.character">
+            <field name="name">Disciplined</field>
+        </record>
+        <record id="positive_35" model="positive.character">
+            <field name="name">Sincere</field>
+        </record>
+        <record id="positive_36" model="positive.character">
+            <field name="name">Versatile</field>
+        </record>
+        <record id="positive_37" model="positive.character">
+            <field name="name">Ambitious</field>
+        </record>
+        <record id="positive_38" model="positive.character">
+            <field name="name">Charming</field>
+        </record>
+        <record id="positive_39" model="positive.character">
+            <field name="name">Diplomatic</field>
+        </record>
+        <record id="positive_40" model="positive.character">
+            <field name="name">Enthusiastic</field>
+        </record>
+        <record id="positive_41" model="positive.character">
+            <field name="name">Humorous</field>
+        </record>
+        <record id="positive_42" model="positive.character">
+            <field name="name">Loyal</field>
+        </record>
+        <record id="positive_43" model="positive.character">
+            <field name="name">Patient</field>
+        </record>
+        <record id="positive_44" model="positive.character">
+            <field name="name">Quick-witted</field>
+        </record>
+        <record id="positive_45" model="positive.character">
+            <field name="name">Reserved</field>
+        </record>
+        <record id="positive_46" model="positive.character">
+            <field name="name">Sensible</field>
+        </record>
+        <record id="positive_47" model="positive.character">
+            <field name="name">Socialable</field>
+        </record>
+        <record id="positive_48" model="positive.character">
+            <field name="name">Willing</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+    <!-- Form View  -->
+    <record id="gcast_information" model="ir.ui.view">
+        <field name="name">sale.order.form.gcast_information</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='other_information']" position="after">
+                <page name="quot_notes_gcast" string="Quotation Notes G-Cast" attrs="{'invisible': [('company_id', 'not in', [4,5,8,12,13])]}">
+                    <group>
+                        <group>
+                            <!-- <field name="quot_regarding_gcast" widget="many2many_tags"/> -->
+                            <field name="quot_regarding_gcast" string="Regarding(RE)"/>
+                            <field name="disable_notes_gcast" invisible="1"/>
+                        </group>
+                    </group>
+                    <hr/>
+                    <group>
+                        <group>
+                            <field name="quot_tnc_type" string="Terms &amp; Condition Types :"/>
+                        </group>        
+                    </group>
+                   
+                    <!-- <group col="12" string="Terms &amp; Conditions"/> -->
+                    
+                    <div attrs="{'invisible': [('quot_tnc_type','=','oversea')]}">
+                        <group col="12" string="Terms &amp; Conditions(Local)"/>
+                        <group col="12">
+                            <field name="quot_pricing_gcast" string="Pricing :"/>
+                        </group>
+                        <group col="12">
+                            <field name="quot_standard_gcast" string="Standard :"/>
+                        </group>
+                        <group col="12">
+                            <field name="quot_product_liability_gcast" string="Product Liability :"/>
+                        </group>
+                        <group col="12">
+                            <field name="quot_payment_gcast" string="Payment Terms :"/>
+                        </group>
+                        <group col="12">
+                            <field name="quot_delivery_gcast" string="Delivery :"/>
+                        </group>
+                        <group col="12">
+                            <field name="quot_validity_gcast" string="Validity :"/>
+                        </group>
+                        <group col="12">
+                            <field name="quot_non_standard_products_gcast" string="Non Standard Products :"/>
+                        </group>
+                        <group col="12">
+                            <field name="quot_note_gcast" string="Note :"/>
+                        </group>
+                        <group col="12">
+                            <field name="quot_remarks_gcast" string="Remarks :"/>
+                        </group>
+                    </div>
+
+                    <div attrs="{'invisible': [('quot_tnc_type','=','local')]}">
+                        <group col="4">
+                            <field name="quot_monetary_oversea_gcast" string="Monetary :"/>
+                        </group>
+                        <group col="12" string="Terms &amp; Conditions(Overseas)"/>
+                        <group col="12">
+                            <field name="quot_remarks_oversea_gcast" string="Remarks :"/>
+                        </group>
+                    </div>
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id='sale_order_form_extend' model='ir.ui.view'>
+        <field name="name">sale.order.form.extend</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//tree/field[@name='name']" position="after">
+                <field name="item_order_type" attrs="{'invisible': [('parent.company_id', 'not in', [8])]}"/>
+            </xpath>
+            <xpath expr="//tree/field[@name='item_order_type']" position="after">
+                <field name="product_class" attrs="{'invisible': [('parent.company_id', 'not in', [8])]}"/>
+            </xpath> -->
+            <xpath expr="//field[@name='note']" position="replace"> 
+                <field name="note" attrs="{'invisible': [('disable_notes_gcast','=',True)]}"/>
+            </xpath>
+            
+            <xpath expr="//tree/field[@name='name']" position="after">
+                <field name="item_order_type"/>
+                <field name="product_class"/>
+            </xpath>
+
+            <xpath expr="//tree/field[@name='item_order_type']" position="attributes">
+                <attribute name="attrs">{'column_invisible': [('parent.company_id', 'not in', [8])]}</attribute>
+            </xpath>
+            <xpath expr="//tree/field[@name='product_class']" position="attributes">
+                <attribute name="attrs">{'column_invisible': [('parent.company_id', 'not in', [8])]}</attribute>
+            </xpath>
+
+        </field>
+
+    </record>
+
+</data>
+</odoo>

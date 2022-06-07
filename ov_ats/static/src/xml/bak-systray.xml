@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <!--
+        @param {ov_ats.systray.Icon} widget
+    -->
+
+<!--     <t t-name="ov_ats.systray.Icons">
+        <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Icon" href="#">
+                <i class="fa fa-envelope-open-o"/>
+            </a>
+            <div class="o_mail_systray_dropdown dropdown-menu dropdown-menu-right" role="menu">
+
+                <div class="o_mail_systray_dropdown_top">
+                    <div>
+                        <button type="button" class="btn btn-link o_filter_button active" role="tab"> All </button>
+                        <button type="button" class="btn btn-link o_filter_button" data-filter='chat' role="tab"> Chat </button>
+                        <button type="button" class="btn btn-link o_filter_button" data-filter='channels' role="tab"> Channels </button>
+                    </div>
+                    <button type="button" class="btn btn-link o_new_message"> New message </button>
+                </div>
+                <div class="o_mail_systray_dropdown_items"/>
+
+            </div>
+        </li>
+    </t> -->
+
+
+
+<!--     <t t-name="mail.systray.ActivityMenu.Previews"> -->
+    <t t-name="ov_ats.systray.Icons.Previews">
+        <t t-if="_.isEmpty(activities)">
+            <div class="dropdown-item-text text-center o_no_activity">
+                <span>No activities planned.</span>
+            </div>
+            <div>
+                <button class="o_show_sms">CLICK</button>
+            </div>
+        </t>
+        <t t-foreach="smss" t-as="sms">
+            <div class="o_mail_preview" t-att-data-res_model="sms.model" t-att-data-model_name="sms.name" data-filter='my'>
+                <div class="o_mail_preview_image o_mail_preview_app">
+                    <img t-att-src="sms.icon" alt="SMS"/>
+                </div>
+                <div class="o_preview_info">
+                    <div class="o_preview_title">
+                        <span class="o_preview_name">
+                            <t t-esc="sms.name"/>
+                        </span>
+                        <div t-if="sms.actions" class="o_sms_activity_action_buttons">
+                            <t t-foreach="sms.actions" t-as="action">
+                                <button type="button"
+                                    t-att-title="action.name"
+                                    t-att-class="'o_sms_activity_action btn btn-link fa ' + action.icon"
+                                    t-att-data-action_xmlid="action.action_xmlid"
+                                    t-att-data-res_model="sms.model"
+                                    t-att-data-model_name="sms.name">
+                                </button>
+                            </t>
+                        </div>
+                    </div>
+                    <div t-if="sms and sms.type == 'sms'">
+                        <!-- <button t-if="sms.overdue_count" type="button" class="btn btn-link o_activity_filter_button mr16" t-att-data-res_model="sms.model" t-att-data-model_name="sms.name" data-filter='overdue'><t t-esc="sms.overdue_count"/> Late </button>
+                        <span t-if="!sms.overdue_count" class="o_no_activity mr16">0 Late </span> -->
+                        <!-- <button t-if="sms.today_count" type="button" class="btn btn-link o_activity_filter_button mr16" t-att-data-res_model="sms.model" t-att-data-model_name="sms.name" data-filter='today'> <t t-esc="sms.today_count"/> Today </button>
+                        <span t-if="!sms.today_count" class="o_no_activity mr16">0 Today </span> -->
+                        <!-- <button t-if="sms.planned_count" type="button" class="btn btn-link o_activity_filter_button float-right" t-att-data-res_model="sms.model" t-att-data-model_name="sms.name" data-filter='upcoming_all'> <t t-esc="sms.planned_count"/> Futuresss </button>
+                        <span t-if="!sms.planned_count" class="o_no_activity float-right">0 Future</span> -->
+                    </div>
+                </div>
+            </div>
+        </t>
+    </t>
+
+    <!-- <t t-name="mail.systray.ActivityMenu"> -->
+    <t t-name="ov_ats.systray.Icons">
+        <li class="o_mail_systray_item">
+            <a class="dropdown-toggle o-no-caret" data-toggle="dropdown" data-display="static" aria-expanded="false" title="SMS" href="#" role="button">
+                <i class="fa fa-comment" role="img" aria-label="SMS"/> <span class="o_notification_counter badge badge-pill"/><!--2</span>-->
+            </a>
+            <div class="o_mail_systray_dropdown dropdown-menu dropdown-menu-right" role="menu">
+                <div class="o_mail_systray_dropdown_items"/>
+                <a class="o_show_sms">CLICK</a>
+            </div>
+        </li>
+    </t>
+
+</templates>

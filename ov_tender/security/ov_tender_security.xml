@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="group_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="base.module_category_accounting_academy"/>
+    </record>
+
+    <record id="group_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="base.module_category_accounting_academy"/>
+        <field name="implied_ids" eval="[(6,0,[ref('group_user')])]" />
+    </record>
+
+    <record id="group_admin" model="res.groups">
+        <field name="name">Admin</field>
+        <field name="category_id" ref="base.module_category_accounting_academy"/>
+        <field name="implied_ids" eval="[(6,0,[ref('group_manager')])]" />
+    </record>
+
+     <record id="only_responsible_can_modify" model="ir.rule">
+        <field name="name">Only Responsible can modify Course</field>
+        <field name="model_id" ref="model_openacademy_course"/>
+        <field name="groups" eval="[(4, ref('openacademy.group_manager'))]"/>
+        <field name="domain_force">
+            ['|', ('responsible_id','=',False),
+                  ('responsible_id','=',user.id)]
+        </field>
+    </record>
+
+    <record id="admin_rule" model="ir.rule">
+        <field name="name">Admin Can do everything</field>
+        <field name="model_id" ref="model_openacademy_course"/>
+        <field name="groups" eval="[(4, ref('openacademy.group_admin'))]"/>
+        <field name="domain_force">
+            [(1, '=', 1)]
+        </field>
+    </record>
+</odoo>

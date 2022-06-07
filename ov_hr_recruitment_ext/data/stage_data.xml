@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="hr.recruitment.stage" id="stage_job6">
+            <field name="name">Inquiry</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job7">
+            <field name="name">Application</field>
+            <field name="template_id" ref="hr_recruitment.email_template_data_applicant_interest"/>
+            <field name="sequence">2</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job8">
+            <field name="name">Interview</field>
+            <field name="sequence">3</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job9">
+            <field name="name">Contract Proposal</field>
+            <field name="sequence">4</field>
+        </record>
+        <record model="hr.recruitment.stage" id="stage_job10">
+            <field name="name">Convert To Employee</field>
+            <field name="sequence">5</field>
+            <field name="fold" eval="True"/>
+        </record>
+    </data>
+</odoo>

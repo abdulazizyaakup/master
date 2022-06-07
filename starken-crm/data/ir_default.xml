@@ -1,0 +1,8 @@
+<odoo>
+    <data>
+		<record model="ir.default" id="starken-crm.default_timezone">
+	        <field name="field_id" ref="base.field_res_users__tz"/>
+	        <field name="json_value">"Asia/Kuala_Lumpur"</field>
+      	</record>
+    </data>
+</odoo>

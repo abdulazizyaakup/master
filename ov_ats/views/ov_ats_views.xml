@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <menuitem
+        name="ATS"
+        id="hr_recruitment.menu_hr_recruitment_root"
+        web_icon="hr_recruitment,static/description/icon.png"
+        groups="hr_recruitment.group_hr_recruitment_user"
+        sequence="80"/>
+
+    <menuitem
+        name="Prospects"
+        parent="hr_recruitment.menu_hr_recruitment_root"
+        id="hr_recruitment.menu_crm_case_categ0_act_job" sequence="2"/>
+
+    <menuitem
+        name="All Prospects"
+        parent="hr_recruitment.menu_crm_case_categ0_act_job"
+        id="hr_recruitment.menu_crm_case_categ_all_app" action="hr_recruitment.crm_case_categ0_act_job" sequence="2"/>
+
+    <menuitem name="Documents" id="hr_recruitment.menu_crm_case_categ0_act_job02" action="hr_recruitment.hr_applicant_resumes" parent="hr_recruitment.menu_hr_recruitment_root" sequence="8"/>
+
+    <menuitem parent="hr_recruitment.menu_hr_recruitment_root" id="hr_recruitment.menu_hr_job_position" action="hr_recruitment.action_hr_job" sequence="3"/>
+
+    <record id="view_kanban_hr_applicant_ext_nationality" model="ir.ui.view">
+        <field name="name">hr.applicant.view.kanban.inherit.ext.nationality</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_kanban_view_applicant"/>
+        <field name="arch" type="xml">
+            <xpath expr="//progressbar" position="before">
+                <field name="country_id"/>
+                <field name="country_image"/>
+            </xpath>
+            <xpath expr="//field[@name='categ_ids']" position="after">
+                <div><span t-if="record.country_id.value">
+                    <img t-att-src="kanban_image('res.country', 'image', record.country_id.raw_value)" t-att-title="record.country_id.value" t-att-alt="record.country_id.value" width="22"/>
+                </span></div>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_recruitment.crm_case_tree_view_job">
+        <field name="name">Prospects</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <tree string="Applicants" decoration-bf="uid not in read_by_ids" decoration-success="is_ex_employee == True">
+                <field name="read_by_ids" invisible="1"/>
+                <field name="is_ex_employee" invisible="1"/>
+                <!-- <field name="message_unread" invisible="0"/> -->
+                <field name="message_needaction" invisible="1"/>
+                <button class="oe_stat_button" string="Ex-Employee" icon="fa-info-circle text-success" attrs="{'invisible': ['|',('is_ex_employee','=',False)]}">
+                    <field name="is_ex_employee" widget="boolean_button"/>
+                </button>
+                <!-- <field name="record_status" widget="priority" string=" "/> -->
+                <field name="call_application_name"/>
+                <field name="call_individual_pwm_grade"/>
+                <field name="mobile_no1" widget="phone" string="Contact No."/>
+                <field name="call_nationality"/>
+                <field name="call_gender"/>
+                <field name="call_races"/>
+                <field name="call_age"/>
+                <field name="call_postal_code"/>
+                <field name="call_preferred_location1"/>
+                <field name="call_preferred_emp_type"/>
+                <field name="call_preferred_type_work_site" invisible="1"/>
+                <field name="call_shift_preferences" invisible="1"/>
+                <field name="call_security_license"/>
+                <field name="call_campaign"/>
+                <field name="call_salary_expected"/>
+                <field name="create_date"/>
+                <field name="date_last_stage_update" string="Last Update"/>
+                <field name="created_by_id"/>
+                <!-- <button name="is_ex_employee" type="" icon="fa-check text-success" attrs="{'invisible': ['|',('is_ex_employee','=',False)]}" /> -->
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="hr_recruitment.crm_case_form_view_job">
+        <field name="name">Jobs - Recruitment Form</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+          <form string="Jobs - Recruitment Form">
+            <header>
+                <button string="Create Employee" name="create_employee_from_applicant" type="object"
+                        class="oe_highlight"  attrs="{'invisible': ['|',('emp_id', '!=', False),('active', '=', False)]}"/>
+                <button string="Propose Contract" name="contract_proposal_stage" type="object" attrs="{'invisible': ['|','|',('blacklist', '=', True),('contract_proposal', '=', True)]}"/>
+                <button string="Reset as Contact" name="reset_as_contact" type="object" attrs="{'invisible': [('enquiry', '=', True)]}"/>
+                <button string="Reset Blacklist" name="reset_blacklist_applicant" type="object" attrs="{'invisible': [('blacklist', '=', False)]}"/>
+                <!-- <button string="Banned" name="banned_applicant" type="object" attrs="{'invisible': [('banned', '=', True)]}"/> -->
+                <!-- <button string="Blacklist" name="blacklist_applicant" type="object" attrs="{'invisible': [('blacklist', '=', True)]}"/> -->
+                <button name="%(launch_applicant_blacklist_wizard)d" type="action" string="Blacklist" attrs="{'invisible': [('blacklist', '=', True)]}"/>
+                <button name="%(launch_applicant_banned_wizard)d" type="action" string="Ban" attrs="{'invisible': [('banned', '=', True)]}"/>
+                <field name="stage_id" widget="statusbar" options="{'clickable': False}" attrs="{'invisible': [('active', '=', False),('emp_id', '=', False)]}"/>
+            </header>
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_maps" class="oe_stat_button" icon="fa-map-o" type="object">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Site's Location</span>
+                         </div>
+                    </button>
+                    <!-- <button type="action" name="%(sms_pushbullet.action_pushbullet_sms)d"
+                        class="oe_stat_button" icon="fa-comment "
+                        context="{'search_default_name': active_id}">
+                        <field name="sms_count" widget="statinfo" string="SMS"/>
+                    </button> -->
+                    <button name="action_makeMeeting" class="oe_stat_button" icon="fa-calendar" type="object"
+                         help="Schedule interview with this applicant">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Meetings</span>
+                         </div>
+                    </button>
+                    <button name="action_get_attachment_tree_view"
+                        class="oe_stat_button"
+                        icon="fa-book"
+                        type="object">
+                        <field name="attachment_number" widget="statinfo" string="Documents"/>
+                    </button>
+                    <button name="action_get_created_employee"
+                        class="oe_stat_button"
+                        icon="fa-user"
+                        type="object"
+                        attrs="{'invisible': [('emp_id', '=', False)]}">
+                        <field name="employee_name" widget="statinfo" string="Employee"/>
+                    </button>
+                    <button name="toggle_active" type="object"
+                            class="oe_stat_button" icon="fa-archive"
+                            attrs="{'invisible': [('active', '=', True)]}">
+                        <field name="active" widget="boolean_button"
+                            options='{"terminology": "archive"}'/>
+                    </button>
+                </div>
+                <field name="kanban_state" widget="kanban_state_selection"/>
+                <field name="record_status" widget="priority" string=" " invisible="1" />
+                <field name="legend_normal" invisible="1"/>
+                <field name="legend_blocked" invisible="1"/>
+                <field name="legend_done" invisible="1"/>
+                <div string="URL" style="padding-bottom:30px;">
+                    <field name="link_url" colspan="2" readonly="1" widget="CopyClipboardText"/>
+                </div>
+                <div>
+                  <field name="applicant_image" widget="image" class="oe_avatar"/>
+                </div>
+
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name"/></h1>
+                    
+                </div>
+                <div style="padding-top:50px;">
+                    <header style="border-top: 1px solid #ced4da;">
+                        <button string="Convert to Application" name="add_as_application" type="object" attrs="{'invisible': [('application', '=', True)]}"/>
+                        <button name="print_contract_document" string="Print Contract" type="object" icon="fa-print" attrs="{'invisible':[('contract_proposal', '!=', True)]}"/>
+                        <button name="%(launch_custom_activity_wizard)d" type="action" string="Activity" class="oe_highlight"/>
+                        <button string="Click" custom="click"/>
+                        <field name="contact_stage" widget="statusbar" options="{'clickable': False, 'fold_field': 'fold'}"   attrs="{'invisible':[('enquiry', '!=', True)]}"/>
+                        <field name="application_stage" widget="statusbar" options="{'clickable': False, 'fold_field': 'fold'}"   attrs="{'invisible':[('application', '!=', True)]}"/>
+                        <field name="interview_stage" widget="statusbar" options="{'clickable': False, 'fold_field': 'fold'}"   attrs="{'invisible':[('iv', '!=', True)]}"/>
+                        <field name="employment_offer_stage" widget="statusbar" options="{'clickable': False, 'fold_field': 'fold'}"   attrs="{'invisible':[('contract_proposal', '!=', True)]}"/>
+                    </header>
+
+                </div>
+                <div style="padding-top:0px;">
+                    <header style="border-top: 0px solid #ced4da;">
+                        <field name="engagement_status" widget="statusbar" statusbar_visible=" " options="{'clickable': False, 'fold_field': 'fold'}"   attrs="{'invisible':[('enquiry', '!=', True)]}"/>
+                    </header>
+                </div>
+                <div>
+                    <group string="Blacklisted"  style="color:red;" attrs="{'invisible':[('blacklist', '!=', True)]}">
+                        <group>
+                            <field name="blacklist_date"/>
+                            <field name="blacklist_note"/>
+                        </group>
+                    </group>
+                </div>
+                <div>
+                    <group string="Banned"  style="color:#ffb84d;" attrs="{'invisible':[('banned', '!=', True)]}">
+                        <group>
+                            <field name="banned_date"/>
+                            <field name="banned_note"/>
+                        </group>
+                    </group>
+                </div>
+                <group>
+                    <group>
+                        <!-- <field name="message_unread" invisible="0"/>
+                        <field name="read_by" invisible="0"/> -->
+                        <field name="created_by_id" invisible="1"/>
+                        <field name="read_by" invisible="1"/>
+                        <field name="read_by_ids" widget="many2many_tags" invisible="1"/>
+                        <!-- <field name="user_id"/> -->
+                        <field name="update_from_website" invisible="1"/>
+                        <field name="online_ref_no" invisible="1"/>
+                        <!-- <field name="appointment_reference"  attrs="{'invisible':[('contract_proposal', '!=', True)]}"/> -->
+
+                        <field name="job_id"/>
+                        <field name="quality_of_contact" widget="priority"/>
+                        <field name="emp_id" invisible="1"/>
+                    </group>
+                    <group invisible="0">
+                        <field name="whatsapp_account"/>
+                        <field name="sms_account"/>
+                        <field name="company_id"/>
+                        <field name="created_by"/>
+                        <field name="owner"/>
+                        <field name="enquiry" invisible="1"/>
+                        <field name="application" invisible="1"/>
+                        <field name="blacklist" invisible="1" readonly="1" attrs="{'invisible':[('blacklist', '!=', False)]}"/>
+                        <field name="iv" invisible="1"/>
+                        <field name="contract_proposal" invisible="1"/>
+                        <field name="convert_to_emp" invisible="1"/>
+                        <field name="banned" invisible="1"/>
+                        
+                    </group>
+                </group>
+                <group string="Call Information">
+                    <group>
+                        <field name="call_application_name" required="1"/>
+                        <field name="call_individual_pwm_grade"/>
+                        <label for="call_mobile_no1"/>
+                        <div>
+                            <field name="initial_mobile_code" class="oe_inline"/>
+                            <span class="oe_inline" style="padding-right:5px;"/>
+                            <field name="call_mobile_no1" widget="phone" required="1" class="oe_inline"/>
+                        </div>
+                        <field name="mobile_no1" invisible="1"/>
+                        <field name="call_nationality" required="1"/>
+                        <field name="have_permit" attrs="{'invisible':[('call_nationality', '!=', 'malaysian')]}"/>
+                    </group>
+                    <group>
+                        <field name="call_gender"/>
+                        <field name="call_races"/>
+                        <field name="date_of_birth"/>
+                        <field name="call_age"/>
+                    </group>
+                    <group>
+                        <field name="call_preferred_location1"/>
+                        <field name="call_preferred_emp_type"/>
+                        <field name="call_preferred_type_work_site" widget="many2many_checkboxes"/>
+                        <field name="call_shift_preferences"/>
+                        <field name="call_security_license"/>
+                        <label for="call_current_last_salary"/>
+                        <div>
+                            <field name="call_current_last_salary" class="oe_inline"/>
+                            <span class="oe_inline"> per </span>
+                            <field name="call_type_of_salary_last" class="oe_inline"/>
+                        </div>
+                        <label for="call_salary_expected"/>
+                        <div>
+                            <field name="call_salary_expected" class="oe_inline"/>
+                            <span class="oe_inline"> per </span>
+                            <field name="call_type_of_salary_expected" class="oe_inline"/>
+                        </div>
+                    </group>
+                    <group>
+                        <label for="call_postal_code"/>
+                        <div>
+                            <!-- <field name="call_postal_code" widget="auto_fill" placeholder="Enter Postal Code Here..."/> -->
+                            <field name="call_postal_code"/>
+                            <span style="padding-left:20px;" class="oe_inline"></span>
+                            <button class="oe_inline"
+                        name="%(launch_gothere_wizard)d" type="action" string=" Go There"
+                        icon="/ov_ats/static/src/img/gothere.ico"/>
+
+                        <span style="padding-left:30px;"> </span><button name="action_view_maps" class="oe_inline" string="Site's Location" type="object" icon="/ov_ats/static/src/img/locate.png"/>
+                        <!-- <button string="Get Address" name="get_address_on_postal_code" type="object"/> -->
+                        </div>
+                        <!-- <field name="address" class="address"/> -->
+                        <field name="call_applicant_latitude" invisible="1"/>
+                        <field name="call_applicant_longitude" invisible="1"/>
+                        <field name="call_project_site" invisible="1"/>
+                        <!-- <field name="project_site" string="PSITE"/> -->
+                        <field name="call_site_latitude" invisible="1"/>
+                        <field name="call_site_longitude" invisible="1"/>
+                        <field name="call_current_last_company"/>
+                        <field name="call_last_type_work_site"/>
+                        <field name="call_applicant_reason_for_leaving"/>
+                        <field name="call_comment_current_last_commpany"/>
+                    </group>
+<!--                     <group>
+                        
+                    </group> -->
+                </group>
+                <group>
+                    <group>
+                        <field name="call_campaign" string="Sources"/>
+                    </group>
+                    <group>
+                        <field name="is_ex_employee" invisible="1"/>
+                        <field name="resignation_ids" attrs="{'invisible':[('is_ex_employee', '!=', True)]}">
+                            <tree>
+                                <field name="applicant_id" invisible="1"/>
+                                <field name="resignation_date"/>
+                                <field name="resignation_reason"/>
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+                <group string="Personal Particular" attrs="{'invisible':[('enquiry', '==', True)]}">
+                            <group>
+                                <field name="full_name" required="0"/>
+                                <field name="nric" required="0"/>
+                                <field name="address" placeholder="Enter Postal Code Here..."/>
+                                <field name="nationality" required="1"/>
+                                <field name="have_permit" attrs="{'invisible':[('nationality', '!=', 'malaysian')]}"/>
+                            </group>
+                            <group>
+                                <field name="date_of_birth" />
+                                <field name="commencement_date"/>
+                                <field name="letter_date"/>
+                                <field name="appointment_reference"/>
+                            </group>
+                        </group>
+                        <label for="uploaded_ids"/><span> or </span>
+                        <button name="action_open_twain_scanner" class="oe_inline oe_highlight" string="Scan Document" type="object"/>
+                        <!-- <button name="action_open_twain_scanner" class="oe_inline" string="Scan Document" type="object" context="{'applicant_id':active_ids}"/> -->
+                        <field name="uploaded_ids">
+                            <tree>
+                                <field name="title"/>
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="filetype"/>
+                                <field name="file" widget="binary" filename="title"/>
+                                <field name="applicant_id" invisible="1"/>
+                            </tree>
+                        </field>
+
+
+                    <notebook attrs="{'invisible':[('contract_proposal', '!=', True)]}">
+                        <page string="Contract" attrs="{'invisible':[('contract_proposal', '!=', True)]}" groups="hr_recruitment.group_hr_recruitment_manager">
+                        <group string="Site Information">
+                            <group invisible="0">
+                                <field name="postal_code"/>
+                                <field name="project_site"/>
+                            </group>
+<!--                             <group>
+                                <button class="oe_inline oe_stat_button"
+                                name="open_route_map" type="object" string="Go There"
+                                attrs="{'invisible': [('postal_code', '=', '')]}"
+                                icon="fa-car"/>
+                            </group> -->
+                        </group>
+                        <group string="Contract Details">
+                            <group>
+                                <field name="emp_type"/>
+                                <field name="shift"/>
+                            </group>
+                            <group>
+                                <field name="shift_id"/>
+                            </group>
+                            <group>
+                                <field name="custom_salary"/>
+                                <field name="basic_salary" widget="monetary" attrs="{'invisible':[('custom_salary', '!=', True)]}"/>
+                                <field name="ot" widget="monetary" attrs="{'invisible':[('custom_salary', '!=', True)]}"/>
+                                <field name="mvc" widget="monetary" attrs="{'invisible':[('custom_salary', '!=', True)]}"/>
+                                <field name="pis" widget="monetary" attrs="{'invisible':[('custom_salary', '!=', True)]}"/>
+                                <field name="awbr" widget="monetary" attrs="{'invisible':[('custom_salary', '!=', True)]}"/>
+                            </group>
+                        </group>
+                        </page>
+                    </notebook>
+                <notebook invisible="1">
+                    <page string="Application" attrs="{'invisible':[('application', '!=', True)]}">
+                        <group string="Personal Particular" attrs="{'invisible':[('application', '!=', True)]}">
+                            <group>
+                                <field name="partner_name"/>
+                                <field name="nric"/>
+                                <!-- <field name="address"/> -->
+                                <field name="nationality"/>
+                                <field name="date_of_birth"/>
+                                <field name="commencement_date"/>
+                                <field name="letter_date"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+                <notebook invisible="1">
+                    <page>
+                        <notebook invisible="1">
+                            <page string="Emergency Contact">
+                                <group string="Emergency Contact">
+                                    <group>
+                                        <field name="emergency_name"/>
+                                        <field name="emergency_relation"/>
+                                        <field name="emergency_address"/>
+                                    </group>
+                                    <group>
+                                        <field name="emergency_phone_no" widget="phone"/>
+                                        <field name="emergency_mobile_no" widget="phone"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Educational Background">
+                                <label for="school_ids"/>
+                                <field name="school_ids" invisible="0">
+                                    <tree editable="bottom">
+                                      <field name="applicant_id" invisible="1"/>
+                                      <field name="name"/>
+                                      <field name="hqa" />
+                                      <field name="year" />
+                                    </tree>
+                                </field>
+                                <group>
+                                    <group>
+                                        <field name="nolevel_ids" invisible="0">
+                                            <tree editable="bottom">
+                                              <field name="applicant_id" invisible="1"/>
+                                              <field name="name"/>
+                                              <field name="grade" />
+                                            </tree>
+                                        </field>
+                                    </group>
+                                    <group>
+                                        <field name="alevel_ids" invisible="0">
+                                            <tree editable="bottom">
+                                              <field name="applicant_id" invisible="1"/>
+                                              <field name="name"/>
+                                              <field name="grade" />
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="National Service">
+                                <group>
+                                    <group>
+                                        <field name="nationalservice" widget="radio"/>
+                                        <field name="ns_reason" attrs="{'invisible':[('nationalservice', '!=', 'nil')]}"/>
+                                        <field name="rank" attrs="{'invisible':[('nationalservice', '=', 'nil')]}"/>
+                                        <field name="pes_grading" attrs="{'invisible':[('nationalservice', '=', 'nil')]}"/>
+                                    </group>
+                                    <group>
+                                        <field name="enlistment_date" attrs="{'invisible':[('nationalservice', '=', 'nil')]}"/>
+                                        <field name="operation_ready_date" attrs="{'invisible':[('nationalservice', '=', 'nil')]}"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Computer Literacy">
+                                <group>
+                                    <group>
+                                        <field name="m_words" widget="radio"/>
+                                        <field name="m_excel" widget="radio"/>
+                                    </group>
+                                    <group>
+                                        <field name="m_powerpoint" widget="radio"/>
+                                        <field name="m_outlook" widget="radio"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Language(s)">
+                                <group>
+                                    <field name="lang_ids" invisible="0">
+                                        <tree editable="bottom">
+                                            <field name="applicant_id" invisible="1"/>
+                                            <field name="name"/>
+                                            <field name="proficiency_spoken"/>
+                                            <field name="proficiency_written"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+                                    <field name="dialect_ids" invisible="0">
+                                        <tree editable="bottom">
+                                            <field name="applicant_id" invisible="1"/>
+                                            <field name="name"/>
+                                            <field name="proficiency_dialect"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Career History">
+                                <group>
+                                    <field name="careerhistory_ids" invisible="0">
+                                        <tree editable="bottom">
+                                            <field name="applicant_id" invisible="1"/>
+                                            <field name="name"/>
+                                            <field name="date_from"/>
+                                            <field name="date_to"/>
+                                            <field name="position_held"/>
+                                            <field name="gross_sal"/>
+                                            <field name="reason_leave"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Other Information">
+                                <group>
+                                    <field name="post_source" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="post_other" string="" attrs="{'invisible':[('post_source', '!=', 'others')]}"/>
+
+                                    <field name="wss_applied" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="wss_applied_other" string="Please state when and where" attrs="{'invisible':[('wss_applied', '!=', 'yes')]}"/>
+
+                                    <field name="smoke" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="shift_preferences" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="friend_relative" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="relative_ids" attrs="{'invisible':[('friend_relative', '!=', 'yes')]}">
+                                        <tree editable="bottom">
+                                            <field name="applicant_id" invisible="1"/>
+                                            <field name="name"/>
+                                            <field name="relationship"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Work Preference">
+                                <group>
+                                    <field name="preferred_shift" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="preferred_site" widget="radio"/>
+                                    <field name="preferred_site_other" string="" attrs="{'invisible':[('preferred_site', '!=', 'others')]}"/>
+                                    <field name="six_shift" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="six_shift_no" string="Please state the number of shifts you can work per week" attrs="{'invisible':[('six_shift', '!=', 'no')]}"/>
+                                    <field name="working_weekend" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="days_avail_ids" widget="many2many_checkboxes"/>
+                                    <!-- <field name="days_avail_ids" invisible="0">
+                                    <tree>
+                                      <field name="name"/>
+                                    </tree>
+                                  </field> -->
+                                </group>
+                            </page>
+                        </notebook>
+                        <notebook  invisible="1">
+                            <page string="Declaration Q/A">
+                                    <label for="illness"/>
+                                    <div>
+                                        <field name="illness" string="" widget="radio" options="{'horizontal': true}"/>
+                                        <label for="illness_yes"/>
+                                        <field name="illness_yes" string="" attrs="{'invisible':[('illness', '!=', 'yes')]}"/>
+                                    </div>
+                                    
+                                    <label for="criminal_record"/>
+                                    <div>
+                                        <field name="criminal_record" widget="radio" options="{'horizontal': true}"/>
+                                        <label for="cr_yes"/>
+                                        <field name="cr_yes" string="" attrs="{'invisible':[('criminal_record', '!=', 'yes')]}"/>
+                                    </div>
+
+                                    <label for="charged_law"/>
+                                    <div>
+                                        <field name="charged_law" widget="radio" options="{'horizontal': true}"/>
+                                        <label for="cl_yes"/>
+                                        <field name="cl_yes" string="" attrs="{'invisible':[('charged_law', '!=', 'yes')]}"/>
+                                    </div>
+
+                                    <label for="investigation_awareness"/>
+                                    <div>
+                                        <field name="investigation_awareness" widget="radio" options="{'horizontal': true}"/>
+                                        <label for="ia_yes"/>
+                                        <field name="ia_yes" string="" attrs="{'invisible':[('investigation_awareness', '!=', 'yes')]}"/>
+                                    </div>
+
+                                    <label for="financial_embarrassment"/>
+                                    <div>
+                                        <field name="financial_embarrassment" widget="radio" options="{'horizontal': true}"/>
+                                        <label for="fe_yes"/>
+                                        <field name="fe_yes" string="" attrs="{'invisible':[('financial_embarrassment', '!=', 'yes')]}"/>
+                                    </div>
+
+                                    <label for="broken_service_period"/>
+                                    <div>
+                                        <field name="broken_service_period" widget="radio" options="{'horizontal': true}"/>
+                                        <label for="bsp_yes"/>
+                                        <field name="bsp_yes" string="" attrs="{'invisible':[('broken_service_period', '!=', 'yes')]}"/>
+                                    </div>
+
+                                    <label for="currently_serving_bond"/>
+                                    <div>
+                                        <field name="currently_serving_bond" widget="radio" options="{'horizontal': true}"/>
+                                        <label for="csb_yes"/>
+                                        <field name="csb_yes" string="" attrs="{'invisible':[('currently_serving_bond', '!=', 'yes')]}"/>
+                                    </div>
+
+                                    <label for="dismissed_from_service"/>
+                                    <div>
+                                        <field name="dismissed_from_service" widget="radio" options="{'horizontal': true}"/>
+                                        <label for="dfs_yes"/>
+                                        <field name="dfs_yes" string="" attrs="{'invisible':[('dismissed_from_service', '!=', 'yes')]}"/>
+                                    </div>
+                            </page>
+                            <page string="Declaration">
+                                <group>
+                                    <field name="signature" widget="signature"/>
+                                    <field name="declaration_date"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </page>
+                    <page string="Contract" attrs="{'invisible':[('contract_proposal', '!=', True)]}" groups="hr_recruitment.group_hr_recruitment_manager">
+                        <group string="Interviewer's Assessments">
+                            <field name="iv_assessment_ids" invisible="0">
+                            <tree>
+                              <field name="applicant_id" invisible="1"/>
+                              <field name="name"/>
+                              <field name="interviewer" />
+                              <field name="recommendation" />
+                              <field name="create_date" />
+                            </tree>
+                        </field>
+                        </group>
+                        <group string="Site Information">
+                            <group>
+                                <field name="postal_code"/>
+                                <field name="project_site"/>
+                            </group>
+                            <group>
+                                <button class="oe_inline oe_stat_button"
+                                name="open_route_map" type="object" string="Go There"
+                                attrs="{'invisible': [('postal_code', '=', '')]}"
+                                icon="fa-car"/>
+                            </group>
+                        </group>
+                        <group string="Contract Details">
+                            <group>
+                                <field name="shift"/>
+                            </group>
+                            <group>
+                                <field name="shift_id"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page  invisible="1" string="Interview" attrs="{'invisible':[('iv', '!=', True)]}">
+                        <group string="Interview Details">
+                            <group>
+                                <field name="iv_place"/>
+                            </group>
+                            <group>
+                                <field name="iv_date"/>
+                            </group>
+                        </group>
+                        <group string="Personal Particular">
+                            <group>
+                                <field name="partner_name"/>
+                                <field name="nationality"/>
+                                <field name="nationality_other" string="" attrs="{'invisible':[('nationality', '!=', 'others')]}"/>
+                            </group>
+                            <group>
+                                <field name="nric"/>
+                                <field name="age"/>
+                                <field name="age_range" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="area_of_resident"/>
+                            <field name="higher_educational_qualification"/>
+                        </group>
+                        <notebook  invisible="1">
+                            <page string="Application">
+                                <group>
+                                    <group>
+                                        <field name="job_id" string="Position Applied For"/>
+                                    </group>
+                                    <group>
+                                        <field name="preferred_shift" string="Preferred Shift"/>
+                                        <field name="preferred_site_ids" string="Preferred Type of Projects"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Salary Determination">
+                                <group>
+                                    <group>
+                                        <field name="current_salary"/>
+                                    </group>
+                                    <group>
+                                        <field name="salary_expected"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Working Experience &amp; Current Appointment">
+                                <group>
+                                    <group>
+                                        <field name="work_experience_year"/>
+                                        <field name="work_experience_month"/>
+                                    </group>
+                                    <group>
+                                        <field name="current_position_held"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <field name="last_employer"/>
+                                </group>
+                            </page>
+                            <page string="Other Employment Details">
+                                <group>
+                                    <group>
+                                        <field name="earliest_avail"/>
+                                    </group>
+                                    <group>
+                                        <field name="uniform_size_tshirt"/>
+                                        <field name="uniform_size_shirt"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Assessment">
+                                <group>
+                                    <field name="iv_assessment_ids" invisible="0">
+                                    <tree>
+                                      <field name="applicant_id" invisible="1"/>
+                                      <field name="name"/>
+                                      <field name="interviewer" />
+                                      <field name="recommendation" />
+                                      <field name="create_date" />
+                                    </tree>
+                                </field>
+                                </group>
+                            </page>
+                            <!-- <page string="Recommendation">
+                                <group>
+                                    <field name="recommendation" widget="radio" options="{'horizontal': true}"/>
+                                    <field name="recommendation_remarks"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="recruiter"/>
+                                    </group>
+                                    <group>
+                                        <field name="recruiter_signature" widget="signature"/>
+                                    </group>
+                                </group>
+                            </page> -->
+                        </notebook>
+                    </page>
+                    <page string="OneMap" attrs="{'invisible':[('iv', '!=', True)]}">
+                        <group>
+                            <group>
+                                <field name="onemap_type"/>
+                                <field name="applicant_latitude" invisible="1"/>
+                                <field name="applicant_longitude" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="site_latitude" invisible="1"/>
+                                <field name="site_longitude" invisible="1"/>
+                            </group>
+                        </group>
+                        <div>
+                            <field name="iframe"/>
+                        </div>
+                    </page>
+                </notebook>
+                <separator string="Application Summary"/>
+                <field name="description" placeholder="Feedback of interviews..."/>
+            </sheet>
+            <div style="text-align:center;" class="o_thread_date_separator o_border_dashed" data-target="#sms_history" data-toggle="collapse">
+                <a class="o_thread_date btn" role="button">
+                    <i class="fa fa-fw fa-caret-down"></i>
+                    SMS History
+                </a>
+            </div>
+            <div id="sms_history" class="o_thread_message  o_mail_not_discussion" style="padding-left:90px;padding-right:90px;">
+                <field name="sms_track_ids" context="{'search_default_name': active_id}">
+                    <tree  default_order="create_date desc" create="false" edit="false" decoration-success="message_type == 'incoming'">
+                        <field name="mobile_to" string="Mobile No."/>
+                        <field name="message"/>
+                        <field name="message_type"/>
+                        <field name="create_date"/>
+                    </tree>
+                </field>
+            </div>
+            <div style="text-align:center;" class="o_thread_date_separator o_border_dashed" data-target="#whatsapp_history" data-toggle="collapse">
+                <a class="o_thread_date btn" role="button">
+                    <i class="fa fa-fw fa-caret-down"></i>
+                    Whatsapp History
+                </a>
+            </div>
+            <div id="whatsapp_history" class="o_thread_message  o_mail_not_discussion" style="padding-left:90px;padding-right:90px;">
+                <field name="whatsapp_track_ids" context="{'search_default_name': active_id}">
+                    <tree  default_order="time_sr desc" create="false" edit="false" decoration-success="message_type == 'Sent'">
+                        <field name="message_type"/>
+                        <field name="mobile_to" string="Mobile No." invisible="1"/>
+                        <field name="mobile_from" invisible="1"/>
+                        <field name="mobile_from2" invisible="1"/>
+                        <field name="message"/>
+                        <field name="time_sr"/>
+                    </tree>
+                </field>
+            </div>
+            <div class="oe_chatter">
+                
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="activity_ids" widget="mail_activity"/>
+                <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+            </div>
+          </form>
+        </field>
+    </record>
+
+    <record id="view_applicant_map" model="ir.ui.view">
+        <field name="name">view.hr.applicant.map</field>
+        <field name="model">hr.applicant</field>
+        <field name="arch" type="xml">
+            <map class="o_applicant_map" library="geometry" string="Map" lat="call_applicant_latitude" lng="call_applicant_longitude" colors="red:name!=None;">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="call_applicant_latitude"/>
+                <field name="call_applicant_longitude"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_res_applicant_kanban">
+
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title oe_applicant_heading">
+                                    <field name="name"/>
+                                </strong>
+                                <div class="oe_kanban_applicant_links"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </map>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="hr_recruitment.crm_case_categ0_act_job">
+        <field name="name">Prospects</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">kanban,tree,form,pivot,graph,calendar,activity</field>
+        <field name="view_id" eval="False"/>
+        <field name="search_view_id" ref="hr_recruitment.view_crm_case_jobs_filter"/>
+        <field name="domain">['|','|','|','|',('enquiry','=',True),('application','=',True),('iv','=',True),('contract_proposal','=',True),('is_ex_employee','=',True)]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_empty_folder">
+            No applications yet
+          </p><p>
+            Odoo helps you track applicants in the recruitment
+            process and follow up all operations: meetings, interviews, etc.
+          </p><p>
+            Applicants and their attached CV are created automatically when an email is sent.
+            If you install the document management modules, all resumes are indexed automatically,
+            so that you can easily search through their content.
+          </p>
+        </field>
+    </record>
+
+<!-- NEW -->
+
+<!--     <record model="ir.actions.act_window" id="hr_recruitment.crm_case_categ0_act_job2">
+        <field name="name">Applicants</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">kanban,tree,form,pivot,graph,calendar,activity</field>
+        <field name="view_id" eval="False"/>
+        <field name="search_view_id" ref="hr_recruitment.view_crm_case_jobs_filter"/>
+        <field name="domain">['|','|','|','|',('enquiry','=',True),('application','=',True),('iv','=',True),('contract_proposal','=',True),('is_ex_employee','=',True)]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_empty_folder">
+            No applications yet
+          </p><p>
+            Odoo helps you track applicants in the recruitment
+            process and follow up all operations: meetings, interviews, etc.
+          </p><p>
+            Applicants and their attached CV are created automatically when an email is sent.
+            If you install the document management modules, all resumes are indexed automatically,
+            so that you can easily search through their content.
+          </p>
+        </field>
+    </record> -->
+
+<!-- END NEW -->
+
+    <record model="ir.actions.act_window" id="hr_recruitment.action_hr_job_applications">
+        <field name="name">Prospects</field>
+        <field name="res_model">hr.applicant</field>
+        <field name="view_mode">tree,form,kanban,graph,calendar,pivot,map</field>
+        <field name="search_view_id" ref="hr_recruitment.view_crm_case_jobs_filter"/>
+        <field name="context">{'search_default_job_id': [active_id], 'default_job_id': active_id}</field>
+        <field name="help" type="html">
+              <p class="o_view_nocontent_empty_folder">
+                No applications yet
+              </p><p>
+                Odoo helps you track applicants in the recruitment
+                process and follow up all operations: meetings, interviews, etc.
+              </p><p>
+                Applicants and their attached CV are created automatically when an email is sent.
+                If you install the document management modules, all resumes are indexed automatically,
+                so that you can easily search through their content.
+              </p>
+         </field>
+    </record>
+    <record model="ir.actions.act_window.view" id="hr_recruitment.action_hr_sec_kanban_view_act_job">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="hr_recruitment.hr_kanban_view_applicant"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="hr_recruitment.action_hr_sec_tree_view_act_job">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_tree_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+    <!-- TEST -->
+<!--     <record model="ir.actions.act_window.view" id="hr_recruitment.action_hr_sec_tree_view_act_job">
+        <field name="sequence" eval="0"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_tree_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+        <field name="state">code</field>
+        <field name="code">print("HAHAHAHAHAHAHAHAHAHAHAHAHAHA")</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="hr_recruitment.action_hr_sec_form_view_act_job">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_form_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+        <field name="state">code</field>
+        <field name="code">print("HOHOHOHOHOHOHOHOHOHOHOHOHOHOHO")</field>
+    </record> -->
+
+<!--         <record id="test_tree_action" model="ir.actions.server">
+            <field name="name">TEST</field>
+            <field name="model_id" ref="model_hr_applicant"/>
+            <field name="state">code</field>
+            <field name="code">action = self.open_rec()</field>
+        </record> -->
+
+
+    <!-- TEST -->
+
+    <record model="ir.actions.act_window.view" id="hr_recruitment.action_hr_sec_form_view_act_job">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_form_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+    <record  id="hr_recruitment.hr_applicant_action_view_pivot" model="ir.actions.act_window.view">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_pivot_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+    <record id="hr_recruitment.action_hr_sec_graph_view_act_job" model="ir.actions.act_window.view">
+        <field name="sequence" eval="4"/>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="hr_recruitment.crm_case_graph_view_job"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+
+<!--     <record id="action_ov_applicant" model="ir.actions.act_window">
+        <field name="name">Project Site</field>
+        <field name="res_model">project.site</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,map</field>
+    </record> -->
+
+    <record id="action_applicant_form_view3" model="ir.actions.act_window.view">
+        <field eval="5" name="sequence"/>
+        <field name="view_mode">map</field>
+        <field name="view_id" ref="view_applicant_map"/>
+        <field name="act_window_id" ref="hr_recruitment.crm_case_categ0_act_job"/>
+    </record>
+
+   </data>   
+</odoo>

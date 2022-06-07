@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+    <record id="ov_sale_order_inherit_view" model="ir.ui.view">
+        <field name="name">ov.sale.order.custom</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <h3>
+                    <label for="quotation_no" attrs="{'invisible': [('state','!=','draft')]}"/>
+                    <field name="quotation_no" attrs="{'invisible': [('state','!=','draft')]}"/>
+                </h3>
+                <h3>
+                    <label for="sale_order_no" attrs="{'invisible': [('state','=','draft')]}"/>
+                    <field name="sale_order_no" attrs="{'invisible': [('state','=','draft')]}"/>
+                </h3>
+            </field>
+            <group name="sales_person" position="inside">
+                <field name="first_approver"/>
+                <field name="second_approver"/>
+            </group>
+            <xpath expr="//button[@name='action_confirm']" position="before">
+                <!-- <button name="print_sales_proposal" id="print_sales_proposal" string="Print Proposal" class="btn-primary" type="object"/> -->
+                <button name="action_first_validate" id="action_first_validate" string="Check" class="btn-primary" type="object" attrs="{'invisible': [('state_of_approval', 'in', ['first_level_approved','second_level_approved'])]}"/>
+            </xpath>
+            <xpath expr="//div[@class='oe_title']" position="before">
+                <div style="padding-top:50px;">
+                    <header style="border-top: 1px solid #ced4da;">
+                        <field name="state_of_approval" widget="statusbar"/>
+                        <!-- options="{'clickable': False, 'fold_field': 'fold'}"   attrs="{'invisible':[('contract_proposal', '!=', True)]}" -->
+                    </header>
+                </div>
+            </xpath>
+            <!-- <xpath expr="//page[@name='order_lines']/field[@name='product_id']" position="after"> -->
+            <field name="order_line" position="inside">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="shift"/>
+                    <field name="shift_time"/>
+                    <field name="public_holiday"/>
+                </xpath>
+            </field>
+            <!-- </xpath> -->
+            
+            <xpath expr="//tree/field[@name='product_uom_qty']" position="before">
+                <field name="product_type" invisible="1"/>
+                <field name="shift"  attrs="{'invisible': [('product_type','!=','service')]}"/>
+                <field name="shift_time"  attrs="{'invisible': [('product_type','!=','service')]}"/>
+                <field name="public_holiday"  attrs="{'invisible': [('product_type','!=','service')]}"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

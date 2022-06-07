@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="days_avail_sunday" model="days.avail">
+            <field name="name">Sunday</field>
+        </record>
+        <record id="days_avail_monday" model="days.avail">
+            <field name="name">Monday</field>
+        </record>
+        <record id="days_avail_tuesday" model="days.avail">
+            <field name="name">Tuesday</field>
+        </record>
+        <record id="days_avail_wednesday" model="days.avail">
+            <field name="name">Wednesday</field>
+        </record>
+        <record id="days_avail_thursday" model="days.avail">
+            <field name="name">Thursday</field>
+        </record>
+        <record id="days_avail_friday" model="days.avail">
+            <field name="name">Friday</field>
+        </record>
+        <record id="days_avail_saturday" model="days.avail">
+            <field name="name">Saturday</field>
+        </record>
+        <record id="days_avail_no_preference" model="days.avail">
+            <field name="name">I do not have specific days I can work</field>
+        </record>
+
+
+        <!-- Driving License -->
+        <record id="dl1" model="driving.license">
+            <field name="name">Class 3</field>
+        </record>
+        <record id="dl2" model="driving.license">
+            <field name="name">Class 2 / 2A / 2B</field>
+        </record>
+        <record id="dl3" model="driving.license">
+            <field name="name">Nil</field>
+        </record>
+
+
+        
+    <record id="callpref_site1" model="callpref.site">
+        <field name="name">Condominium</field>
+    </record>
+    <record id="callpref_site2" model="callpref.site">
+        <field name="name">Shopping Malls</field>
+    </record>
+    <record id="callpref_site3" model="callpref.site">
+        <field name="name">Office Building</field>
+    </record>
+    <record id="callpref_site4" model="callpref.site">
+        <field name="name">Industrial Building</field>
+    </record>
+    </data>
+
+    <record id="preferredsuitable_site1" model="preferredsuitable.site">
+        <field name="name">Condominium</field>
+    </record>
+    <record id="preferredsuitable_site2" model="preferredsuitable.site">
+        <field name="name">Factory</field>
+    </record>
+    <record id="preferredsuitable_site3" model="preferredsuitable.site">
+        <field name="name">Club / Bar</field>
+    </record>
+    <record id="preferredsuitable_site4" model="preferredsuitable.site">
+        <field name="name">Office</field>
+    </record>
+    <record id="preferredsuitable_site5" model="preferredsuitable.site">
+        <field name="name">Light Industrial</field>
+    </record>
+    <record id="preferredsuitable_site6" model="preferredsuitable.site">
+        <field name="name">Events</field>
+    </record>
+    <record id="preferredsuitable_site7" model="preferredsuitable.site">
+        <field name="name">School</field>
+    </record>
+    <record id="preferredsuitable_site8" model="preferredsuitable.site">
+        <field name="name">Showroom</field>
+    </record>
+    <record id="preferredsuitable_site9" model="preferredsuitable.site">
+        <field name="name">Hotel / Resort</field>
+    </record>
+    <record id="preferredsuitable_site10" model="preferredsuitable.site">
+        <field name="name">Shopping Centre</field>
+    </record>
+
+</odoo>

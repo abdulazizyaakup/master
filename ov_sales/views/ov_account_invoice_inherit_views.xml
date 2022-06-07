@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+    <record id="ov_account_invoice_inherit_view" model="ir.ui.view">
+        <field name="name">ov.account.invoice</field>
+        <field name="model">account.invoice</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[2][@name='other_info']/group/group[2]" position="after">
+                <div style="padding-top:50px;">
+                    <group>
+                        <field name="create_uid"/>
+                        <field name="first_approver"/>
+                        <field name="second_approver"/>
+                    </group>
+                </div>
+            </xpath>
+            <xpath expr="//button[@name='action_invoice_open']" position="before">
+                <button name="action_first_validate_invoice" id="action_first_validate_invoice" string="Check" class="btn-primary" type="object" attrs="{'invisible': [('state_of_approval', 'in', ['first_level_approved','second_level_approved'])]}"/>
+            </xpath>
+            <xpath expr="//h1[@class='mt0']" position="before">
+                <div style="padding-top:50px;">
+                    <header style="border-top: 1px solid #ced4da;">
+                        <field name="state_of_approval" widget="statusbar"/>
+                    </header>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

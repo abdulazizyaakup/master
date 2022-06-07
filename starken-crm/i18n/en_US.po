@@ -1,0 +1,1104 @@
+#. module: crm
+#. openerp-web
+#: code:addons/crm/static/src/js/tours/crm.js:0
+#, python-format
+msgid ""
+"<b>Choose a name</b> for your opportunity, example: <i>'Need a new "
+"website'</i>"
+msgstr ""
+"<b>Choose a name</b> for your project, example: <i>'Need a new "
+"website'</i>"
+
+#. module: crm
+#. openerp-web
+#: code:addons/crm/static/src/js/tours/crm.js:0
+#, python-format
+msgid ""
+"<b>Drag &amp; drop opportunities</b> between columns as you progress in your"
+" sales cycle."
+msgstr "<b>Drag &amp; drop projects</b> between columns as you progress in your"
+" sales cycle."
+
+#. module: crm
+#: code:addons/crm/models/crm_team.py:0
+#, python-format
+msgid ""
+"<p class='o_view_nocontent_smiling_face'>Add new opportunities</p><p>\n"
+"    Looks like you are not a member of a Sales Team. You should add yourself\n"
+"    as a member of one of the Sales Team.\n"
+"</p>"
+msgstr ""
+"<p class='o_view_nocontent_smiling_face'>Add new projects</p><p>\n"
+"    Looks like you are not a member of a Sales Team. You should add yourself\n"
+"    as a member of one of the Sales Team.\n"
+
+#. module: crm
+#. openerp-web
+#: code:addons/crm/static/src/js/tours/crm.js:0
+#, python-format
+msgid ""
+"<p><b>Send messages</b> to your prospect and get replies automatically "
+"attached to this opportunity.</p><p class=\"mb0\">Type <i>'@'</i> to mention"
+" people - it's like cc-ing on emails.</p>"
+msgstr ""
+"<p><b>Send messages</b> to your prospect and get replies automatically "
+"attached to this project.</p><p class=\"mb0\">Type <i>'@'</i> to mention"
+" people - it's like cc-ing on emails.</p>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
+msgid "Add a qualification step before the creation of an opportunity"
+msgstr "Add a qualification step before the creation of an project"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.merge_opportunity_form
+msgid "Assign opportunities to"
+msgstr "Assign projects to"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner_mass
+msgid "Assign these opportunities to"
+msgstr "Assign these projects to"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner
+msgid "Assign this opportunity to"
+msgstr "Assign this project to"
+
+#. module: crm
+#: model:ir.model.fields,help:crm.field_crm_team__use_leads
+msgid ""
+"Check this box to filter and qualify incoming requests as leads before "
+"converting them into opportunities and assigning them to a salesperson."
+msgstr ""
+"Check this box to filter and qualify incoming requests as leads before "
+"converting them into projects and assigning them to a salesperson."
+
+#. module: crm
+#: model:ir.model.fields,help:crm.field_crm_team__use_opportunities
+msgid "Check this box to manage a presales process with opportunities."
+msgstr "Check this box to manage a presales process with projects."
+
+#. module: crm
+#. openerp-web
+#: code:addons/crm/static/src/js/tours/crm.js:0
+#, python-format
+msgid "Click here to <b>add your opportunity</b>."
+msgstr "Click here to <b>add your project</b>."
+
+#. module: crm
+#. openerp-web
+#: code:addons/crm/static/src/js/tours/crm.js:0
+#, python-format
+msgid ""
+"Click here to <b>create your first opportunity</b> and add it to your "
+"pipeline."
+msgstr ""
+"Click here to <b>create your first project</b> and add it to your "
+"pipeline."
+
+#. module: crm
+#. openerp-web
+#: code:addons/crm/static/src/js/tours/crm.js:0
+#, python-format
+msgid "Click on the opportunity to zoom in."
+msgstr "Click on the project to zoom in."
+
+#. module: crm
+#: code:addons/crm/wizard/crm_lead_to_opportunity.py:0
+#, python-format
+msgid "Closed/Dead leads cannot be converted into opportunities."
+msgstr "Closed/Dead leads cannot be converted into projects."
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_opportunity_report_view_search
+msgid "Conversion Date from Lead to Opportunity"
+msgstr "Conversion Date from Lead to Project"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_lead2opportunity_partner_mass
+msgid "Convert Lead to Opportunity (in mass)"
+msgstr "Convert Lead to Project (in mass)"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_lead2opportunity_partner
+msgid "Convert Lead to Opportunity (not in mass)"
+msgstr "Convert Lead to Project (not in mass)"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner_mass
+msgid "Convert to Opportunities"
+msgstr "Convert to Projects"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_form
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner_mass
+msgid "Convert to Opportunity"
+msgstr "Convert to Project"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.action_crm_send_mass_convert
+msgid "Convert to opportunities"
+msgstr "Convert to projects"
+
+#. module: crm
+#: code:addons/crm/models/crm_lead.py:0
+#: model:ir.actions.act_window,name:crm.action_crm_lead2opportunity_partner
+#: model:ir.model.fields.selection,name:crm.selection__crm_lead2opportunity_partner__name__convert
+#: model:ir.model.fields.selection,name:crm.selection__crm_lead2opportunity_partner_mass__name__convert
+#, python-format
+msgid "Convert to opportunity"
+msgstr "Convert to project"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_res_config_settings__module_crm_iap_lead_website
+msgid "Create Leads/Opportunities from your website's traffic"
+msgstr "Create Leads/Projects from your website's traffic"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner
+msgid "Create Opportunity"
+msgstr "Create Project"
+
+#. module: crm
+#: code:addons/crm/models/crm_lead.py:0
+#, python-format
+msgid "Create an opportunity in your pipeline"
+msgstr "Create an project in your pipeline"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
+msgid "Create leads from incoming emails"
+msgstr "Interessenten aus eingehenden E-Mails erstellen"
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.crm_lead_tag_action
+msgid "Create new tags for your opportunities"
+msgstr "Create new tags for your projects"
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.crm_lead_tag_action
+msgid ""
+"Create tags that fit your business (product structure, sales type, etc.) to "
+"better manage and track your opportunities."
+msgstr ""
+"Create tags that fit your business (product structure, sales type, etc.) to "
+"better manage and track your projects."
+
+#. module: crm
+#: model_terms:digest.tip,tip_description:crm.digest_tip_crm_0
+msgid ""
+"Email sent to <strong>${email}</strong> generate opportunities in your "
+"pipeline.<br>"
+msgstr ""
+"Email sent to <strong>${email}</strong> generate projects in your "
+"pipeline.<br>"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
+msgid ""
+"Emails received to that address generate new leads not assigned to any Sales"
+" Team yet. This can be made when converting them into opportunities. "
+"Incoming emails can be automatically assigned to specific Sales Teams. To do"
+" so, set an email alias on the Sales Team."
+msgstr ""
+"Emails received to that address generate new leads not assigned to any Sales"
+" Team yet. This can be made when converting them into projects. "
+"Incoming emails can be automatically assigned to specific Sales Teams. To do"
+" so, set an email alias on the Sales Team."
+
+#. module: crm
+#: model:ir.model.fields,help:crm.field_crm_lead__date_deadline
+msgid "Estimate of the date on which the opportunity will be won."
+msgstr "Estimate of the date on which the project will be won."
+
+#. module: crm
+#: model:ir.model.fields,help:crm.field_crm_lead2opportunity_partner_mass__force_assignation
+msgid "If unchecked, this will leave the salesman of duplicated opportunities"
+msgstr "If unchecked, this will leave the salesman of duplicated projects"
+
+#. module: crm
+#: code:addons/crm/models/crm_lead.py:0
+#, python-format
+msgid "Import Template for Leads & Opportunities"
+msgstr "Import Template for Leads & Projects"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_digest_digest__kpi_crm_opportunities_won_value
+msgid "Kpi Crm Opportunities Won Value"
+msgstr "Kpi Crm Projects Won Value"
+
+#. module: crm
+#: code:addons/crm/models/crm_lead.py:0
+#, python-format
+msgid "Lead or Opportunity"
+msgstr "Lead or Project"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Lead/Project"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_activity
+msgid "Leads or Opportunities"
+msgstr "Leads or Projects"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_merge_opportunity__opportunity_ids
+msgid "Leads/Opportunities"
+msgstr "Leads/Projects"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.merge_opportunity_form
+msgid "Merge Leads/Opportunities"
+msgstr "Merge Leads/Projects"
+
+#. module: crm
+#: model:ir.model,name:crm.model_crm_merge_opportunity
+msgid "Merge Opportunities"
+msgstr "Merge Projects"
+
+#. module: crm
+#: model:ir.model.fields.selection,name:crm.selection__crm_lead2opportunity_partner__name__merge
+#: model:ir.model.fields.selection,name:crm.selection__crm_lead2opportunity_partner_mass__name__merge
+msgid "Merge with existing opportunities"
+msgstr "Merge with existing projects"
+
+#. module: crm
+#: code:addons/crm/models/crm_lead.py:0
+#, python-format
+msgid "Merged opportunities"
+msgstr "Merged projects"
+
+#. module: crm
+#: code:addons/crm/models/crm_lead.py:0
+#, python-format
+msgid "Merged opportunity"
+msgstr "Merged project"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_opportunity_report_view_search
+msgid "My Opportunities"
+msgstr "My Projects"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_digest_digest__kpi_crm_lead_created
+msgid "New Leads/Opportunities"
+msgstr "New Leads/Projects"
+
+#. module: crm
+#: code:addons/crm/models/crm_team.py:0
+#, python-format
+msgid "New Opportunities"
+msgstr "New Projects"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.action_opportunity_form
+msgid "New Opportunity"
+msgstr "New Project"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team__opportunities_count
+msgid "Number of open opportunities"
+msgstr "Number of open projects"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team__overdue_opportunities_count
+msgid "Number of overdue opportunities"
+msgstr "Number of overdue projects"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_salesteams_view_kanban
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_case_opportunities_filter
+msgid "Open Opportunities"
+msgstr "Open Projects"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_salesteams_view_kanban
+msgid "Open Opportunity"
+msgstr "Open Project"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_case_form_view_salesteams_opportunity
+#: model:ir.actions.act_window,name:crm.crm_lead_opportunities
+#: model:ir.actions.act_window,name:crm.relate_partner_opportunities
+#: model:ir.model.fields,field_description:crm.field_crm_lead2opportunity_partner__opportunity_ids
+#: model:ir.model.fields,field_description:crm.field_crm_lead2opportunity_partner_mass__opportunity_ids
+#: model:ir.model.fields,field_description:crm.field_res_partner__opportunity_ids
+#: model:ir.model.fields,field_description:crm.field_res_users__opportunity_ids
+#: model:ir.ui.menu,name:crm.menu_crm_config_opportunity
+#: model_terms:ir.ui.view,arch_db:crm.crm_activity_report_view_search
+#: model_terms:ir.ui.view,arch_db:crm.crm_case_tree_view_oppor
+#: model_terms:ir.ui.view,arch_db:crm.crm_lead_view_graph
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_salesteams_view_kanban
+#: model_terms:ir.ui.view,arch_db:crm.utm_campaign_view_form
+#: model_terms:ir.ui.view,arch_db:crm.utm_campaign_view_kanban
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_lead2opportunity_partner
+#: model_terms:ir.ui.view,arch_db:crm.view_partners_form_crm1
+msgid "Opportunities"
+msgstr "Projects"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_opportunity_report_view_search
+msgid "Opportunities Analysis"
+msgstr "Projects Analysis"
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.action_report_crm_opportunity_salesteam
+msgid ""
+"Opportunities Analysis gives you an instant access to your opportunities "
+"with information such as the expected revenue, planned cost, missed "
+"deadlines or the number of interactions per opportunity. This report is "
+"mainly used by the sales manager in order to do the periodic review with the"
+" channels of the sales pipeline."
+msgstr ""
+"Projects Analysis gives you an instant access to your projects "
+"with information such as the expected revenue, planned cost, missed "
+"deadlines or the number of interactions per opportunity. This report is "
+"mainly used by the sales manager in order to do the periodic review with the"
+" channels of the sales pipeline."
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team__opportunities_amount
+msgid "Opportunities Revenues"
+msgstr "Projects Revenues"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_digest_digest__kpi_crm_opportunities_won
+msgid "Opportunities Won"
+msgstr "Projects Won"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_case_opportunities_filter
+msgid "Opportunities that are assigned to me"
+msgstr "Projects that are assigned to me"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_calendar_event__opportunity_id
+#: model:ir.model.fields,field_description:crm.field_crm_activity_report__lead_id
+#: model:ir.model.fields,field_description:crm.field_crm_lead__name
+#: model:ir.model.fields,field_description:crm.field_res_partner__opportunity_count
+#: model:ir.model.fields,field_description:crm.field_res_users__opportunity_count
+#: model:ir.model.fields.selection,name:crm.selection__crm_activity_report__lead_type__opportunity
+#: model:ir.model.fields.selection,name:crm.selection__crm_lead__type__opportunity
+#: model_terms:ir.ui.view,arch_db:crm.crm_activity_report_view_search
+#: model_terms:ir.ui.view,arch_db:crm.crm_case_tree_view_oppor
+#: model_terms:ir.ui.view,arch_db:crm.crm_opportunity_report_view_search
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_salesteams_view_kanban
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_case_opportunities_filter
+msgid "Opportunity"
+msgstr "Project"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_utm_campaign__opportunity_count
+msgid "Opportunity Count"
+msgstr "Project Count"
+
+#. module: crm
+#: model:mail.message.subtype,name:crm.mt_lead_create
+#: model:mail.message.subtype,name:crm.mt_salesteam_lead
+msgid "Opportunity Created"
+msgstr "Project Created"
+
+#. module: crm
+#: model:mail.message.subtype,name:crm.mt_lead_lost
+#: model:mail.message.subtype,name:crm.mt_salesteam_lead_lost
+msgid "Opportunity Lost"
+msgstr "Project Lost"
+
+#. module: crm
+#: model:mail.message.subtype,name:crm.mt_lead_restored
+#: model:mail.message.subtype,name:crm.mt_salesteam_lead_restored
+msgid "Opportunity Restored"
+msgstr "Project Restored"
+
+#. module: crm
+#: model:mail.message.subtype,name:crm.mt_salesteam_lead_stage
+msgid "Opportunity Stage Changed"
+msgstr "Project Stage Changed"
+
+#. module: crm
+#: model:mail.message.subtype,name:crm.mt_lead_won
+#: model:mail.message.subtype,name:crm.mt_salesteam_lead_won
+msgid "Opportunity Won"
+msgstr "Project Won"
+
+#. module: crm
+#: model:mail.message.subtype,description:crm.mt_lead_create
+msgid "Opportunity created"
+msgstr "Project created"
+
+#. module: crm
+#: model:mail.message.subtype,description:crm.mt_lead_lost
+msgid "Opportunity lost"
+msgstr "Project lost"
+
+#. module: crm
+#: model:mail.message.subtype,description:crm.mt_lead_restored
+msgid "Opportunity restored"
+msgstr "Project restored"
+
+#. module: crm
+#: model:mail.message.subtype,description:crm.mt_lead_won
+msgid "Opportunity won"
+msgstr "Project won"
+
+#. module: crm
+#: model:ir.actions.act_window,name:crm.crm_lead_action_team_overdue_opportunity
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_salesteams_view_kanban
+msgid "Overdue Opportunities"
+msgstr "Overdue Projects"
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_crm_team__overdue_opportunities_amount
+msgid "Overdue Opportunities Revenues"
+msgstr "Overdue Projects Revenues"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_team_salesteams_view_kanban
+msgid "Overdue Opportunity"
+msgstr "Overdue Project"
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.crm_opportunity_report_action
+msgid ""
+"Pipeline Analysis gives you an instant access to\n"
+"                your opportunities with information such as the expected revenue, planned cost,\n"
+"                missed deadlines or the number of interactions per opportunity. This report is\n"
+"                mainly used by the sales manager in order to do the periodic review with the\n"
+"                teams of the sales pipeline."
+msgstr ""
+"Pipeline Analysis gives you an instant access to\n"
+"                your projects with information such as the expected revenue, planned cost,\n"
+"                missed deadlines or the number of interactions per opportunity. This report is\n"
+"                mainly used by the sales manager in order to do the periodic review with the\n"
+"                teams of the sales pipeline."
+
+#. module: crm
+#: code:addons/crm/models/crm_lead.py:0
+#, python-format
+msgid ""
+"Please select more than one element (lead or opportunity) from the list "
+"view."
+msgstr ""
+"Please select more than one element (lead or project) from the list "
+"view."
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_lost_reason_view_search
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_case_opportunities_filter
+msgid "Search Opportunities"
+msgstr "Search Projects"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.merge_opportunity_form
+msgid "Select Leads/Opportunities"
+msgstr "Select Leads/Projects"
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.crm_stage_action
+msgid "Set a new stage in your opportunity pipeline"
+msgstr "Set a new stage in your project pipeline"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_case_leads_filter
+#: model_terms:ir.ui.view,arch_db:crm.view_crm_case_opportunities_filter
+msgid "Show all opportunities for which the next action date is before today"
+msgstr "Show all projects for which the next action date is before today"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_activity_report_view_search
+#: model_terms:ir.ui.view,arch_db:crm.crm_opportunity_report_view_search
+msgid "Show only opportunity"
+msgstr "Show only project"
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.crm_stage_action
+msgid ""
+"Stages allow salespersons to easily track how a specific opportunity\n"
+"            is positioned in the sales cycle."
+msgstr ""
+"Stages allow salespersons to easily track how a specific project\n"
+"            is positioned in the sales cycle."
+
+#. module: crm
+#: model:ir.model.fields,help:crm.field_crm_lead__partner_name
+msgid ""
+"The name of the future partner company that will be created while converting"
+" the lead into opportunity"
+msgstr ""
+"The name of the future partner company that will be created while converting"
+" the lead into project"
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.crm_case_kanban_view_leads
+msgid ""
+"This bar allows to filter the opportunities based on scheduled activities."
+msgstr ""
+"This bar allows to filter the projects based on scheduled activities."
+
+#. module: crm
+#. openerp-web
+#: code:addons/crm/static/src/js/tours/crm.js:0
+#, python-format
+msgid "This opportunity has <b>no activity planned</b>."
+msgstr "This project has <b>no activity planned</b>."
+
+#. module: crm
+#: model:ir.model.fields,help:crm.field_crm_activity_report__lead_type
+#: model:ir.model.fields,help:crm.field_crm_lead__type
+msgid "Type is used to separate Leads and Opportunities"
+msgstr "Type is used to separate Leads and Projects"
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.crm_case_form_view_salesteams_lead
+msgid ""
+"Use leads if you need a qualification step before creating an\n"
+"                    opportunity or a customer. It can be a business card you received,\n"
+"                    a contact form filled in your website, or a file of unqualified\n"
+"                    prospects you import, etc."
+msgstr ""
+"Use leads if you need a qualification step before creating an\n"
+"                    project or a customer. It can be a business card you received,\n"
+"                    a contact form filled in your website, or a file of unqualified\n"
+"                    prospects you import, etc."
+
+#. module: crm
+#: model_terms:ir.ui.view,arch_db:crm.res_config_settings_view_form
+msgid ""
+"Use leads if you need a qualification step before creating an opportunity or"
+" a customer. It can be a business card you received, a contact form filled "
+"in your website, or a file of unqualified prospects you import, etc. Once "
+"qualified, the lead can be converted into a business opportunity and/or a "
+"new customer in your address book."
+msgstr ""
+"Use leads if you need a qualification step before creating an project or"
+" a customer. It can be a business card you received, a contact form filled "
+"in your website, or a file of unqualified prospects you import, etc. Once "
+"qualified, the lead can be converted into a business project and/or a "
+"new customer in your address book."
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.crm_lost_reason_action
+msgid "Use lost reasons to explain why an opportunity is lost."
+msgstr "Use lost reasons to explain why an project is lost."
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.relate_partner_opportunities
+msgid ""
+"Use opportunities to keep track of your sales pipeline, follow\n"
+"                up potential sales and better forecast your future revenues."
+msgstr ""
+"Use projects to keep track of your sales pipeline, follow\n"
+"                up potential sales and better forecast your future revenues."
+
+#. module: crm
+#: model:ir.model.fields,field_description:crm.field_res_users__target_sales_won
+msgid "Won in Opportunities Target"
+msgstr "Won in Projects Target"
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.relate_partner_opportunities
+msgid ""
+"You will be able to plan meetings and log activities from\n"
+"                opportunities, convert them into quotations, attach related\n"
+"                documents, track all discussions, and much more."
+msgstr ""
+"You will be able to plan meetings and log activities from\n"
+"                projects, convert them into quotations, attach related\n"
+"                documents, track all discussions, and much more."
+
+#. module: crm
+#: model_terms:ir.actions.act_window,help:crm.crm_case_form_view_salesteams_opportunity
+msgid ""
+"You will be able to plan meetings and phone calls from\n"
+"                    opportunities, convert them into quotations, attach related\n"
+"                    documents, track all discussions, and much more."
+msgstr ""
+"You will be able to plan meetings and phone calls from\n"
+"                    projects, convert them into quotations, attach related\n"
+"                    documents, track all discussions, and much more."
+
+#. module: base
+#: model:ir.module.module,description:base.module_l10n_latam_base
+msgid ""
+"\n"
+"Add a new model named \"Identification Type\" that extend the vat field functionality in the partner and let the user to identify (an eventually invoice) to contacts not only with their fiscal tax ID (VAT) but with other types of identifications like national document, passport, foreign ID, etc. With this module installed you will see now in the partner form view two fields:\n"
+"\n"
+"* Identification Type\n"
+"* Identification Number\n"
+"\n"
+"This behavior is a common requirement for some latam countries like Argentina and Chile. If your localization has this requirements then you need to depend on this module and define in your localization module the identifications types that are used in your country. Generally these types of identifications are defined by the government authorities that regulate the fiscal operations. For example:\n"
+"\n"
+"* AFIP in Argentina defines DNI, CUIT (vat for legal entities), CUIL (vat for natural person), and another 80 valid identification types.\n"
+"\n"
+"Each identification holds this information:\n"
+"\n"
+"* name: short name of the identification\n"
+"* description: could be the same short name or a long name\n"
+"* country_id: the country where this identification belongs\n"
+"* is_vat: identify this record as the corresponding VAT for the specific country.\n"
+"* sequence: let us to sort the identification types depending on the ones that are most used.\n"
+"* active: we can activate/inactivate identifications to make it easier to our customers\n"
+"\n"
+"In order to make this module compatible for multi-company environments where we have companies that does not need/support this requirement, we have added generic identification types and generic rules to manage the contact information and make it transparent for the user when only use the VAT as we formerly know.\n"
+"\n"
+"Generic Identifications:\n"
+"\n"
+"* VAT: The Fiscal Tax Identification or VAT number, by default will be selected as identification type so the user will only need to add the related vat number.\n"
+"* Passport\n"
+"* Foreign ID (Foreign National Document)\n"
+"\n"
+"Rules when creating a new partner: We will only see the identification types that are meaningful, taking into account these rules:\n"
+"\n"
+"* If the partner have not country address set: Will show the generic identification types plus the ones defined in the partner's related company country (If the partner has not specific company then will show the identification types related to the current user company)\n"
+"\n"
+"* If the partner has country address : will show the generic identification types plus the ones defined for the country of the partner.\n"
+"\n"
+"When creating a new company, will set to the related partner always the related country is_vat identification type.\n"
+"\n"
+"All the defined identification types can be reviewed and activate/deactivate in \"Contacts / Configuration / Identification Type\" menu.\n"
+"\n"
+"This module is compatible with base_vat module in order to be able to validate VAT numbers for each country that have or not have the possibility to manage multiple identification types.\n"
+msgstr ""
+"\n"
+"Add a new model named \"Identification Type\" that extend the vat field functionality in the partner and let the user to identify (an eventually invoice) to accounts not only with their fiscal tax ID (VAT) but with other types of identifications like national document, passport, foreign ID, etc. With this module installed you will see now in the partner form view two fields:\n"
+"\n"
+"* Identification Type\n"
+"* Identification Number\n"
+"\n"
+"This behavior is a common requirement for some latam countries like Argentina and Chile. If your localization has this requirements then you need to depend on this module and define in your localization module the identifications types that are used in your country. Generally these types of identifications are defined by the government authorities that regulate the fiscal operations. For example:\n"
+"\n"
+"* AFIP in Argentina defines DNI, CUIT (vat for legal entities), CUIL (vat for natural person), and another 80 valid identification types.\n"
+"\n"
+"Each identification holds this information:\n"
+"\n"
+"* name: short name of the identification\n"
+"* description: could be the same short name or a long name\n"
+"* country_id: the country where this identification belongs\n"
+"* is_vat: identify this record as the corresponding VAT for the specific country.\n"
+"* sequence: let us to sort the identification types depending on the ones that are most used.\n"
+"* active: we can activate/inactivate identifications to make it easier to our customers\n"
+"\n"
+"In order to make this module compatible for multi-company environments where we have companies that does not need/support this requirement, we have added generic identification types and generic rules to manage the account information and make it transparent for the user when only use the VAT as we formerly know.\n"
+"\n"
+"Generic Identifications:\n"
+"\n"
+"* VAT: The Fiscal Tax Identification or VAT number, by default will be selected as identification type so the user will only need to add the related vat number.\n"
+"* Passport\n"
+"* Foreign ID (Foreign National Document)\n"
+"\n"
+"Rules when creating a new partner: We will only see the identification types that are meaningful, taking into account these rules:\n"
+"\n"
+"* If the partner have not country address set: Will show the generic identification types plus the ones defined in the partner's related company country (If the partner has not specific company then will show the identification types related to the current user company)\n"
+"\n"
+"* If the partner has country address : will show the generic identification types plus the ones defined for the country of the partner.\n"
+"\n"
+"When creating a new company, will set to the related partner always the related country is_vat identification type.\n"
+"\n"
+"All the defined identification types can be reviewed and activate/deactivate in \"Accounts / Configuration / Identification Type\" menu.\n"
+"\n"
+"This module is compatible with base_vat module in order to be able to validate VAT numbers for each country that have or not have the possibility to manage multiple identification types.\n"
+
+#. module: base
+#: model:ir.module.module,description:base.module_website_partner
+msgid ""
+"\n"
+"This is a base module. It holds website-related stuff for Contact model (res.partner).\n"
+"    "
+msgstr ""
+"\n"
+"This is a base module. It holds website-related stuff for Account model (res.partner).\n"
+"    "
+
+#. module: base
+#: model:ir.module.module,description:base.module_contacts
+msgid ""
+"\n"
+"This module gives you a quick view of your contacts directory, accessible from your home page.\n"
+"You can track your vendors, customers and other contacts.\n"
+msgstr ""
+"This module gives you a quick view of your accounts directory, accessible from your home page.\n"
+"You can track your vendors, customers and other accounts.\n"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_users_form
+msgid "<strong>The contact linked to this user is still active</strong>"
+msgstr "<strong>The accounts linked to this user is still active</strong>"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__exclude_contact
+msgid "A user associated to the contact"
+msgstr "A user associated to the account"
+
+#. module: base
+#: model:ir.module.module,description:base.module_contacts_enterprise
+msgid "Adds notably the map view of contact"
+msgstr "Adds notably the map view of account"
+
+#. module: base
+#: code:addons/base/wizard/base_partner_merge.py:0
+#, python-format
+msgid ""
+"All contacts must have the same email. Only the Administrator can merge "
+"contacts with different emails."
+msgstr ""
+"All accounts must have the same email. Only the Administrator can merge "
+"accounts with different emails."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_partner__lang
+#: model:ir.model.fields,help:base.field_res_users__lang
+msgid ""
+"All the emails and documents sent to this contact will be translated in this"
+" language."
+msgstr ""
+"All the emails and documents sent to this account will be translated in this"
+" language."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
+msgid "Are you sure to execute the automatic merge of your contacts ?"
+msgstr "Are you sure to execute the automatic merge of your accounts ?"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
+msgid ""
+"Are you sure to execute the list of automatic merges of your contacts ?"
+msgstr ""
+"Are you sure to execute the list of automatic merges of your accounts ?"
+
+#. module: base
+#: code:addons/base/models/res_partner.py:0
+#, python-format
+msgid ""
+"Changing the company of a contact should only be done if it was never "
+"correctly set. If an existing contact starts working for a new company then "
+"a new contact should be created under that new company. You can use the "
+"\"Discard\" button to abandon this change."
+msgstr ""
+"Changing the company of a account should only be done if it was never "
+"correctly set. If an existing account starts working for a new company then "
+"a new account should be created under that new company. You can use the "
+"\"Discard\" button to abandon this change."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_partner__is_company
+#: model:ir.model.fields,help:base.field_res_users__is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr "Check if the account is a company, otherwise it is a person"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_partner__employee
+#: model:ir.model.fields,help:base.field_res_users__employee
+msgid "Check this box if this contact is an Employee."
+msgstr "Check this box if this account is an Employee."
+
+#. module: base
+#: model:ir.model,name:base.model_res_partner
+#: model:ir.model.fields,field_description:base.field_res_partner__child_ids
+#: model:ir.model.fields,field_description:base.field_res_users__child_ids
+#: model:ir.model.fields.selection,name:base.selection__res_partner__type__contact
+#: model_terms:ir.ui.view,arch_db:base.view_company_form
+#: model_terms:ir.ui.view,arch_db:base.view_partner_simple_form
+msgid "Contact"
+msgstr "Account"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+msgid "Contact / Address"
+msgstr "Account / Adress"
+
+#. module: base
+#: model:res.groups,name:base.group_partner_manager
+msgid "Contact Creation"
+msgstr "Account Creation"
+
+#. module: base
+#: model:ir.module.module,shortdesc:base.module_website_crm
+msgid "Contact Form"
+msgstr "Account Form"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+msgid "Contact Name"
+msgstr "Account Name"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_category_form
+msgid "Contact Tag"
+msgstr "Account Tag"
+
+#. module: base
+#: model:ir.actions.act_window,name:base.action_partner_category_form
+#: model_terms:ir.ui.view,arch_db:base.view_partner_category_list
+msgid "Contact Tags"
+msgstr "Account Tags"
+
+#. module: base
+#: model:ir.actions.act_window,name:base.action_partner_title_contact
+msgid "Contact Titles"
+msgstr "Account Titles"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__partner_ids
+#: model:ir.module.module,shortdesc:base.module_contacts
+#: model_terms:ir.ui.view,arch_db:base.view_partner_tree
+msgid "Contacts"
+msgstr "Accounts"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_partner_form
+msgid "Contacts & Addresses"
+msgstr "Accounts & Addresses"
+
+#. module: base
+#: model:ir.module.module,shortdesc:base.module_contacts_enterprise
+msgid "Contacts Enterprise"
+msgstr "Accounts Enterprise"
+
+#. module: base
+#: model:ir.model.constraint,message:base.constraint_res_partner_check_name
+msgid "Contacts require a name"
+msgstr "Accounts require a name"
+
+#. module: base
+#: code:addons/base/models/res_partner.py:0
+#, python-format
+msgid "Couldn't create contact without email address!"
+msgstr "Couldn't create account without email address!"
+
+#. module: base
+#: model_terms:ir.actions.act_window,help:base.action_partner_category_form
+msgid "Create a new contact tag"
+msgstr "Create a new account tag"
+
+#. module: base
+#: model:ir.actions.act_window,name:base.action_partner_deduplicate
+msgid "Deduplicate Contacts"
+msgstr "Deduplicate Accounts"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
+msgid "Deduplicate the other Contacts"
+msgstr "Deduplicate the other Accounts"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__dst_partner_id
+msgid "Destination Contact"
+msgstr "Destination Account"
+
+#. module: base
+#: model:ir.module.module,summary:base.module_contacts_enterprise
+msgid "Enterprise features on contacts"
+msgstr "Enterprise features on accounts"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
+msgid "Exclude contacts having"
+msgstr "Exclude accounts having"
+
+#. module: base
+#: code:addons/base/wizard/base_partner_merge.py:0
+#, python-format
+msgid ""
+"For safety reasons, you cannot merge more than 3 contacts together. You can "
+"re-open the wizard several times if needed."
+msgstr ""
+"For safety reasons, you cannot merge more than 3 accounts together. You can "
+"re-open the wizard several times if needed."
+
+#. module: base
+#: model:ir.module.module,summary:base.module_website_crm
+msgid "Generate leads from a contact form"
+msgstr "Generate leads from a account form"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__number_group
+msgid "Group of Contacts"
+msgstr "Group of Accounts"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__exclude_journal_item
+msgid "Journal Items associated to the contact"
+msgstr "Journal Items associated to the account"
+
+#. module: base
+#: code:addons/base/models/ir_qweb_fields.py:0
+#, python-format
+msgid "List of contact fields to display in the widget"
+msgstr "List of account fields to display in the widget"
+
+#. module: base
+#: model_terms:ir.actions.act_window,help:base.action_partner_category_form
+msgid ""
+"Manage contact tags to better classify them for tracking and analysis "
+"purposes."
+msgstr ""
+"Manage account tags to better classify them for tracking and analysis "
+"purposes."
+
+#. module: base
+#: model_terms:ir.actions.act_window,help:base.action_partner_title_contact
+msgid ""
+"Manage the contact titles you want to have available in your system and the "
+"way you want to print them in letters and other documents. Some example: "
+"Mr., Mrs."
+msgstr ""
+"Manage the account titles you want to have available in your system and the "
+"way you want to print them in letters and other documents. Some example: "
+"Mr., Mrs."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__maximum_group
+msgid "Maximum of Group of Contacts"
+msgstr "Maximum of Group of Accounts"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
+msgid "Merge Contacts"
+msgstr "Merge Accounts"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
+msgid "Merge the following contacts"
+msgstr "Merge the following accounts"
+
+#. module: base
+#: code:addons/base/wizard/base_partner_merge.py:0
+#, python-format
+msgid ""
+"Only the destination contact may be linked to existing Journal Items. Please"
+" ask the Administrator if you need to merge several contacts linked to "
+"existing Journal Items."
+msgstr ""
+"Only the destination account may be linked to existing Journal Items. Please"
+" ask the Administrator if you need to merge several accounts linked to "
+"existing Journal Items."
+
+#. module: base
+#: model:ir.model,name:base.model_ir_qweb_field_contact
+msgid "Qweb Field Contact"
+msgstr "Qweb Field Account"
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_model_fields__selectable
+msgid "Selectable"
+msgstr "Auswählbar"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
+msgid ""
+"Selected contacts will be merged together.\n"
+"                                All documents linked to one of these contacts\n"
+"                                will be redirected to the destination contact.\n"
+"                                You can remove contacts from this list to avoid merging them."
+msgstr ""
+"Selected accounts will be merged together.\n"
+"                                All documents linked to one of these accounts\n"
+"                                will be redirected to the destination account.\n"
+"                                You can remove accounts from this list to avoid merging them."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
+msgid "Skip these contacts"
+msgstr "Skip these accounts"
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_company__vat
+#: model:ir.model.fields,help:base.field_res_partner__vat
+#: model:ir.model.fields,help:base.field_res_users__vat
+msgid ""
+"The Tax Identification Number. Complete it if the contact is subjected to "
+"government taxes. Used in some legal statements."
+msgstr ""
+"The Tax Identification Number. Complete it if the account is subjected to "
+"government taxes. Used in some legal statements."
+
+#. module: base
+#: model:ir.model.fields,help:base.field_res_partner__user_id
+#: model:ir.model.fields,help:base.field_res_users__user_id
+msgid "The internal user in charge of this contact."
+msgstr "The internal user in charge of this account."
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
+msgid "There are no more contacts to merge for this request"
+msgstr "There are no more accounts to merge for this request"
+
+#. module: base
+#: model_terms:ir.ui.view,arch_db:base.view_users_form
+msgid "You can archive the contact"
+msgstr "You can archive the account"
+
+#. module: base
+#: code:addons/base/models/res_partner.py:0
+#, python-format
+msgid "You cannot archive a contact linked to an internal user."
+msgstr "You cannot archive a account linked to an internal user."
+
+#. module: base
+#: code:addons/base/wizard/base_partner_merge.py:0
+#, python-format
+msgid "You cannot merge a contact with one of his parent."
+msgstr "You cannot merge a account with one of his parent."
+
+#. module: contacts
+#: model:ir.ui.menu,name:contacts.menu_partner_category_form
+msgid "Contact Tags"
+msgstr "Account Tags"
+
+#. module: contacts
+#: model:ir.ui.menu,name:contacts.menu_partner_title_contact
+msgid "Contact Titles"
+msgstr "Account Titles"
+
+#. module: contacts
+#: model:ir.actions.act_window,name:contacts.action_contacts
+#: model:ir.actions.act_window,name:contacts.action_contacts_summary
+#: model:ir.ui.menu,name:contacts.menu_contacts
+#: model:ir.ui.menu,name:contacts.res_partner_menu_contacts
+msgid "Contacts"
+msgstr "Accounts"
+
+#. module: contacts
+#: model_terms:ir.actions.act_window,help:contacts.action_contacts
+#: model_terms:ir.actions.act_window,help:contacts.action_contacts_summary
+msgid "Create a contact in your address book"
+msgstr "Create a account in your address book"
+
+#. module: stock
+#: model:ir.actions.report,print_report_name:stock.action_report_delivery
+msgid ""
+"'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
+msgstr ""
+"'Delivery Order - %s - %s' % (object.partner_id.name or '', object.name)"
+
+#. module: stock
+#: model:ir.actions.report,name:stock.action_report_delivery
+msgid "Delivery Slip"
+msgstr "Delivery Order"
+
+#. module: stock
+#: model:ir.model.fields,field_description:stock.field_res_config_settings__group_lot_on_delivery_slip
+msgid "Display Lots & Serial Numbers on Delivery Slips"
+msgstr "Display Lots & Serial Numbers on Delivery Orders"
+
+#. module: stock
+#: model:res.groups,name:stock.group_lot_on_delivery_slip
+msgid "Display Serial & Lot Number in Delivery Slips"
+msgstr "Display Serial & Lot Number in Delivery Orders."
+
+#. module: stock
+#: model_terms:ir.ui.view,arch_db:stock.res_config_settings_view_form
+msgid "Lots &amp; Serial numbers will appear on the delivery slip"
+msgstr "Lots &amp; Serial numbers will appear on the delivery order"
+
+#. module: stock
+#: model:ir.actions.report,print_report_name:stock.action_report_delivery
+msgid ""
+"'Delivery Slip - %s - %s' % (object.partner_id.name or '', object.name)"
+msgstr ""
+"'Delivery Order - %s - %s' % (object.partner_id.seq_num or '', object.seq_num)"
